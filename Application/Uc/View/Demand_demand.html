@@ -1,0 +1,216 @@
+<include file="UCenter:header"/>
+<include file="UCenter:left"/>
+
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/statics/js/kindeditor4/themes/default/default.css"/>
+<script type="text/javascript" src="__PUBLIC__/statics/js/kindeditor4/kindeditor-min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/statics/js/WdatePicker.js"></script>
+<!--<script type="text/javascript" src="__PUBLIC__/statics/js/jquery/plugins/jQuery.Hz2Py-min.js"></script> -->
+<script type="text/javascript" src="__PUBLIC__/statics/js/pinyin.js"></script>
+<script type="text/javascript" src="__PUBLIC__/statics/js/area.js" charset="gbk"></script>
+<script type="text/javascript">
+$(function(){
+	
+	var items='{"items":["wordpaste","selectall","justifyleft","justifycenter","image","justifyright","justifyfull","insertorderedlist","insertunorderedlist","formatblock","fontname","fontsize","forecolor","hilitecolor","bold","italic","fullscreen"]}';
+	items=eval("("+items+")");
+	KindEditor.create('[name=DESCRIBE]',items);
+	KindEditor.create('[name=DESCRIBEA]',items);
+	KindEditor.create('[name=DESCRIBEB]',items);
+	KindEditor.create('[name=DESCRIBEC]',items);
+	
+})
+</script>
+<script type="text/javascript">
+$(function(){
+	var items='{"items":["wordpaste","selectall","justifyleft","justifycenter","image","justifyright","justifyfull","insertorderedlist","insertunorderedlist","formatblock","fontname","fontsize","forecolor","hilitecolor","bold","italic","fullscreen"]}';
+	items=eval("("+items+")");
+	KindEditor.create('[name=EINTRO]',items);
+	$("#ENAME").keyup(function(){
+		$("#ECODE").val(HanZi_PinYin.get($.trim($(this).val())));	
+	})
+	
+	var uploadbutton = KindEditor.uploadbutton({
+		button : $('#uploadButton')[0],
+		fieldName : 'imgFile',
+		url : '__PUBLIC__/statics/js/kindeditor4/php/upload_json.php?dir=image',
+		afterUpload : function(data) {
+			if (data.error === 0) {
+				var url = KindEditor.formatUrl(data.url, 'absolute');
+				$('#EFACE').val(url);
+				$("#imgeface").attr("src",url);
+			} else {
+				alert(data.message);
+			}
+		},
+		afterError : function(str) {
+			alert('网速不给力！');
+		}
+	});
+	uploadbutton.fileBox.change(function(e) {
+		uploadbutton.submit();
+	});
+})
+</script>
+<style type="text/css">
+.pub_03{width:200px;}
+.tdright{ text-align:right; min-width:140px;}
+</style>
+    <!--right-->
+    <div class="right">
+           <div class="daohang">当前位置： <a href="<hr />
+#">首页</a> > <a href="#"><font>需求管理</font></a></div>
+           <div class="main">
+                <div class="pub_title_bg"><div class="pub_title">需求管理维护</div></div>
+               
+                <div class="pub_02">
+                <input type="hidden" id="PRO_CATS" value="{$experts.pro_cats}" />
+                <form action="{:U('Uc/Demand/demand')}" method="post">          
+				
+              <input type="hidden" id="ID" value="{$experts.id}" />      	
+                   <table width="100%" cellpadding="0" cellspacing="0" class="table_form">
+               
+      <tr>
+        <td class="tdright"><span>*</span>联系人姓名 :  </td>
+        <td><input type="text" name="DNAME" id="DNAME" class="pub_03 validate[required]" size="60" value="{$expertss.dname}"></td>
+		</tr>
+		<tr>
+        <td class="tdright"><span>*</span>联系人单位 :</td>
+        <td><input type="text" name="DCOMPANY" id="DCOMPANY" class="pub_03 validate[required]" value="{$expertss.dcompany}"></td>
+       </tr>
+	  <tr>
+       <td class="tdright"><span>*</span>联系人电话 :</td>
+        <td>
+       <input type="text" name="DPHONE" id="DPHONE" class="pub_03 validate[required]" value="{$expertss.dphone}">
+        </td>
+		</tr>
+		<tr>
+        <td class="tdright"><span>*</span>联系人邮箱 :</td>
+        <td><input type="text" name="DEMAIL" id="DEMAIL" class="pub_03 validate[required]"  value="{$expertss.demail}"></td>
+      </tr>
+	  <tr>
+        <td class="tdright">需求标题:</td>
+        <td colspan="3"> 
+         <input type="text" name="DTITLE" id="DTITLE" class="pub_03"  value="{$expertss.dtitle}">
+        </td>
+      </tr>
+	  <tr><td></td><td><span>以下需求，至少填一项</span></td></tr>
+	  <tr><td></td><td><span>请详细说明需求类型；与国外高校及研究所合作研发、向外国企业采购、海外人才引进，并有简单描述</span></td></tr>
+	  <tr>
+        <td class="tdright"><span></span>国际合作需求 :</td>
+     
+		<td colspan="3"><textarea  name="DESCRIBE"  style=" width:720px; height:100px; ">{$expertss.describe}</textarea></td>
+       </tr>
+	  <tr>
+	  <tr><td></td><td><span>产品类别和参数</span></td></tr>
+	  <tr>
+        <td class="tdright"><span></span>产品需求 :</td>
+     
+		<td colspan="3"><textarea  name="DESCRIBEA" style=" width:720px; height:100px; ">{$expertss.describea}</textarea></td>
+       </tr>
+	  <tr>
+	  <tr><td></td><td><span>应用领域和预期效果</span></td></tr>
+	  <tr>
+        <td class="tdright"><span></span>技术需求 :</td>
+     
+		<td colspan="3"><textarea  name="DESCRIBEB" style=" width:720px; height:100px; ">{$expertss.describeb}</textarea></td>
+       </tr>
+	  <tr>
+	  <tr><td></td><td><span>行业领域</span></td></tr>
+	  <tr>
+        <td class="tdright"><span></span>专家需求 :</td>
+     
+		<td colspan="3"><textarea  name="DESCRIBEC" style=" width:720px; height:100px; ">{$expertss.describec}</textarea></td>
+       </tr>
+	  <tr>
+        <td class="tdright"><span>*</span>预算 :</td>
+        <td colspan="3"><input type="text" name="DBUDGET" id="DBUDGET" class="pub_03  validate[required]" size="60" value="{$expertss.dbudget}"></td>
+       </tr>
+	  <tr>
+        <td class="tdright"><span>*</span>关键字 :</td>
+        <td colspan="3"><input type="text" name="DKEYWORD" id="DKEYWORD" class="pub_03 validate[required]" size="60" value="{$expertss.dkeyword}"></td>
+       </tr>
+	   <tr>
+                          <td align="right">行业类型 :</td>
+                          <td colspan="2">
+						   
+                          <select name="DHYCATEGORYID" id="DHYCATEGORYID" class="pub_03">
+						  <volist name="hy" id="val" >
+                          	<option value="{$val.id}" <if condition="$data['dhycategory'] eq $val['id']"> selected="selected"</if>>{$val.kname}</option>
+                          
+							</volist>
+                          </select>
+						  
+                          <input type="hidden" name="DHYCATEGORY" id="DHYCATEGORYIDVALUE" /></td>
+                       </tr>
+	  <!--<tr>
+        <td class="tdright" width="85px">行业类型 :</td>
+         
+                          <td colspan="2" >   
+                          <select name="DHYCATEGORY" id="DHYCATEGORY">
+                          <option value="0">互联网/电子商务</option><option value="0">计算机软件
+</option><option value="1">计算机硬件
+</option><option value="2">IT服务/系统集成
+</option><option value="3">通信/电信</option>
+
+                          </select>
+                          <input type="hidden" name="CINDUSTRY" id="CINDUSTRYIDVALUE" /></td>
+       </tr>-->
+	  <tr>
+        <td class="tdright"><span>*</span>发布时间 :</td>
+        <td><input type="text" name="DADDTIME" id="DADDTIME" class="pub_03 validate[required]" onfocus="WdatePicker()" size="60" value="{$expertss.daddtime}"></td>
+      <tr>
+        <td class="tdright"><span>*</span>截止时间 :</td>
+        <td><input type="text" name="DEADLINE" id="DEADLINE" class="pub_03 validate[required]" onfocus="WdatePicker()" size="60" value="{$expertss.deadline}"></td>
+       
+        <tr>
+        <td class="tdright">发布状态 :</td>
+        <td colspan="3">  <input type="radio" value="0"  name="ISSHOW" <if condition="$experts.dstatus neq 10"> checked="checked"</if>  />发布（需审核） &nbsp; &nbsp; &nbsp; 
+        <input type="radio"  value="1"   name="ISSHOW" <if condition="$experts.dstatus eq 10"> checked="checked"</if>   />草稿</td>
+      </tr>
+	
+      <tr><td><input type="hidden" name="ID" value="{$experts.id}" id="ID"/></td> <td colspan="3"></td>
+       </tr>
+          <tr>
+                          <td align="right"></td>
+                          <td colspan="4" align="left">
+                          <input type="submit" style="background:url(__PUBLIC__/statics/images/btn_team.jpg) ;width:331px; height:35px; border:none;"  value=""/>
+                          </td>
+                       </tr>
+    </table>
+    
+              
+                   <input type="hidden" name="submit" value="1" />
+                   </form>
+                </div>
+                
+                
+                
+           </div>
+    </div>
+    <!--right-->
+    <!--clear-->
+    <div class="clear"></div>
+    <!--clear-->
+   <!--内容-->
+</div>
+<script type="text/javascript">
+//初始化信息
+var s=["s_province","s_city","s_county"];//三个select的id
+var opt0 = ["省份","地级市","市、县级市"];//初始值
+function _init_area(){  //初始化函数
+	for(i=0;i<s.length-1;i++){
+	  	document.getElementById(s[i]).onchange=new Function("change("+(i+1)+")");	
+	}
+	change(0);
+}
+$(function(){
+	//绑定地址信息
+	_init_area();
+	$("#s_province").val("{$experts.CPROV}");
+	$("#s_province").change();
+	$("#s_city").val("{$experts.CCITY}");
+	$("#s_city").change();
+	$("#s_county").val("{$experts.COUNTY}");
+})
+</script>
+</body>
+</html>

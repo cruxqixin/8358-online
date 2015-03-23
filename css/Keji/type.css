@@ -1,0 +1,499 @@
+*{
+	margin:0;
+	padding:0;
+	font-family:"微软雅黑";}
+li{
+	list-style:none;}
+a{
+	text-decoration:none;}
+img{
+	border:none;}
+body{
+	width:100%;
+	height:auto;}	
+.topBox{
+	width:100%;
+	height:36px;
+	background-color:#434343;}	
+.top{
+	position:relative;
+	width:851px;
+	margin:0 auto;
+	padding-left:152px;}	
+.top h1{
+	margin-left:10px;
+	float:left;
+	font-size:13.33px;
+	line-height:36px;
+	color:#fff;
+	font-weight:normal;
+	}	
+.top h1 a{
+	color:#fff;
+	margin-right:24px;}	
+.top p{
+	font-size:13.33px;
+	color:#fff;
+	line-height:36px;
+	float:right;}	
+.top p a{
+	color:#fff;}	
+.logo{
+	position:absolute;
+	top:0;
+	left:0;}	
+.navBox{
+	margin-top:5px;
+	width:100%;
+	border-bottom:3px solid #c60000;
+	height:147px;}	
+.nav{
+	width:843px;
+	padding-left:145px;
+	margin:0 auto;}	
+.nav dl{
+	float:left;
+	margin-top:17px;
+	height:44px;
+	border-right:1px dashed #d1d1d2;}
+.nav .icon{
+	width:90px;}
+.nav .Dlnum4 .currentDt{
+	border-right:1px dashed #d1d1d2;
+	width:56px;
+	padding-left:6px;}
+.nav .Dlnum4 dt .currentA{
+	padding-right:0;}	
+.nav dd{
+	padding-left:8px;
+	float:left;
+	width:70px;
+	height:14px;
+	font-size:13.33px;
+	font-weight:bold;
+	}
+.nav .but{
+	width:160px;
+	height:30px;
+	color:#fff;
+	margin-left:10px;
+	font-size:16px;
+	border:none;
+	float:left;
+	cursor:pointer;
+	border-radius:4px;
+	background-color:#c60000;}	
+.nav dd a{
+	color:#333333;}	
+.nav dt{
+	float:left;
+	font-size:13.33px;
+	}	
+.nav dt a{
+	color:#333333;
+}	
+.nav dl	 p{
+	line-height:9px;
+	width:320px;
+	float:left;
+	}
+.current-tr dl{
+	border:none;}	
+.nav .num1{
+	width:530px;}	
+	
+.mainBox{
+	width:100%;
+	height:auto;
+	background:url(/images/Keji/background.jpg);}
+.main{
+	width:1003px;
+	overflow:hidden;
+	margin:0 auto;}	
+.main h1{
+	font-size:13.33px;
+	color:#808080;
+	font-weight:normal;
+	line-height:40px; text-align:left;}	
+.main h1 span{
+	color:#e84a3f;}	
+.main-text{
+	padding:16px;
+	width:971px;
+	overflow:hidden;
+	border:1px solid #eaeaea;
+	background-color:#fff;}	
+.main-text dl{
+	float:left;
+	width:176px;
+	
+	background-color:#d9d9d9;
+	}	
+.main-text .current-DD{
+	}
+.main-text .current-DD p{
+	width:174px;
+	
+	margin-left:1px;
+	margin-bottom:1px;
+	margin-right:1px;
+	background-color:#fff;
+	}
+.main-text .current-DD p a{
+	font-size:14.67px;
+	color:#808080;}
+.main-text dd{
+	border-bottom:2px solid #fff;
+	line-height:40px;
+	font-size:16px;
+	text-align:center;}	
+.main-text dd a{
+	color:#333333;
+	}
+.main-text dd a:hover{
+	color:#c60000;
+	}	
+.main-text dd .currentA{
+	color:#c60000;
+	}
+.main-text dd a	 span {
+	color:#c60000;
+	text-decoration:underline;
+}
+.shopBox{
+	float:left;
+	width:760px;
+	overflow:hidden;
+	margin-left:34px;}	
+.shopBox ul{
+	width:760px;
+	height:38px;
+	border-bottom:1px solid #c60000;
+	}	
+.shopBox li{
+	float:left;
+	text-size:18.67px;
+	line-height:38px;
+	color:#666666;}	
+.clear{
+	clear:both;
+}
+	 
+.shopBox .liri{
+	float:right;
+}
+.shopBox .liri a{
+	color:#c60000;
+}
+.shopBox li	 span{
+	color:#c60000;
+	}
+.shopBox ol{
+	float:right;
+	line-height:38px;
+	text-size:16px;
+	color:#333333;}	
+.shopBox ol a{
+	color:#c60000;
+	}	
+.shopBox table{
+	margin-top:22px;
+	width:760px;
+	}
+.shopBox table .text-nav{
+	font-size:16px;
+	color:#333333;
+	text-align:right;}	
+.shopBox table tr{
+	height:55px;}	
+.shopBox table .text1{
+	margin-left:16px;
+	width:584px;
+	height:34px;
+	border:1px solid #cccccc;}	
+.shopBox table a{
+	color:#c60000;
+	text-decoration:underline;}
+.shopBox table select{
+	width:211px;
+	height:34px;
+	border:1px solid #abadb3;}	
+.shopBox table img{
+	margin-left:16px;}	
+.shopBox table .butBox{
+	margin-left:120px;
+	margin-top:24px;
+}	
+.shopBox table .butBox .but{
+	cursor:pointer;
+	width:120px;
+	height:34px;
+	font-size:16px;
+	color:#fff;
+	margin-right:67px;
+	background-color:#666666;
+	border:none;
+	border-radius:2px;}	
+.shopBox table .butBox .redBut{
+	background-color:#d10504;}	
+	
+	
+/*---------------------------------------------产品发布列表页---------------------------------------------------------------*/
+.searchBox{
+	width:760px;
+	height:34px;
+	margin:20px 0;}
+.searchBox .time{
+	line-height:34px;
+	color:#4c4c4c;
+	float:left;
+	width:143px;
+	height:34px;
+	border:1px solid #abadb3;
+	margin-right:10px;}
+.searchBox span{
+	float:left;
+	font-size:16px;
+	line-height:34px;
+	color:#4c4c4c;
+	margin-right:10px;
+	}
+.searchBox .text{
+	line-height:34px;
+	float:left;
+	width:177px;
+	height:34px;
+	margin-right:10px;
+	border:1px solid #abadb3;
+	font-size:13.33px;
+	text-indent:10px;
+	color:#999999;}
+.searchBox .redbut{
+	width:87px;
+	height:34px;
+	float:left;
+	background-color:#d10504;
+	border-radius:2px;
+	font-size:16px;
+	color:#fff;
+	border:none;}
+.searchBox .redbut2{
+	width:120px;
+	float:right;}
+.search{
+	width:760px;
+	height:40px;
+	border-bottom:1px solid #4d4d4d;}
+.search a{
+	float:left;
+	line-height:40px;
+	width:140px;
+	text-align:center;
+	margin-left:10px;
+	color:#000;
+	font-size:14.67px;
+	background:url(/images/Keji/but_32.jpg) no-repeat;
+	}
+.search a span{
+	color:#d10504;}
+.search .currentA{
+	background:url(/images/Keji/but_30.jpg) no-repeat;}
+	
+.shopBox .list-tab tr{
+	text-align:left;
+	text-indent:10px;
+	line-height:40px;o
+	color:#808080;
+	font-size:14.67px;
+	height:40px;
+	}
+.shopBox .list-tab a{
+	color:#808080;
+	text-decoration:none;}
+.shopBox .list-tab td{
+	border-bottom:1px dashed #c9c9c9;}
+.shopBox .list-tab .current-tr td{
+	border-bottom:1px solid #4d4d4d;
+}
+.shopBox .iconBox{
+	margin-top:20px;
+	margin-left:90px;}
+.shopBox .iconBox a{
+	float:left;
+	padding:10px 16px;
+	background-color:#cccccc;
+	font-size:13.33px;
+	color:#333333;
+	margin-right:5px;
+	}
+.shopBox .iconBox .currentA{
+	background-color:#d10504;
+	color:#fff;}
+/*---------------------------------------------产品发布列表页---------------------------------------------------------------*/
+
+/*---------------------------------------------产品发布列表页---------------------------------------------------------------*/
+.informBox{
+	width:750px;
+	overflow:hidden;
+	margin:14px 0;
+	}
+.informBox img{
+	float:left;
+	margin-right:24px;}
+.informBox h2{
+	font-size:16px;
+	color:#333333;
+	font-weight:normal;
+	margin-top:20px;}
+.informBox h2 a{
+	color:#2478b7;}
+.informBox p{
+	font-size:13.33px;
+	color:#808080;
+	margin-top:10px;}
+.inform{
+	overflow:auto;
+	margin-bottom:10px;
+	border:1px solid #cccccc;}
+.informText{
+	height:30px;
+	background-color:#f5f5f5;}
+.informText h3{
+	float:left;
+	font-weight:normal;
+	font-size:16px;
+	line-height:30px;
+	text-indent:12px;
+	color:#c60000;}
+.informText a{
+	line-height:30px;
+	color:#333333;
+	float:right;
+	margin-right:16px;
+	font-size:13.33px;}
+.inform h4{
+	float:left;
+	margin-right:44px;
+	padding-left:14px;
+	font-size:13.33px;
+	line-height:50px;
+	color:#666666;
+	font-weight:normal;
+	}
+.inform h4 a{
+	color:#c60000;}
+.inform p{
+	float:left;
+	width:340px;
+	font-size:13.33px;
+	line-height:28px;
+	color:#666666;
+	padding-left:20px;
+	}
+.inform p a{
+	color:#c60000;}
+.inform .new-list{
+	margin-top:10px;
+	margin-bottom:8px;
+	overflow:hidden;
+	}
+.inform .new-list h4{
+	line-height:28px;
+	float:left;
+	width:230px;
+	margin-right:0;
+	}
+.text2{
+	line-height:34px;
+	width:306px;
+	height:34px;
+	font-size:16px;
+	color:#333333;
+	text-indent:10px;
+	margin-left:20px;
+	border:1px solid #cccccc;}
+.shopBox table .radioBox{
+	margin-left:20px;
+	margin-bottom:6px;
+	}
+.shopBox table .num2{
+	width:118px;
+	height:20px;
+	margin-left:20px;
+	border:1px solid #abadb3;
+	font-size:13.33px;
+	color:#000;
+	line-height:20px;
+	}
+.shopBox table .poto{
+	margin-top:20px;}
+/*---------------------------------------------产品发布列表页---------------------------------------------------------------*/
+	
+	
+	
+.footer{
+	width:100%;
+	height:200px;
+	background:url(/images/Keji/background2.jpg) no-repeat;}	
+.footer h1{
+	font-size:13.33px;
+	font-weight:normal;
+	text-align:center;
+	line-height:32px;
+	padding-top:14px;
+	color:#000;
+	}	
+.footer h1 a{
+	color:#000;}	
+.footer	 p{
+	font-size:13.33px;
+	line-height:24px;
+	color:#666666;
+	text-align:center;
+	}	
+	
+/*---------------------------------------更新-------------------------------------------*/	
+.shopBox .texttb{
+	clear:both;
+}
+.shopBox .texttb  tr td{
+	font-size:14px;
+	padding:0px 3px;
+}
+.shopBox .texttb  tr td .text1{
+	margin-left:0px;
+	width:480px;
+	line-height:34px;
+	outline:0px;
+}
+	
+.shopBox .texttb  tr td .txt1{
+	width:156px;
+}
+.shopBox .texttb  tr td .txt2{
+	width:320px;
+}
+.shopBox .texttb  tr td .sort{
+	width:80px;
+}
+.shopBox .texttb  tr .text-nav{
+	width:136px;
+}	
+.shopBox .texttb  tr  .mutxt{
+	padding:5px 0px;
+}
+.shopBox .texttb  tr td .tb{
+	padding:0px;
+	margin:0px;
+}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

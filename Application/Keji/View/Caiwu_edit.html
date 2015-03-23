@@ -1,0 +1,317 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>财务信息发布</title>
+<link href="/css/Keji/type.css" rel="stylesheet" type="text/css" />
+<script src="__PUBLIC__/statics/js/jquery/jquery-1.7.2.min.js"></script>
+
+<link href="/css/validationEngine.jquery.css" rel="stylesheet" type="text/css" />
+<script src="/js/Keji/jquery.validationEngine.js" type="text/javascript"></script>
+<script src="/js/Keji/jquery.validationEngine-zh_CN.js" type="text/javascript" charset="UTF-8"></script>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/statics/js/kindeditor4/themes/default/default.css"/>
+<script type="text/javascript" src="__PUBLIC__/statics/js/kindeditor4/kindeditor-min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/statics/js/WdatePicker.js"></script>
+<!--[if lte IE 6]>
+<script type="text/javascript" src="js/PNG.js"></script>
+<script type="text/javascript" src="js/PNGClass.js"></script>
+<![endif]-->
+<script type="text/javascript">
+$(function(){
+	$("[name=hkzh]").change(function(){
+		if($(this).val()=='1'){
+			$("#xmid1").show();
+			$("#xmid2").hide();
+			$("#xmid3").hide();
+			$("#xmid4").hide();
+			$("#xmid5").hide();
+		}
+		if($(this).val()=='2'){
+			$("#xmid1").hide();
+			$("#xmid2").show();
+			$("#xmid3").hide();
+			$("#xmid4").hide();
+			$("#xmid5").hide();
+		}
+		if($(this).val()=='4'){
+			$("#xmid1").hide();
+			$("#xmid2").hide();
+			$("#xmid3").show();
+			$("#xmid4").hide();
+			$("#xmid5").hide();
+		}
+		if($(this).val()=='6'){
+			$("#xmid1").hide();
+			$("#xmid2").hide();
+			$("#xmid3").hide();
+			$("#xmid4").show();
+			$("#xmid5").hide();
+		}
+		
+		if($(this).val()=='7'){
+			$("#xmid1").hide();
+			$("#xmid2").hide();
+			$("#xmid3").hide();
+			$("#xmid4").hide();
+			$("#xmid5").show();
+		}
+		
+		
+	})
+})
+$(function(){
+	$("form").validationEngine();
+	
+	
+	
+	
+	$("[id=goodid]").change(function(){
+			if($("[id=goodid]:checked").size()>3){
+				$(this).removeAttr("checked");
+			}
+		})
+		
+		if($("#gd_id").val()){
+			var pros=($("#gd_id").val()+"0").split(",");
+			for(var pro in pros){
+				$("[name='goodid[]'][value="+pros[pro]+"]").attr("checked","checked");
+			}
+		}
+	$("[id=kindid]").change(function(){
+			if($("[id=kindid]:checked").size()>3){
+				$(this).removeAttr("checked");
+			}
+		})
+		
+		if($("#kind").val()){
+		
+			var res=($("#kind").val()).split(",");
+			for(var i=0;i<res.length;i++){
+			   $("[name='kindid[]'][value="+res[i]+"]").attr("checked","checked");	
+			  
+		    }
+		}
+		$("#chongzhi").click(function(){
+			$(".text1").val("");
+			
+			$("#filename").val("");
+			
+		})
+	$("[id=iskfp]").change(function(){
+		if($("[id=iskfp]:checked").val()=='1')
+			$("[id=kfp]").show();
+		else 
+			$("[id=kfp]").hide();
+	})
+	  
+	
+})
+$(function(){
+	var uploadbutton = KindEditor.uploadbutton({
+		button : $('#uploadButton')[0],
+		fieldName : 'imgFile',
+		url : '__PUBLIC__/statics/js/kindeditor4/php/upload_json.php?dir=file',
+		afterUpload : function(data) {
+			if (data.error === 0) {
+				var url = KindEditor.formatUrl(data.url, 'absolute');
+				$('#files').val(url);
+				$("#filename").val(data.filename);
+				
+			} else {
+				alert(data.message);
+			}
+		},
+		afterError : function(str) {
+			alert('网速不给力！');
+		}
+	});
+	uploadbutton.fileBox.change(function(e) {
+		uploadbutton.submit();
+	});
+	
+	$("form").submit(function(){
+		if(!$("#hktime").val()){
+			alert('请选择汇款时间');
+			return false;
+		}
+	})
+})
+
+</script>
+</head>
+
+<body>
+<include file="Public:header1"/>
+<div class="mainBox">
+	<div class="main">
+    	<h1>当前位置： 首页 > <span>会员中心</span></h1>
+        <div class="main-text">
+        	<include file="Public:left"/>
+            <div class="shopBox">
+            	<ul>
+                	<li>会员中心  > <span>财务信息发布</span></li>
+                     <li class="liri">{$user['nickname']}&nbsp;  |  &nbsp;<a href="{:U('User/loginout')}">退出</a></li> 
+                    <div class="clear"></div>
+                </ul>
+				<input type="hidden" name="kind" id="kind" value="{$goodkinds}">
+				
+				<form action="{:U('Caiwu/edit')}" method="post" id="formid">
+				<input type="hidden" name="ID" value="{$article['id']}">
+                <table  border="0" cellspacing="0" class="texttb">
+				 <if condition="$article['status'] eq '2'">
+					<tr>
+						<td width="136" class="text-nav">未通过原因：</td>
+						<td><input class="text1 validate[required]" name="SUGGESTION" id="SUGGESTION" value="{$article['suggestion']}"/></td>
+                    </tr>
+				  </if>
+                  <tr>
+                    <td width="136" class="text-nav">汇款名称：</td>
+                    <td><input class="text1 validate[required]" name="name" id="name" value="{$article['name']}"/></td>
+                  </tr>
+				  <tr>
+					<td width="136" class="text-nav">汇款时间 :</td>
+					<td>
+						<input class="text1" style="width:220px;" onfocus="{WdatePicker()}" name="hktime" id="hktime" value="{$hktime}"/>
+					 		
+					</td>
+				   </tr>
+				    <tr>
+                    <td width="136" class="text-nav">汇款金额：</td>
+                    <td><input class="text1 validate[required]" name="money" id="money" value="{$article['money']}"/></td>
+                  </tr>
+				  <tr>
+					<td width="136" class="text-nav">汇款账号：</td>
+					 <td><select name="hkzh">
+						<volist id="val" name="zh">
+							<if condition="$val['parentid'] eq '0'">
+							    <option value="{$val['id']}" <if condition="$article['hkzh'] eq $val['id']">selected="selected"</if>>{$val['name']}</option>
+							</if>
+						</volist>
+					</select> </td>
+				  </tr>
+                 <tr>
+                    <td class="text-nav">添加附件：</td>
+                    <td>
+						  <input type="text" style="border: 1px solid #DFDFDF; width:150px;height:36px;" name="filename" id="filename" value="{$article.files}"/>
+                            <input type="hidden" name="files" id="files" class="pub_03 " size="60"  value="{$article.files}"  />
+                            <input type="button" id="uploadButton" value="选择" />
+       		          
+           
+			       </td>
+                  </tr>
+                 
+                 
+                  <tr>
+                    <td class="text-nav">是否开发票：</td>
+                    <td>
+						<input type="radio" name="iskfp" id="iskfp" class="radio_style" value="1" <if condition="$article['iskfp'] neq '0'">checked="checked"</if> > &nbsp;是&nbsp;&nbsp;&nbsp;
+        	             <input type="radio" name="iskfp" id="iskfp" class="radio_style" value="0" <if condition="$article['iskfp'] eq '0'">checked="checked"</if>> &nbsp;否
+        
+					</td>
+                  </tr>
+				  <tr id="kfp">
+                    <td width="136" class="text-nav">抬头：</td>
+                    <td><input class="text1 validate[required]" name="title" id="title" value="{$article['title']}"/></td>
+                  </tr>
+                  <tr id="kfp">
+                    <td class="text-nav">项目：</td>
+                     <td>
+						 <select name="xmid" id="xmid1">
+							<volist id="val" name="zh">
+								<if condition="$val['parentid'] eq '1'">
+									<option value="{$val['id']}" <if condition="$article['xmid'] eq $val['id']">selected="selected"</if>>{$val['name']}</option>
+								</if>
+							</volist>
+						</select>
+						<select name="xmid" id="xmid2" style="display:none">
+							<volist id="val" name="zh">
+								<if condition="$val['parentid'] eq '2'">
+									<option value="{$val['id']}" <if condition="$article['xmid'] eq $val['id']">selected="selected"</if>>{$val['name']}</option>
+								</if>
+							</volist>
+						</select>
+						<select name="xmid" id="xmid3" style="display:none">
+							<volist id="val" name="zh">
+								<if condition="$val['parentid'] eq '4'">
+									<option value="{$val['id']}" <if condition="$article['xmid'] eq $val['id']">selected="selected"</if>>{$val['name']}</option>
+								</if>
+							</volist>
+						</select>
+						<select name="xmid" id="xmid4" style="display:none">
+							<volist id="val" name="zh">
+								<if condition="$val['parentid'] eq '6'">
+									<option value="{$val['id']}" <if condition="$article['xmid'] eq $val['id']">selected="selected"</if>>{$val['name']}</option>
+								</if>
+							</volist>
+						</select>
+						<select name="xmid" id="xmid5" style="display:none">
+							<volist id="val" name="zh">
+								<if condition="$val['parentid'] eq '7'">
+									<option value="{$val['id']}" <if condition="$article['xmid'] eq $val['id']">selected="selected"</if>>{$val['name']}</option>
+								</if>
+							</volist>
+						</select>
+					</td>
+                  </tr>
+                  <tr id="kfp">
+                    <td class="text-nav">收件人:</td>
+                    <td><input class="text1 txt1 validate[required]" name="recipients" id="recipients" value="{$article['recipients']}"/></td>
+                  </tr>
+                  <tr id="kfp">
+                    <td class="text-nav">电话：</td>
+                    <td><textarea type="text" class="text1 validate[required,custom[shouji]]" name="phone" id="phone" value="">{$article['phone']}</textarea></td>
+                  </tr>
+				   <tr id="kfp">
+                    <td class="text-nav">收件地址：</td>
+                    <td><textarea type="text" class="text1" name="address" id="address" value="">{$article['address']}</textarea></td>
+                  </tr>
+				 
+				  
+                  <tr >
+                    <td class="text-nav"></td>
+                    <td>
+                    	<div class="butBox">
+                    		<input name="" type="submit" class="but redBut" value="确认发布" />
+                            <input name="" type="button" id="chongzhi" class="but" value="重置发布" />
+                         </div>
+                    </td>
+                  </tr>
+                </table>
+              </form>
+            </div>
+        </div>
+    </div>
+</div>
+<include file="Public:bottom"/>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

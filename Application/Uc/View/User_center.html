@@ -1,0 +1,95 @@
+<include file="UCenter:header"/>
+<include file="UCenter:left"/>
+
+<style>
+.default_12 {
+background: url(../images/def_12.jpg) center repeat-x;
+width: 175px;
+height: 39px;
+}
+
+</style>
+<link rel="stylesheet" type="text/css" href="/css/con1.css">
+
+    <!--left-->
+     
+    <!--left-->
+    <!--right-->
+    <div class="right">
+           <!--<div class="daohang">当前位置： <a href="#">首页</a> > <a href="#"><font>项目详细</font></a></div>-->
+           <div class="main">
+                <div class="pub_title_bg"><div class="pub_title">我的资料</div></div>
+                <div class="default_03">
+                     <div class="default_04"><img src="../../../images/def_06.jpg" /></div>
+                     <div class="default_05">
+                          <ul>
+						  
+						   <li style=" display:<if condition="$currentuser['utype'] eq 0">block<else/>none</if>"><a href=" <if condition="$currentuser['utype'] eq 0">{:U('Uc/Experts/expertsadd?uid='.$currentuser['id'])}<else/></if>" title="申请成为专家"><if condition="$currentuser['utype'] eq 0">申请成为专家<else/></if></a></li>
+                             <li><span> 昵称:{$user.nickname}</span><font><a href="{:U('Uc/User/Certification?uc='.$currentuser['isemailval'])}">立即实名认证</a></font></li>
+                              <li><span>用户类型：{$usertype[$user["utype"]]}</span><font></font></li>
+                              <li><span>资料完整度：</span><font><a href="{:U('Uc/User/Perfect')}">完善资料</a></font></li>
+                              <li style="border-bottom:none;"><span>活跃度：</span><font></font></li>
+                          </ul>
+                     </div>
+                     <div class="clear"></div>
+                </div> 
+               
+               <div class="default_06">您可能感兴趣的信息</div>
+               
+               <div class="clear">
+                     <div class="default_07">
+                          <div style=" float:left;" class="default_08"><p><span>项目信息</span></p></div>
+						  <div style=" float:right; height:37px; width:140px; padding-top:15px; text-align:center; "><a href="{:U('home/Project/index')}" style="color:gray">更多>></a></div>
+                          <ul class="default_09">
+						  <volist name="newproject" id="val">
+                             <li><a href="{:U('home/Project/detials?id='.$val['id'])}" target="_blank" title="{$val.pro_name}"> {$val.pro_name|msubstr=0,5,'utf-8',false}  </a><p style="float:right">{$val.addtime|date="Y.m.d",###}</p></li> 
+							   </volist>
+                          </ul>
+                     </div>
+                      <div class="default_07">
+                          <div class="default_08" style=" float:left;"><p><span>专家信息</span></p></div>
+						  <div style=" float:right; height:37px; width:140px; padding-top:15px; text-align:center; "><a href="{:U('home/Experts/index')}" style="color:gray">更多>></a></div>
+                          <ul class="default_09">
+                             <volist name="newexperts" id="val">
+               	<li><a href="{:U('home/Experts/details?id='.$val['id'])}" target="_blank" title="{$val.pro_name}">  {$val.ename|msubstr=0,5,'utf-8',false} </a><p style="float:right">{$val.id|date="Y.m.d",###}</p></li> 
+               </volist>
+                          </ul>
+                     </div>
+               </div> 
+               <div class="default_13">
+			      <div class="default_07" style=" height:230px;">
+                          <div style=" float:left;" class="default_08"><p><span>通知公告</span></p></div>
+						  <div style=" float:right; height:37px; width:140px; padding-top:15px; text-align:center; "><a href="{:U('home/Article/listt?ids=424')}" style="color:gray">更多>></a></div>
+                          <ul class="default_09">
+						  <volist name="news" id="val">
+                             <li><a href="{:U('home/Article/detailes?id='.$val['id'])}" target="_blank" title="{$val.TITLE}"> {$val.TITLE|msubstr=0,16,'utf-8',false}  </a><p style="float:right">{$val.ADD_TIME|date="Y.m.d",###}</p></li> 
+							   </volist>
+                          </ul>
+                     </div>
+			   
+                 <!-- <div class="default_10">
+                          <div class="default_12" style=" float:left;"><span>通知公告</span></div>
+						  <div style=" float:right; height:37px; width:100px; padding-top:15px; text-align:center; "><a href="{:U('home/Project/index?id='.$val['ID'])}" style="color:gray">更多>></a></div>
+                          <div class="default_11">
+                              <ul class="default_09">
+                                <volist name="news" id="val">
+               	<li><a href="{:U('home/Article/detailes?id='.$val['ID'])}" target="_blank" title="{$val.TITLE}">  {$val.TITLE|msubstr=0,16,'utf-8',false} </a><p style="float:right">{$val.ADD_TIME|date="Y.m.d",###}</p></li> 
+               </volist>
+                              </ul>
+                            </div>  
+                     </div>-->
+                     <div class="default_10"><a href="http://www.jingqiahui.com.cn" target="_blank"><img alt="京洽会" style="width:372px" src="/images/jingqiahuicn.jpg" /></a></div>
+                      <div class="clear"></div> 
+               </div> 
+              
+                
+           </div>
+    </div>
+    <!--right-->
+    <!--clear-->
+    <div class="clear"></div>
+    <!--clear-->
+   <!--内容-->
+</div>
+</body>
+</html>

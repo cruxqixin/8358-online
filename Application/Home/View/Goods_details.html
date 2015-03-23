@@ -1,0 +1,296 @@
+<include file="Public:header"/>
+
+<link href="/js/colorbox/skin5/colorbox.css" rel="stylesheet" />
+<script src="/js/colorbox/jquery.colorbox-min.js"></script>
+<script src="/js/home/project/detials.js"></script>
+<script type="text/javascript">
+$(function(){
+		$('#asave').click(function(){
+			$.ajax({
+				url:"{:U('home/ajax/collectproject')}",
+				dataType:"json",
+				type:"get",
+				data:{"type":"0","objid":"<php>echo $model['id'];</php>"},
+				success:function(data){
+					if(data.type=="0"){
+						$("#asave font").html("已关注");
+						return;
+					}
+					if(data.type=="2"){
+						$("#asave font").html("关注");
+						return;
+					}
+					
+					if(data.type=="1"){
+						window.location.href="{:U('Uc/User/login?returnurl='.urlencode($_SERVER['PHP_SELF']))}";	
+					}
+				},
+				error:function(error){
+					alert(error);	
+				}
+			})
+		})
+		
+			$.ajax({
+				url:"{:U('home/ajax/iscollec')}",
+				dataType:"json",
+				type:"get",
+				data:{"type":"0","objid":"<php>echo $model['id'];</php>"},
+				success:function(data){
+					if(data.type=="0"){
+						$("#asave font").html("已关注");
+						return;
+					}
+					if(data.type=="1"){
+						$("#asave font").html("关注");
+						return;
+					}
+					
+					
+				},
+				error:function(error){
+					alert(error);	
+				}
+			})
+		
+		$("#asking").click(function(){
+		
+			//判断用户是否在线
+			$.ajax({
+				url:"{:U('home/ajax/isline')}",
+				dataType:"json",
+				type:"get",
+				success:function(data){
+					
+					if(data.type=="1"){
+						window.location.href="{:U('Uc/User/login?returnurl='.urlencode($_SERVER['PHP_SELF']))}";	
+					}else{
+						$("#askinghide").click();	
+					}
+					
+				},
+				error:function(error){
+					alert(error);	
+				}
+			})	
+		})
+		
+		//了解咨询
+		$("#askinghide").colorbox({inline:true, width:"600px"});
+		
+		var imgs=$("#imageface").attr("src").split(",");
+		var lis=$("#itemimg img");
+		for(var i=0;i<imgs.length;i++){
+			lis.eq(i).attr("src",imgs[i]);
+		}
+		
+		$("#itemimg img").mouseover(function(){
+			$("#imageface").attr("src",$(this).attr("src"));		
+		}).eq(0).mouseover();
+})
+</script>
+
+<!------------------------------------------------------------中间----开始----------------------------------------> 
+   <div class="Main">
+   
+        <div class="main6">
+          <p>当前位置：<a href="/">首页</a> > <strong>产品详细  </strong></p>
+        </div>
+       <div class="main_box">
+          <div class="main7">
+            <div class="m7_left">
+              <div class="m7l_01">
+                <span style=" font-size:17px; font-family:'微软雅黑'; float:left; width:380px;height:50px; line-height:50px;">
+                <p style=" margin-left:23px; color:#696868;">产品名</p>
+                <p style=" margin-left:23px; color:#EA4940;">{$model.gname}</p></span>
+                
+                  
+                 
+               <!-- <div style="width:auto; float:left;">
+                <include file="Public:share"/>
+                </div>-->
+               <span style=" float:right; width:180px;font-size:12px; font-family:'宋体'; margin-top:16px;">
+                  <!--<p style=" background:url(images/xm_07.jpg) no-repeat left center; padding-left:18px; margin-right:20px;"><a href="#">分享</a> <img src="images/xm_08.jpg" /></p>
+                  <p style=" background:url(images/xm_09.jpg) no-repeat left center; padding-left:18px;"><a href="#">举报</a> <img src="images/xm_08.jpg" /></p>
+                </span> -->
+                <div style="width:auto; float:left;">
+                <include file="Public:share"/>
+                </div>
+                <div style="margin-top:5px;">
+                <p style=" background:url(/images/xm_09.jpg) no-repeat left center; padding-left:18px;"><a href="<?php echo U('home/Report/index?cat=6&url='.urlencode($_SERVER['PHP_SELF']))?>">举报</a> <img src="/images/xm_08.jpg"></p>
+                </div>
+                </span>
+         
+              </div>
+			  <div class="m7l_02">
+                <div class="m7l_02a"><input type="hidden" value="{$va}" />
+                  <p><font color="#FE3434"><php> echo date("Y-m-d",$model['gaddtime']); </php></font>  发布</p>
+                  <p>已有<font color="#FE3434">{$model.hits}</font>人浏览</p>
+                </div>
+             
+                <div class="m7l_02b">
+                  
+                </div>
+              </div>
+              <style type="text/css">
+			  .m7l_03a{width:480px}
+			  .m7l_03a span {width:240px; padding-left:38px;}
+			  .list1{  
+height:20px;  
+}  
+.list1 ul{  
+list-style-type:none;margin:0px;  
+}  
+.list1 li{  
+float:left;margin-right:5px;  
+}  
+			  
+			  </style>
+              <div class="m7l_03" style=" position:relative;">
+               <div  id="ifocus_piclist" style="position:absolute; width:220px; top:60px; right:30px; left:10px; bottom:10px; height:140px; "> <img id="imageface"  style="width:211px; height:120px; border:4px solid #999999; " src="<if condition="$model['gpic'] eq ''">/images/nopic.jpg<else/>{$model.gpic}</if>" /></div>
+	          
+			   <div id="ifocus_btn" class="list1" style=" position:absolute; top:200px; padding-left:16px; display:inline; ">
+			  <table id="itemimg"> <tr>
+			  <td><ul><li class="current" style=" float:left; cursor:pointer; list-style:none;margin:0px; padding:0px;"><img src="/images/nopic.jpg" alt="" width="65px" height="40px" /></li>
+  				<li class="normal" style=" float:left; cursor:pointer;list-style:none;margin:0px;margin-left:5px; padding:0px;"><img src="/images/nopic.jpg" alt=""  width="65px" height="40px"/></li>
+  				<li class="normal" style=" float:left; cursor:pointer;list-style:none;margin:0px; padding:0px;margin-left:5px;"><img src="/images/nopic.jpg" alt="" width="65px" height="40px" /></li></ul></td>
+			  </ul></tr>
+			  </table>
+			  </div>
+               	<table cellpadding="0" cellspacing="0" border="0">
+                	<tr>
+                    	<td style="width:256px; ">
+                        
+          				 <br />
+                         <br />
+                       <!--  <a href="javascript:;" id="asave"><img src="/images/xm_22.jpg" /></a>-->
+                         <br />
+                         <br />
+                          <!--<a href="javascript:;" id="asking"><font style="margin-left:auto;" class="spanlbl">了解咨询</font></a>-->
+                        </td>
+                        <td>
+                         <div class="m7l_03a">
+                          <span style="padding-left:0px;width:450px;"><p style="color:#EA4940; ">产品类别：</p><p style="color:#000;"><volist name="kinds" id="val" >{$val["kname"]}&nbsp;</volist></p></span>
+                          
+                        </div>
+						<div class="m7l_03a">
+						 <span style="padding-left:0px;width:450px;"><p style="color:#EA4940; ">应用行业类别：</p><p style="color:#000;"><volist name="kindd" id="val" >{$val["kname"]}&nbsp;</volist></p></span>
+						</div>
+                        <div class="m7l_03a">
+                          <span style="padding-left:0px;width:450px;"><p style="color:#EA4940;">产品联系人姓名：</p><p style="color:#000;">{$model.guser}</p></span>
+                         
+                        </div>
+						<div class="m7l_03a">
+                          <span style="padding-left:0px;width:450px;"><p style="color:#EA4940;"></p><p style="color:#000;"></p></span>
+                          
+                        </div>
+                        <div class="m7l_03b" style="width:auto;"><div style="margin-top:15px;"><a href="javascript:;" id="asking"><font class="spanlbl">了解咨询</font><!--<img src="images/xm_11.jpg" /> --></a>
+                <a href="javascript:;" id="asave"><font class="spanlbl">关注</font></a></div></div>
+              </div>
+              
+                        </td>
+                    </tr>
+                </table>
+                
+               <!-- <div class="m7l_03b"><a href="#"><img src="images/xm_12.jpg" /></a></div> -->
+              </div>
+              
+              <div class="m7l_04">
+                <div class="m7l04_a">
+                    <ul id="na2">
+                     <li class="act1" onclick="na2(this,0)">产品详情</li>
+                     
+                    </ul>
+                </div>
+                <div class="m7l04_b" id="na2_Content0">
+                  <p>
+				  {$model.gdesc}
+</p>
+                </div>
+                <div class="m7l04_b"  id="na2_Content1" style="display:none"> <p>{$model.ewinning}</p></div>
+                <div class="m7l04_b"  id="na2_Content2" style="display:none"><p>{$model.escientific}</p></div>
+                <div class="m7l04_b"  id="na2_Content3" style="display:none"><p>{$model.ebooks}</p></div>
+                
+              </div>
+              
+              <div class="m7l_05">
+              
+				
+              
+              </div>
+            </div>
+      
+            
+             <div class="m7_right">
+               <div class="m7r_a">企业名称</div>
+               <img src="/images/xm_19.jpg" />
+               <div class="m7r_b"><img src="/images/xm_24.jpg" /></div>
+               <div class="m7r_c" style="width:auto;font-size:14px;"><if condition="$Project1 neq ''"><a href="{:U('home/Company/detailes?id='.$Project1['id'])}" target="_blank">{$Project1.nickname}</a><else/>网站管理员</if><!--<a href="#"><img src="images/xm_20.jpg" /></a> --></div>
+               <div class="m7r_d" style="width:auto;"><img src="/images/xm_21.jpg" /><p>实名认证：{$usertype[$user['utype']]}已认证</p></div>
+               <div class="m7r_e">
+                <!-- <span><a href="#"><img src="images/xm_22.jpg" /></a></span>
+                 <p>活跃度：<img src="images/xm_23.jpg" /></p> -->
+               </div>
+               
+               
+               <img src="/images/xm_25.jpg" />
+               <div class="m7r_a">联系方式</div>
+               <img src="/images/xm_19.jpg" />
+               
+               <div class="m7r_box">
+                 <p>联系人：<font style="font-weight:400;">{$Project1.nickname}}</font></p>
+                 <p>电话(手机)：<font style="font-weight:400;">{$Project1.phone}</font></p>
+                 <p>邮 箱：<font style="font-weight:400;">{$Project1.email}</font></p>
+                 <p>地 址：<font style="font-weight:400;">{$Project2.caddress}</font></p>
+               </div>
+            </div>
+        
+          </div>
+       </div>
+    
+   </div>
+
+<!------------------------------------------------------------中间----结束----------------------------------------> 
+
+<style type="text/css">
+	.divaskingtitle{
+		font-size:12px; line-height:20px;
+	}
+</style>
+<div style='display:none'>
+	<div id="divasking">
+    <form id="formconsultationm" method="post" aciton="{:U('home/Consultationm/project')}">
+    	<div class="divaskingtitle">请填写咨询内容：</div>
+    	<div style="text-align:center;">
+        <textarea name="ccontent" id="ccontent" style="width:95%; border:1px solid gray; height:150px"></textarea>
+        </div>
+        <div style="text-align:center; height:30px; vertical-align:middle; margin-top:10px;">
+           <span class="ke-button-common"><input type="submit" id="" class="ke-button-common ke-button" value="提交"></span>
+           <span class="ke-button-common"><input type="button" class="ke-button-common ke-button" value="关闭" onclick="$('#cboxOverlay').click()"></span>
+        </div>
+        <input type="hidden" name="type" value="2" />
+        <input type="hidden" name="pname" value="{$model.gname}" />
+        <input type="hidden" name="id" value="{$model.id}" />
+        
+     </form>
+    </div>	
+</div>
+<div style="display:none;">
+	<a href="#divasking" id="askinghide">&nbsp;</a>
+</div>
+
+<script type="text/javascript">
+
+$(function(){
+	$("#formconsultationm").submit(function(){
+		if($.trim($("#ccontent").val())==""){
+			$("#ccontent").focus();
+			return false;
+		}
+		$(this).attr("action","{:U('home/Consultationm/project')}");
+		$(this).submit();
+	})	
+})
+
+</script>
+<include file="Public:footer"/>

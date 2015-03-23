@@ -1,0 +1,575 @@
+<include file="UCenter:header"/>
+<include file="UCenter:left"/>
+
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/statics/js/kindeditor4/themes/default/default.css"/>
+<script type="text/javascript" src="__PUBLIC__/statics/js/kindeditor4/kindeditor-min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/statics/js/WdatePicker.js"></script>
+<!--<script type="text/javascript" src="__PUBLIC__/statics/js/jquery/plugins/jQuery.Hz2Py-min.js"></script> -->
+<script type="text/javascript" src="__PUBLIC__/statics/js/pinyin.js"></script>
+<script type="text/javascript" src="__PUBLIC__/statics/js/area.js" charset="gbk"></script>
+<script type="text/javascript" src="/js/areaw.js" charset="gbk"></script>
+
+
+<script type="text/javascript">
+$(function(){
+	
+	var items='{"items":["wordpaste","selectall","justifyleft","justifycenter","image","justifyright","justifyfull","insertorderedlist","insertunorderedlist","formatblock","fontname","fontsize","forecolor","hilitecolor","bold","italic","fullscreen"]}';
+	items=eval("("+items+")");
+	var k1=KindEditor.create('[name=PRO_SUPERIORITY]',items);
+	var k2=KindEditor.create('[name=PRO_BENEFIT]',items);
+	KindEditor.create('[name=PRO_PRODUCTION]',items);
+	var k3=KindEditor.create('[name=PRO_INTRO]',items);
+	var k4=KindEditor.create('[name=PRO_SPHERE]',items);
+	
+	$("#PRO_NAME").keyup(function(){
+		$("#PRO_CODE").val(HanZi_PinYin.get($.trim($(this).val())));	
+	})
+	
+	if($("#PRO_CATS").val()){
+		var pros=($("#PRO_CATS").val()+"0").split(",");
+		for(var pro in pros){
+			$("[name='PRO_CATSES[]'][value="+pros[pro]+"]").attr("checked","checked");
+		}
+	}
+	$("[name=chosefile]").each(function(){
+		changetoup($(this));	
+	})
+	
+	//添加附件操作
+	$("#addfile").click(function(){
+		var bastStr="";
+		bastStr+="<tr>";
+		bastStr+="<td><input type=\"text\" class=\"pub_03\" name=\"filename[]\" /><input type=\"hidden\" name=\"fileurl[]\" /></td>";
+		bastStr+="<td>";
+		bastStr+="<input type=\"button\" name=\"chosefile\" value=\"选择文件\" />";
+		bastStr+="</td>";
+		bastStr+="<td><a href=\"javascript:;\" style=\"color:gray\" name=\"filedel\">删除</a></td>";
+		bastStr+="</tr>";
+		$("#tablefile").append(bastStr);
+		changetoup($("[name=chosefile]:last"));
+	})
+	
+	//删除附件操作
+	$("[name=filedel]").live("click",function(){
+		$(this).parent().parent().remove();
+	})
+	
+	//添加出版物
+	$("#addpublish").click(function(){
+		var bastStr="";
+		bastStr+="<tr>";
+		bastStr+="<td>名称：<input type=\"text\" class=\"pub_03\" name=\"publish[]\" /></td>";
+		bastStr+="<td>";
+		bastStr+="网址：<input type=\"text\" class=\"pub_03\" name=\"publishurl[]\" />";
+		bastStr+="</td>";
+		bastStr+="<td><a href=\"javascript:;\" style=\"color:gray\" name=\"filedel\">删除</a></td>";
+		bastStr+="</tr>";
+		$("#tablepublish").append(bastStr);
+	})
+	//添加相关案例
+	$("#addcasets").click(function(){
+		var bastStr="";
+		bastStr+="<tr>";
+		bastStr+="<td>名称：<input type=\"text\" class=\"pub_03\" name=\"procasets[]\" /></td>";
+		bastStr+="<td>";
+		bastStr+="网址：<input type=\"text\" class=\"pub_03\" name=\"procasetsurl[]\" />";
+		bastStr+="</td>";
+		bastStr+="<td><a href=\"javascript:;\" style=\"color:gray\" name=\"filedel\">删除</a></td>";
+		bastStr+="</tr>";
+		$("#tablecasets").append(bastStr);
+	})
+	
+	$("#PRO_PATENTTYPE").change(function(){
+		if($(this).val()=="16"){
+			$("[name=PATENT]").show();	
+		}else{
+			$("[name=PATENT]").hide();	
+		}
+	}).change();
+	
+	
+	$("[name='PRO_COOPTYPE_IDS[]']").click(function(){
+		var names="";
+		$("[name='PRO_COOPTYPE_IDS[]']").each(function(){
+			if($(this).is(":checked")){
+				names+=$(this).attr("nvalue")+",";	
+			}
+		})	
+		
+		$("#PRO_COOPTYPE_NAME").val(names);
+		
+		
+	})
+	if($("#PRO_COOPTYPE_IDS").val()){
+		var ids=$("#PRO_COOPTYPE_IDS").val().split(",");
+		for(var i=0;i<ids.length;i++){
+			$("[name='PRO_COOPTYPE_IDS[]'][value="+ids[i]+"]").attr("checked","checked");	
+		}
+	}
+	
+	$("[name='PRO_CATSES[]']").change(function(){
+		if($("[name='PRO_CATSES[]']:checked").size()>3){
+			$(this).removeAttr("checked");
+		}
+		
+		if($("[name='PRO_CATSES[]'][value=1390731506]").is(":checked")){
+			$("#PRO_CATS_OTHER").show();	
+		}else{
+			$("#PRO_CATS_OTHER").hide();	
+		}
+	})
+	
+	if($("[name='PRO_CATSES[]'][value=1390731506]").is(":checked")){
+		$("#PRO_CATS_OTHER").show();	
+	}else{
+		$("#PRO_CATS_OTHER").hide();	
+	}
+	
+	//国内外判断
+	$("[name=PRO_COUNTRY]").click(function(){
+		showguoneiwai();
+	})
+	showguoneiwai();
+	$("#formid").submit(function(){
+	if(k4.isEmpty())
+	{
+	  alert('应用领域不能为空！');
+	  return false;
+	}
+	if(k1.isEmpty())
+	{
+	  alert('请填写主要优势！');
+	  return false;
+	}	
+	 if(k2.isEmpty())
+	{
+	  alert('请填写市场前景及经济效益！');
+	  return false;
+	}  
+	if(k3.isEmpty())
+	{
+	  alert('描述不能为空！');
+	  return false;
+	}
+	
+	}) 
+})
+
+function showguoneiwai(){
+	switch($("[name=PRO_COUNTRY]:checked").val()){
+		case "0":
+			$("#divguonei").show();
+			$("#divguowai").hide();
+		break;
+		case "1":
+			$("#divguonei").hide();
+			$("#divguowai").show();
+		break;
+	}
+}
+
+function changetoup(control){
+	var uploadbutton = KindEditor.uploadbutton({
+		button : control[0],
+		fieldName : 'imgFile',
+		url : '__PUBLIC__/statics/js/kindeditor4/php/upload_json.php?dir=file',
+		afterUpload : function(data) {
+			if (data.error === 0) {
+				var url = KindEditor.formatUrl(data.url, 'absolute');
+				var index=$("[name=chosefile]").index(control);
+				$("[name='filename[]']").eq(index).val(data.filename);
+				$("[name='fileurl[]']").eq(index).val(url);
+				//$('#EFACE').val(url);
+				//$("#imgeface").attr("src",url);
+			} else {
+				alert(data.message);
+			}
+		},
+		afterError : function(str) {
+			alert('网速不给力！');
+		}
+	});
+	uploadbutton.fileBox.change(function(e) {
+		uploadbutton.submit();
+	});
+	$(".ke-form").width("auto");	
+}
+</script>
+<style type="text/css">
+.pub_03{width:200px;}
+.tdright{ text-align:right; min-width:140px;}
+</style>
+    <!--right-->
+    <div class="right">
+           <div class="daohang">当前位置： <a href="<hr />
+#">首页</a> > <a href="#"><font>项目信息</font></a></div>
+           <div class="main">
+                <div class="pub_title_bg"><div class="pub_title">项目信息(中文)添加</div></div>
+               
+                <div class="pub_02">
+                <input type="hidden" id="PRO_CATS" value="{$Project.PRO_CATS}" />
+                <input type="hidden" id="PRO_COOPTYPE_IDS" value="{$Project.PRO_COOPTYPE_IDS}" />
+                <form id="formid" action="{:U('Uc/Project/projectadd')}" method="post">                	
+                   <table width="100%" cellpadding="0" cellspacing="0" class="table_form">
+                   <tr style="<if condition="$Project.PRO_PASSOUR eq ''">display:none<else/></if>">
+                   <td style="color:red;" class="tdright">审核不通过原因是:</td>
+                   <td style="color:red;">{$Project.PRO_PASSOUR}</td>
+                   </tr>
+      <tr style="display:none;">
+        <td class="tdright">项目编码 :</td>
+        <td ><input type="text" name="PROJECTCODE" id="PROJECTCODE" class="pub_03" size="60" readonly="readonly" disabled="disabled" value="{$Project.PROJECTCODE}">（系统自动生成）</td>
+        <td class="tdright">技术类别编码 :</td>
+        <td ><input type="text" name="TECHTYPECODE" id="TECHTYPECODE" class="pub_03" size="60" value="{$Project.TECHTYPECODE}"></td>
+      </tr>
+	  <tr>
+        <td class="tdright"><span>*</span>项目名称 :</td>
+        <td><input type="text" name="PRO_NAME" id="PRO_NAME" class="pub_03 validate[required]" size="60" value="{$Project.PRO_NAME}"></td>
+        <td class="tdright">名称缩写 :</td>
+        <td><input type="text" name="PRO_CODE" id="PRO_CODE" class="pub_03" size="60" value="{$Project.PRO_CODE}"></td>
+      </tr>
+
+	  <tr>
+          <td class="tdright"><span>*</span>关键词 :</td>
+        <td colspan="3"><input type="text" name="PRO_KEYWORD" id="PRO_KEYWORD" class="pub_03 validate[required]" size="60" value="{$Project.PRO_KEYWORD}"></td>
+      </tr>
+	  <tr>
+        <td class="tdright">发明者 :</td>
+        <td ><input type="text" name="PRO_INVENTOR" id="PRO_INVENTOR" class="pub_03" size="60" value="{$Project.PRO_INVENTOR}"></td>
+ 
+        <td class="tdright">发明者单位 :</td>
+        <td ><input type="text" name="PRO_INVENTORUNIT" id="PRO_INVENTORUNIT" class="pub_03" size="60" value="{$Project.PRO_INVENTORUNIT}"></td>
+      </tr>
+      
+      <tr>
+        <td class="tdright">出版物 :</td>
+        <td colspan="3">
+        	 <div class="files">
+        
+              
+                <table cellpadding="0" cellspacing="0" border="0" id="tablepublish">
+                
+                <if condition="$pubs eq ''">
+                  <tr>
+                   <td>名称：<input type="text" class="pub_03" name="publish[]" /></td>
+                   <td>
+                      网址：<input type="text" class="pub_03" name="publishurl[]" />
+                   </td>
+                   <td></td>
+                   </tr>
+                   <else />
+                   	<volist name="pubs" id="val">
+                      <tr>
+                       <td>名称：<input type="text" class="pub_03" value="{$val.OBJNAME}" name="publish[]" /></td>
+                       <td>
+                          网址：<input type="text" class="pub_03" value="{$val.OBJURL}" name="publishurl[]" />
+                       </td>
+                       <td><if condition="$key neq 0"><a href="javascript:;" style="color:gray" name="filedel">删除</a></if></td>
+                       </tr>
+                   	</volist>
+                   </if>
+                   </table>
+                <a href="javascript:;" style="color:gray" id="addpublish">添加出版物</a>
+            </div>
+        <!--<input type="text" name="PRO_PUBLICATIONS" id="PRO_PUBLICATIONS" class="pub_03" size="60" value="{$Project.PRO_PUBLICATIONS}"> -->
+        </td>
+ 	  </tr><tr>
+        <td class="tdright">相关案例 :</td>
+        <td colspan="3">
+        <div class="files">
+                <table cellpadding="0" cellspacing="0" border="0" id="tablecasets">
+                  
+                   
+                      <if condition="$cats eq ''">
+                 <tr>
+                   <td>名称：<input type="text" class="pub_03" name="procasets[]" /></td>
+                   <td>
+                    网址： <input type="text" class="pub_03" name="procasetsurl[]" />
+                   </td>
+                   <td></td>
+                   </tr>
+                   <else />
+                   	<volist name="cats" id="val">
+                      <tr>
+                       <td>名称：<input type="text" class="pub_03" value="{$val.OBJNAME}" name="procasets[]" /></td>
+                       <td>
+                          网址：<input type="text" class="pub_03" value="{$val.OBJURL}" name="procasetsurl[]" />
+                       </td>
+                       <td>
+                       <if condition="$key neq 0"><a href="javascript:;" style="color:gray" name="filedel">删除</a></if>
+                       </td>
+                       </tr>
+                   	</volist>
+                   </if>
+                   </table>
+                <a href="javascript:;" style="color:gray" id="addcasets">添加出版物</a>
+            </div>
+        
+        <!--<input type="text" name="PRO_STORIES" id="PRO_STORIES" class="pub_03" size="60" value="{$Project.PRO_STORIES}"> --></td>
+      </tr>
+      
+      
+      
+      
+      
+      <tr>
+        <td class="tdright">网站 :</td>
+        <td  ><input type="text" name="PRO_DOMAIN" id="PRO_DOMAIN" class="pub_03" size="60" value="{$Project.PRO_DOMAIN}"></td>
+ 
+        <td class="tdright"><span>*</span>联系人 :</td>
+        <td ><input type="text" name="PRO_CONTACT" id="PRO_CONTACT" class="pub_03 validate[required]" size="60" value="<if condition="$Project['PRO_CONTACT'] eq ''">王先生<else/>{$Project.PRO_CONTACT}</if>"></td>
+      </tr>
+      <tr>
+        <td class="tdright"><span>*</span>联系方式（办公电话、手机电话） :</td>
+        <td><input type="text" name="PRO_PHONE" id="PRO_PHONE" class="pub_03 validate[required]" size="60" value="<if condition="$Project['PRO_PHONE'] eq ''">022-58168870<else/>{$Project.PRO_PHONE}</if>"></td>
+ 		<td class="tdright">联系人邮箱 :</td>
+        <td><input type="text" name="PRO_EMAIL" id="PRO_CONUNITADD" class="pub_03" size="60" value="<if condition="$Project['PRO_EMAIL'] eq ''">info@iar-china.com<else/>{$Project.PRO_EMAIL}</if>"></td>
+      </tr>
+      <tr>
+        <td class="tdright">联系人单位名称 :</td>
+        <td ><input type="text" name="PRO_CONUNITNAME" id="PRO_CONUNITNAME" class="pub_03" size="60" value="<if condition="$Project['PRO_CONUNITNAME'] eq ''">中国高科技产业化研究会产学研合作协调部 <else/>{$Project.PRO_CONUNITNAME}</if>"></td>
+      <td class="tdright">联系人单位地址 :</td>
+        <td  ><input type="text" name="PRO_CONUNITADD" id="PRO_CONUNITADD" class="pub_03" size="60" value="<if condition="$Project['PRO_CONUNITADD'] eq ''">天津空港经济开发区保税路357号<else/>{$Project.PRO_CONUNITADD}</if>"></td>
+      </tr>
+      <tr>
+        <td class="tdright"><span>*</span>国内外 :</td>
+        <td > <input type="radio" value="0"  name="PRO_COUNTRY"  <if condition="$Project.PRO_COUNTRY eq 0">checked="checked" </if> />国内 &nbsp; &nbsp; &nbsp; 
+        <input type="radio"  value="1"   name="PRO_COUNTRY"  <if condition="$Project.PRO_COUNTRY eq 1">checked="checked" </if> />国外</td>
+        <td class="tdright">项目所属地区 :</td>
+        <td>
+			<div id="divguonei" style="display:none;">
+				<select name="PRO_PROV" id="s_province" va="1" class=" validate[required]"></select>
+				<select name="PRO_CITY" id="s_city" va="1" class=" validate[required]"></select>
+				<select name="PRO_COUNTY" id="s_county" va="1" class=" validate[required]"></select>
+			</div>
+			<div id="divguowai" style="display:none;">
+				Region<select id="region" name="PROV" onchange="set_country(this,country,city_state)">
+						<option value="" selected="selected">Select Region</option>
+						<script type="text/javascript"> setRegions(this); </script>
+						</select><br />
+				Country<select id="country" name="CITY" disabled="disabled" onchange="set_city_state(this,city_state)"></select><br />
+				State<select id="city_state" name="COUNTY" disabled="disabled"></select>
+
+			</div>
+		</td>
+      </tr>
+	  <tr>
+        <td class="tdright"><span>*</span>合作方式 :</td>
+        <td>
+       	 <div style="width:200px; overflow:hidden;">
+       	 <volist name="Prochose1" id="Prochose1">
+         <span style="width:98px; float:left;white-space:nowrap; color:#5e5f5f;">
+         <input type="checkbox" name="PRO_COOPTYPE_IDS[]" class="validate[required]"  value="{$Prochose1.id}" nvalue="{$Prochose1.title_cn}" />{$Prochose1.title_cn}
+         </span>
+         </volist>
+         </div>
+         
+         <input type="hidden" name="PRO_COOPTYPE_NAME" id="pro_cooptype_name" value="{$Project.pro_cooptype_name}" />
+         
+         <select name="PRO_COOPTYPE" style="display:none;">  
+          
+             <volist name="Prochose1" id="Prochose1">
+             <option value="{$Prochose1.ID}"  <if condition="$Project['pro_cooptype'] eq $Prochose1['id']">  selected="selected"</if> >{$Prochose1.title_cn}</option> 
+             </volist>
+             </select>
+         
+         </td>
+ 
+        <td class="tdright"><span>*</span>资金需求 :</td>
+        <td ><select name="PRO_FUNDS" class="validate[required]"> 
+       
+         <volist name="Prochose4" id="Prochose4">
+		 <option value="{$Prochose4.id}" <if condition="$Project['pro_funds'] eq $Prochose4['id']">  selected="selected"</if> >{$Prochose4.title_cn}</option> 
+     	 </volist>
+         </select></td>
+      </tr>
+	  <tr>
+        <td class="tdright"><span>*</span>发明情况 :</td>
+        <td colspan="3"><select name="PRO_STAGE" class="validate[required]">
+       
+         <volist name="Prochose2" id="Prochose2">
+		 <option value="{$Prochose2.id}" <if condition="$Project['pro_stage'] eq $Prochose2['id']">  selected="selected"</if>  >{$Prochose2.title_cn}</option> 
+     	 </volist>
+         </select></td>
+       </tr>
+       <tr>
+        <td class="tdright"><span>*</span>专利情况 :</td>
+        <td><select name="PRO_PATENTTYPE" id="PRO_PATENTTYPE" class="validate[required]">      
+         <volist name="Prochose3" id="Prochose3">
+		 <option value="{$Prochose3.id}" <if condition="$Project['pro_patenttype'] eq $Prochose3['id']">  selected="selected"</if> >{$Prochose3.title_cn}</option> 
+     	 </volist>
+         </select></td>
+         
+        <td class="tdright">
+        <div name="PATENT" style="display:none;">
+        	<span>*</span>专利号
+        </div>
+        </td>
+        <td>
+        <div name="PATENT" style="display:none;">
+        <input type="text" name="PRO_PATENT" id="PRO_PATENT" class="pub_03 validate[required]" size="60" value="{$Project.pro_patent}">
+        </div>
+        </td>
+      </tr>
+	  <tr>
+        <td class="tdright"><span>*</span>项目所属类型（最多选三项） :</td>
+        <td colspan="3" style=" border: 1px solid #DFDFDF; padding:10px 8px 10px 10px;" width="auto"> 
+         <volist name="Prokind" id="var">
+         	<if condition="$var['parentid'] eq '0'">
+            	<div>
+                <div>{$var.CNNAME}</div>
+                    <div style="margin-left:25px;">
+                        <volist name="Prokind" id="var1">
+                            <if condition="$var1['parentid'] eq $var['id']">
+                                <input type="checkbox" name="PRO_CATSES[]" value="{$var1.id}" />{$var1.cnname}
+                            </if>
+                        </volist>
+                    </div>
+                </div>
+            </if>
+         </volist>
+         <br />
+         <div id="PRO_CATS_OTHER" style="display:none; padding:auto auto auto 20px;">
+         	 请填写类型信息:<input type="text" name="PRO_CATS_OTHER" class="pub_03" size="60" value="{$Project.pro_cats_other}">
+         </div>
+        </td>
+		<td width="60px"></td>
+      </tr>
+	  <tr><td colspan="3" height="15px"></td></tr>
+      <tr>
+      <td class="tdright"><span>*</span>应用领域 :</td>
+      <td colspan="3" ><textarea  name="PRO_SPHERE" style=" width:720px; height:100px;">{$Project.pro_sphere}</textarea></td>
+   </tr>
+      
+	  <tr>
+        <td class="tdright"><span>*</span>主要优势 :</td>
+        <td colspan="3" ><textarea  name="PRO_SUPERIORITY" style=" width:720px; height:100px;">{$Project.pro_superiority}</textarea></td>
+    </tr>
+	  <tr>
+        <td class="tdright"><span>*</span>市场前景及经济效益 :</td>
+        <td  colspan="3"  ><textarea  name="PRO_BENEFIT" style=" width:720px; height:100px;">{$Project.pro_benefit}</textarea></td>
+    </tr>
+	  <tr>
+        <td class="tdright">投产条件 :</td>
+        <td   colspan="3" ><textarea  name="PRO_PRODUCTION" style=" width:720px; height:100px;">{$Project.pro_production}</textarea></td>
+      </tr>
+ <tr>
+        <td class="tdright"><span>*</span>描述 :</td>
+        <td   colspan="3" ><textarea  name="PRO_INTRO" style=" width:720px; height:100px;">{$Project.pro_intro}</textarea></td>
+      </tr>
+      <tr>
+        <td class="tdright">发布到 :</td>
+        <td colspan="3">  <input type="checkbox" value="1"  name="PRO_LANGUAGE" <if condition="$Project.pro_language eq 1"> checked="checked"</if>  />中文版 &nbsp; &nbsp; &nbsp; 
+        <input type="checkbox"  value="1"   name="PRO_LANGUAGEEN" <if condition="$Project.pro_language eq 1"> checked="checked"</if>   />英文版</td>
+      </tr>  
+      <tr>
+      	<td class="tdright">英文项目地址：</td>
+        <td colspan="3">
+        	<input type="text" name="PRO_OTLANURL" class="pub_03" value="{$Project.pro_otlanurl}">
+        </td>
+      </tr>
+      <tr>
+        <td class="tdright">发布状态 :</td>
+        <td colspan="3">  <input type="radio" value="0"  name="ISSHOW" <if condition="$Project.isshow eq 0"> checked="checked"</if>  />发布（需审核） &nbsp; &nbsp; &nbsp; 
+        <input type="radio"  value="1"   name="ISSHOW" <if condition="$Project.isshow eq 1"> checked="checked"</if>   />草稿</td>
+      </tr> 
+      <tr>
+      	<td class="tdright">发布时间 :</td>
+        <td><input type="text" name="PRO_ADDTIME" class="pub_03" onfocus="WdatePicker()" value="<if condition="$Project['pro_gdate'] eq ''"><php> echo date("Y-m-d",time());</php><else/>{$Project.pro_gaddtime}</if>"></td>
+      	<td class="tdright">过期时间 :</td>
+        <td><input type="text" name="PRO_GDATE" class="pub_03" onfocus="WdatePicker();" value="<if condition="$Project['pro_gdate'] eq ''"><php> echo date("Y-m-d",strtotime("+1 year"));</php><else/>{$Project.pro_gdate|date="Y-m-d",###}</if>"></td>
+      </tr>
+      <tr>
+        <td class="tdright">相关附件 :</td>
+        <td colspan="3">
+        <div class="files">
+        
+      
+        <table cellpadding="0" cellspacing="0" border="0" id="tablefile">
+        
+       
+        <if condition="$files eq ''">
+        
+        <tr>
+       <td><input type="text" class="pub_03" name="filename[]" /><input type="hidden" name="fileurl[]" /></td>
+       <td>
+       		<input type="button" name="chosefile" value="选择文件" />
+       </td>
+       <td></td>
+       </tr>
+       <else/>
+       		<volist name="files" id="file">
+               <tr>
+               <td><input type="text" class="pub_03" name="filename[]" value="{$file.filename}" /><input type="hidden" name="fileurl[]" value="{$file.fileurl}"/></td>
+               <td>
+                    <input type="button" name="chosefile" value="选择文件" />
+               </td>
+               <td>
+                       <if condition="$key neq 0"><a href="javascript:;" style="color:gray" name="filedel">删除</a></if></td>
+               </tr>
+            </volist>
+       </if>
+       </table>
+       		<a href="javascript:;" style="color:gray" id="addfile">添加附件</a>
+        </div>
+        </td>
+      </tr>  
+      <tr><td><input type="hidden" name="ID" value="{$Project.id}" id="ID"/></td> <td colspan="3"></td>
+       </tr>
+       <tr>
+            <td align="right"></td>
+               <td colspan="4" align="center">
+                   <input type="submit" style="background:url(__PUBLIC__/statics/images/btn_team.jpg) ;width:331px; height:35px; border:none;"  value=""/>
+             </td>
+       </tr>
+                       
+    </table>
+    
+              
+                   <input type="hidden" name="submit" value="1" />
+                   </form>
+                </div>
+                
+                
+                
+           </div>
+    </div>
+    <!--right-->
+    <!--clear-->
+    <div class="clear"></div>
+    <!--clear-->
+   <!--内容-->
+   
+</div>
+
+<script type="text/javascript">
+//初始化信息
+var s=["s_province","s_city","s_county"];//三个select的id
+var opt0 = ["省份","地级市","市、县级市"];//初始值
+function _init_area(){  //初始化函数
+	for(i=0;i<s.length-1;i++){
+	  	document.getElementById(s[i]).onchange=new Function("change("+(i+1)+")");	
+	}
+	change(0);
+}
+$(function(){
+	//绑定地址信息
+	_init_area();
+	if('{$Project.PRO_COUNTRY}'=='0'){
+		$("#s_province").val("{$Project.PRO_PROV}");
+		$("#s_province").change();
+		$("#s_city").val("{$Project.PRO_CITY}");
+		$("#s_city").change();
+		$("#s_county").val("{$Project.PRO_COUNTY}");
+	}else{
+		$("#region").val("{$Project.PRO_PROV}");
+		$("#region").change();
+		$("#country").val("{$Project.PRO_CITY}");
+		$("#country").change();
+		$("#city_state").val("{$Project.PRO_COUNTY}");
+		
+	} 
+	
+})
+</script>
+</body>
+</html>

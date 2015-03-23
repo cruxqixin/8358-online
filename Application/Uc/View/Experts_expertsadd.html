@@ -1,0 +1,326 @@
+<include file="UCenter:header"/>
+<include file="UCenter:left"/>
+
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/statics/js/kindeditor4/themes/default/default.css"/>
+<script type="text/javascript" src="__PUBLIC__/statics/js/kindeditor4/kindeditor-min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/statics/js/WdatePicker.js"></script>
+<script type="text/javascript" src="__PUBLIC__/statics/js/pinyin.js"></script>
+<script type="text/javascript" src="__PUBLIC__/statics/js/area.js" charset="gbk"></script>
+<script type="text/javascript" src="/js/areaw.js" charset="gbk"></script>
+
+<script type="text/javascript">
+$(function(){
+	var items='{"items":["wordpaste","selectall","justifyleft","justifycenter","image","justifyright","justifyfull","insertorderedlist","insertunorderedlist","formatblock","fontname","fontsize","forecolor","hilitecolor","bold","italic","fullscreen"]}';
+	items=eval("("+items+")");
+	KindEditor.create('[name=EBOOKS]',items);
+	var k1=KindEditor.create('[name=ESCIENTIFIC]',items);
+	var k2=KindEditor.create('[name=EWINNING]',items);
+	var k3=KindEditor.create('[name=ETAKEOFFICE]',items);
+	
+	$("#ENAME").keyup(function(){
+		$("#ECODE").val(HanZi_PinYin.get($.trim($(this).val())));	
+	})
+	
+	var uploadbutton = KindEditor.uploadbutton({
+		button : $('#uploadButton')[0],
+		fieldName : 'imgFile',
+		url : '__PUBLIC__/statics/js/kindeditor4/php/upload_json.php?dir=image',
+		afterUpload : function(data) {
+			if (data.error === 0) {
+				var url = KindEditor.formatUrl(data.url, 'absolute');
+				$('#EFACE').val(url);
+				$("#imgeface").attr("src",url);
+			} else {
+				alert(data.message);
+			}
+		},
+		afterError : function(str) {
+			alert('网速不给力！');
+		}
+	});
+	uploadbutton.fileBox.change(function(e) {
+		uploadbutton.submit();
+	});
+	$(".ke-form").width("auto");
+	var ks=$("#expcats").val();
+	if(ks&&ks!="null"){
+		var pros=eval("("+ks+")");
+	
+		for(var pro in pros){
+			$("[name='PRO_CATSES[]'][value="+pros[pro]["KID"]+"]").attr("checked","checked");
+		}
+	}
+	
+	$("[name='PRO_CATSES[]']").change(function(){
+		if($("[name='PRO_CATSES[]'][value=1390731506]").is(":checked")){
+			$("#PRO_CATS_OTHER").show();	
+		}else{
+			$("#PRO_CATS_OTHER").hide();	
+		}
+	})
+	
+	if($("[name='PRO_CATSES[]'][value=1390731506]").is(":checked")){
+		$("#PRO_CATS_OTHER").show();	
+	}else{
+		$("#PRO_CATS_OTHER").hide();	
+	}
+	$("[name=ECOUNTRY]").click(function(){
+		showguoneiwai();
+	})
+	showguoneiwai();
+	$("#formid").submit(function(){
+	if(k3.isEmpty())
+	{
+	  alert('任职情况不能为空！');
+	  return false;
+	}	
+	 if(k2.isEmpty())
+	{
+	  alert('获奖情况不能为空！');
+	  return false;
+	}  
+	if(k1.isEmpty())
+	{
+	  alert('科技成就不能为空！');
+	  return false;
+	}
+	}) 
+})
+
+function showguoneiwai(){
+	switch($("[name=ECOUNTRY]:checked").val()){
+		case "0":
+			$("#divguonei").show();
+			$("#divguowai").hide();
+		break;
+		case "1":
+			$("#divguonei").hide();
+			$("#divguowai").show();
+		break;
+	}
+}
+
+</script>
+<style type="text/css">
+.pub_03{width:200px;}
+.tdright{ text-align:right; min-width:140px;}
+</style>
+    <!--right-->
+    <div class="right">
+           <div class="daohang">当前位置： <a href="<hr />
+#">首页</a> > <a href="#"><font>专家信息</font></a></div>
+           <div class="main">
+                <div class="pub_title_bg"><div class="pub_title">专家信息(中文)维护</div></div>
+               
+                <div class="pub_02">
+                <input type="hidden" id="expcats" value='{$expertsks}' />
+             
+                <form id="formid" action="{:U('Uc/Experts/expertsadd')}" method="post">                	
+                   <table width="100%" cellpadding="0" cellspacing="0" class="table_form">
+               <input type="hidden" id="uid" name="uid" value="{$_GET['uid']}" />
+                <tr>
+        <td class="tdright"><span>*</span>头像 :  </td>
+        <td colspan="3">
+        	<img id="imgeface"  style="width:130px; height:160px;" src="<if condition="$experts['eface'] eq ''">/images/noface.jpg<else/>{$experts.eface}</if>" />
+            <br />
+        	<input type="hidden" name="EFACE" id="EFACE" class="pub_03 validate[required]" size="60" value="{$experts.eface}" />
+            <input type="button" id="uploadButton" value="选择" />
+        </td>
+        </tr>
+               
+      <tr>
+        <td class="tdright"><span>*</span>姓名 :  </td>
+        <td><input type="text" name="ENAME" id="ENAME" class="pub_03 validate[required]" size="60" value="{$experts.ename}"></td>
+        <td class="tdright">用户编码 :</td>
+        <td><input type="text" name="ECODE" id="ECODE" class="pub_03" value="{$experts.ecode}"></td>
+       </tr>
+	  <tr>
+       <td class="tdright">性别 :</td>
+        <td>
+        <input type="radio" name="EGENDER" value="0"  <if condition="($experts['egender'] eq '0') or ($experts['egender'] eq '')">checked</if> />男
+      	<input type="radio" name="EGENDER" value="1"  <if condition="$experts['egender'] eq 1">checked</if>/>女
+        </td>
+        <td class="tdright">出生年月 :</td>
+        <td><input type="text" name="EBIRTH" id="EBIRTH" class="pub_03" onfocus="WdatePicker()" value="{$experts.ebirth}"></td>
+      </tr>
+	  <tr>
+        <td class="tdright">研究领域 :</td>
+        <td colspan="3"> 
+          <volist name="Prokind" id="var">
+         	<if condition="$var['parentid'] eq '0'">
+            	<div>
+                <div>{$var.cnname}</div>
+                    <div style="margin-left:25px;">
+                        <volist name="Prokind" id="var1">
+                            <if condition="$var1['parentid'] eq $var['id']">
+                                <input type="checkbox" name="PRO_CATSES[]" value="{$var1.id}" />{$var1.cnname}
+                            </if>
+                        </volist>
+                    </div>
+                </div>
+            </if>
+         </volist>
+         <br />  
+         <div id="PRO_CATS_OTHER" style="display:none; padding:auto auto auto 20px;">
+         	 请填写类型信息:<input type="text" name="ECATS_OTHER" class="pub_03" size="60" value="{$Project.pro_cats_other}">
+         </div>
+        </td>
+      </tr>
+	  
+	  <tr>
+        <td class="tdright"><span>*</span>职务 :</td>
+        <td><input type="text" name="EPOST" id="EPOST" class="pub_03 validate[required]" size="60" value="{$experts.epost}"></td>
+       <td class="tdright">职称 :</td>
+        <td><input type="text" name="EPOSTTITLE" id="EPOSTTITLE" class="pub_03" size="60" value="{$experts.eposttitle}"></td>
+       </tr>
+	  <tr>
+        <td class="tdright"><span>*</span>单位名称 :</td>
+        <td colspan="3"><input type="text" name="ENITNAME" id="ENITNAME" class="pub_03 validate[required]" size="60" value="{$experts.enitname}"></td>
+       </tr>
+	  <tr>
+        <td class="tdright">所属部门 :</td>
+        <td colspan="3"><input type="text" name="EDEPARTMENT" id="EDEPARTMENT" class="pub_03" size="60" value="{$experts.edepartment}"></td>
+       </tr>
+       
+       
+	  <tr>
+        <td class="tdright"><span>*</span>单位地址 :</td>
+        <td colspan="3">
+        	  <input type="radio" value="0"  name="ECOUNTRY"  <if condition="$experts.ecountry eq '0'">checked="checked" </if> <if condition="$Project.ecountry eq ''">checked="checked" </if>/>国内 &nbsp; &nbsp; &nbsp; 
+        <input type="radio"  value="1"   name="ECOUNTRY"  <if condition="$experts.ecountry eq '1'">checked="checked" </if>  />国外
+            
+            
+            
+              <div id="divguonei" style="display:none;">
+            <select name="CPROV" id="s_province" va="1" class=" validate[required]"></select>
+            <select name="CCITY" id="s_city" va="1" class=" validate[required]"></select>
+            <select name="COUNTY" id="s_county" va="1" class=" validate[required]"></select>
+                </div>
+                <div id="divguowai" style="display:none;">
+                    Region<select id="region" name="PROV" onchange="set_country(this,country,city_state)">
+                            <option value="" selected="selected">Select Region</option>
+                            <script type="text/javascript"> setRegions(this); </script>
+                            </select><br />
+                    Country<select id="country" name="CITY" disabled="disabled" onchange="set_city_state(this,city_state)"></select><br />
+                    State<select id="city_state" name="C_OUNTY" disabled="disabled"></select>
+    
+                </div>
+            <br />
+        	<input type="text" name="EADDRESS" id="EADDRESS" class="pub_03  validate[required]"  style="width:480px;" value="{$experts.eaddress}"></td>
+       </tr>
+	  <tr>
+        <td class="tdright">邮编 :</td>
+        <td colspan="3"><input type="text" name="EPOSTNO" id="EPOSTNO" class="pub_03" size="60" value="{$experts.epostno}"></td>
+       </tr>
+	  <tr>
+        <td class="tdright"><span>*</span>办公电话 :</td>
+        <td colspan="3"><input type="text" name="EMOBIPHONE" id="EMOBIPHONE" class="pub_03 validate[required]" size="60" value="{$experts.emobiphone}"></td>
+       </tr>
+       
+	  <tr>
+        <td class="tdright">传真 :</td>
+        <td colspan="3"><input type="text" name="EFAX" id="EFAX" class="pub_03" size="60" value="{$experts.efax}"></td>
+       </tr>
+       
+       
+	  <tr>
+        <td class="tdright"><span>*</span>邮箱 :</td>
+        <td colspan="3"><input type="text" name="EEMAIL" id="EEMAIL" class="pub_03 validate[required,custom[email]]" size="60" value="{$experts.eemail}"></td>
+       </tr>
+       
+       
+       <tr>
+        <td class="tdright"><span>*</span>任职情况 :</td>
+        <td colspan="3">
+        
+        <textarea name="ETAKEOFFICE">{$experts.etakeoffice}</textarea></td>
+       </tr>
+	  <tr>
+        <td class="tdright"><span>*</span>获奖情况 :</td>
+        <td colspan="3">
+         <textarea name="EWINNING">{$experts.ewinning}</textarea></td>
+       </tr>
+	  <tr>
+        <td class="tdright"><span>*</span>科技成就 :</td>
+        <td colspan="3">
+         <textarea name="ESCIENTIFIC">{$experts.escientific}</textarea></td>
+       </tr>
+	  <tr>
+        <td class="tdright">个人专著 :</td>
+        <td colspan="3">
+         <textarea name="EBOOKS">{$experts.ebooks}</textarea></td>
+       </tr>
+      <tr>
+      	<td class="tdright">发布时间 :</td>
+        <td><input type="text" name="PRO_ADDTIME" class="pub_03" onfocus="WdatePicker()" value="<if condition="$Project['pro_gdate'] eq ''"><php> echo date("Y-m-d",time());</php><else/>{$experts.PRO_ADDTIME}</if>"></td>
+      	<td class="tdright">过期时间 :</td>
+        <td><input type="text" name="PRO_GDATE" class="pub_03" onfocus="WdatePicker();" value="<if condition="$Project['pro_gdate'] eq ''"><php> echo date("Y-m-d",strtotime("+1 year"));</php><else/>{$experts.PRO_GDATE|date="Y-m-d",###}</if>"></td>
+      </tr>
+       
+	 <!-- <tr style="display:hidden">
+        <td class="tdright"><span>*</span>专家简介 :</td>
+        <td colspan="3"><input type="text" name="EINTRO" id="EINTRO" class="pub_03" size="60" value="{$experts.EINTRO}"></td>
+       </tr>
+        -->
+        <tr>
+        <td class="tdright">发布状态 :</td>
+        <td colspan="3">  <input type="radio" value="0"  name="ISSHOW" <if condition="$experts.status neq 10"> checked="checked"</if>  />发布（需审核） &nbsp; &nbsp; &nbsp; 
+        <input type="radio"  value="1"   name="ISSHOW" <if condition="$experts.status eq 10"> checked="checked"</if>   />草稿</td>
+      </tr>
+	
+      <tr><td><input type="hidden" name="ID" value="{$experts.id}" id="ID"/><input type="hidden" name="USERID" value="{$experts.userid}" id="USERID"/></td> <td colspan="3"></td>
+       </tr>
+          <tr>
+                          <td align="right"></td>
+                          <td colspan="4" align="center">
+                          <input type="submit" style="background:url(__PUBLIC__/statics/images/btn_team.jpg) ;width:331px; height:35px; border:none;"  value=""/>
+                          </td>
+                       </tr>
+    </table>
+    
+              
+                   <input type="hidden" name="submit" value="1" />
+                   </form>
+                </div>
+                
+                
+                
+           </div>
+    </div>
+    <!--right-->
+    <!--clear-->
+    <div class="clear"></div>
+    <!--clear-->
+   <!--内容-->
+</div>
+<script type="text/javascript">
+//初始化信息
+var s=["s_province","s_city","s_county"];//三个select的id
+var opt0 = ["省份","地级市","市、县级市"];//初始值
+function _init_area(){  //初始化函数
+	for(i=0;i<s.length-1;i++){
+	  	document.getElementById(s[i]).onchange=new Function("change("+(i+1)+")");	
+	}
+	change(0);
+}
+$(function(){
+	//绑定地址信息
+	_init_area();
+	if('{$experts.ECOUNTRY}'=='0'){
+		$("#s_province").val("{$experts.CPROV}");
+		$("#s_province").change();
+		$("#s_city").val("{$experts.CCITY}");
+		$("#s_city").change();
+		$("#s_county").val("{$experts.COUNTY}");
+	}else{
+		$("#region").val("{$experts.CPROV}");
+		$("#region").change();
+		$("#country").val("{$experts.CCITY}");
+		$("#country").change();
+		$("#city_state").val("{$experts.COUNTY}");
+		
+	} 
+})
+</script>
+</body>
+</html>

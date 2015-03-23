@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{$seo.title}</title>
+<link href="__PUBLIC__/statics/css/common.css" rel="stylesheet" type="text/css" />
+<link href="__PUBLIC__/statics/css/content.css" rel="stylesheet" type="text/css" />
+<script src="__PUBLIC__/statics/js/jquery/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/statics/js/index_01.js" language="javascript"></script>
+<script type="text/javascript" language="javascript">
+   $(function(){
+	   //$("div[class=left_bg]").height($(".Container").height()-60);  
+	   $(".right").width($(window).width()-201);
+	   $(window).resize(function(){
+	   $(".right").width($(window).width()-201);
+		}) 
+	})
+</script> 
+
+
+<link href="/css/validationEngine.jquery.css" rel="stylesheet" type="text/css" />
+<script src="/js/jquery.validationEngine.js" type="text/javascript"></script>
+<script src="/Js/jquery.validationEngine-zh_CN.js" type="text/javascript" charset="UTF-8"></script>
+<script type="text/javascript">
+$(function(){
+	$("form").validationEngine();
+})
+</script>
+
+<!--[if IE 6]>
+<script src="js/DD_belatedPNG_0.0.8a-min.js"></script>
+<script>
+  DD_belatedPNG.fix('img'); 
+  DD_belatedPNG.fix('.login1_01 ul li a'); 
+</script>
+<![endif]--> 
+</head>
+
+<body>
+<div class="Container">
+   <!--头部-->
+   <div class="top_bj">
+        <table cellpadding="0" cellspacing="0" border="0">
+            <tr>
+                <td><a href="/" target="_blank" title="网站首页"><img src="__PUBLIC__/statics/images/logina_01.jpg" /></a></td>
+                <td><span>会员中心</span></td>
+                <td><img src="__PUBLIC__/statics/images/logina_02.jpg" /></td>
+                <td>{$currentuser.nickname}，欢迎登录泰科! <a href="{:U('Uc/User/loginout')}" style="color:gray">退出</a></td>
+               <!-- <td>
+                    <div class="txt_bj">
+                       <form id="dosearch" action="index.php?a=index&m=Search&g=home" method="get" target="_blank">
+                       	   <input type="hidden" name="a" value="index" />
+                       	   <input type="hidden" name="m" value="Search" />
+                       	   <input type="hidden" name="g" value="home" />
+                           <input type="text" name="key" class="txt" />
+                           <input type="submit" class="btn"  value=""/>
+                       </form>
+                    </div>
+                </td>-->
+               <!-- <td><a href="#"><img src="__PUBLIC__/statics/images/login_btn_bgs.jpg" /></a></td> -->
+            </tr>
+        </table>
+   </div>
+      <div class="nav_bg">
+        <div class="title"><a href="{:U('Uc/User/center')}" style="color:white;">会员中心首页</a></div>
+        <div class="navigation">
+                <div class="them">
+                &nbsp;
+                    <!--<a href="#" class="tLink">个人桌面</a>
+                    <a  href="#" class="sLink">手机短信</a> -->
+                </div>
+                <div>
+                    <a href="/" target="_blank" title="网站首页"><img src="__PUBLIC__/statics/images/logina_03.jpg" /></a>
+                    <a href="{:U('Uc/User/updatepwd')}" title="修改密码"><img src="__PUBLIC__/statics/images/logina_04.jpg" /></a>
+                    <a href="{:U('Uc/Experts/expertsadd')}" title="发布专家"><img src="/images/expert.png" /></a>
+                    <a href="{:U('Uc/Project/projectadd')}" title="发布项目"><img src="/images/addproject.png" /></a>
+					<a href="{:U('Uc/Demand/demand')}" title="发布需求"><img src="__PUBLIC__/statics/images/logina_06.jpg" /></a>
+					<a href="<if condition="$currentuser['utype'] eq '1'">{:U('Uc/Pro/addindex')}<else/></if>" title="发布产品"><if condition="$currentuser['utype'] eq '1'"><img src="../../../images/addproduct.png" /><else/></if></a>
+                </div>
+        </div>
+        <div class="clear"></div>
+    </div>

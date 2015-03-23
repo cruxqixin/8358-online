@@ -1,0 +1,111 @@
+<include file="Public:header"/>
+
+<!------------------------------------------------------------中间----开始----------------------------------------> 
+   <div class="Main">
+         <div class="main2" style="height:auto;">
+           <div class="main2_a" style="height:auto;">
+             <form id="formreg" action="{:U('Uc/User/reg')}" method="post">
+             <span>
+               <input name="username" type="button" onclick="window.location.href='{:U('Uc/User/login')}'" style="width:199px; cursor:pointer; height:42px; color:#FE3737; background:url(/images/lnochose.jpg) no-repeat;" value="登录" />
+               <input name="password" type="button" onclick="window.location.href='{:U('Uc/User/reg')}'" style="width:193px; cursor:pointer; height:42px; color:#FFF;background:url(/images/rchose.jpg) no-repeat;" value="注册" />
+             </span>
+             <style type="text/css">
+             .main2_a p.p1{
+				 width:305px;
+				 margin-bottom: 10px;
+				 margin-top: 10px;
+				}
+             .main2_a p.p1 input{
+				 background:none;
+				 width:300px;
+				 line-height:43px;
+				 border:1px solid #DCDCDC;
+				 color:black;
+				}
+			.tdleft{
+				text-align:right;
+			}
+             </style>
+             <div style=" color:#FF0000">{$error}</div>
+             <table cellpadding="0" cellspacing="0" border="0" style="color:##303030; font-family:'微软雅黑';">
+             <tr>
+             	<td class="tdleft">用户名：</td>
+                <td><p class="p1"><input name="nickname" type="text" value="{$data.nickname}" class="validate[required]"  /></p></td>
+             </tr>
+             <tr>
+             	<td class="tdleft">密码：</td>
+                <td><p class="p1"><input name="pwdming" id="regiserpassword" type="password" value="" class="validate[required]"  /></p></td>
+             </tr>
+             <tr>
+             	<td class="tdleft">确认密码：</td>
+                <td><p class="p1"><input name="rpwdming" type="password" value="" class="validate[required,equals[regiserpassword]]"  /></p></td>
+             </tr>
+             <tr>
+             	<td class="tdleft">手机：</td>
+                <td><p class="p1"><input name="phone" type="text" value="{$data.phone}" class="validate[required,custom[shouji]]"  /></p></td>
+             </tr>
+             <tr>
+             	<td class="tdleft">邮箱：</td>
+                <td><p class="p1"><input name="email" type="text" value="{$data.email}" class="validate[required,custom[email]]"  /></p></td>
+             </tr>
+             
+             <tr>
+             	<td class="tdleft">验证码：</td>
+                <td>
+                <table cellpadding="0" cellspacing="0" border="0">
+                	<tr>
+                    	<td><p class="p1" style="width:105px;"><input name="txtcode" id="txtcode" type="text" value="" class="validate[required,ajax[ajaxCode]]" style="width:100px;"  /></p></td>
+                    	<td>&nbsp;<img id="img_checkcode"  isblank="true" src="{:U('home/Base/verify?noarc=1')}"  verify_action="{:U('home/Base/verify?noarc=1')}" url_model="{:C(url_model)}"  width="100"></td>
+                    	<td><div class="red_f" onclick="changeVerify()">&nbsp;换一张</div></td>
+                    </tr>
+                </table>
+                </td>
+             </tr>
+             
+             </table>
+             <!-- <p class="p1"></p>
+              <p class="p1"><input name="" type="password" value="" class="validate[required]"  style=" border:1px solid #DCDCDC;"/></p>
+              
+              <div class="m2a"><p class="p2"><input name="" type="checkbox" value="" /> 下次自动登录</p>  <a href="#">忘记密码？</a></div>
+            -->   <div class="m2b" style="margin-top:20px;"><input name="" type="submit" value="注册" /></div>
+              <div class="m2c"><a href="{:U('Uc/User/login')}" style="color:gray;">已有账号立即登录</a></div>
+              <input type="hidden" name="reg" value="user_reg" />
+             </form>
+           </div>
+      </div>
+    </div>
+    <input type="hidden" id="issubmit" value="0" />
+    <input type="hidden" id="ispass" value="0" />
+    <script>
+	//刷新验证码
+	function changeVerify(){
+		var src=$("#img_checkcode").attr("verify_action");
+		//alert(src);
+		var url_model=$("#img_checkcode").attr("url_model");
+		//alert(url_model);
+		if(url_model==0){
+			var nowTime="&nowTime="+new Date().getTime();
+		}else if(url_model==2){
+			var nowTime="?nowTime="+new Date().getTime();
+		}
+		$("#img_checkcode").attr("src",src+nowTime);
+	}
+	$(function(){
+		$("#formreg").bind("jqv.form.result",function(event,errorFound){
+			
+			if(errorFound==0){
+				$("#ispass").val("1");
+			}
+		});
+		$("#formreg").submit(function(){
+			
+			if($("#ispass").val()=="1"&&$("#issubmit").val()=="0"){
+				$("#issubmit").val("1");
+				return true;
+			}	
+			return false;
+		})
+	})
+</script>
+<!------------------------------------------------------------中间----结束----------------------------------------> 
+<include file="Public:footer"/>

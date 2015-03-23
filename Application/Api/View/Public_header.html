@@ -1,0 +1,117 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{$seo.title}</title>
+<link href="/css/style.css" rel="stylesheet" type="text/css" />
+<script src="__PUBLIC__/statics/js/jquery/jquery-1.7.2.min.js"></script>
+<script src="/js/common.js"></script>
+
+<link href="/css/validationEngine.jquery.css" rel="stylesheet" type="text/css" />
+<script src="/js/jquery.validationEngine.js" type="text/javascript"></script>
+<script src="/Js/jquery.validationEngine-zh_CN.js" type="text/javascript" charset="UTF-8"></script>
+<script type="text/javascript">
+$(function(){
+	$("form").validationEngine();
+	$("#checksearch").submit(function(){
+		var key=$(this).find("#key");
+		if(key.val()==""||key.val()=="输入关键词"){
+			key.focus();
+			return false;
+		}
+		if($("#kesearch")){
+			if($("#kesearch").val()=="1"){
+				
+				$(this).attr("action","/index.php?a=experts&m=Search&g=home");	
+			}	
+		}
+		return true;
+	})
+})
+</script>
+</head>
+
+<body bgcolor="#F0F2F5">
+
+ <!------------------------------------------------------------头部----开始-----------------------------------------> 
+ <div class="head">
+       <div class="Main">
+     <div class="login">
+     	<if condition="$currentuser neq ''">
+        	<div style="height:27px; float:left; width:auto; line-height:27px;"> <font color="#ea4940">{$currentuser.NICKNAME}</font> <a href="{:U('Uc/User/center')}" style="color:#7e7f7f;">个人中心</a> ,</div>
+        	<div class="hbtn"><a href="{:U('Uc/User/loginout')}">退出</a></div>
+        <else/>
+            <div class="hbtn"><a href="{:U('Uc/User/reg')}">注册</a></div>
+            <div class="hbtn"><a href="{:U('Uc/User/login')}">登录</a></div>
+        </if>
+        
+         <!--<input type="text" class="hbtn" value="注册">
+         <input type="text" class="hbtn" value="登录">
+         <font color="#ea4940">sdfa</font> 个人中心 ，
+         <input type="text" class="hbtn" value="退出"> -->
+     </div>
+     <p>
+     <table cellpadding="0" cellspacing="0" border="0" style="float:right;"><tr><td valign="middle">
+     <a href="http://en.un-techina.com/" target="_top"><span style="line-height:40px;font-size:12px; height:40px; margin-top:-20px;">English</span> &nbsp; </a></td><td>
+     <a href="javascript:;" id="aweixin"><img src="/images/dl_01.jpg"><img src="/images/weixin.jpg" id="divweixin" style="width:150px; margin-left:-50px;position:absolute; margin-top:40px; text-align:left;display:none;" /></a>
+      <a href="#"><img src="/images/dl_02.jpg"></a>
+      <a href="#"><img src="/images/dl_03.jpg"></a></td></tr></table></p>
+       <script type="text/javascript">
+ 	$("#aweixin").hover(function(){
+		$("#divweixin").css("display","inline");	
+	},function(){
+		$("#divweixin").hide();	
+	})
+ </script>
+    </div>
+ </div>
+<!------------------------------------------------------------头部----结束----------------------------------------> 
+<!------------------------------------------------------------导航----开始----------------------------------------> 
+<style type="text/css">
+.nav{height:auto;}
+.nav1{margin-top:15px;}
+.nav ul{margin-left:auto;}
+.nav1 ul li{width:166px; }
+.nav1 ul li a{ color:#303030; width:162px; display:block; float:left; text-align:center; line-height:39px;}
+.nav1 ul li a:hover{ color:#FFF; width:162px; display:block; float:left; text-align:center; line-height:39px; background-color:#ea4940;}
+
+</style>
+
+   <div class="nav">
+    
+     <div class="nav1"><ul>
+     	<li> <a href="/" style="margin-top:-13px;"><img src="/images/dl_04.jpg" /></a></li>
+       <li><a href="/">首页</a><span>|</span></li>
+       <li><a href="{:U('home/Project/index')}">科技成果 </a><span>|</span></li>
+       <li><a href="{:U('home/Experts/index')}">技术专家</a><span>|</span></li>
+       <!--<li><a href="{:U('home/Service/index')}">技术需求</a></li> -->
+       <li><a href="{:U('Uc/Demand/demand')}">技术需求</a><span>|</span></li>
+        <li><a href="{:U('home/Goods/index')}">产品展示</a></li>
+    </ul></div>
+   </div>
+<!------------------------------------------------------------导航----结束----------------------------------------> 
+
+<!------------------------------------------------------------搜索----开始----------------------------------------> 
+
+<div class="Main">
+  <div class="search2">
+    <form id="checksearch" action="{:U('home/search/index')}" method="get">
+        <input type="hidden" name="a" value="index" />
+        <input type="hidden" name="m" value="Search" />
+        <input type="hidden" name="g" value="home" />
+      <div class="s2_01" style="width:660px;">
+        <p><img src="/images/xm_03.jpg" /></p>
+        <p><input name="key" id="key" type="text" class="resettext" style="width:530px;" value="<if condition="$_GET['key'] neq ''">{$_GET["key"]}<else/>输入关键词</if>"/></p>
+        <p>
+        	<input type="submit" value="" style="width:62px; height:34px; border:none; background:url('/images/xm_05.jpg')" />
+        </p>
+      </div>
+      <!--<div class="s2_02">
+        <input name="" type="button" value="精确搜索" />
+      </div> -->
+    </form>
+     <div class="s2_03"><a href="{:U('home/Tiyi/index')}"><img src="/images/xm_02.jpg" /></a></div>
+  </div>
+</div>
+
+<!------------------------------------------------------------搜索----结束----------------------------------------> 

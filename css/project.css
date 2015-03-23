@@ -1,0 +1,164 @@
+@charset "utf-8";
+/* CSS Document */
+.hover{
+	background:url(../images/exp_08.jpg) center no-repeat;
+	width:81px;
+	height:24px;
+	color:#FFF;
+	line-height:24px;
+	text-align:center;
+	float:left;
+	margin-left:15px;
+	margin-right:15px;
+	margin-top:10px;
+}
+.link{
+	height:24px;
+	color:#696868;
+	line-height:24px;
+	text-align:center;
+	float:left;
+	margin-left:15px;
+	margin-right:15px;
+	margin-top:10px;
+}
+.export_05 {width:auto;}
+
+   .up {  
+                /*右边有颜色，其他透明*/  
+                border-color: transparent transparent gray transparent ;  
+                border-style: solid;  
+                border-width: 0px 4px 4px 4px;  
+                padding: 0;  
+                width: 0;  
+                height: 0;  
+                /* ie6 height fix */  
+                font-size: 0;  
+                line-height: 0;  
+                /* ie6 transparent fix */  
+                _border-left-color: #dddddd;  
+                _border-right-color: #dddddd;  
+                _filter: chroma( color = #dddddd); 
+				display: inline-block;
+				margin:auto 4px auto auto;
+            }    
+	
+   .down {  
+                /*右边有颜色，其他透明*/  
+                border-color:gray transparent transparent transparent ;  
+                border-style: solid;  
+                border-width: 4px 4px 0px 4px;  
+                padding: 0;  
+                width: 0;  
+                height: 0;  
+                /* ie6 height fix */  
+                font-size: 0;  
+                line-height: 0;  
+                /* ie6 transparent fix */  
+                _border-left-color: #dddddd;  
+                _border-right-color: #dddddd;  
+                _filter: chroma( color = #dddddd); 
+				display: inline-block;
+				margin:auto 4px auto auto;
+            }
+	.itemshow{ 
+		width:120px;
+		overflow:hidden;
+		float:left;
+		height:32px;
+		cursor:pointer;
+	}  
+	.itemshow table{
+		border:1px solid #D9D9D9;
+		line-height:20px;
+		width:120px;
+		border-right:none;
+		margin-top:10px;
+		background:white;
+	}  
+	.itemsnextshow{
+		border:1px solid #d9d9d9;
+		width:622px;
+		position:absolute;	
+		overflow:hidden;
+		line-height:20px;
+		background:white;
+		padding:10px;
+		margin-top:-1px;
+		display:none;
+		
+	}
+	.item-div{
+		overflow:hidden;	
+	}
+	.item-div dt{
+		font:12px/18px Tahoma,Helvetica,Arial,"宋体",sans-serif;
+		float: left;
+		display: inline;
+		width: 16px;
+		padding-left: 8px;
+		overflow: hidden;
+		color: #888;
+		font-weight: bold;
+		text-align:center;
+	}
+	
+	.item-div dd{
+		float: left;
+		display: inline;
+		width: 598px;
+		overflow: hidden;
+		color: #333;	
+	}
+	
+	.item-div dd span{
+		float: left;
+		display: inline;
+		width: 190px;
+		height: 22px;
+		padding-left: 5px;
+		cursor: pointer;
+		word-wrap: break-word;
+		word-break: break-all;
+		overflow: hidden;
+	}
+	.item-div dd .itemhover{
+		background-color: #ffeed7;
+	}
+	
+	
+	
+	.itemsnextshow .itemsdiv{
+		
+		width:120px;
+		float:left;
+	}
+	
+	.checkbox{
+		float:left;
+		width: 10px;
+		height: 10px;
+		background: transparent url(/images/tbbg.png) no-repeat scroll 0 -195px;
+		margin-top: 4px;
+		margin-right:4px;
+		font-size: 0;
+		overflow: hidden;
+	}
+	
+	.checkboxchose{
+		background-image: url(/images/tbbgchose.png);
+		background-position: 0 -210px;
+	}
+	
+	.showtable{
+		position: relative;
+		z-index:1000; 
+		
+	}
+	
+	
+	
+	
+	
+	
+	

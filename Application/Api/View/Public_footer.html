@@ -1,0 +1,46 @@
+<div class="foot">
+  <div class="foot_a"><img src="/images/dl_25.jpg" /></div>
+  <div class="foot_b">
+    <span style="margin-right:45px;margin-right:90px!important; ">
+      <p style=" padding-bottom:10px;"><font color="#EC3A38">关于我们</font></p>
+	  
+	  <volist name="Article" id='val'>
+	  <p style="text-align:center;"><a style="font-size:12px;margin:auto;" href="{:U('home/Article/listt?ids='.$val['ID'])}">{$val.name} </a></p>
+	  </volist>
+      <!--
+      <p><a href="#">合作机构</a></p>
+      <p><a href="#">媒体关注</a></p>-->
+    </span>
+     <span style="margin-right:45px;margin-right:90px!important;">
+      <p style=" padding-bottom:10px;"><font color="#EC3A38">使用须知</font></p>
+	  <volist name="Articlee" id='vall'>
+	  <p style="text-align:center;"><a style="font-size:12px;margin:auto;" href="{:U('home/Article/question?ids='.$vall['ID'])}">{$vall.name} </a></p>
+	  </volist>
+     <!-- <p><a href="#">帮助中心</a></p>
+      <p><a href="#">常见问题</a><img src="images/dl_26.jpg" /></p>
+      <p><a href="#">侵权处理</a></p>-->
+    </span>
+     <span style="">
+      <p style=" padding-bottom:10px;"><font color="#EC3A38">联系我们</font></p>
+	  <volist name="Articleee" id='valll'>
+	  <p style="text-align:center;"><a style="font-size:12px;margin:auto;" href="{:U('home/Article/listt?ids='.$valll['ID'])}">{$valll.name} </a></p>
+	  </volist>
+      <!--<p><a href="#">加入我们</a></p>
+      <p><a href="#">友情链接</a></p>
+      <p><a href="#">联系我们</a></p>-->
+    </span>
+  </div>
+  <div class="foot_c">
+   <!-- <a href="#"><img src="images/dl_27.jpg" /></a>
+    <a href="#"><img src="images/dl_28.jpg" /></a>
+    <a href="#"><img src="images/dl_29.jpg" /></a> -->
+  
+  </div>
+
+</div>
+<!--[if lte IE 6]>
+<script src="__TMPL__Public/js/DD_belatedPNG_0.0.8a-min.js"></script>
+<![endif]-->
+
+</body>
+</html>

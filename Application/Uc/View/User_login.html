@@ -1,0 +1,67 @@
+<include file="Public:header"/>
+<!------------------------------------------------------------中间----开始----------------------------------------> 
+<script type="text/javascript" language="javascript">
+  $(function(){
+	     
+		 $("[name=nickname]").focus(function(){
+			$("[name=nickname]").attr("value",""); 
+		  })
+		   $("[name=nickname]").blur(function(){
+			   if( $("[name=nickname]").val()==""){
+			   $("[name=nickname]").attr("value","手机/邮箱/用户名"); 
+			   }
+		  })
+		
+	    $("[name=pwd]").hide();
+		$("[name=pwstemp]").focus(function(){
+		   	$(this).hide();
+			 $("[name=pwd]").show().focus();
+	    })
+		
+		 $("[name=pwd]").blur(function(){
+		    if( $("[name=pwd]").val()==""){
+			$("[name=pwd]").hide(); 
+		    $("[name=pwstemp]").show();
+			}
+	     })
+		$(".jzmm").click(function(){
+		
+		   if($(this).is(":checked"))
+		   {
+		      //$("#pwstemp").val();
+		   }
+		}) 
+		
+   })
+</script>
+   <div class="Main">
+         <div class="main2">
+           <div class="main2_a">
+             <form action="{:U('Uc/User/login')}" method="post">
+             <span>
+               <input name="username" type="button"  onclick="window.location.href='{:U('Uc/User/login')}'" style="width:193px; cursor:pointer; height:42px; color:#FFF; background:url(images/dl_20.jpg) no-repeat;" value="登录" />
+               <input name="password" type="button" onclick="window.location.href='{:U('Uc/User/reg')}'" style="width:199px; cursor:pointer; height:42px; color:#FE3737;background:url(images/dl_21.jpg) no-repeat;" value="注册" />
+             </span>
+              <div style=" color:#FF0000">{$error}</div>
+              <p class="p1"><input name="nickname" type="text"  value="手机/邮箱/用户名" class="validate[required]" style="background:url(images/user.jpg) left center no-repeat; background-position: 10px; text-indent:38px; width:390px; line-height:43px; color:black; border:1px solid #DCDCDC; color:##303030; font-family:'微软雅黑';"/></p>
+              <p class="p1">
+              
+                <input name="pwstemp" id="pwstemp" type="text" value="密码" class="validate[required]"  style="background:url(images/pwd.jpg) left center no-repeat; background-position: 10px; text-indent:38px; width:390px; line-height:43px; color:black; border:1px solid #DCDCDC;color:##303030; font-family:'微软雅黑';"/>
+              
+              <input name="pwd" type="password" value="" class="validate[required]"  style="background:url(images/pwd.jpg) left center no-repeat; background-position: 10px; text-indent:38px; width:390px; line-height:43px; color:black; border:1px solid #DCDCDC;"/>
+              
+              </p>
+              
+              <div class="m2a"><p class="p2"><input name="" class="jzmm" type="checkbox" value="" /> 记住密码 </p>  <a href="{:U('Uc/User/forpwd')}">忘记密码？</a></div>
+              <div class="m2b"><input name="" type="submit" value="登录" /></div>
+              <div class="m2c"><a href="{:U('Uc/User/reg')}" style="color:gray;">没有账号立即注册</a></div>
+              
+              <input type="hidden" name="login" value="user_login" />
+              <input type="hidden" name="returnurl" value="{$data.returnurl}{$returnurl}" />
+             </form>
+           </div>
+      </div>
+    </div>
+<!------------------------------------------------------------中间----结束----------------------------------------> 
+
+<include file="Public:footer"/>

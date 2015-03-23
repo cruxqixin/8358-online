@@ -1,0 +1,171 @@
+@charset "utf-8";
+/* CSS Document */
+.default_01{
+	background:url(../images/def_01.jpg) center no-repeat;
+	width:117px;
+	height:39px;
+	line-height:39px;
+	text-align:center;
+	margin-top:30px;
+	margin-left:2px;
+	font-size:15.59px;
+	color:#FFF;
+	font-weight:bold;
+}
+
+.default_02{
+	background-color:#949494;
+	margin-left:2px;
+	padding:5px;
+	padding-bottom:20px;
+	font-size:12px;
+	color:#FFF;
+}
+.default_02 p{
+	line-height:30px;
+	vertical-align:middle;
+	clear:both;
+}
+.default_02 img{
+	padding-top:7px;
+	display:block;
+	float:left;
+	margin-right:4px;
+}
+.default_03{
+	border:1px solid #c7c7c7;
+	background-color:#f8f8f8;
+	height:198px;
+}
+.default_04{
+	width:165px;
+	padding:15px;
+	float:left;
+}
+.default_05{
+	width:370px;
+	float:left;
+	padding-top:15px;
+}
+.default_05 ul li{
+	clear:both;
+	height:35px;
+	line-height:35px;
+	border-bottom:1px dashed #c6c6c6;
+	color:#676868;
+	font-size:13.98px;
+}
+.default_05 ul li span{
+	display:block;
+	width:150px;
+	float:left;
+}
+.default_05 ul li font{
+	color:#fe3434;
+	float:left;
+}
+.default_06{
+	clear:both;
+	margin-top:10px;
+	background:url(../images/def_09.jpg) no-repeat;
+	padding-bottom:10px;
+	color:#676868;
+	font-size:13.98px;
+	text-indent:20px;
+	height:24px;
+	line-height:24px;
+	background-position:0 7px;
+	margin-left:5px;
+}
+
+.default_07{
+	width:370px;
+	height:223px;
+	border:1px solid #c7c7c7;
+	margin-left:3px;
+	margin-right:3px;
+	margin-bottom:5px;
+	float:left;
+	background-color:#f8f8f8;
+}
+.default_08{
+	height:39px;
+	border-bottom:1px solid #c8c8c8;
+	margin-right:5px;
+	margin-left:2px;
+}
+.default_08 p{
+	border-bottom:2px solid #ea4940;
+	width:175px;
+	height:27px;
+	padding-top:10px;
+}
+.default_08 span{
+	color:#5e5f5f;
+	font-size:15.94px;
+	font-weight:bold;
+	border-left:5px solid #f73333;
+	height:17px;
+	line-height:17px;
+	display:block;
+	margin-left:10px;
+	text-indent:15px;
+}
+.default_09{
+	padding-top:10px;
+	padding-left:15px;
+	width:295px;
+}
+.default_09  li{
+	line-height:30px;
+	clear:both;
+	color:#505152;
+	font-size:14.07px;
+}
+.default_09  li a{
+	float:left;
+	color:#505152;
+}
+.default_09  li span{
+	float:right;
+}
+
+.default_10{
+	width:372px;
+	height:223px;
+	margin-left:3px;
+	margin-right:3px;
+	margin-bottom:5px;
+	float:left;
+}
+.default_11{
+	width:370px;
+	height:188px;
+	border:1px solid #c7c7c7;
+	background-color:#f8f8f8;
+	border-top:1px solid #eb5f57;
+}
+.default_12{
+	background:url(../images/def_12.jpg) center repeat-x;
+	width:117px;
+	height:39px;
+}
+.default_12 span{
+	color:#5e5f5f;
+	font-size:15.94px;
+	font-weight:bold;
+	display:block;
+	background:url(../images/def_07.jpg) center no-repeat;
+	width:117px;
+	height:39px;
+	line-height:39px;
+	text-align:center;
+}
+.default_13{
+	clear:both;
+	padding-bottom:100px;
+}
+
+
+
+

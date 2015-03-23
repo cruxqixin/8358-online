@@ -1,0 +1,148 @@
+<include file="Public:header"/>
+<link rel="stylesheet" type="text/css" href="/css/content.css">
+<script type="text/javascript" src="__PUBLIC__/statics/js/area.js" charset="gbk"></script>
+<script type="text/javascript" src="/js/areaw.js" charset="gbk"></script>
+<link rel="stylesheet" type="text/css" href="/css/project.css" />
+<script type="text/javascript" src="/js/experts.js"></script>
+
+<div class="main6" style="text-align:left;">
+          <p>当前位置：<a href="/">首页</a> &gt; <strong>专家信息</strong></p>
+        </div>
+<div id="Container">
+   <!--头部-->
+   <!--头部-->
+   <!--内容-->
+       <div class="Wapper">
+           <!-------------------------------------left------------------------------------------>
+              <div class="nleft">
+                   <div class="export_03">
+                         <div  class="export_04">技术专家</div>
+                         <div class="export_05"><include file="Public:share"/> </div>
+                         <input type="hidden" value="{$whereshow}" />
+                   </div>
+                   <div class="export_06">
+                       <div class="export_07">
+                       {$whereshow}
+                         <!--  <b>已选条件：</b>  <span>合作方式：<font>合作开发</font></span><span>专利情况：<font>无专利</font></span> -->
+                       </div>
+                       <div class="export_08">
+                           <ul >
+                                <li id="mrxz" >
+                                    <b>研究领域  </b> 
+                                       <div id="showi" style="overflow:hidden; margin-bottom:10px;">                                    
+                                        <volist name="kindres" id="var">
+                                            <if condition="$var['parentid'] eq '0'">
+                                                <span class="itemshow"><table cellpadding="0" cellspacing="0" ><tr><td> <a href="{:U('home/Experts/index',$var['url'])}" style="color:#696868">
+                                                 <i class="checkbox <if condition="in_array($var['id'],$ids)">checkboxchose</if>"  style="margin-left:5px;"></i>
+                                                
+                                                {$var.cnname|msubstr=0,7,'utf-8',false}</a></td><td style="text-align:right;"><div class="down"></div></td></tr></table>
+                                                    <div class="itemsnextshow">
+                                                        <volist name="kindres" id="var1">
+                                                             <if condition="$var1['parentid'] eq $var['id']">
+                                                                 <div class="itemsdiv" onclick="window.location.href='{:U('home/Experts/index',$var1['url'])}'"><a href="{:U('home/Experts/index',$var1['url'])}"><i class="checkbox <if condition="in_array($var1['id'],$ids)">checkboxchose</if>"></i><span>{$var1.cnname}</span></a></div>
+                                                             </if>
+                                                         </volist>
+                                                    </div>
+                                                </span>
+                                            </if>
+                                        </volist>
+                                    </div>
+                                </li>
+                                <li id="mrxz1" >
+                                    <b>所在地</b> 
+                                     <div id="showi" style="overflow:hidden; margin-bottom:10px;">                                    
+                                               <span class="itemshow" id="showguonei"><table cellpadding="0" cellspacing="0" ><tr><td>&nbsp;国内</td><td style="text-align:right;"><div class="down"></div></td></tr></table>
+                                                    <div class="itemsnextshow" style="height:200px; overflow-y:auto;">
+                                                    	<!--学校信息-->
+                                                    </div>
+                                                </span>
+                                                                               
+                                               <span class="itemshow" id="showguowai"><table cellpadding="0" cellspacing="0" ><tr><td>&nbsp;国外</td><td style="text-align:right;"><div class="down"></div></td></tr></table>
+                                                    <div class="itemsnextshow" style="height:200px; overflow-y:auto;">
+                                                        <!--企业信息-->
+                                                    </div>
+                                               </span>
+                                    </div>
+                                </li>
+                                <li>&nbsp;</li>
+                           </ul>
+                       </div>
+                   </div>
+                   
+                   <div class="export_09">
+                        <div class="export_10">
+                            <ul>  
+							<volist name="experts" id='val'>                             
+                                <li style="height:auto;" <php> if($key%2==1){ echo 'class="export_15"';}</php>>
+                                    <div <php> if($key%2==1){ echo 'class="export_16"';}else{echo 'class="export_11"';}</php>><a href="{:U('home/Experts/details?id='.$val['id'])}" id="title">{$val.ename}  </a> <p class="extime">发布时间：{$val.id|date="Y-m-d",###}</p></div>
+
+                                    <div class="export_13">
+                                         <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                                          
+                                             <tr>
+                                           <td rowspan="3" style="width:110px;">
+                                           	<a href="{:U('home/Experts/details?id='.$val['id'])}"><img src="<if condition="$val['EFACE'] eq ''">/images/noface.jpg<else/>{$val.EFACE}</if>" style="height:84px" /></a>
+                                           </td>
+                                                 <td><div style="border-bottom:1px dashed #F2F2F2; height:33px; padding-top:7px;">　<b>所在地：</b>{$val.cprov} </div></td>
+                                                  </tr>
+                                             <tr>
+                                                 <td><div style="border-bottom:1px dashed #F2F2F2; height:33px; padding-top:7px;">　<b>研究领域：</b><if condition="$val['ekinds'] eq ''">{$val.id|addyj|getkname}<else/>{$val.ekinds|getkname}</if> </div></td>
+                                                  </tr>
+                                              
+                                               <tr>
+                                                 <td><div style="border-bottom:1px dashed #F2F2F2; height:33px; padding-top:7px;">　<b>单位名称：</b> {$val.enitname}</div></td>
+                                                 
+                                             </tr>
+                                          </table>
+                                    </div>
+                                </li>
+								</volist>
+                             
+                            </ul>
+                        </div>
+                   </div>
+                   
+                   <div class="page">
+                   {$page}
+                   </div>
+                   
+              </div>
+           <!-------------------------------------left------------------------------------------>
+           <!-------------------------------------right------------------------------------------>
+           <div class="nright">
+                 <div class="export_01">热门专家</div>
+                 <ul class="export_02">
+                     <volist name="hotexperts" id="exp">
+                     	<li style="border-bottom:1px dashed gray; margin-left:5px; width:190px;">
+                             <div class="pic"><a href="{:U('home/Experts/details?id='.$exp['id'])}"><img src="<if condition="$exp['eface'] eq ''">/images/noface.jpg<else/>{$exp.eface}</if>" style="height:84px" /></a></div>
+                             <div class="box" style="width:90px; padding-top:30px; color:#EA4941;">{$exp.ename|msubstr=0,10,'utf-8',false}</div>
+                             <div class="clear"></div>
+                             <p><a href="{:U('home/Experts/details?id='.$exp['id'])}" title="{$exp.enitname}">·{$exp.enitname|msubstr=0,13,'utf-8',false}</a></p>
+                             <p><a href="{:U('home/Experts/details?id='.$exp['id'])}">·{$exp.epost}</a></p>
+                         </li>
+                     </volist>
+                 </ul>
+               </div>
+           <!-------------------------------------right------------------------------------------>
+           <!-------------------------------------clear------------------------------------------>
+           <div class="clear"></div>
+           <!-------------------------------------clear------------------------------------------>
+       </div>
+   <!--内容-->
+   <!--头部-->
+   <!--头部-->
+</div>
+<input type="hidden" id="kesearch" value="1" />
+<form id="formexpertsidex" action="index.php" method="get">
+<div style="display:none;" id="divform">
+	<input type="hidden" name="a" value="index" />
+	<input type="hidden" name="m" value="Experts" />
+	<input type="hidden" name="g" value="home" />
+    <php>
+    	foreach($_GET as $key=>$value){
+         echo '<input type="hidden" name="'.$key.'" id="seaf'.$key.'" value="'.$value.'" />';
+       	}
+    </php>
+</div>
+</form>
+<include file="Public:fot"/>

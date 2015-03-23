@@ -1,0 +1,78 @@
+<include file="Public:header"/>
+<link rel="stylesheet" type="text/css" href="/css/content.css">
+<div class="main6" style="text-align:left;">
+          <p>当前位置：<a href="#">首页</a> &gt; <strong>搜索结果</strong></p>
+        </div>
+<div id="Container">
+   <!--头部-->
+   <!--头部-->
+   <!--内容-->
+       <div class="Wapper">
+           <!-------------------------------------left------------------------------------------>
+              <div class="nleft">
+			  <div class="export_07">
+                       <font color="#FF0000" size="+2"><php> echo $whereshow;</php></font>
+                        </div>
+                   <div class="export_09" style="margin-top:0px;">
+                        <div class="export_10">
+                            <ul>
+                            
+                                <volist name="proxx" id='val'>
+                                    <li style="height:auto;" <php> if($key%2==1){ echo 'class="export_15"';}</php>>
+                                        <div <php> if($key%2==1){ echo 'class="export_16"';}else{echo 'class="export_11"';}</php>><a href="{:U('home/Project/detials?id='.$val['id'])}" target="_blank" id="title">【{$val.projectcode}】{$val.pro_name}  </a> <p class="extime">发布时间：{$val.addtime|date="Y-m-d",###}</p></div>
+
+                                    <div class="export_13">
+                                         <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                                             <tr>
+                                                 <td width="230px"><b>联系人：</b>{$val.pro_contact} </td>
+                                                 <td width="230px"><b>专利情况：</b><if condition="$val['pro_patenttype'] neq '0'">{$kind[$val["pro_patenttype"]]["title_cn"]}<else/></if> </td>
+                                                 <td><b>发明情况：</b><if condition="$val['pro_stage'] neq '0'">{$kind[$val["pro_stage"]]["title_cn"]}<else/></if></td>
+                                             </tr>
+                                               <tr>
+                                                 <td><b>资金需求：</b> <if condition="$val['pro_funds'] neq '0'">{$kind[$val["pro_funds"]]["title_cn"]}<else/></if></td>
+                                                 <td colspan="2"><b>合作方式：</b> {$val.PRO_COOPTYPE_NAME}</td>
+                                                
+                                             </tr>
+                                               <tr>
+                                                 <td colspan="3"><b> 技术相关简介：</b> {$val['pro_intro']|strip_tags|msubstr=0,140,'utf-8',false}
+                                                 <div style="width:80px; float:right;"><a href="{:U('home/Project/detials?id='.$val['id'])}" style="color:#ea4940;">详细信息>></a></div>
+                                                 </td>
+                                                 
+                                             </tr>
+                                          </table>
+                                    </div>
+                                </li>
+								</volist> 
+                            </ul>
+                        </div>
+                   </div>
+                   
+                   <div class="page">
+                   {$page}
+                   </div>
+                   
+              </div>
+           <!-------------------------------------left------------------------------------------>
+           <!-------------------------------------right------------------------------------------>
+           <div class="nright">
+                 <div class="export_01">热门项目</div>
+                 <ul class="export_02">
+                     <volist name="hotproject" id="pro">
+                        <li>
+                           <!--  <div class="pic"><img src="/images/exp_02.jpg" /></a></div>
+                            -->  <div class="" style="border-bottom:1px dashed gray; margin:auto 10px auto 5px;"><a href="{:U('home/Project/detials?id='.$pro['ID'])}" style="color:gray;" title="{$pro.pro_name}" target="_blank">{$pro.pro_name|msubstr=0,13,'utf-8',false}</a></div>
+                             <div class="clear"></div>
+                         </li>
+                     </volist>
+                 </ul>
+           </div>
+           <!-------------------------------------right------------------------------------------>
+           <!-------------------------------------clear------------------------------------------>
+           <div class="clear"></div>
+           <!-------------------------------------clear------------------------------------------>
+       </div>
+   <!--内容-->
+   <!--头部-->
+   <!--头部-->
+</div>
+<include file="Public:fot"/>

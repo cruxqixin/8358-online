@@ -1,0 +1,374 @@
+<include file="UCenter:header"/>
+<include file="UCenter:left"/>
+<meta name="description" content="">
+<meta name="keywords" content="">
+
+<link rel="stylesheet" href="../../../css/centerbase.css">
+<link rel="stylesheet" href="../../../css/centercom.css">
+<link rel="stylesheet" href="../../../css/centertip-yellow.css">
+<link rel="stylesheet" href="../../../css/new_user.css">
+
+
+<!--header end-->
+<div class="right">
+<div class="daohang" style=" background-color:#f0f2f5">当前位置： <a href="<hr />
+#">首页</a> > <a href="#"><font>实名认证</font></a></div>
+
+           <div class="main" style=" margin-left:-1px;">
+                <div class="pub_title_bg"><div class="pub_title">用户实名认证&nbsp;&nbsp;</div></div>
+				</div>
+<div class="user-page">
+  <div class="user-main clearfix" style=" margin-top:-32px;"> 
+    
+    <!--安全设置begin-->
+    <div class="user-con user-safety-options">
+      <div class="user-box-1">
+        <div class="user-box-title-1 clearfix">
+          <h2>安全设置</h2>
+        </div>
+        <div class="user-box-con-1">
+          <ul id="saftyPageList" class="user-safety-options-list clearfix" style="overflow:hidden">
+            <li class="user-safety-options-item clearfix">
+              <div class="user-safety-options-show clearfix"> <span class="user-safety-options-name"> <i class="<if condition="$currentuser['NICKNAME'] eq ''">icon-tanhao<else/>icon-check</if>"></i> <strong>昵称</strong> </span> <span class="user-safety-options-value">{$user.NICKNAME}</span> <span class="user-safety-options-state"></span> </div>
+            </li>
+           <!-- <li class="user-safety-options-item clearfix">
+              <div class="user-safety-options-show clearfix"> <span class="user-safety-options-name"><i class="icon-tanhao"></i><strong>实名认证</strong></span> <span class="user-safety-options-value">&nbsp;</span> <span id="realnameBtn1" class="user-safety-options-state" switchtext="取消认证">认证</span> </div>
+              <div class="user-safety-options-edit" style="display: none;"> -->
+              
+            </li>
+            <li id="phoneyz" class="user-safety-options-item clearfix" >
+              <div class="user-safety-options-show clearfix"> <span class="user-safety-options-name"><i class="<if condition="$currentuser['ISPHONEVAL'] eq ''">icon-tanhao<else/>icon-check</if>"></i><strong>手机认证</strong></span> <span class="user-safety-options-value">&nbsp;</span> <span id="phoneBtn1" class="user-safety-options-state" switchtext="取消认证" onclick="phoneshow()"><if condition="$currentuser['ISPHONEVAL'] eq ''">认证<else/>已验证</if></span> </div>
+      
+            </li>
+			 <li id="phoneyyz" class="user-safety-options-item clearfix" style=" display:none">
+              <div class="user-safety-options-show clearfix"> <span class="user-safety-options-name"><i class="<if condition="$currentuser['ISPHONEVAL'] eq ''">icon-tanhao<else/>icon-check</if>"></i><strong>手机认证</strong></span> <span class="user-safety-options-value">&nbsp;</span> <span id="phoneBtn1" class="user-safety-options-state" switchtext="取消认证" onclick="phonehide()"><if condition="$currentuser['ISPHONEVAL'] eq ''">认证<else/>已验证</if></span> </div>
+              <div class="user-safety-options-edit" style="height: 354px; display: ;"> 
+                <!--修改手机步骤-->
+                <div id="phoneStatus1" class="options-step" style=" display:none">
+                  <div class="options-step-con clearfix"> <span class="options-step-current"> 验证原手机号码 <strong>1</strong> </span> <span> 验证新手机号码 <strong>2</strong> </span> <span> 成功 <strong>3</strong> </span> </div>
+                </div>
+                <!--手机认证begin-->
+                <div id="phoneCon1" class="form-style-1 clearfix" style="" _step="1">
+                  <form action="{:U('User/phoneyz')}" method="post">
+                    <ul class="form-style-1-field ">
+                      <li class="form-style-1-item">
+                        <label id="phoneNewText" class="form-style-1-label">手机号码</label>
+                        <span class="form-style-1-value">
+                        <input id="phoneNum" name="PHONE" type="text" class="input-text-style-1 form-style-1-value">
+                        </span> <span class="form-style-1-other">
+                        <input id="submit" name="subm" type="submit" value="获取验证码" class="btn-style-1">
+                        </span> <span class="form-style-1-error"></span> </li>
+                      <li class="form-style-1-item">
+                        <label class="form-style-1-label">短信验证码</label>
+                        <span class="form-style-1-value">
+                        <input name="sms_vcode" type="text" class="input-text-style-1 form-style-1-value">
+                        </span> <span class="form-style-1-error"></span> </li>
+                    </ul>
+                    <div class="form-style-1-submit">
+                      <a href="javascript:;" id="asking"><font class="btn-style-3">下一步</font></a>
+                    </div>
+                  </form>
+                </div>
+                <!--手机认证 end-->
+                <div id="phoneCon2" class="form-style-1 clearfix" style="display:none">
+                  <div class="user-safety-options-succeed clearfix"> <span class="user-safety-options-succeed-true">&nbsp;</span> <span class="user-safety-options-succeed-txt">恭喜您成功修改手机号</span> </div>
+                </div>
+                <!--手机认证状态提示end-->
+               <!-- <div class="form-warm-prompt-1 clearfix"> <span class="form-warm-prompt-title">温馨提示：</span>
+                  <p>1. &nbsp;&nbsp;请填写真实有效的手机号，手机号将作为验证用户身份的重要手段。</p>
+                  <p>2. &nbsp;&nbsp;爱投资会对用户的所有资料进行严格保密。</p>
+                  <p>3. &nbsp;&nbsp;手机认证过程遇到问题，请联系客服，400-600-4300。</p>
+                </div>-->
+              </div>
+            </li>
+            <li id="emailshow"  class="user-safety-options-item user-safety-options-email clearfix">
+              <div class="user-safety-options-show clearfix"> <span class="user-safety-options-name"><i class="<if condition="$currentuser['ISEMAILVAL'] eq ''">icon-tanhao<else/>icon-check</if>"></i><strong>邮箱验证</strong></span> <span class="user-safety-options-value user-safety-options-value-false">{$user.EMAIL}&nbsp;</span> <span id="emailBtn1" class="user-safety-options-state" switchtext="取消验证" onclick="show()"><if condition="$currentuser['ISEMAILVAL'] eq ''">验证<else/>修改</if></span> </div>
+              
+            </li>
+			 <li id="emailhide"  style=" display:none" class="user-safety-options-item user-safety-options-email clearfix">
+              <div class="user-safety-options-show clearfix"> <span class="user-safety-options-name"><i class="<if condition="$currentuser['ISEMAILVAL'] eq ''">icon-tanhao<else/>icon-check</if>"></i><strong>邮箱验证</strong></span> <span class="user-safety-options-value user-safety-options-value-false">{$user.EMAIL}&nbsp;</span> <span id="emailBtn1" class="user-safety-options-state" switchtext="取消验证" onclick="hide()"><a href="{:U('User/Certification?uc='.$currentuser['ISEMAILVAL'])}" style=" text-decoration:none; color:#3181D8">取消验证</a></span> </div>
+              <div id="yz" class="user-safety-options-edit" style="height: 310px; "> 
+                <!--首次认证邮箱begin-->
+                
+                <div id="emailCon1" class="user-safety-options-email-begin" style=""> 
+                  <!--输入认证邮箱地址-->
+                  <div id="emailCon11" class="form-style-1 clearfix" style=" display:<if condition="$_GET['uc'] neq 1">block<else/>none</if>">
+                    <form action="{:U('User/emailyz')}" method="post">
+                      <ul id="ull" class="form-style-1-field ">
+                        <li id="ulli" class="form-style-1-item">
+                          <label id="lbl" class="form-style-1-label">请输入邮箱</label>
+                          <input id="email" name="email" type="text" class="input-text-style-1 form-style-1-value" autocomplete="off">
+                        </li>
+                      </ul>
+                      <div id="submit" class="form-style-1-submit">
+                        <input id="submit" name="submit" type="submit" class="btn-style-3" value="发送验证邮件">
+                      </div>
+                    </form>
+                  </div>
+                  <!--前往邮箱网站认证-->
+                  <div id="emailCon12" class="form-style-1 clearfix" style="display:<if condition="$currentuser['ISEMAILVAL'] eq 1">none<else/><if condition="$_GET['mess'] neq ''">block<else/>none</if></if>;">
+                    <div class="form-style-1-submit" style="line-height:33px;"> 已向您的新邮箱发送一封验证邮件 </div>
+                    <div class="form-style-1-submit" style="line-height:33px;"> <a id="gotoEmailBtn1" href="http://mail.qq.com" target="_blank" class="btn-style-3">前往查看</a> </div>
+                  </div>
+                  <!--邮箱状态-->
+                  <div id="emailCon13" class="form-style-1 clearfix" style="display:none">
+                    <div class="user-safety-options-succeed clearfix"> <span class="user-safety-options-succeed-true">&nbsp;</span> <span class="user-safety-options-succeed-txt">恭喜您成功修改邮箱</span> </div>
+                  </div>
+                </div>
+                <!--首次认证邮箱end--> 
+                <!--修改认证邮箱begin-->
+                <div id="emailCon2" class="user-safety-options-email-edit" style="display:<if condition="$_GET['uc'] eq 1">block<else/>none</if>;"> 
+                  <!--填写修改的邮箱地址begin-->
+                  <div id="emailCon21" class="form-style-1 clearfix">
+                    <form action="{:U('User/emailedit')}" method="post">
+                      <ul class="form-style-1-field ">
+                        <li class="form-style-1-item">
+                          <label class="form-style-1-label">原邮箱地址</label>
+                          <input  type="text" class="input-text-style-1 form-style-1-value" ">
+                        </li>
+                        <li class="form-style-1-item">
+                          <label class="form-style-1-label">新邮箱地址</label>
+                          <input name="EMAIL" type="text" class="input-text-style-1 form-style-1-value" value="{$user.EMAIL}">
+                        </li>
+                      </ul>
+                      <div class="form-style-1-submit" style="line-height:33px;">
+                        <input id="submit" name="sub" type="submit" class="btn-style-3" value="发送验证邮件">
+                      </div>
+                    </form>
+                  </div>
+                  <!--前往邮箱网站认证-->
+                  <div id="emailCon22" class="form-style-1 clearfix" style="display:none">
+                    <div class="form-style-1-submit" style="line-height:33px;"> 已向您的新邮箱发送一封验证邮件 </div>
+                    <div class="form-style-1-submit" style="line-height:33px;"> <a id="gotoEmailBtn2" target="_blank" class="btn-style-3">前往查看</a> </div>
+                  </div>
+                </div>
+               <!-- <div class="form-warm-prompt-1 clearfix"> <span class="form-warm-prompt-title">温馨提示：</span>
+                  <p>1. &nbsp;&nbsp;请填写真实有效的邮箱地址，您可通过邮箱进行找回密码等操作。</p>
+                  <p>2. &nbsp;&nbsp;爱投资会对用户的所有资料进行严格保密。</p>
+                  <p>3. &nbsp;&nbsp;邮箱验证过程遇到问题，请联系客服，400-600-4300</p>
+                </div>-->
+                <!--修改认证邮箱end--> 
+              </div>
+            </li>
+			
+            <!--登陆密码修改begin-->
+			<li id="updatepwd1" class="user-safety-options-item clearfix">
+              <div class="user-safety-options-show clearfix"> <span class="user-safety-options-name"><i class="<if condition="$currentuser['PASSWORD'] eq ''">icon-tanhao<else/>icon-check</if>"></i><strong>登录密码</strong></span> <span class="user-safety-options-value"><if condition="$currentuser['PASSWORD'] eq ''">设置<else/>已设置</if></span> <span id="pwdBtn1" class="user-safety-options-state" switchtext="取消修改" onclick="pwdshow()">修改</span> </div>
+			  </li>
+            <li id="updatepwdd" class="user-safety-options-item clearfix" style=" display:none;">
+              <div class="user-safety-options-show clearfix"> <span class="user-safety-options-name"><i class="<if condition="$currentuser['PASSWORD'] eq ''">icon-tanhao<else/>icon-check</if>"></i><strong>登录密码</strong></span> <span class="user-safety-options-value"><if condition="$currentuser['PASSWORD'] eq ''">设置<else/>已设置</if></span> <span id="pwdBtn1" class="user-safety-options-state" switchtext="取消修改" onclick="pwdhide()">修改</span> </div>
+              <div class="user-safety-options-edit" style="height: 322px; display: ;">
+                <div id="pwdCon1" class="form-style-1 clearfix">
+                  <form action="{:U('Uc/User/updatepwd')}" method="post">
+                    <ul class="form-style-1-field ">
+					 <li class="form-style-1-item">
+                        <label class="form-style-1-label"> <span style=" color:#FF0000">*</span>&nbsp;账号</label>
+                        <input name="NICKNAME" type="text" class="input-text-style-1 form-style-1-value validate[required]">
+                      </li>
+                      <li class="form-style-1-item">
+                        <label class="form-style-1-label">原登录密码</label>
+                        <input name="ECODE" type="password" class="input-text-style-1 form-style-1-value">
+                      </li>
+                      <li class="form-style-1-item">
+                        <label class="form-style-1-label">新登录密码</label>
+                        <input id="pwdpas" name="PASSWORD" type="password" class="input-text-style-1 form-style-1-value">
+                      </li>
+                      <li class="form-style-1-item">
+                        <label class="form-style-1-label">再次输入新登录密码</label>
+                        <input name="newpassword1" type="password" class="input-text-style-1 form-style-1-value">
+                      </li>
+                    </ul>
+                    <div class="form-style-1-submit">
+                      <input id="pwdSubmit" name="submit" type="submit" class="btn-style-3" value="修改登录密码">
+                    </div>
+                  </form>
+                </div>
+                <div id="pwdCon2" class="form-style-1 clearfix" style="display:">
+                  <div class="user-safety-options-succeed clearfix"> <span class="user-safety-options-succeed-true">&nbsp;</span> <span class="user-safety-options-succeed-txt">恭喜您成功登陆密码</span> </div>
+                </div>
+              <!--  <div class="form-warm-prompt-1 clearfix"> <span class="form-warm-prompt-title">温馨提示：</span>
+                  <p>1. &nbsp;&nbsp;请牢记您设置的新密码，登录密码可通过密码找回功能找回。</p>
+                  <p>2. &nbsp;&nbsp;邮箱验证过程遇到问题，请联系客服，400-600-4300</p>
+                </div>-->
+              </div>
+            </li>
+            <!--登陆密码修改end--> 
+            <!--支付密码begin-->
+        
+  </div>
+</div>
+<div id="Edit_portrait" style="display:none;">
+  <div class="ps1-close">×</div>
+  <div class="ps1-con ps2-con cf">
+    <div class="ps1-title">
+      <h2>上传头像</h2>
+    </div>
+    <div>
+      <div class="uploading-portrait-con clearfix">
+        <input type="text" class="input-text-style-1">
+        <input type="button" class="btn-style-3" value="选取文件">
+      </div>
+      <p class="uploading-portrait-txt"> 您可以上传JPG、GIF或PNG文件<br>
+        上传图片最大4M </p>
+    </div>
+    <div class="clearfix uploading-portrait-btn">
+      <input type="button" class="btn-style-1" value="保存">
+      <input type="button" class="btn-style-2" value="取消">
+    </div>
+  </div>
+</div>
+
+          <div class="clearfix iqc_ps2-btn cf" style=" margin-left:200px;">
+          <!--  <table>
+          <tr>
+                          <td colspan="3" align="center">
+                          <input name="" type="submit" style="background:url(__PUBLIC__/statics/images/btn_team.jpg) ;width:331px; height:35px; border:none;"  value=""/><input type="hidden" name="submit" value="1">
+                          </td>
+                       </tr>
+					   </table>-->
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <div class="clearfix iqc_ps2-btn">
+		
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<!--风险调查问卷end--> 
+<script id="promptTmpl" type="text/x-dot-template">
+    <div class="ps1-close">×</div>
+    <div class="ps1-con ps2-con cf">
+        <div class="ps1-title">
+            <h2>{{=it[0]}}</h2>
+        </div>
+        <div class="state-prompt-txt-{{?it[3]}}{{?it[3]==1}}duigou{{??}}tanhao{{?}}{{??}}cuowu{{?}} clearfix">
+            <div class="state-prompt-style">
+                <h2>{{=it[1]}}</h2>
+                {{=it[2]}}
+            </div>
+        </div>
+    </div>
+</script> 
+<script src="/js/jquery-1.9.1.js"></script> 
+<script src="/js/ventercommon.js"></script> 
+<link href="/js/colorbox/skin5/colorbox.css" rel="stylesheet" />
+<script src="/js/colorbox/jquery.colorbox-min.js"></script>
+<!--<script src="../../../js/centeruserInfo.js"></script>-->
+<!--<script src="../../../js/centersafe.js"></script>-->
+<style type="text/css">
+	.divaskingtitle{
+		font-size:12px; line-height:20px;
+	}
+</style>
+<div style='display:none'>
+	<div id="divasking">
+    <form id="formconsultationm" method="post" aciton="{:U('home/Consultationm/project')}">
+    	<div class="divaskingtitle">请填写咨询内容：</div>
+    	<div style="text-align:center;">
+        <textarea name="ccontent" id="ccontent" style="width:95%; border:1px solid gray; height:150px"></textarea>
+        </div>
+        <div style="text-align:center; height:30px; vertical-align:middle; margin-top:10px;">
+           <span class="ke-button-common"><input type="submit" id="" class="ke-button-common ke-button" value="提交"></span>
+           <span class="ke-button-common"><input type="button" class="ke-button-common ke-button" value="关闭" onclick="$('#cboxOverlay').click()"></span>
+        </div>
+        <input type="hidden" name="type" value="0" />
+        <input type="hidden" name="pname" value="{$Project.PRO_NAME}" />
+        <input type="hidden" name="id" value="{$Project.ID}" />
+        
+     </form>
+    </div>	
+</div>
+<div style="display:none;">
+	<a href="#divasking" id="askinghide">&nbsp;</a>
+</div>
+<script>
+$(function(){
+   /* var safeData={
+        questionUrl:'https://www.itouzi.com/newuser/ajax/Protect',//密保ajax接口
+        payPwdUrl: 'https://www.itouzi.com/newuser/ajax/UpdatePayPwd',//支付密码ajax接口
+        findPayPwdUrl: 'https://www.itouzi.com/newuser/ajax/ForgetPaypass',//找回支付密码ajax接口
+        findPayPwdPhoneUrl: 'https://www.itouzi.com/newuser/ajax/PhoneValidcode',//找回支付密码手机验证码ajax接口
+        pwdUrl: 'https://www.itouzi.com/newuser/ajax/UpdatePwd',//登录密码ajax接口
+        emailUrl: 'https://www.itouzi.com/newuser/ajax/EmailCheck',//邮箱验证ajax接口
+        emailUpdateUrl: 'https://www.itouzi.com/newuser/ajax/EmailUpdate',//邮箱更新ajax接口
+        phoneUrl: 'https://www.itouzi.com/newuser/ajax/PhoneCheck',//手机认证ajax接口
+        uploadUrl: 'https://www.itouzi.com/itzdefault/common/UploadFile',//上传ajax接口
+        realnameApi: 'https://www.itouzi.com/newuser/ajax/RealnameCheck',//实名认证ajax接口
+		loading : 'https://itzstatic.b0.upaiyun.com/static/img/newUser/loading1.gif',
+		userName : window.User.real_name
+    };
+
+    itz.safe.init(safeData); */
+	
+		$("#asking").click(function(){
+			//判断用户是否在线
+			$.ajax({
+				url:"{:U('home/ajax/isline')}",
+				dataType:"json",
+				type:"get",
+				success:function(data){
+					
+					if(data.type=="1"){
+						window.location.href="{:U('Uc/User/login?returnurl='.urlencode(__SELF__))}";	
+					}else{
+						$("#askinghide").click();	
+					}
+					
+				},
+				error:function(error){
+					alert(error);	
+				}
+			})	
+		})
+		
+		//了解咨询
+		$("#askinghide").colorbox({inline:true, width:"600px"});
+		
+  
+});
+function phoneshow()
+{
+  $("#phoneyz").hide();
+  $("#phoneyyz").show();
+ 
+}
+function phonehide()
+{
+   $("#phoneyyz").hide();
+  $("#phoneyz").show();
+}
+function show()
+{
+  $("#emailshow").hide();
+  $("#emailhide").show();
+ 
+  $("#emailCon1").show();
+  
+}
+function hide()
+{
+  $("#emailshow").show();
+  $("#emailhide").hide();
+ 
+}
+function pwdshow()
+{
+  $("#updatepwd1").hide();
+  $("#updatepwdd").show();
+}
+function pwdhide()
+{
+  $("#updatepwd1").show();
+  $("#updatepwdd").hide();
+}
+</script> 
+ 
+</body>
+</html>

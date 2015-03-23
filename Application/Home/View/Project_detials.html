@@ -1,0 +1,288 @@
+<include file="Public:header"/>
+
+<!--<link href="/js/qtip/jquery.qtip.min.css" rel="stylesheet" />
+<script src="/js/qtip/jquery.qtip.min.js"></script> -->
+<link href="/js/colorbox/skin5/colorbox.css" rel="stylesheet" />
+<script src="/js/colorbox/jquery.colorbox-min.js"></script>
+<script src="/js/home/project/detials.js"></script>
+<script type="text/javascript">
+$(function(){
+		$('#asave').click(function(){
+			$.ajax({
+				url:"{:U('home/ajax/collectproject')}",
+				dataType:"json",
+				type:"get",
+				data:{"type":"0","objid":"<php>echo $Project['id'];</php>"},
+				success:function(data){
+					if(data.type=="0"){
+						$("#asave font").html("已关注");
+						return;
+					}
+					if(data.type=="2"){
+						$("#asave font").html("关注");
+						return;
+					}
+					
+					if(data.type=="1"){
+						window.location.href="{:U('Uc/User/login?returnurl=')}";	
+					}
+				},
+				error:function(error){
+					alert(error);	
+				}
+			})
+		})
+		
+			$.ajax({
+				url:"{:U('home/ajax/iscollec')}",
+				dataType:"json",
+				type:"get",
+				data:{"type":"0","objid":"<php>echo $Project['id'];</php>"},
+				success:function(data){
+					if(data.type=="0"){
+						$("#asave font").html("已关注");
+						return;
+					}
+					if(data.type=="1"){
+						$("#asave font").html("关注");
+						return;
+					}
+					
+					
+				},
+				error:function(error){
+					alert(error);	
+				}
+			})
+		
+		
+		$("#asking").click(function(){
+			//判断用户是否在线
+			$.ajax({
+				url:"{:U('home/ajax/isline')}",
+				dataType:"json",
+				type:"get",
+				success:function(data){
+					
+					if(data.type=="1"){
+						window.location.href="{:U('Uc/User/login?returnurl=')}";	
+					}else{
+						$("#askinghide").click();	
+					}
+					
+				},
+				error:function(error){
+					alert(error);	
+				}
+			})	
+		})
+		
+		//了解咨询
+		$("#askinghide").colorbox({inline:true, width:"600px"});
+		
+})
+</script>
+
+<!------------------------------------------------------------中间----开始----------------------------------------> 
+   <div class="Main">
+     
+        <div class="main6">
+          <p>当前位置：<a href="/">首页</a> > <strong>科技成果详细  </strong></p>
+        </div>
+       <div class="main_box">
+          <div class="main7">
+            <div class="m7_left">
+              <div class="m7l_01">
+                <span style=" font-size:17px; font-family:'微软雅黑'; float:left; width:550px;height:50px; line-height:50px;">
+                <p style=" margin-left:23px; color:#696868;">科技成果名称</p>
+                <p style=" margin-left:23px; color:#EA4940;">{$Project.pro_name|msubstr=0,25,'utf-8',false}</p></span>
+                
+                <span style=" float:right; width:180px;font-size:12px; font-family:'宋体'; margin-top:16px;">
+                  <!--<p style=" background:url(images/xm_07.jpg) no-repeat left center; padding-left:18px; margin-right:20px;"><a href="#">分享</a> <img src="images/xm_08.jpg" /></p>
+                  <p style=" background:url(images/xm_09.jpg) no-repeat left center; padding-left:18px;"><a href="#">举报</a> <img src="images/xm_08.jpg" /></p>
+                </span> -->
+                <div style="width:auto; float:left;">
+                <include file="Public:share"/>
+                </div>
+                <div style="margin-top:5px;">
+              </div>
+                </span>
+              </div>
+              <div class="m7l_02">
+                <div class="m7l_02a"><input type="hidden" value="{$va}" />
+                  <p><font color="#FE3434"><php> echo date("Y-m-d",$Project['addtime']); </php></font>  发布</p>
+                  <p>已有<font color="#FE3434">{$Project.hits}</font>人浏览</p>
+                </div>
+                <div class="m7l_02b">
+                  <p style="width:auto;"><font color="#FE3434">（<if condition="$Project.pro_country eq 0">国内科技成果<else/>国外科技成果</if>）</font></p>
+                  <p>
+                  <if condition="$Project['pro_otlanurl'] neq ''">
+                  <a href="{$Project.PRO_OTLANURL}" target="_blank" style=" text-decoration:underline; color:#217DC7; font-weight:bold;">英文版</a>
+                  </if>
+                  </p>
+                  <!--<img src="images/xm_10.jpg" /> -->
+                </div>
+              </div>
+              <div class="m7l_03">
+                <div class="m7l_03a">
+                  <span><p style="color:#696868;">科技成果编号：</p><p style="color:#FE3434;">{$Project.projectcode}</p></span>
+                  <span><p style="color:#696868;">过期时间：</p><p style="color:#FE3434;"><php> echo date("Y-m-d",$Project['pro_gdate']); </php></p></span>
+                  
+                </div>
+                <div class="m7l_03a">
+                  <span><p style="color:#696868;">合作方式：</p><p style=" color:#000;">{$Project.pro_cooptype_name}</p></span>
+                  <span><p style="color:#696868;">发明情况：</p><p style="color:#000;">{$choses[$Project['pro_stage']]['title_cn']}</p></span>
+                </div>
+                <div class="m7l_03a">
+                  <span><p style="color:#696868;">专利情况：</p><p style="color:#000;">{$choses[$Project['pro_patenttype']]['title_cn']}<if condition="$choses[$Project['pro_patenttype']]['title_cn'] eq '已有专利'">（{$Project['pro_patent']}）</if></p></span>
+                  <span><p style="color:#696868;">资金需求：</p><p style="color:#FE3434;font-weight:bold;">{$choses[$Project['pro-funds']]['title_cn']}</p></span>
+                </div>
+                <div class="m7l_03a">
+                  <p style="color:#696868;">技术类别：</p><p style="color:#000;"><php>
+                  	$res="";
+                    foreach($kinds as $key=>$value){
+                    	$res.=$value["cnname"].",";
+                    }
+                    echo rtrim($res,",");
+                  </php></p>
+                </div>
+                
+                <div class="m7l_03b" style="width:auto;"><div style="margin-top:15px;"><a href="javascript:;" id="asking"><font class="spanlbl">了解咨询</font><!--<img src="images/xm_11.jpg" /> --></a>
+                <a href="javascript:;" id="asave"><font class="spanlbl">关注</font></a></div></div>
+              </div>
+              
+              <div class="m7l_04">
+                <div class="m7l04_a">
+                    <ul id="na2">
+                     <li class="act1" onclick="na2(this,0)">项目描述</li>
+                     <li class="nor1" onclick="na2(this,1)">主要优势及技术指标</li>
+                     <li class="nor1" onclick="na2(this,2)">应用领域</li>
+                     <li class="nor1" onclick="na2(this,3)">市场前景及经济效益</li>
+                     <li class="nor1" onclick="na2(this,4)">投产条件</li>
+                    </ul>
+                </div>
+                <div class="m7l04_b" id="na2_Content0">
+                  <p>
+				  {$Project.pro_intro}
+				  </p>
+                </div>
+                <div class="m7l04_b"  id="na2_Content1" style="display:none"> <p>{$Project.pro_superiorty}</p></div>
+                <div class="m7l04_b"  id="na2_Content2" style="display:none"><p>{$Project.pro_sphere}</p></div>
+                <div class="m7l04_b"  id="na2_Content3" style="display:none"><p>{$Project.pro_benifit}</p></div>
+                <div class="m7l04_b"  id="na2_Content4" style="display:none"><p>{$Project.pro_production}</p></div>
+                
+              </div>
+              <input type="hidden" />
+              <div class="m7l_05" style="display:<if condition="$pubss['objname'] eq ''|| $catss['objname'] eq ''|| $Filee['filename'] eq ''">none<else/>block</if>">
+                <div class="m7l05_a">
+                  <div class="title"><span>相关案例</span></div>
+                  <div class="box3">
+                    <ul>
+					<volist name="pubs" id='val'>
+                      <li><a href="{$val.objurl}" target="_blank">{$val.objname}</a></li>
+					   </volist>
+                       
+                    </ul>
+                  </div>
+                </div>
+                <div class="m7l05_b">
+                  <div class="title"><span>出版物</span></div>
+                  <div class="box3">
+                    <ul>
+					<volist name="cats" id='val'>
+                      <li><a href="{$val.objurl}" target="_blank">{$val.objname}</a></li>
+					   </volist>
+                    </ul>
+                  </div>
+                
+                </div>
+				
+                <div class="m7l05_c">
+                  <div class="title"><span>相关附件</span></div>
+                  <div class="box3">
+				  <volist name="File" id='file'>
+                     <p><img src='{$file.filetype}' onerror="this.src='/images/file.png'" style="width:17px; height:17px;" /> <a href="{$file.fileurl}" title="{$file.filename}" target="_blank">{$file.filename|msubstr=0,12,'utf-8',false}</a></p>
+					 </volist>
+                    
+                  </div>
+                </div>
+              
+              </div>
+            </div>
+      
+            
+            <div class="m7_right">
+               <div class="m7r_a">发布者</div>
+               <img src="/images/xm_19.jpg" />
+               <div class="m7r_b"><img src="/images/xm_24.jpg" /></div>
+               <div class="m7r_c" style="width:auto;font-size:14px;"><if condition="$user neq ''"><a href="{:U('home/Company/detailes?id='.$user['id'])}" target="_blank">{$user.nickname}</a><else/>网站管理员</if><!--<a href="#"><img src="images/xm_20.jpg" /></a> --></div>
+               <div class="m7r_d" style="width:auto;"><img src="/images/xm_21.jpg" /><p>实名认证：{$usertype[$user['utype']]}已认证</p></div>
+               <div class="m7r_e">
+                <!-- <span><a href="#"><img src="images/xm_22.jpg" /></a></span>
+                 <p>活跃度：<img src="images/xm_23.jpg" /></p> -->
+               </div>
+               
+               
+               <img src="/images/xm_25.jpg" />
+               <div class="m7r_a">联系人</div>
+               <img src="/images/xm_19.jpg" />
+               
+               <div class="m7r_box">
+                 <p>联系人：<font style="font-weight:400;">{$Project1.pro_contact}</font></p>
+                 <p>电话(手机)：<font style="font-weight:400;">{$Project1.pro_phone}</font></p>
+                 <p>邮 箱：<font style="font-weight:400;">{$Project1.pro_email}</font></p>
+                 <p>地 址：<font style="font-weight:400;">{$Project1.pro_cconunitadd}</font></p>
+               </div>
+            </div>
+        
+          </div>
+       </div>
+    
+   </div>
+
+   
+<!------------------------------------------------------------中间----结束----------------------------------------> 
+
+<style type="text/css">
+	.divaskingtitle{
+		font-size:12px; line-height:20px;
+	}
+</style>
+<div style='display:none'>
+	<div id="divasking">
+    <form id="formconsultationm" method="post" aciton="{:U('home/Consultationm/project')}">
+    	<div class="divaskingtitle">请填写咨询内容：</div>
+    	<div style="text-align:center;">
+        <textarea name="ccontent" id="ccontent" style="width:95%; border:1px solid gray; height:150px"></textarea>
+        </div>
+        <div style="text-align:center; height:30px; vertical-align:middle; margin-top:10px;">
+           <span class="ke-button-common"><input type="submit" id="" class="ke-button-common ke-button" value="提交"></span>
+           <span class="ke-button-common"><input type="button" class="ke-button-common ke-button" value="关闭" onclick="$('#cboxOverlay').click()"></span>
+        </div>
+        <input type="hidden" name="type" value="3" />
+        <input type="hidden" name="pname" value="{$Project.pro_name}" />
+        <input type="hidden" name="id" value="{$Project.id}" />
+        
+     </form>
+    </div>	
+</div>
+<div style="display:none;">
+	<a href="#divasking" id="askinghide">&nbsp;</a>
+</div>
+
+<script type="text/javascript">
+
+$(function(){
+	$("#formconsultationm").submit(function(){
+		if($.trim($("#ccontent").val())==""){
+			$("#ccontent").focus();
+			return false;
+		}
+		$(this).attr("action","{:U('home/Consultationm/project')}");
+		$(this).submit();
+	})	
+})
+
+</script>
+
+<include file="Public:footer"/>

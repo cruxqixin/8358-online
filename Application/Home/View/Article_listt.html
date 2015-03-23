@@ -1,0 +1,103 @@
+<include file="Public:header"/>
+<link rel="stylesheet" type="text/css" href="/css/conn.css">
+
+<!------------------------------------------------------------中间----开始----------------------------------------> 
+   <div class="Main">
+     
+        <div class="main6">
+          <p>当前位置：<a href="/">首页</a> > <strong>{$Art2[0]["name"]}</strong></p>
+        </div>
+       <div class="Wapper">
+	   <div class="QAleft" style=" float:left; margin-bottom:10px;">
+                <div class="QA_01" style=" min-height:300px; ">
+               
+                    <ul>
+					<volist name="Art2" id='va2'>
+                        <li><a href="<if condition="$va2['id'] eq 462">{:U('home/Article/question?ids=462')}<else/>{:U('home/Article/listt?ids='.$va2['id'])}</if>" class="<if condition="$_GET['ids'] eq $va2['id']">current<else/>link</if>">{$va2.name}</a></li>
+						</volist>
+                     
+                    </ul>
+                </div>
+           </div>
+		    <div class="QAright" style=" margin-bottom:10px;">
+                   <div class="export_03">
+                         <div  class="export_04">{$hh.name}</div>
+                         <div class="export_05">
+                     	<include file="Public:share"/>
+                         <!--<a href="#"><img src="images/exp_05.jpg" /></a> --></div>
+                   </div>
+                   <div class="export_06" style=" min-height:300px; ">
+                    <style type="text/css">
+						   	.QA_03 p{
+								word-break:break-all;
+							}
+                           </style>
+                      <volist name="AAT" id='vaL'>
+                       <div class="QA_02">
+                       <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                        <tr type="title">
+                        <td><div class="QA_current" id="demo" style=" padding-left:30px;">
+                           <table cellpadding="0" cellspacing="0" border="0">
+                              <tr>
+                               <td><a href="{:U('home/Article/detailes?id='.$vaL['id'])}"><!--<span style=" color:#FF0000">【{$vaL.ID}】</span> --></a></td>
+                               <td width="680px" style=" color:#FF0000" ><a href="{:U('home/Article/detailes?id='.$vaL['id'])}"><span style=" color:#FF0000" title="{$vaL.TITLE}">{$vaL.title|msubstr=0,45,'utf-8',false}</span></a></td>
+                               <td ></td>
+                              </tr>
+                           </table>
+                        </div></td>
+                      </tr>
+                      <tr type="content">
+                         <td>
+                           <div class="QA_03">
+                               <P style=" text-indent:2em">
+                                {$vaL['info']|strip_tags|msubstr=0,240,'utf-8',false}
+                              </P>
+                              <p style="text-align:right;">
+                              <a href="{:U('home/Article/detailes?id='.$vaL['id'])}" style="font-weight:800;">查看详情>></a>
+                              </p>
+                           </div>
+                         </td>  
+                      </tr> 
+                    </table>
+              
+                    </table>
+                       </div>
+					   </volist>
+                   </div>
+		   
+		   
+		   <div class="page">
+		   {$page}</div>
+<!------------------------------------------------------------中间----结束----------------------------------------> 
+<!------------------------------------------------------------底部----开始----------------------------------------> 
+</div>
+<!------------------------------------------------------------底部----开始----------------------------------------> 
+<include file="Public:footer"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

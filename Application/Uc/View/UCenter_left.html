@@ -1,0 +1,23 @@
+
+<link rel="stylesheet" type="text/css" href="/css/con1.css">
+<!--left-->
+       <div class="left_bg">
+           <ul>
+		    <li><a href="{:U('Uc/User/AccountManager')}"><img src="__PUBLIC__/statics/images/fb_03.png" /><p>账号管理</p></a></li>
+			 <li><a href="{:U('Uc/Consul/prolist')}"><img src="__PUBLIC__/statics/images/fb_02.png" /><p>关注管理</p></a></li>
+               <li><a href="{:U('Uc/Project/elist')}"><img src="/images/project.png" /><p>技术管理</p></a></li>
+               <li><a href="{:U('Uc/Experts/elist')}"><img src="/images/expert.png" /><p>专家管理</p></a></li>
+              <li style=" display:<if condition="$currentuser['utype'] eq 1">block<else/>none</if>"><a href="<if condition="$currentuser['utype'] eq 1">{:U('Uc/Pro/listt?ID='.$currentuser['id'])}<else/></if>"><if condition="$currentuser['utype'] eq 1"><img src="/images/prolist.png" /><p>产品列表</p><else/></if></a></li>
+			     <li><a href="{:U('Uc/Demand/Dlist')}"><img src="/images/def_10.png" /><p>需求管理</p></a></li>
+				 <li><a href="{:U('Uc/Report/index')}"><img src="__PUBLIC__/statics/images/fb_04.png" /><p>举报/咨询</p></a></li>
+               <li><a href="{:U('Uc/User/Suggestion')}"><img src="__PUBLIC__/statics/images/fb_04.png" /><p>意见反馈</p></a></li>
+           </ul>
+		    <div class="default_01">客服中心</div>
+             <div class="default_02">
+                 <P><img src="/images/def_02.jpg" />客服热线：</P>
+                 <P><img src="/images/def_03.jpg" />传真号码：</P>
+                 <P><img src="/images/def_04.jpg" />E-mail：</P>
+                 <P><img src="/images/def_05.jpg" /><b>在线客服</b></P>
+             </div>
+       </div>
+    <!--left-->

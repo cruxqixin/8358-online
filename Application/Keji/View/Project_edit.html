@@ -1,0 +1,426 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>产品发布</title>
+<link href="/css/Keji/type.css" rel="stylesheet" type="text/css" />
+<script src="__PUBLIC__/statics/js/jquery/jquery-1.7.2.min.js"></script>
+
+<link href="/css/validationEngine.jquery.css" rel="stylesheet" type="text/css" />
+<script src="/js/Keji/jquery.validationEngine.js" type="text/javascript"></script>
+<script src="/js/Keji/jquery.validationEngine-zh_CN.js" type="text/javascript" charset="UTF-8"></script>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/statics/js/kindeditor4/themes/default/default.css"/>
+<script type="text/javascript" src="__PUBLIC__/statics/js/kindeditor4/kindeditor-min.js"></script>
+<!--[if lte IE 6]>
+<script type="text/javascript" src="js/PNG.js"></script>
+<script type="text/javascript" src="js/PNGClass.js"></script>
+<![endif]-->
+<script type="text/javascript">
+$(function(){
+	$("form").validationEngine();
+	$("form").submit(function(){
+		if(allitems.isEmpty())
+		{
+		  alert('请完善信息！');
+		  return false;
+		}	
+		
+	})
+	
+	$("[id=goodid]").change(function(){
+			if($("[id=goodid]:checked").size()>3){
+				$(this).removeAttr("checked");
+			}
+		})
+		
+		if($("#hy_cates").val()){
+			var pros=($("#hy_cates").val()+"0").split(",");
+			for(var pro in pros){
+				$("[name='hyid[]'][value="+pros[pro]+"]").attr("checked","checked");
+			}
+		}
+	$("[id=kindid]").change(function(){
+			if($("[id=kindid]:checked").size()>3){
+				$(this).removeAttr("checked");
+			}
+		})
+		
+		if($("#hy_cates").val()){
+			var pros=($("#hy_cates").val()+"0").split(",");
+			for(var pro in pros){
+				$("[name='hyid[]'][value="+pros[pro]+"]").attr("checked","checked");
+			}
+		}
+		
+	//添加附件操作
+	$("#addfile").click(function(){
+		var bastStr="";
+		bastStr+="<tr>";
+		bastStr+="<td><input type=\"text\" class=\"text1 txt1\" name=\"filename[]\" /><input type=\"hidden\" name=\"fileurl[]\" />";
+		
+		bastStr+="<input type=\"button\" name=\"chosefile\" value=\"选择文件\" />";
+		bastStr+="</td>";
+		bastStr+="<td><a href=\"javascript:;\" style=\"color:gray\" name=\"filedel\">删除</a></td>";
+		bastStr+="</tr>";
+		$("#tablefile").append(bastStr);
+		changetoup($("[name=chosefile]:last"));
+	})
+	//删除附件操作
+	$("[name=filedel]").live("click",function(){
+		$(this).parent().parent().remove();
+	})
+	$("[name=chosefile]").each(function(){
+		changetoup($(this));	
+	})
+	//添加相关案例
+	$("#addcasets").click(function(){
+		var bastStr="";
+		bastStr+="<tr>";
+		bastStr+="<td>名称：</td><td><input type=\"text\" class=\"text1 txt1\" name=\"procasets[]\" /></td>";
+		
+		bastStr+="<td>网址：</td><td><input type=\"text\" class=\"text1 txt1\" name=\"procasetsurl[]\" /></td>";
+		
+		bastStr+="<td><a href=\"javascript:;\" style=\"color:gray\" name=\"filedel\">删除</a></td>";
+		bastStr+="</tr>";
+		$("#tablecasets").append(bastStr);
+	})
+	$("[name='PRO_CATSES[]']").change(function(){
+			if($("[name='PRO_CATSES[]']:checked").size()>3){
+				$(this).removeAttr("checked");
+			}
+		})
+		
+		if($("#PRO_CATS").val()){
+			var pros=($("#PRO_CATS").val()+"0").split(",");
+			for(var pro in pros){
+				$("[name='PRO_CATSES[]'][value="+pros[pro]+"]").attr("checked","checked");
+			}
+		}
+		
+	$("#chongzhi").click(function(){
+		$(".text1").val("");
+		allitems.html('');
+		allitems1.html('');
+		allitems2.html('');
+		allitems3.html('');
+		allitems4.html('');
+		$("[name='PRO_CATSES[]']").removeAttr("checked");
+		$("[name='filename[]']").val("");
+		$("[name='fileurl[]']").val("");
+		$("[name='procasets[]']").val("");
+		$("[name='procasetsurl[]']").val("");
+		 $("input[@type='radio'][name='IS_CHXIN'][@value='0']").attr("checked",true);
+			 $("#chid").hide();
+	})
+})
+function changetoup(control){
+	var uploadbutton = KindEditor.uploadbutton({
+		button : control[0],
+		fieldName : 'imgFile',
+		url : '__PUBLIC__/statics/js/kindeditor4/php/upload_json.php?dir=file',
+		afterUpload : function(data) {
+			if (data.error === 0) {
+				var url = KindEditor.formatUrl(data.url, 'absolute');
+				var index=$("[name=chosefile]").index(control);
+				$("[name='filename[]']").eq(index).val(data.filename);
+				$("[name='fileurl[]']").eq(index).val(url);
+				
+			} else {
+				alert(data.message);
+			}
+		},
+		afterError : function(str) {
+			alert('网速不给力！');
+		}
+	});
+	uploadbutton.fileBox.change(function(e) {
+		uploadbutton.submit();
+	});
+	$(".ke-form").width("auto");	
+	$("[name=PRO_PATENTTYPE]").change(function(){
+		if($(this).val()=="16"){
+			$("[name=PATENT]").show();	
+		}else{
+			$("[name=PATENT]").hide();	
+		}
+	}).change();
+	
+	$("[id=IS_CHXIN]").change(function(){
+		if($("input[name='IS_CHXIN']:checked").val()=='1'){
+			$("#chid").show();
+		}
+		if($("input[name='IS_CHXIN']:checked").val()=='0'){
+			$("#chid").hide();
+			$("#chid").val("");
+		}
+	})
+	if($("input[name='IS_CHXIN']:checked").val()=='1'){
+			$("#chid").show();
+		}
+	
+	
+	
+}
+
+</script>
+</head>
+
+<body>
+<include file="Public:header1"/>
+<div class="mainBox">
+	<div class="main">
+    	<h1>当前位置： 首页 > <span>会员中心</span></h1>
+        <div class="main-text">
+        	<include file="Public:left"/>
+            <div class="shopBox">
+            	<ul>
+                	<li>会员中心  > <span>技术项目发布</span></li>
+                    <li class="liri">{$user['nickname']}&nbsp;  |  &nbsp;<a href="{:U('User/loginout')}">退出</a></li>
+                </ul>
+				<form action="{:U('Project/edit')}" method="post">
+                <table width="750" border="0" cellspacing="0" class="texttb">
+				<input type="hidden" id="PRO_CATS" value="{$article.pro_cats}" />
+				 <input type="hidden" name="ID" id="ID" value="{$article['id']}" />
+				  <if condition="$article['status'] eq '2'">
+					<tr>
+						<td width="116" class="text-nav">未通过原因：</td>
+						<td><input class="text1 validate[required]" name="PRO_PASSOUR" id="PRO_PASSOUR" value="{$article['pro_passour']}"/></td>
+                    </tr>
+				  </if>
+                  <tr>
+                    <td width="116" class="text-nav">项目名称：</td>
+                    <td><input class="text1 validate[required]" name="PRO_NAME" id="PRO_NAME" value="{$article['pro_name']}"/></td>
+                  </tr>
+                  
+				   <tr>
+                    <td class="text-nav">合作方式：</td>
+                    <td>
+						<select name="PRO_COOPTYPE_IDS">
+						   <volist id="val" name="Prochose1">
+                    		<option value="{$val['id']}" <if condition="$article['pro_cooptype_ids'] eq $val['id']">selected="selected"</if>>{$val['title_cn']}</option>
+						   </volist>
+                    	</select>
+					</td>
+                  </tr>
+				  <tr>
+                    <td class="text-nav">发明情况：</td>
+                    <td>
+						<select name="PRO_STAGE">
+						   <volist id="val" name="Prochose2">
+                    		<option value="{$val['id']}" <if condition="$article['pro_stage'] eq $val['id']">selected="selected"</if>>{$val['title_cn']}</option>
+						   </volist>
+                    	</select>
+					</td>
+                  </tr>
+				   <tr>
+                    <td class="text-nav">专利情况：</td>
+                    <td>
+						<select name="PRO_PATENTTYPE">
+						   <volist id="val" name="Prochose3">
+                    		<option value="{$val['id']}" <if condition="$article['pro_patenttype'] eq $val['id']">selected="selected"</if>>{$val['title_cn']}</option>
+						   </volist>
+                    	</select>
+					</td>
+                  </tr>
+				  <tr>
+                    <td class="text-nav">资金需求：</td>
+                    <td>
+						<select name="PRO_FUNDS">
+						   <volist id="val" name="Prochose4">
+                    		<option value="{$val['id']}" <if condition="$article['pro_funds'] eq $val['id']">selected="selected"</if>>{$val['title_cn']}</option>
+						   </volist>
+                    	</select>
+					</td>
+                  </tr>
+                  <tr>
+                    <td class="text-nav">技术类别(最多选择三项)：</td>
+                    <td>
+					<div style="padding:0 15px;width:450px;font-size:14px;overflow:hidden;border:1px #666666 solid">
+                	 <volist id="val" name="Prokind">
+						<if condition="$val['parentid'] eq '0'">
+							<div style="line-height:25px;"> {$val['cnname']}</div>						
+							<volist id="val1" name="Prokind">
+							 <if condition="$val1['parentid'] eq $val['id']">
+							  <label style="margin-left:15px;word-wrap:break-word;line-height:25px; ">
+							      <input type="checkbox"  name="PRO_CATSES[]" value="{$val1['id']}" id="goodid" />
+                	              
+								   {$val1['cnname']}
+								</label>
+						     </if>
+							</volist>
+							
+						 </if>
+					   </volist>
+					</div>
+						
+					</td>
+                  </tr>
+                  <tr>
+                    <td class="text-nav">项目描述：</td>
+                    <td class="mutxt"><textarea type="text" class="mutxt editshow"  name="PRO_INTRO" id="PRO_INTRO" value="">{$article['pro_intro']}</textarea></td>
+                  </tr>
+				   <tr >
+                    <td class="text-nav">主要优势及技术指标：</td>
+                    <td class="mutxt"><textarea type="text" class="mutxt editshow1" name="PRO_SUPERIORITY" id="PRO_SUPERIORITY" value="">{$article['pro_superiority']}</textarea></td>
+                 </tr>
+				   <tr>
+                    <td class="text-nav">应用领域：</td>
+                    <td class="mutxt"><textarea type="text" class="editshow2" name="PRO_SPHERE" id="PRO_SPHERE" value="">{$article['pro_sphere']}</textarea></td>
+                  </tr>
+				   <tr>
+                    <td class="text-nav">市场前景及经济效益：</td>
+                    <td class="mutxt"><textarea type="text" class="editshow3" name="PRO_BENEFIT" id="PRO_BENEFIT" value="">{$article['pro_benefit']}</textarea></td>
+                  </tr>
+				  <tr>
+                    <td class="text-nav">投产条件：</td>
+                    <td class="mutxt"><textarea type="text" class="editshow4" name="PRO_PRODUCTION" id="PRO_PRODUCTION" value="">{$article['pro_production']}</textarea></td>
+                  </tr>
+				  <tr>
+                    <td class="text-nav">关键词：</td>
+                    <td><input class="text1  txt2 validate[required]" name="PRO_KEYWORD" id="PRO_KEYWORD" value="{$article['pro_keyword']}"/></td>
+                  </tr>
+				   <tr>
+                    <td class="text-nav">发明者：</td>
+                    <td><input class="text1 txt1 validate[required]" name="PRO_INVENTOR" id="PRO_INVENTOR" value="{$article['pro_inventor']}"/></td>
+                  </tr>
+                  <tr>
+                    <td class="text-nav">发明者单位：</td>
+                    <td><input class="text1 txt2 validate[required]" name="PRO_INVENTORUNIT" id="PRO_INVENTORUNIT" value="{$article['pro_inventorunit']}"/></td>
+                  </tr>
+                  <tr>
+                    <td class="text-nav">相关案例:</td>
+                    <td>
+					   <table cellpadding="0" cellspacing="0"  class="tb" style="width:584px" border="0"  id="tablecasets">
+                  
+                      <if condition="$cats eq ''">
+                    <tr>
+                       <td width="50">名称：</td>
+                       <td width="160"><input type="text" class="text1 txt1" name="procasets[]" /></td>
+                       <td width="50">网址：</td>
+                       <td colspan="2"><input type="text" class="text1 txt1" name="procasetsurl[]" /></td>
+                   </tr>
+                   <else />
+                   	<volist name="cats" id="val">
+                      <tr>
+                       <td>名称：</td>
+                       <td><input type="text" class="text1 txt1" value="{$val.objname}" name="procasets[]" /></td>
+                       <td>
+                          网址：</td>
+                          <td width="160"><input type="text" class="text1 txt1" value="{$val.objurl}" name="procasetsurl[]" />
+                       </td>
+                       <td>
+                       <if condition="$key neq 0"><a href="javascript:;" style="color:gray" name="filedel">删除</a></if>
+                       </td>
+                       </tr>
+                   	</volist>
+                   </if>
+                   </table>
+                    <P><a href="javascript:;" style="color:gray" id="addcasets">添加案例</a></P>
+					</td>
+					
+				  </tr>
+				   <tr>
+                    <td class="text-nav">网站：</td>
+                    <td><input class="text1 txt1 validate[required]" name="PRO_DOMAIN" id="PRO_DOMAIN" value="{$article['pro_domain']}"/></td>
+                  </tr>
+				   <tr>
+                    <td class="text-nav">联系人：</td>
+                    <td><input class="text1 txt1 validate[required]" name="PRO_CONTACT" id="PRO_CONTACT" value="<if condition="$article['pro_contact'] eq ''">{$user['lxrname']}<else/>{$article['pro_contact']}</if>"/></td>
+                  </tr>
+				  <tr>
+                    <td class="text-nav">联系方式（办公电话、手机电话）：</td>
+                    <td><input class="text1 txt1 validate[required]" name="PRO_PHONE" id="PRO_PHONE" value="<if condition="$article['pro_phone'] eq ''">{$user['lxrtelphone']}<else/>{$article.pro_phone}</if>"/></td>
+                  </tr>
+				  <tr>
+                    <td class="text-nav">联系人单位地址：</td>
+                    <td><input class="text1 txt2 validate[required]" name="PRO_CONUNITADD" id="PRO_CONUNITADD" value="<if condition="$article['pro_conunitadd'] eq ''">{$user['address']}<else/>{$article.pro_conunitadd}</if>"/></td>
+                  </tr>
+				   <tr>
+                    <td class="text-nav">联系人单位名称：</td>
+                    <td><input class="text1 txt2 validate[required]" name="PRO_CONUNITNAME" id="PRO_CONUNITNAME" value="<if condition="$article['pro_conunitname'] eq ''">{$user['companyname']}<else/>{$article.pro_conunitname}</if>"/></td>
+                  </tr>
+				   <tr>
+                    <td class="text-nav">添加附件：</td>
+                    <td>
+						<table cellpadding="0" cellspacing="0" border="0" class="tb" style="width:584px;margin-left:2px;" id="tablefile">
+        
+       
+						<if condition="$files eq ''">
+						
+						<tr>
+					   <td><input type="text" class="text1 txt1"  name="filename[]" /><input type="hidden" name="fileurl[]" />
+					   
+							<input type="button" name="chosefile" value="选择文件" />
+					   </td>
+					   
+					   </tr>
+					   <else/>
+							<volist name="files" id="file">
+							   <tr>
+							   <td>
+								   <input type="text" class="text1 txt1" name="filename[]" value="{$file.filename}" />
+								   <input type="hidden" name="fileurl[]" value="{$file.fileurl}"/>
+							 
+									<input type="button" name="chosefile" value="选择文件" />
+							   </td>
+							   <td>
+									   <if condition="$key neq 0"><a href="javascript:;" style="color:gray" name="filedel">删除</a></if></td>
+							   </tr>
+							</volist>
+					   </if>
+                    </table>
+       		            <a href="javascript:;" style="color:gray" id="addfile">添加附件</a>
+           
+			       </td>
+                  </tr>
+				   <tr>
+                    <td  class="text-nav">是否属于创新科技平台：</td>
+                    <td>
+						 <input type="radio" style="margin-left:15px;" name="IS_CHXIN" id="IS_CHXIN" class="radio_style" value="1" <if condition="$article['is_chxin'] eq '1'">checked="checked"</if> > &nbsp;是&nbsp;&nbsp;&nbsp;
+        	             <input type="radio" name="IS_CHXIN" id="IS_CHXIN" class="radio_style" value="0" <if condition="$article['is_chxin'] eq '0' OR $article['is_chxin'] eq ''">checked="checked"</if>> &nbsp;否
+        
+					</td>
+					</tr>
+					 <tr id="chid" style="display:none">
+                    <td  class="text-nav">创新科技平台：</td>
+                    <td>
+						 <select name="CHXINID">
+							<volist id="val" name="xkind">
+								<option value="{$val['id']}" <if condition="$article['chxinid'] eq $val['id']">selected="selected"</if>>{$val['syname']}</option>
+							</volist>
+						 </select>
+					</td>
+					</tr>
+				  <tr>
+                    <td  class="text-nav">排序值：</td>
+                    <td>
+						<input class="text1 sort"  name="ORD" id="ORD" value="{$article['ord']}"/>						
+					</td>
+                  </tr>
+				  <tr>
+                    <td  class="text-nav">在本企业站是否显示：</td>
+                    <td>
+						 <input type="radio" style="margin-left:15px;" name="IS_SHOW" id="IS_SHOW" class="radio_style" value="1" <if condition="$article['IS_SHOW'] eq '1'  OR $article['IS_SHOW'] eq ''">checked="checked"</if> > &nbsp;是&nbsp;&nbsp;&nbsp;
+        	             <input type="radio" name="IS_SHOW" id="IS_SHOW" class="radio_style" value="0" <if condition="$article['IS_SHOW'] eq '0'">checked="checked"</if>> &nbsp;否
+        
+					</td>
+					</tr>
+				
+                  <tr>
+                    <td class="text-nav"></td>
+                    <td>
+                    	<div class="butBox">
+                    		<input name="" type="submit" class="but redBut" value="确认发布" />
+                            <input name="" type="button" id="chongzhi" class="but" value="重置发布" />
+                         </div>
+                    </td>
+                  </tr>
+                </table>
+              </form>
+            </div>
+        </div>
+    </div>
+</div>
+<include file="Public:bottom"/>
+</body>
+</html>

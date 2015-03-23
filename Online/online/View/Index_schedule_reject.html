@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>科济天下网_在线对接会_被拒绝预约</title>
+<link href="/css/Online/index.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/js/Online/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="/js/Online/index_02.js"></script>
+<script>
+	$(function(){
+	   $(".falg").click(function(){
+		  var html=$(".search-01 .lie");
+		  if(html.is(":hidden"))
+		  {
+			 html.show();  
+		  } 
+		  else
+		  {
+			  html.hide();  
+		  }  
+	   }) 
+	   $(".search-01 .lie").find("a").click(function(){
+		   $(".txt_bg").val($(this).html());
+		   $(".search-01 .lie").hide();
+		}) 
+	})
+	$(function(){
+	$("#name-0").click(function(){
+		$(".show").show();
+		})
+	$(".show").click(function(){
+		$(".show").hide();
+		})	
+})
+</script>
+</head>
+
+<body>
+<include file="Application/News/View/Public_navbar.html"/>
+<div class="headbg">
+</div>
+<div class="navBox">
+	<ul>
+    	<li><a href="{:U('index/index')}" class="currentA">首页</a></li>
+        <!-- <li><a href="#">会议申请</a></li>
+        <li><a href="#">在线会议室</a></li> -->
+    </ul>
+</div>
+<div class="mainBox">
+    <h5>当前位置： <a href="{:U('index/index')}">首页</a> ><span> 我的对接</span></h5>
+    <div class="joint">
+        <ul  id="nTabs2">
+            <li ><a href="{:U('index/schedule_accept')}">已接收预约</a></li>
+            <li ><a href="{:U('index/calendar')}">对接日历</a></li>
+            <li ><a href="{:U('index/schedule_apply')}">已提交预约</a></li>
+            <li class="currentLi"><a >被拒绝预约</a></li>
+            <li ><a href="{:U('index/detail')}">基础资料</a></li>
+        </ul>
+        <div class="list">
+            <div id="nTabs2_Content0">
+                <table width="974" border="1" bordercolor="#f5f5f5" cellspacing="0">
+                    <tbody>
+                        <tr class="top-tab">
+                            <td width="235">预约时间</td>
+                            <td width="460">对接企业</td>
+                            <td>操作</td>
+                        </tr>
+                        <?php
+                        $i = 0;
+                        foreach($scheduleList as $k => $v){
+							$i++;
+						?>
+                        <tr class="top-tab{$i%2+1}">
+                            <td >{$dayConfig[$calendarListKV[$v['calendar_id']]['day_id']]}  {$timeConfig[$calendarListKV[$v['calendar_id']]['time_id']]}</td>
+                            <td ><a href="{:U('index/info/'.$v['uid'])}">{$v['accept_name']}</a></td>
+                            <td><input type="button" class="but2" value="被拒绝" /></td>
+                        </tr>
+                        <?php } ?>
+                    </tbody>
+                </table>
+                <div class="page">
+				{$page}
+		        </div>
+            </div>
+        </div>
+    </div>
+</div>
+<link href="/css/News/common.css" rel="stylesheet" type="text/css" />
+<include file="Application/News/View/Public_footer.html"/>
+<script type="text/javascript">
+//删除
+function confirm_submit(schedule_id,action_type){
+	$.post("{:U('index/handleSchedule')}", {schedule_id : schedule_id, action_type : action_type} , function(msg){
+   		alert('操作成功');
+	   	location.reload();
+	});
+}
+</script>
+</body>
+</html>

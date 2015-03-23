@@ -1,0 +1,38 @@
+@charset "utf-8";
+/* CSS Document */
+
+*{
+	padding:0px;
+	margin:0px;
+}
+ul li{
+	list-style:none;
+}
+body{
+	line-height:22px;
+	font-size:12px;
+	text-align:center;
+}
+a {
+	text-decoration:none;
+}
+a img{
+	border:0px;
+}
+.clear{
+	clear:both;
+}
+#Container{
+	width:100%;
+	margin:0 auto;
+}
+.Wapper{
+	width:995px;
+	margin:0 auto;
+	text-align:left;
+}
+.weibo_bg{
+	background-color:#e5e7e9;
+	width:100%;
+	height:38px;
+}

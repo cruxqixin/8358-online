@@ -1,0 +1,154 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{$Project.pro_name}</title>
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/index_03.js" language="javascript"></script>
+<script type="text/javascript" src="../../../../js/jquery-1.7.2.js" charset="gbk"></script>
+<link rel="stylesheet" type="text/css" href="../../../../css/com.css">
+
+<link rel="stylesheet" type="text/css" href="../../../../css/conn.css">
+<link rel="stylesheet" type="text/css" href="../../../../css/sty.css">
+<script type="text/javascript" language="javascript">
+    $(function(){
+		$(".export_10 ul li:odd").find(".export_11").attr("class","export_16");
+		$(".export_10 ul li:odd").attr("class","export_15");
+     })
+</script>
+ 
+ <!--<script type="text/javascript">
+$(function(){
+    $("[type=content]").hide();
+    $("[type=title]").click(function(){
+			$(".news_active").attr("class","news_normal");
+			$("[type=lock]").attr("class","cs");
+			var chi= $(this).parent().parent().find("[type=content]");
+			 
+			if(chi.is(":hidden")){
+				$("[type=content]").hide();
+				chi.show();
+				$(this).find("[type=lock]").attr("class","op");
+				$(this).find("#demo").attr("class","QA_current");
+			}else{
+				chi.hide();
+				$(this).find("[type=lock]").attr("class","cs");
+				$(this).find("#demo").attr("class","QA_link");
+			}
+	}).eq(0).click();
+	
+})
+
+
+</script>-->
+</head>
+<!--
+<body bgcolor="#F0F2F5">-->
+<include file="Public:header"/>
+ <!------------------------------------------------------------头部----开始-----------------------------------------> 
+ 
+<!------------------------------------------------------------头部----结束----------------------------------------> 
+<!------------------------------------------------------------导航----开始----------------------------------------> 
+
+  
+<!------------------------------------------------------------导航----结束----------------------------------------> 
+
+<!------------------------------------------------------------搜索----开始----------------------------------------> 
+
+<!------------------------------------------------------------搜索----结束----------------------------------------> 
+
+
+<!------------------------------------------------------------中间----开始----------------------------------------> 
+   <div class="Main">
+     
+        <div class="main6">
+          <p>当前位置：<a href="#">首页</a> > <strong>友情链接</strong></p>
+        </div>
+       <div class="Wapper">
+	   <div class="QAleft" style=" float:left;">
+                <div class="QA_01">
+                    <ul>
+					
+                        <li><a href='{:U('home/Article/link?id='.$ART['link_id'])}' class="current">友情链接</a></li>
+						
+                     
+                    </ul>
+                </div>
+           </div>
+		    <div class="QAright">
+                   <div class="export_03">
+                         <div  class="export_04">{$ART.link_name}</div>
+                         <div class="export_05"><a href="#"><img src="/images/exp_04.jpg" /></a><a href="#"><img src="/images/exp_05.jpg" /></a></div>
+                   </div>
+                   <div class="export_06">
+                      
+                       <div class="QA_02">
+                       <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                        <tr type="title">
+                        <td><div class="QA_link" id="demo">
+                           <table cellpadding="0" cellspacing="0" border="0">
+                              <tr>
+                               <td><span></span></td>
+                               <td width="680px" style=" color:#4F4E4E; text-align:center;">{$ART.link_name}</td>
+                               <td ></td>
+                              </tr>
+                           </table>
+                        </div></td>
+                      </tr>
+                      <tr type="content">
+                         <td>
+                           <div class="QA_03">
+                               <P>{$ART.link_name}</P>
+                                <P>{$ART.link_url}</P>
+                           </div>
+                         </td>  
+                      </tr> 
+                    </table>
+              
+                    </table>
+                       </div>
+                   </div>
+		   
+		   
+		   
+		   
+         
+		
+<!------------------------------------------------------------中间----结束----------------------------------------> 
+<!------------------------------------------------------------底部----开始----------------------------------------> 
+
+</div>
+
+
+<!------------------------------------------------------------底部----开始----------------------------------------> 
+
+
+<include file="Public:footer"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

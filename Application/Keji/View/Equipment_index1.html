@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>新闻列表</title>
+<link href="/css/Keji/type.css" rel="stylesheet" type="text/css" />
+<link href="/css/content.css" rel="stylesheet" type="text/css" />
+<script src="__PUBLIC__/statics/js/jquery/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/statics/js/WdatePicker.js"></script>
+<script type="text/javascript">
+$(function(){
+	var defaultVal=$(".text").val();
+	$(".text").focus(function(){
+		if($(this).val()==defaultVal){
+			$(this).val("");
+		}
+	})
+	$(".text").blur(function(){
+		if($(this).val().length==0){
+			$(this).val(defaultVal);
+		}
+	})
+})
+</script>
+</head>
+
+<body>
+<include file="Public:header1"/>
+<div class="mainBox">
+	<div class="main">
+    	<h1>当前位置： 首页 > <span>会员中心</span></h1>
+        <div class="main-text">
+        	<include file="Public:left"/>
+            <div class="shopBox">
+            	<ul>
+                	<li>会员中心  > <span>产品发布</span></li>
+                    <ol>高阳&nbsp;  |  &nbsp;<a href="#">退出</a></ol>
+                </ul>
+                <div class="searchBox">
+                	<input type="text" class="time" name="start_time" onfocus="{WdatePicker()}" >
+                    <span>至</span>
+                    <input type="text" class="time" name="end_time" onfocus="{WdatePicker()}">
+                    <input class="text" name="keyword" value="请输入关键字" />
+                    <input name="" type="button" class="redbut"  value="查 询"/>
+                    <a href="{:U('News/edit')}"><input name="" style="cursor:pointer" type="button" class="redbut redbut2" value="我要发布" /></a>
+                </div>
+                <div class="search">
+                	<a href="#" class="currentA">已发布<span>（300）</span></a>
+                    <a href="#">待审核<span>（0）</span></a>
+                    <a href="#">未通过审核<span>（0）</span></a>
+                </div>
+				<table width="750" border="0" class="list-tab" cellspacing="0">
+				<volist id="val" name="manu">
+                  <tr>
+                    <td width="395">{$val['gname']}</td>
+                    <td width="127">{$val['gaddtime']|date="Y-m-d",###}</td>
+                    <td width="125">浏览量：150</td>
+                    <td><a href="{:U('Good/edit?id='.$val['id'])}">修改</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">删除</a></td>
+                  </tr>
+                 </volist>
+                </table>
+				<div class="iconBox page">
+                	{$page}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="footer">
+	<h1><a href="#">关于我们</a>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;
+    	<a href="#">广告咨询</a>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="#">帮助信息</a>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="#">联系我们</a>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="#">会员服务</a>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="#">网站导航</a>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="#">国际站</a>&nbsp;&nbsp;&nbsp;&nbsp;
+    </h1>
+    <p> 我们的网站：科济天下网 | 产品商贸网 | 技术 | 会展 | 招商 | 咨询评估 | 创新实验室<br />
+        客服热线：022-0000 0000   客服传真：022-0000 0000    业务联系：022-0000 0000<br />
+        Copyright © 2015, All Rights Reserved. <br />
+        中文版权所有－科济天下网网站所有图片、文字未经许可不得拷贝、复制。</p>
+</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

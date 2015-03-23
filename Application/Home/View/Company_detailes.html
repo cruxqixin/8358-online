@@ -1,0 +1,158 @@
+<include file="Public:header"/>
+<link href="/js/colorbox/skin5/colorbox.css" rel="stylesheet" />
+<script src="/js/colorbox/jquery.colorbox-min.js"></script>
+<script src="/js/home/project/detials.js"></script>
+<script type="text/javascript">
+$(function(){
+		$('#asave').click(function(){
+			$.ajax({
+				url:"{:U('home/ajax/collectproject')}",
+				dataType:"json",
+				type:"get",
+				data:{"type":"0","objid":"<php>echo $Project['ID'];</php>"},
+				success:function(data){
+					if(data.type=="0"){
+						$("#asave font").html("已关注");
+						return;
+					}
+					if(data.type=="2"){
+						$("#asave font").html("关注");
+						return;
+					}
+					
+					if(data.type=="1"){
+						window.location.href="{:U('Uc/User/login?returnurl='.urlencode(__SELF__))}";	
+					}
+				},
+				error:function(error){
+					alert(error);	
+				}
+			})
+		})
+		
+			$.ajax({
+				url:"{:U('home/ajax/iscollec')}",
+				dataType:"json",
+				type:"get",
+				data:{"type":"0","objid":"<php>echo $Project['ID'];</php>"},
+				success:function(data){
+					if(data.type=="0"){
+						$("#asave font").html("已关注");
+						return;
+					}
+					if(data.type=="1"){
+						$("#asave font").html("关注");
+						return;
+					}
+					
+					
+				},
+				error:function(error){
+					alert(error);	
+				}
+			})
+		
+		
+		$("#asking").click(function(){
+			//判断用户是否在线
+			$.ajax({
+				url:"{:U('home/ajax/isline')}",
+				dataType:"json",
+				type:"get",
+				success:function(data){
+					
+					if(data.type=="1"){
+						window.location.href="{:U('Uc/User/login?returnurl='.urlencode(__SELF__))}";	
+					}else{
+						$("#askinghide").click();	
+					}
+					
+				},
+				error:function(error){
+					alert(error);	
+				}
+			})	
+		})
+		
+		//了解咨询
+		$("#askinghide").colorbox({inline:true, width:"600px"});
+		
+})
+</script>
+<link href="/css/company.css" rel="stylesheet" />
+  <div class="Main">
+      <div class="Expand_left">
+            <div class="Expand_01">公司简介</div>
+            <div class="Expand_02">
+               <span>{$company.CNAME}</span><a href="javascript:;" id="asking">了解咨询</a>
+            </div>
+            <div class="Expand_03">
+                <p>企业性质：{$company.CNATUREID|getcompanykind}</p>
+                <p>所在行业：{$company.CINDUSTRYID|getcompanykind}</p>
+                <p>主营产品:{$commpany.CTHEMAIN}</p>
+                <p>应用领域：{$company.CFIELD}</p>
+            </div>
+            <div class="Expand_04">
+                <p>地址：{$company.CADDRESS}</p>
+                <!--<p>办公电话：{$company.CMOBILEPHONE}</p>-->
+                <p>联系人：{$company.CONTACTS}</p>
+               <!-- <p>手机：{$company.CPHONE}</p>-->
+                <p>网址：{$company.CDOMAIN}</p>
+            </div>
+      </div>
+      
+      <div class="Expand_right">
+          <div class="Expand_01">产品展示</div>
+          <div class="Expand_05">
+             <ul>
+			  <volist name="hotproject" id="pro">
+                        <li>
+                           <!--  <div class="pic"><img src="/images/exp_02.jpg" /></a></div>
+                            -->  <div class="" style="border-bottom:1px dashed gray; margin:auto 10px auto 5px;"><a href="{:U('home/Goods/details?id='.$pro['ID'].'&userid='.$val['USERID'])}" style="color:gray;" title="{$pro.GNAME}">{$pro.GNAME|msubstr=0,13,'utf-8',false}</a></div>
+                             <div class="clear"></div>
+                         </li>
+                     </volist>
+             </ul>
+          </div>
+      </div>
+      
+      
+  </div>
+<div style='display:none'>
+	<div id="divasking">
+    <form id="formconsultationm" method="post" aciton="{:U('home/Consultationm/project')}">
+    	<div class="divaskingtitle">请填写咨询内容：</div>
+    	<div style="text-align:center;">
+        <textarea name="ccontent" id="ccontent" style="width:95%; border:1px solid gray; height:150px"></textarea>
+        </div>
+        <div style="text-align:center; height:30px; vertical-align:middle; margin-top:10px;">
+           <span class="ke-button-common"><input type="submit" id="" class="ke-button-common ke-button" value="提交"></span>
+           <span class="ke-button-common"><input type="button" class="ke-button-common ke-button" value="关闭" onclick="$('#cboxOverlay').click()"></span>
+        </div>
+        <input type="hidden" name="type" value="0" />
+        <input type="hidden" name="pname" value="{$Project.PRO_NAME}" />
+        <input type="hidden" name="id" value="{$Project.ID}" />
+        
+     </form>
+    </div>	
+</div>
+<div style="display:none;">
+	<a href="#divasking" id="askinghide">&nbsp;</a>
+</div>
+
+<script type="text/javascript">
+
+$(function(){
+	$("#formconsultationm").submit(function(){
+		if($.trim($("#ccontent").val())==""){
+			$("#ccontent").focus();
+			return false;
+		}
+		$(this).attr("action","{:U('home/Consultationm/project')}");
+		$(this).submit();
+	})	
+})
+
+</script>
+
+<include file="Public:footer"/>

@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>科技天下网-修改密码</title>
+<link href="/css/Keji/type.css" rel="stylesheet" type="text/css" />
+
+<script src="__PUBLIC__/statics/js/jquery/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/statics/js/WdatePicker.js"></script>
+<link href="/css/validationEngine.jquery.css" rel="stylesheet" type="text/css" />
+<script src="/js/Keji/jquery.validationEngine.js" type="text/javascript"></script>
+<script src="/js/Keji/jquery.validationEngine-zh_CN.js" type="text/javascript" charset="UTF-8"></script>
+<script type="text/javascript">
+$(function(){
+	$("form").validationEngine();
+	$("#chongzhi").click(function(){
+		$(".text2").val("");
+	})
+})
+</script>
+</head>
+
+<body>
+<include file="Public:header1"/>
+<div class="mainBox">
+	<div class="main">
+    	<h1>当前位置： 首页 > <span>会员中心</span></h1>
+        <div class="main-text">
+        	<include file="Public:left"/>
+            <div class="shopBox">
+            	<ul>
+                	<li>会员中心  > <span>更改密码</span></li>
+                    <li class="liri">{$user['nickname']}&nbsp;  |  &nbsp;<a href="{:U('User/loginout')}">退出</a></li> 
+                </ul>
+                <div class="clear"></div>
+				<form action="{:U('User/updatepwd')}" method="post">
+					
+					<table width="750" border="0" cellspacing="0">
+					  <tr>
+						<td ></td>
+						<td><div style="color:red">{$error}</div></td>
+					  </tr>
+					  <tr>
+						<td class="text-nav">原密码：</td>
+						<td><input type="password" class="text2 validate[required]" name="pwd" value="" /></td>
+					  </tr>
+					 
+					  <tr>
+						<td class="text-nav">新密码：</td>
+						<td><input type="password" class="text2 validate[required]" name="PASSWORD" value="" id="PASSWORD" /></td>
+					  </tr>
+					  <tr>
+						<td class="text-nav">确认新密码：</td>
+						<td><input type="password" class="text2 validate[required,equals[PASSWORD]]" name="qrpwd" value="" /></td>
+					  </tr>
+					  <tr>
+						<td class="text-nav"></td>
+						<td>
+							<div class="butBox">
+								<input name="" type="submit" class="but redBut" value="确认修改" />
+								<input name="" type="button" id="chongzhi" class="but" value="重置" />
+							 </div>
+						</td>
+					  </tr>
+					</table>
+				</form>
+            </div>
+        </div>
+    </div>
+</div>
+<include file="Public:bottom"/>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

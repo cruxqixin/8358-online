@@ -1,0 +1,167 @@
+<include file="Public:header"/>
+
+
+<script type="text/javascript" language="javascript">
+    $(function(){
+		$(".export_10 ul li:odd").find(".export_11").attr("class","export_16");
+		$(".export_10 ul li:odd").attr("class","export_15");
+     })
+</script>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/statics/js/kindeditor4/themes/default/default.css"/>
+<script type="text/javascript" src="__PUBLIC__/statics/js/kindeditor4/kindeditor-min.js"></script>
+<link rel="stylesheet" type="text/css" href="/css/content.css">
+<script type="text/javascript">
+$(function(){
+
+	var uploadbutton = KindEditor.uploadbutton({
+		button : $('#uploadButton')[0],
+		fieldName : 'imgFile',
+		url : '__PUBLIC__/statics/js/kindeditor4/php/upload_json.php?dir=file',
+		afterUpload : function(data) {
+			if (data.error === 0) {
+				var url = KindEditor.formatUrl(data.url, 'absolute');
+				$('#JBZL').val(url);
+				$("#filename").val(data.filename);
+				
+			} else {
+				alert(data.message);
+			}
+		},
+		afterError : function(str) {
+			alert('网速不给力！');
+		}
+	});
+	uploadbutton.fileBox.change(function(e) {
+		uploadbutton.submit();
+	});
+	$(".ke-form").width("auto");
+	$("#taklook").click(function(){
+		window.open($("#LINK").val());	
+	})
+})
+</script>
+<style type="text/css">
+.righttd{
+	text-align:right;
+	line-height:30px;
+	height:40px;	
+}
+</style>
+ 
+   <div class="Main">
+     
+        <div class="main6">
+          <p>当前位置：<a href="#">首页</a> > <strong>申请举报</strong></p>
+        </div>
+       <div class="Wapper">
+	 <form action="{:U('Home/Report/index')}" method="post">
+		    <div class="QAright">
+                   <div class="export_03" style="width:100%; background-image:url(/images/exp_03_2.jpg); background-position:left;background-color:#F1F1F1; border:1px solid #E5E6E8; border-bottom:none;">
+                         <div  class="export_04">申请举报</div>
+                         <div class="export_05"><!--<a href="#"><img src="images/exp_04.jpg" /></a><a href="#"><img src="images/exp_05.jpg" /></a> --></div>
+                   </div>
+                   <div class="export_06" style="width:100%;">
+                      
+                       <div class="QA_02" style=" height:460px; text-align:center; padding-top:50px;">
+                       <table border="0" cellspacing="0" cellpadding="0" style="text-align:left; width:500px; margin:auto;">
+                        <tr type="title" >
+                        <td class="righttd">
+                           <span style=" color:red;">*</span>举报链接：</td>
+						   <td>
+                       
+						<input type="text" id="LINK" name="LINK" width="476px" size="60" style="  border: 1px solid #DFDFDF; height:30px; " height="30px"  class="pub_03 validate[required]" value="{$_GET['url']}" />
+                        <a href="javascript:;" id="taklook">查看</a>
+						</td>
+						</tr>
+					
+						<tr>
+						<td class="righttd">
+                           <span style=" color:red;">*</span>举报原因：
+                       </td>
+						   <td>
+						<input type="text" id="JBYY" name="JBYY"  size="60" style="  border: 1px solid #DFDFDF; height:30px; " class="pub_03 validate[required]"/>
+						</td>
+						
+						</tr>
+						<tr>
+						<td colspan="2" style=" padding-left:108px;">
+						<!--<span style="color:#CCCCCC">交易中产生的纠纷</span>    <span style="color:#FF0000">点此投诉；</span> <span style="color:#CCCCCC"> 其他原因请</span> <span style="color:#FF0000">   点击在线咨询；</span>
+						 --></td>
+						</tr>
+						
+						<tr>
+						<td class="righttd">
+                           <span style=" color:red;">*</span>举报内容：
+                       </td>
+						   <td>
+						<input type="text" id="SCONENT" name="SCONENT" size="60"  class="pub_03 validate[required]" style=" border: 1px solid #DFDFDF; height:30px; " />
+						</td>
+						</tr>
+						<tr>
+						<td class="righttd">
+                           举证资料：
+                       </td>
+						<td colspan="3">
+                            <input type="text" style="border: 1px solid #DFDFDF;" name="filename" id="filename"/>
+                            <input type="hidden" name="JBZL" id="JBZL" class="pub_03 validate[required]" size="60"  />
+                            <input type="button" id="uploadButton" value="选择" />
+                        </td>
+						</td>
+                      </tr>
+					  <tr>
+						<td colspan="2" style=" padding-left:108px;">
+					<!--	<span style="color:#CCCCCC">建议：上传相关聊天记录，报价单等截图资料，以确保举报成功。</span>
+					 -->	</td>
+						</tr>
+                        <tr><td><input type="hidden" name="ID" value="{$experts.id}" id="ID"/></td> <td colspan="3"></td>
+              			 </tr>
+               
+                  		<tr>
+                          <td align="right"></td>
+                          <td colspan="4" align="left">
+                          <input type="submit"  style="background:url(__PUBLIC__/statics/images/btn_team.jpg) ;width:331px; height:35px; border:none;"  value=""/>
+						  <input type="hidden"  name="submit" value="1" />
+                   <input type="hidden"  name="have" value="{$data.have}" />
+				     <input type="hidden"  name="cat" value="{$_GET['cat']}" />
+                          </td>
+                       </tr> 
+                    </table>
+              
+                    </table>
+                       </div>
+                   </div>
+		 </form>
+
+</div>
+
+
+
+<include file="Public:footer"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

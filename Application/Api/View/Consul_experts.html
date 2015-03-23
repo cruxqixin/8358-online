@@ -1,0 +1,85 @@
+<include file="UCenter:header"/>
+
+<style type="text/css">
+.tablist table{
+	border:1px solid #939393;
+}
+
+.tablist th{
+	background:#939393;
+	color:white;
+	height:40px;
+	border-right:1px solid #797979;
+	border-left:1px solid #AAAAAA;
+}
+.tablist td{
+	border-right:1px solid #CFCFCF;
+	border-bottom:1px solid #CFCFCF;
+	height:40px;
+	text-align:center;
+}
+.tablist a{
+	color:blue;	
+}
+</style>
+
+
+<!--内容-->
+    <!--left-->
+      <include file="UCenter:left"/>
+    <!--left-->
+    <!--right-->
+    <div class="right">
+           <div class="daohang">当前位置： <a href="/" target="_blank">首页</a> > <a href="#"><font>收藏</font></a></div>
+           <div class="main">
+                <div class="pub_title_bg"><div class="pub_title">收藏项目信息</div></div>
+               
+               
+                 <div class="after_02">
+                    <ul id="nTabs1">
+                        <li class="<if condition="$_GET['type'] eq ''">active1<else/>normal1</if>" onclick="window.location.href='{:U('Uc/Consul/prolist')}'">项目</li>
+                        <li class="<if condition="$_GET['type'] eq '1'">active1<else/>normal1</if>" onclick="window.location.href='{:U('Uc/Consul/prolist?type=1')}'">专家</li>
+						<li class="<if condition="$_GET['type'] eq '2'">active1<else/>normal1</if>" onclick="window.location.href='{:U('Uc/Consul/prolist?type=2')}'">产品</li>
+                    </ul>
+                </div>
+                <div class="after_03 tablist" style="height:auto;" id="nTabs1_Content0">
+                    <table cellpadding="0" cellspacing="0" width="100%">
+                    	<tr><th>专家名称</th><th>职务</th><th>单位名称</th><th>发布时间</th><th>操作</th></tr>
+                        <volist name="experts" id='val'>
+                        	<tr><td>{$val.ename}</td><td>{$val.epsot}</td><td>{$val.enitname}</td><td>{$val.id|date="Y-m-d H:i:s",###}</td><td> <a href="{:U('home/Experts/details',array('id'=>$val['id']))}" target="_blank">查看</a>&nbsp;<a href="javascript:projectno({$val.id})">取消关注</a></td></tr>
+                        </volist>
+                    </table>
+                </div>
+                <div class="page">
+                    {$page}
+                </div>
+                
+           </div>
+    </div>
+    <!--right-->
+    <!--clear-->
+    <div class="clear"></div>
+    <!--clear-->
+   <!--内容-->
+</div>
+
+<script type="text/javascript">
+function projectno(proid){
+	$.ajax({
+				url:"/index.php?a=collectproject&m=ajax&g=home",
+				dataType:"json",
+				type:"get",
+				data:{"type":"1","objid":proid},
+				success:function(data){
+					window.location.reload()
+				},
+				error:function(error){
+					alert(error);	
+				}
+			})
+
+}
+</script>
+
+</body>
+</html>

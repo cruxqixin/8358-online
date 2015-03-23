@@ -1,0 +1,139 @@
+ <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>科济天下网_在线对接会_首页</title>
+<link href="/css/Online/index.css" rel="stylesheet" type="text/css" />
+
+<script type="text/javascript" src="/js/Online/jquery-1.7.2.min.js"></script>
+<script src="/js/Online/index_02.js"></script>
+<script type="text/javascript">
+$(function(){
+	$("#news li").click(function(){
+	  $(this).attr("class","current").siblings().attr("class","");
+	  $("#news_content .fixnone").eq($(this).index()).show().siblings().hide();	
+	})
+})
+$(function(){
+	$("#tech li").click(function(){
+	  $(this).attr("class","current").siblings().attr("class","");
+	  $("#tech_content .fixnone").eq($(this).index()).show().siblings().hide();	
+	})
+})
+</script>
+</head>
+
+<body>
+<include file="Application/News/View/Public_navbar.html"/>
+<div class="headbg">
+</div>
+<div class="navBox">
+	<ul>
+    	<li><a href="{:U('index/index')}" class="currentA">首页</a></li>
+        <!-- <li><a href="#">会议申请</a></li>
+        <li><a href="#">在线会议室</a></li> -->
+    </ul>
+</div>
+<div class="mainBox">
+    <div class="main-left">
+    	<div class="main-left-01">
+        	<h1>在线对接</h1>
+            <div class="techlist_04">
+          <table cellpadding="0" cellspacing="0" border="0">
+              <tr valign="top">
+                 <td width="60"><span>行业类别</span></td>
+                 <td>
+                     <div class="techlist_05">
+                         <ul id="list">
+                         	<?php 
+							foreach($fatherList as $father_k => $father_v){ 
+								$i++;
+								if($i < 11){
+                         	?>
+                            <li>
+                               <div class="normal"><span <?php if($father_v['id'] == $_GET['fid']){?>class="curr"<?php }?>></span><a class="sub-link">&nbsp;&nbsp;<php>echo mb_substr($father_v['cname'],0,24);</php></a></div>
+                               <div class="sbox">
+                                  <ol>
+                                  <?php
+					              foreach($childList[$father_v['id']] as $child_k => $child_v){
+								  ?>
+                                      <li><font <?php if($child_v['id'] == $_GET['cid']){?>class="curr"<?php }?>></font><a href="?fid={$father_v['id']}&cid={$child_v['id']}" class="link2">{$child_v['cname']} </a></li>
+                                  <?php } ?>
+                                  </ol>
+                               </div>
+                            </li>
+                            <?php }
+							}
+							 ?>
+                         </ul>
+                     </div>
+                 </td>
+             </tr>
+          </table>
+       </div>
+        </div>
+        <div class="main-left-02">
+        	<?php foreach($userList as $k => $v){ ?>
+        	<dl>
+            	<dd>
+                	<h1><a href="{:U('index/info/'.$v['uid'])}">【{$v['exhibition_number']}】{$v['company_name']}</a></h1>
+                    <span>发布时间：<?php echo date('Y-m-d',$v['add_time']);?></span>
+                </dd>
+                <dt><span>能提供的核心产品及技术合作：</span>{$v['cooperation_offer']}
+                </dt>
+                <dt><span>已实现的应用：</span>{$v['implemented_application']}
+                </dt>
+                <dt><span>需要何种合作或帮助：</span>{$v['cooperation_need']}
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="{:U('index/info/'.$v['uid'])}">详细信息>></a>
+                </dt>
+            </dl>
+            <?php } ?>
+            <div class="numBox">
+            	{$page}
+            </div>
+        </div>
+    </div>
+    <div class="main-right">
+    	<div class="iconBox">
+        	<div class="icon">
+            	<img src="/images/Online/icon_07.jpg" />
+                <div class="icon-text">
+                	<h1><a href="{:U('index/apply_b')}">申请对接</a></h1>
+                    <p>Apply docking</p>
+                </div>
+                <span></span>
+            </div>
+        </div>
+        <div class="iconBox" style="margin-top: 10px;">
+            <div class="icon">
+            	<img src="/images/Online/icon_myduijie.jpg" />
+                <div class="icon-text">
+                	<h1><a href="{:U('index/detail')}">我的对接</a></h1>
+                    <p>Apply docking</p>
+                </div>
+                <span></span>
+            </div>
+        </div>
+        <!-- <div class="news-text">
+        	<h1>推荐企业</h1>
+            <ul>
+            	<li><a href="#"><span>[ 推荐 ]</span> NANO科技北京有限公司</a></li>
+                <li><a href="#"><span>[ 推荐 ]</span> NANO科技北京有限公司</a></li>
+                <li><a href="#"><span>[ 推荐 ]</span> NANO科技北京有限公司</a></li>
+                <li><a href="#"><span>[ 推荐 ]</span> NANO科技北京有限公司</a></li>
+                <li><a href="#"><span>[ 推荐 ]</span> NANO科技北京有限公司</a></li>
+                <li><a href="#"><span>[ 推荐 ]</span> NANO科技北京有限公司</a></li>
+                <li><a href="#"><span>[ 推荐 ]</span> NANO科技北京有限公司</a></li>
+                <li><a href="#"><span>[ 推荐 ]</span> NANO科技北京有限公司</a></li>
+                <li><a href="#"><span>[ 推荐 ]</span> NANO科技北京有限公司</a></li>
+                <li class="currentLi"><a href="#"><span>[ 推荐 ]</span> NANO科技北京有限公司</a></li>
+            </ul>
+        </div> -->
+    </div>
+</div>
+<link href="/css/News/common.css" rel="stylesheet" type="text/css" />
+<include file="Application/News/View/Public_footer.html"/>
+
+</body>
+</html>
+ 

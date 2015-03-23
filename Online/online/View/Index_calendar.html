@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>科济天下网_在线对接会_对接日历</title>
+<link href="/css/Online/index.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/js/Online/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="/js/Online/index_02.js"></script>
+<script>
+	$(function(){
+	   $(".falg").click(function(){
+		  var html=$(".search-01 .lie");
+		  if(html.is(":hidden"))
+		  {
+			 html.show();  
+		  } 
+		  else
+		  {
+			  html.hide();  
+		  }  
+	   }) 
+	   $(".search-01 .lie").find("a").click(function(){
+		   $(".txt_bg").val($(this).html());
+		   $(".search-01 .lie").hide();
+		}) 
+	})
+	$(function(){
+		$("#name-0").click(function(){
+			$(".show").show();
+			})
+		$(".time_block").click(function(){
+			$(".show").hide();
+			})	
+	})
+	$(function(){
+            var $timeBox = $(".time_block");
+            $timeBox.click(function(){
+                $(this).toggleClass("on");
+                if($(this).find("input")[0].value == 0){
+                	$(this).find("input")[0].value = 1;
+                }else{
+                	$(this).find("input")[0].value = 0;
+                }
+            });  
+        });
+</script>
+</head>
+
+<body>
+<include file="Application/News/View/Public_navbar.html"/>
+
+<div class="headbg">
+</div>
+<div class="navBox">
+	<ul>
+    	<li><a href="{:U('index/index')}" class="currentA">首页</a></li>
+        <!-- <li><a href="#">会议申请</a></li>
+        <li><a href="#">在线会议室</a></li> -->
+    </ul>
+</div>
+<div class="mainBox">
+    <h5>当前位置： <a href="{:U('index/index')}">首页</a> ><span> 我的对接</span></h5>
+    <div class="joint" style="height:670px;">
+        <ul  id="nTabs2">
+            <li ><a href="{:U('index/schedule_accept')}">已接收预约</a></li>
+            <li class="currentLi" ><a >对接日历</a></li>
+            <li ><a href="{:U('index/schedule_apply')}">已提交预约</a></li>
+            <li ><a href="{:U('index/schedule_reject')}">被拒绝预约</a></li>
+            <li ><a href="{:U('index/detail')}">基础资料</a></li>
+        </ul>
+        <style>
+    .ta{
+        display:none;
+    }
+    .on .ta{
+        display: inline;
+    }
+    .on .me{
+        display: none;
+    }
+</style>
+        <div class="list">
+            <div id="nTabs2_Content1" >
+            	<div class="company-08 joint-01">
+                    <div class="company-07">
+	                    <form action="{:U('index/calendar')}" id="form1" method="post" >
+	                    <h1  style="margin-left: -12px;">请确定对接时间（红色为不可预约时间，绿色为可预约时间）</h1>
+	                    <?php
+	                    foreach($dayConfig as $day_k => $day_v){
+						?>
+	                        <dl>
+	                            <dd>{$day_v}</dd>
+	                            <dt>
+	                            <?php
+	                    		foreach($timeConfig as $time_k => $time_v){
+								?>
+	                            	<a href="javascript:void(0);" class="time_block">
+	                            	<img class="me" src="/images/Online/icon_{$calendarListDay[$day_k][$time_k]['status']==1? 'green' : 'red'}.jpg" />
+	                            	<img class="ta" src="/images/Online/icon_{$calendarListDay[$day_k][$time_k]['status']==1? 'red' : 'green'}.jpg" />
+	                            	&nbsp;&nbsp;{$time_v}
+	                            	<input name="calendar_{$calendarListDay[$day_k][$time_k]['id']}" type='hidden' value="{$calendarListDay[$day_k][$time_k]['status']}"/>
+	                            	</a>
+	                            <?php
+	                            }
+                            	?>
+	                            </dt>
+	                        </dl>
+	                    <?php
+	                    }
+                    	?>
+	                        <div class="but-box">
+	                        	<input type="submit" value="保存修改" />
+	                        </div>
+	                    </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<link href="/css/News/common.css" rel="stylesheet" type="text/css" />
+<include file="Application/News/View/Public_footer.html"/>
+</body>
+</html>

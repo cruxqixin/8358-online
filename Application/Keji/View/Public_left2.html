@@ -1,0 +1,34 @@
+<dl>
+            	<dd class="current-DD"><a href="#">会员中心</a>
+                	<p><a href="{:U('User/upinfo?lb=xg')}" <if condition="$_GET['lb'] eq 'xg'">style="color:#c60000"</if>>修改资料</a></p>
+                    <p><a href="{:U('User/updatepwd?lb=pwd')}" <if condition="$_GET['lb'] eq 'pwd'">style="color:#c60000"</if>>修改密码</a></p>
+                </dd>              
+                <dd><a href="{:U('News/index?lb=xw')}" <if condition="$_GET['lb'] eq 'xw'">class="currentA"</if>>我的新闻</a><a href="{:U('News/edit')}">&nbsp;&nbsp;&nbsp;&nbsp;<span>发布</span></a></dd>
+                <dd><a href="{:U('Good/index?lb=cp')}" <if condition="$_GET['lb'] eq 'cp'">class="currentA"</if>>我的产品</a><a href="{:U('Good/edit')}">&nbsp;&nbsp;&nbsp;&nbsp;<span>发布</span></a></dd>
+                <dd><a href="{:U('Equipment/index?lb=sb')}" <if condition="$_GET['lb'] eq 'sb'">class="currentA"</if>>我的二手设备</a><a href="{:U('Equipment/edit')}">&nbsp;&nbsp;&nbsp;&nbsp;<span>发布</span></a></dd>
+                 <dd><a href="{:U('Buygood/index?lb=sb')}" <if condition="$_GET['lb'] eq 'bg'">class="currentA"</if>>我的求购产品</a><a href="{:U('Buygood/edit')}">&nbsp;&nbsp;&nbsp;&nbsp;<span>发布</span></a></dd>
+				<dd><a href="{:U('Project/index?lb=xm')}" <if condition="$_GET['lb'] eq 'xm'">class="currentA"</if>>我的技术项目</a><a href="{:U('Project/edit')}">&nbsp;&nbsp;&nbsp;&nbsp;<span>发布</span></a></dd>
+                <dd><a href="{:U('Demand/index?lb=xq')}" <if condition="$_GET['lb'] eq 'xq'">class="currentA"</if>>我的需求</a><a href="{:U('Demand/edit')}">&nbsp;&nbsp;&nbsp;&nbsp;<span>发布</span></a></dd>
+                <dd><a href="{:U('Rongzi/index?lb=rz')}" <if condition="$_GET['lb'] eq 'rz'">class="currentA"</if>>我的融资需求</a><a href="{:U('Zixun/Zixun/details')}" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;<span>发布</span></a></dd>
+               <dd><a href="{:U('Service/index?lb=fwsq')}" <if condition="$_GET['lb'] eq 'fwsq'">class="currentA"</if>>我的服务申请</a><a href="{:U('Service/edit')}">&nbsp;&nbsp;&nbsp;&nbsp;<span>发布</span></a></dd>
+			   <dd style="display:none"><a href="{:U('Train/index?lb=px')}" <if condition="$_GET['lb'] eq 'px'">class="currentA"</if>>我的培训认证</a><a href="{:U('Train/edit')}">&nbsp;&nbsp;&nbsp;&nbsp;<span>发布</span></a></dd>
+                <dd class="current-DD"><a href="#">我的对接咨询</a>
+                	<p><a href="">发件箱</a></p>
+                    <p><a href="">收件箱</a></p>
+                </dd> 
+                <dd><a href="{:U('Instrument/index?lb=gx')}" <if condition="$_GET['lb'] eq 'gx'">class="currentA"</if>>我的共享仪器</a><a href="{:U('Instrument/edit')}">&nbsp;&nbsp;&nbsp;&nbsp;<span>发布</span></a></dd>
+                <dd><a href="#">我的稿件</a></dd>
+                <dd class="current-DD"><a href="#">我的活动</a>
+					<p><a href="#">我参加的活动</a></p>
+					<p><a href="{:U('Conference/index?lb=lh')}" <if condition="$_GET['lb'] eq 'lh'">class="currentA"</if>>我的联合办会</a><a href="{:U('Conference/edit')}">&nbsp;&nbsp;&nbsp;&nbsp;<span>发布</span></a><p>
+				</dd>
+                <dd style="background:#d9d9d9"><a href="{:U('Caiwu/index?lb=cw')}" <if condition="$_GET['lb'] eq 'cw'">class="currentA"</if>>我的财务信息</a><a href="{:U('Caiwu/edit')}">&nbsp;&nbsp;&nbsp;&nbsp;<span>发布</span></a></dd>
+                <dd><a href="{:U('Expert/edit?lb=sq')}" <if condition="$_GET['lb'] eq 'sq'">class="currentA"</if>>申请成为专家</a></dd>
+				 <dd style="background:#d9d9d9"><a href="{:U('Expert/index?lb=zj')}" <if condition="$_GET['lb'] eq 'zj'">class="currentA"</if>>我的专家</a><a href="{:U('Expert/edit')}">&nbsp;&nbsp;&nbsp;&nbsp;<span>发布</span></a></dd>
+                
+                <dd><a href="{:U('Business/index?lb=zs')}" <if condition="$_GET['lb'] eq 'zs'">class="currentA"</if>>我的招商政策</a><a href="{:U('Business/edit')}">&nbsp;&nbsp;&nbsp;&nbsp;<span>发布</span></a></dd>
+                <dd><a href="#">我的数据资料</a></dd>
+				<dd><a href="{:U('Qy/index')}">我的企业站</a><a href="{:U('Qy/intro')}">&nbsp;&nbsp;&nbsp;&nbsp;<span>发布</span></a></dd>
+				<dd><a href="{:U('Chxin/index')}">我的科技创新平台 </a><a href="{:U('Chxin/edit')}">&nbsp;&nbsp;&nbsp;&nbsp;<span>发布</span></a></dd>
+			
+            </dl>

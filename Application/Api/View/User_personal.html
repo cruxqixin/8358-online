@@ -1,0 +1,149 @@
+<include file="UCenter:header"/>
+<include file="UCenter:left"/>
+
+<script type="text/javascript" src="__PUBLIC__/statics/js/WdatePicker.js"></script>
+
+
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/statics/js/kindeditor4/themes/default/default.css"/>
+<script type="text/javascript" src="__PUBLIC__/statics/js/kindeditor4/kindeditor-min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/statics/js/WdatePicker.js"></script>
+<!--<script type="text/javascript" src="__PUBLIC__/statics/js/jquery/plugins/jQuery.Hz2Py-min.js"></script> -->
+<script type="text/javascript" src="__PUBLIC__/statics/js/pinyin.js"></script>
+<script type="text/javascript" src="__PUBLIC__/statics/js/area.js" charset="gbk"></script>
+<script type="text/javascript" src="/js/areaw.js" charset="gbk"></script>
+
+<script type="text/javascript">
+$(function(){
+
+	var uploadbutton = KindEditor.uploadbutton({
+		button : $('#uploadButton')[0],
+		fieldName : 'imgFile',
+		url : '__PUBLIC__/statics/js/kindeditor4/php/upload_json.php?dir=file',
+		afterUpload : function(data) {
+			if (data.error === 0) {
+				var url = KindEditor.formatUrl(data.url, 'absolute');
+				$('#CERTIFICATE').val(url);
+				$("#filename").val(data.filename);
+				
+			} else {
+				alert(data.message);
+			}
+		},
+		afterError : function(str) {
+			alert('网速不给力！');
+		}
+	});
+	uploadbutton.fileBox.change(function(e) {
+		uploadbutton.submit();
+	});
+	$(".ke-form").width("auto");
+	$("#taklook").click(function(){
+		window.open($("#LINK").val());	
+	})
+})
+</script>
+    <!--right-->
+    <div class="right">
+           <div class="daohang">当前位置： <a href="<hr />
+#">首页</a> > <a href="#"><font>个人基本信息</font></a></div>
+
+           <div class="main">
+                <div class="pub_title_bg"><div class="pub_title">个人构基本信息&nbsp;&nbsp;<a style=" color:#5E5F5F" href="<if condition="$currentuser['UTYPEREVIEW'] eq 1">{:U('Uc/Experts/expertsadd?ID='.$currentuser['ID'])}<else/></if>"><font><if condition="$currentuser['UTYPEREVIEW'] eq 1">已申请的专家信息<else/></if></font></a></div></div>
+              
+                <div class="pub_02">
+                <form action="{:U('Uc/User/personal')}" method="post">
+                	
+                   <table cellpadding="0" cellspacing="0" border="0">
+                       <tr>
+                          <td align="right"><span>*</span> 姓名</td>
+                          <td colspan="2"><input type="text" name="UNAME" value="{$data.UNAME}" class="pub_03 validate[required]" style="width:540px" /></td>
+                       </tr>
+                         <tr>
+                          <td align="right"><span>*</span>性别</td>
+                          <td colspan="2">&nbsp;&nbsp;&nbsp;<input type="radio" name="UGender"  checked="checked"  value="0"/>&nbsp;男&nbsp;&nbsp; <input name="UGender" type="radio" value="1"/>&nbsp;女</td>
+                       </tr>
+                       <tr>
+                          <td align="right">出生年月</td>
+                          <td colspan="2"><input type="text" name="UBIRTH" value="{$data.UBIRTH}" class="pub_06"  style="width:170px" onclick="WdatePicker()" />
+                       
+                          </td>
+                       </tr>
+                       <tr>
+                          <td align="right"><span>*</span>职务</td>
+                          <td colspan="2"><input type="text" name="UPOST" value="{$data.UPOST}" class="pub_03 validate[required]" style="width:540px" /></td>
+                       </tr>
+                         <tr>
+                          <td align="right">职称</td>
+                          <td colspan="2"><input type="text" name="UPOSTTITLE" value="{$data.UPOSTTITLE}" class="pub_03" style="width:540px" /></td>
+                       </tr>
+                         <tr>
+                          <td align="right"><span>*</span> 单位名称</td>
+                          <td colspan="2"><input type="text" name="UNITNAME" value="{$data.UNITNAME}" class="pub_03 validate[required]" style="width:540px" /></td>
+                       </tr>
+                       
+                        <tr>
+                          <td align="right"> 所属部门</td>
+                          <td colspan="2"><input name="UDEPARTMENT" value="{$data.UDEPARTMENT}" type="text" class="pub_03" style="width:540px" /></td>
+                       </tr>
+   
+                        
+                         <tr>
+                          <td align="right"><span>*</span> 单位地址</td>
+                          <!--<td><select class="pub_03" style="width:154px"><option></option></select></td>
+                          <td><input type="text" class="pub_03" style="width:378px" /></td> -->
+                           <td colspan="2"><input type="text" name="UADDRESS" value="{$data.UADDRESS}" class="pub_03 validate[required]" style="width:540px" /></td>
+                       </tr>
+                         <tr>
+                          <td align="right">邮编</td>
+                          <td colspan="2"><input name="UPOSTNO" type="text"  value="{$data.UPOSTNO}" class="pub_03" style="width:540px" /></td>
+                       </tr>
+                         <tr>
+                          <td align="right"><span>*</span>联系人办公电话</td>
+                          <td colspan="2"><input type="text" name="UMOBIPHONE" value="{$data.UMOBIPHONE}" class="pub_03 validate[required]" style="width:540px" /></td>
+                       </tr>
+                      
+                         <tr>
+                          <td align="right">传真</td>
+                          <td colspan="2"><input type="text" name="UFAX"  value="{$data.UFAX}" class="pub_03" style="width:540px" /></td>
+                       </tr>
+                         <tr>
+                          <td align="right"><span>*</span>邮箱</td>
+                          <td colspan="2"><input type="text" name="UEMAIL" value="{$data.UEMAIL}"  class="pub_03 validate[required]" style="width:540px" /></td>
+                       </tr>
+					  <tr>
+						<td class="righttd">
+                           身份证电子文件：
+                       </td>
+						<td colspan="3">
+					
+                            <input type="text" style="border: 1px solid #DFDFDF;width:540px;" name="filename" id="filename" class="pub_03 validate[required]"  />
+                            <input type="hidden" name="CERTIFICATE" id="CERTIFICATE" class="pub_03 validate[required]" size="60"  />
+                            <input type="button" id="uploadButton" value="选择" />
+                        </td>
+						</td>
+                      </tr>
+                         <tr>
+                          <td align="right"></td>
+                          <td colspan="2" align="center">
+                          <input type="submit" style="background:url(__PUBLIC__/statics/images/btn_team.jpg) ;width:331px; height:35px; border:none;"  value=""/>
+                          </td>
+                       </tr>
+                   </table>
+                   <input type="hidden"  name="submit" value="1" />
+                   <input type="hidden"  name="have" value="{$data.have}" />
+                   
+                   </form>
+                </div>
+                
+                
+                
+           </div>
+    </div>
+    <!--right-->
+    <!--clear-->
+    <div class="clear"></div>
+    <!--clear-->
+   <!--内容-->
+</div>
+</body>
+</html>

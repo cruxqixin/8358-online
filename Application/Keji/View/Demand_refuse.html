@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>我的需求</title>
+<link href="/css/Keji/type.css" rel="stylesheet" type="text/css" />
+<link href="/css/content.css" rel="stylesheet" type="text/css" />
+<script src="__PUBLIC__/statics/js/jquery/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/statics/js/WdatePicker.js"></script>
+<script type="text/javascript">
+$(function(){
+	var defaultVal=$(".text").val();
+	$(".text").focus(function(){
+		if($(this).val()==defaultVal){
+			$(this).val("");
+		}
+	})
+	$(".text").blur(function(){
+		if($(this).val().length==0){
+			$(this).val(defaultVal);
+		}
+	})
+})
+</script>
+</head>
+
+<body>
+<include file="Public:header1"/>
+<div class="mainBox">
+	<div class="main">
+    	<h1>当前位置： 首页 > <span>会员中心</span></h1>
+        <div class="main-text">
+        	<include file="Public:left"/>
+            <div class="shopBox">
+            	<ul>
+                	<li>会员中心  > <span>我的需求</span></li>
+                    <li class="liri">{$user['nickname']}&nbsp;  |  &nbsp;<a href="{:U('User/loginout')}">退出</a></li>
+                 </ul>
+                <div class="searchBox">
+                <form action="{:U('Demand/index')}" method="post">
+                	<input type="text" class="time" name="start_time" onfocus="{WdatePicker()}" >
+                    <span>至</span>
+                    <input type="text" class="time" name="end_time" onfocus="{WdatePicker()}">
+                    <input class="text" name="keyword" value="请输入关键字" />
+                    <input name="" type="button" class="redbut"  value="查 询"/>
+                  </form>
+				  <a href="{:U('Demand/edit')}"><input name="" style="cursor:pointer" type="button" class="redbut redbut2" value="我要发布" /></a>
+                </div>
+                <div class="search">
+                	<a href="{:U('Demand/index')}">已发布<span>（{$all}）</span></a>
+                    <a href="{:U('Demand/indexx')}" >待审核<span>（{$ds}）</span></a>
+                    <a href="{:U('Demand/refuse')}"class="currentA">未通过审核<span>（{$count}）</span></a>
+                </div>
+				<table width="750" border="0" class="list-tab" cellspacing="0">
+				  <tr>
+                    <td width="395">项目名称</td>
+                    <td width="127">发布时间</td>
+                    <td width="125">浏览量</td>
+                    <td>操作</td>
+                  </tr>
+				<volist id="val" name="manu">
+                  <tr>
+                    <td width="395">{$val['dtitle']}</td>
+                    <td width="127">{$val['daddtime']|date="Y-m-d",###}</td>
+                    <td width="125">{$val['readnum']}</td>
+                    <td><a href="{:U('Demand/edit?id='.$val['id'])}">修改</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="{:U('Demand/delete?id='.$val['id'])}">删除</a></td>
+                  </tr>
+                 </volist>
+                </table>
+				<div class="iconBox page">
+                	{$page}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<include file="Public:bottom"/>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

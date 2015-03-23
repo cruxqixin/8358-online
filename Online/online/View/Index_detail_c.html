@@ -1,0 +1,168 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>科济天下网_在线对接会_基础资料</title>
+<link href="/css/Online/index.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/js/Online/jquery-1.7.2.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$("#news li").click(function(){
+	  $(this).attr("class","current").siblings().attr("class","");
+	  $("#news_content .fixnone").eq($(this).index()).show().siblings().hide();	
+	})
+})
+$(function(){
+	$("#tech li").click(function(){
+	  $(this).attr("class","current").siblings().attr("class","");
+	  $("#tech_content .fixnone").eq($(this).index()).show().siblings().hide();	
+	})
+})
+</script>
+</head>
+
+<body>
+<include file="Application/News/View/Public_navbar.html"/>
+<div class="headbg">
+</div>
+<div class="navBox">
+	<ul>
+    	<li><a href="{:U('index/index')}" class="currentA">首页</a></li>
+        <!-- <li><a href="#">会议申请</a></li>
+        <li><a href="#">在线会议室</a></li> -->
+    </ul>
+</div>
+<div class="mainBox">
+    <h5>当前位置： <a href="{:U('index/index')}">首页</a> ><span> 我的对接</span></h5>
+    <div class="joint" style="height:auto;">
+          <ul id="news">
+             <li ><a href="{:U('index/schedule_accept')}">已接收预约</a></li>
+	         <li ><a href="{:U('index/calendar')}">对接日历</a></li>
+	         <li ><a href="{:U('index/schedule_apply')}">已提交预约</a></li>
+	         <li ><a href="{:U('index/schedule_reject')}">被拒绝预约</a></li>
+	         <li class="currentLi" ><a >基础资料</a></li>
+          </ul>
+          <div class="index1_05" id="news_content">
+              <div class="fixnone" style="height:auto;">
+              	<div class="company-01" style="margin:0 auto;">
+                    <div class="company-02">
+                        <table width="746" border="0" cellspacing="0">
+                            <tbody>
+                                <tr>
+	                        	<td width="262">姓名：<a >{$onlineUser['name']} </a></td>
+	                            <td width="242">职务：<a >{$onlineUser['position']} </a></td>
+	                            <td>部门：<a >{$onlineUser['department']}  </a></td>
+	                        </tr>
+	                        <tr>
+	                        	<td colspan="2">单位中文名称：<a >{$onlineUser['company_cname']} </a></td>
+	                            <td>电话：<a >{$onlineUser['tel']}</a></td>
+	                        </tr>
+	                        <tr>
+	                        	<td colspan="2">单位英文名称：<a >{$onlineUser['company_ename']} </a></td>
+	                            <td>手机：<a >{$onlineUser['mobile']}</a></td>
+	                        </tr>
+	                        <tr>
+	                        	<td width="262">单位网站：<a >{$onlineUser['company_website']} </a></td>
+	                            <td width="242">Email：<a >{$onlineUser['company_email']} </a></td>
+	                            <td>单位地址：<a >{$onlineUser['company_address']}  </a></td>
+	                        </tr>
+	                        <tr>
+	                        	<td colspan="3">所属行业：<a >{$onlineUser['industry']} </a></td>
+	                        </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                    
+                </div>
+                <div class="company-03" style="margin:20px auto;">
+                    <ul id="tech">
+                        <li class="current">您所关注的产品</li>
+                        <li>B2B 商务洽谈</li>
+                    </ul>
+                    <div class="company-06">
+                        <div id="tech_content">
+                            <div class="fixnone company-04">
+		                        <?php
+		                        foreach($choosenFatherList as $father){
+								?>
+		                        <div class="company-05">
+		                            <h1>▪ <php>echo $father['cname'];</php><php>if($father['ename'] != ''){ echo '/'.$father['ename'];}</php></h1>
+		                            <?php 
+		                            foreach($choosenList[$father['id']] as $k=>$v){
+									?>
+		                            <p>{$v['cname']}{$v['ename']}</p>
+		                            <?php
+		                            }
+									?>
+		                        </div>
+		                        <?php
+		                        }
+								?>
+		                    </div>
+		                    <div class="fixnone company-04" style="display:none;">
+		                        <div class="company-05">
+		                            <p><strong>需要何种合作或帮助：</strong>{$onlineUser['cooperation_need']}</p>
+		                            <p><strong>是否有投融资需求：</strong>{$onlineUser['fund_demand']==1 ? '是' : '否'}</p>
+		                        </div>
+		                    </div>
+		                </div>
+
+                        <div class="company-08" style="margin:20px auto;">
+                            <h1>选择对接时间（红色表示当前已确定预约，黄色表示有待定预约，绿色表示无预约）</h1>
+                            <div class="company-07">
+							<?php
+		                    foreach($dayConfig as $day_k => $day_v){
+							?>
+		                        <dl>
+		                            <dd>{$day_v}</dd>
+		                            <dt>
+		                            <?php
+		                    		foreach($timeConfig as $time_k => $time_v){
+									if(in_array($calendarListDay[$day_k][$time_k]['id'],$scheduleListCid) || $calendarListDay[$day_k][$time_k]['status']==0){
+										$pic = $scheduleListCidKV[$calendarListDay[$day_k][$time_k]['id']] == 1 ? 'yellow' : 'red';
+										$checkable = 0;
+									}else{
+										$pic = 'green';
+										$checkable = 1;
+									}
+									?>
+		                            	<a class="time_block">
+		                            	<img src="/images/Online/icon_{$pic}.jpg" />
+		                            	&nbsp;&nbsp;{$time_v}
+		                            	</a>
+		                            <?php
+		                            }
+                            		?>
+                                    </dt>
+                                </dl>
+                                <?php
+			                    }
+                    			?>
+<style>
+.but-box a {
+    background-color: #990033;
+    border: medium none;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+    height: 38px;
+    width: 120px;
+}
+</style>
+                                <div class="but-box">
+                                	<a href="{:U('index/modify')}" ><input type="button" value="修改资料"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              </div>
+          </div>  
+       </div>
+    </div>
+</div>
+<link href="/css/News/common.css" rel="stylesheet" type="text/css" />
+<include file="Application/News/View/Public_footer.html"/>
+</body>
+</html>

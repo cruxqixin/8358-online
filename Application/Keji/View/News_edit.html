@@ -1,0 +1,188 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>新闻发布</title>
+<link href="/css/Keji/type.css" rel="stylesheet" type="text/css" />
+<script src="__PUBLIC__/statics/js/jquery/jquery-1.7.2.min.js"></script>
+
+<link href="/css/validationEngine.jquery.css" rel="stylesheet" type="text/css" />
+<script src="/js/Keji/jquery.validationEngine.js" type="text/javascript"></script>
+<script src="/js/Keji/jquery.validationEngine-zh_CN.js" type="text/javascript" charset="UTF-8"></script>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/statics/js/kindeditor4/themes/default/default.css"/>
+<script type="text/javascript" src="__PUBLIC__/statics/js/kindeditor4/kindeditor-min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/statics/js/commonedit.js"></script>
+<!--[if lte IE 6]>
+<script type="text/javascript" src="js/PNG.js"></script>
+<script type="text/javascript" src="js/PNGClass.js"></script>
+<![endif]-->
+<script type="text/javascript">
+$(function(){
+	
+	$("form").validationEngine();
+	
+	$("#formid").submit(function(){
+		if(allitems.isEmpty())
+		{
+		  alert('请填写新闻内容！');
+		  return false;
+		}	
+		
+	})
+	$("#chongzhi").click(function(){
+		$(".text1").val("");
+		allitems.html('');
+		$("#imgeface").attr('src',"");
+		 $("input[@type='radio'][name='IS_CHXIN'][@value='0']").attr("checked",true);
+			 $("#chid").hide();
+		
+	})
+	
+	$("[id=IS_CHXIN]").change(function(){
+		if($("input[name='IS_CHXIN']:checked").val()=='1'){
+			$("#chid").show();
+		}
+		if($("input[name='IS_CHXIN']:checked").val()=='0'){
+			$("#chid").hide();
+			$("#chid").val("");
+		}
+	})
+	if($("input[name='IS_CHXIN']:checked").val()=='1'){
+			$("#chid").show();
+		}
+	 
+
+})
+
+</script>
+</head>
+
+<body>
+<include file="Public:header1"/>
+<div class="mainBox">
+	<div class="main">
+    	<h1>当前位置： 首页 > <span>会员中心</span></h1>
+        <div class="main-text">
+        	<include file="Public:left"/>
+            <div class="shopBox">
+            	<ul>
+                	<li>会员中心  > <span>新闻发布</span></li>
+                    <li class="liri">{$user['nickname']}&nbsp;  |  &nbsp;<a href="{:U('User/loginout')}">退出</a></li> 
+                </ul>
+                <div class="clear"></div>
+			<form action="{:U('News/edit')}" method="POST" id="formid">
+                <table  border="0" cellspacing="0" class="texttb">
+				  <if condition="$article['status'] eq '2'">
+					<tr>
+						 <td width="136" class="text-nav">未通过审核原因 :</td>
+						<td><input type="text" name="SUGGESTION" id="SUGGESTION" class="text1" size="60" value="{$article.suggestion}"></td>
+				    </tr>
+				  </if>
+                  <tr>
+                    <td  class="text-nav">新闻标题：</td>
+                    <td><input class="text1 validate[required]" name="TITLE" id="TITLE" value="{$article['title']}"/></td>
+                  </tr>
+                 
+                 
+                  <tr>
+                    <td class="text-nav">新闻内容：</td>
+                    <td><textarea  class="editshow" style="height:320px;" id="INFO" name="INFO">{$article['info']}</textarea></td>
+                  </tr>
+				  <tr>
+                    <td  class="text-nav">作者：</td>
+                    <td><input class="text1 txt1 validate[required]" name="AUTHOR" id="AUTHOR" value="<if condition="$article['author'] eq ''">{$user['companyname']}<else/>{$article['author']}</if>"></td>
+                  </tr>
+				  <tr>
+                    <td  class="text-nav">来源：</td>
+                    <td><input class="text1 txt1 validate[required]"  name="SOURCE" id="SOURCE" value="<if condition="$article['source'] eq ''">科济天下<else/>{$article['source']}</if>"/></td>
+                  </tr>
+				  <tr>
+                    <td  class="text-nav">关键词：</td>
+                    <td>
+						<input class="text1 txt1 validate[required,custom[onlyChina]]" maxLength="10" name="KEYWORD1" id="KEYWORD1" value="{$key[0]}"/>
+						<input class="text1 txt1 validate[custom[onlyChina]]" maxLength="10" name="KEYWORD2" id="KEYWORD2" value="{$key[1]}"/>
+						<input class="text1 txt1 validate[custom[onlyChina]]" maxLength="10" name="KEYWORD3" id="KEYWORD3" value="{$key[2]}"/>
+						<div style="margin-left:10px;color:red; padding-top:5px;">每个关键词限制10个字以内，不能有特殊符号</div>
+					</td>
+                  </tr>
+				  <tr>
+                    <td  class="text-nav">排序值：</td>
+                    <td>
+						<input class="text1 sort"  name="ORD" id="ORD" value="{$article['ord']}"/>						
+					</td>
+                  </tr>
+				   
+				   <tr>
+                    <td  class="text-nav">是否属于创新科技平台：</td>
+                    <td>
+						 <input type="radio" style="margin-left:15px;" name="IS_CHXIN" id="IS_CHXIN" class="radio_style" value="1" <if condition="$article['is_chxin'] eq '1'">checked="checked"</if> > &nbsp;是&nbsp;&nbsp;&nbsp;
+        	             <input type="radio" name="IS_CHXIN" id="IS_CHXIN" class="radio_style" value="0" <if condition="$article['is_chxin'] eq '0' OR $article['is_chxin'] eq ''">checked="checked"</if>> &nbsp;否
+        
+					</td>
+					</tr>
+					 <tr id="chid" style="display:none">
+                    <td  class="text-nav">创新科技平台：</td>
+                    <td>
+						 <select name="CHXINID">
+							<volist id="val" name="xkind">
+								<option value="{$val['id']}" <if condition="$article['chxinid'] eq $val['id']">selected="selected"</if>>{$val['syname']}</option>
+							</volist>
+						 </select>
+					</td>
+					</tr>
+					<tr>
+                    <td  class="text-nav">在本企业站是否显示：</td>
+                    <td>
+						<input type="radio" style="margin-left:15px;" name="IS_SHOW" id="IS_SHOW" class="radio_style" value="1" <if condition="$article['IS_SHOW'] eq '1'  OR $article['IS_SHOW'] eq ''">checked="checked"</if> > &nbsp;是&nbsp;&nbsp;&nbsp;
+        	             <input type="radio" name="IS_SHOW" id="IS_SHOW" class="radio_style" value="0" <if condition="$article['IS_SHOW'] eq '0'">checked="checked"</if>> &nbsp;否
+					</td>
+                  </tr>
+                  <tr>
+				  
+                    <td class="text-nav"><input type="hidden" name="ID" value="{$article['id']}"></td>
+                    <td>
+                    	<div class="butBox">
+                    		<input name="" type="submit" class="but redBut" value="确认发布" />
+                            <input name="" type="button" id="chongzhi" class="but" value="重置发布" />
+                         </div>
+                    </td>
+                  </tr>
+                </table>
+			</form>
+            </div>
+        </div>
+    </div>
+</div>
+<include file="Public:bottom"/>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

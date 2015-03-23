@@ -1,0 +1,1015 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>泰科</title>
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<link href="css/index.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="/js/jqueryplus/jquery.autocomplete.css"/>
+<script src="/Public/statics/js/jquery/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="index.php/home/Js/getschools"></script>
+<script type="text/javascript" src="index.php/home/Js/getcompany"></script>
+
+
+<script type="text/javascript" src="/js/common.js" charset="gbk"></script>
+<script type="text/javascript" src="/js/nativ.js" charset="gbk"></script>
+<script type="text/javascript" src="/js/indexscroll.js" charset="gbk"></script>
+<script type="text/javascript" src="/js/index.js"></script>
+<script type="text/javascript" src="/Public/statics/js/area.js" charset="gbk"></script>
+<script type="text/javascript" src="/js/areaw.js" charset="gbk"></script>
+<script type="text/javascript" src="/js/jquery.slide-zool.js" charset="gbk"></script>
+<script type="text/javascript" src="/js/jq.Slide.js" charset="gbk"></script>
+
+<script type="text/javascript" src="/js/jqueryplus/jquery.autocomplete.pack.js"></script>
+</head>
+<body>
+
+ <!------------------------------------------------------------头部----开始-----------------------------------------> 
+ <div class="head">
+   <div class="Main">
+     <div class="login">
+     	            <div class="hbtn"><a href="/index.php/Uc/User/reg">注册</a></div>
+            <div class="hbtn"><a href="/index.php/Uc/User/login">登录</a></div>         <!--<input type="text" class="hbtn" value="注册">
+         <input type="text" class="hbtn" value="登录">
+         <font color="#ea4940">sdfa</font> 个人中心 ，
+         <input type="text" class="hbtn" value="退出"> -->
+     </div>
+      <p>
+     <table cellpadding="0" cellspacing="0" border="0" style="float:right;"><tr><td valign="middle">
+     <a href="http://en.un-techina.com/" target="_top"><span style="line-height:40px;font-size:12px; height:40px; margin-top:-20px;">English</span> &nbsp; </a></td><td>
+     <a href="javascript:;" id="aweixin"><img src="images/dl_01.jpg"><img src="/images/weixin.jpg" id="divweixin" style="width:150px; margin-left:-50px;position:absolute; margin-top:40px; text-align:left;display:none;" /></a>
+      <a href="#"><img src="images/dl_02.jpg"></a>
+      <a href="#"><img src="images/dl_03.jpg"></a></td></tr></table></p>
+       <script type="text/javascript">
+ 	$("#aweixin").hover(function(){
+		$("#divweixin").css("display","inline");	
+	},function(){
+		$("#divweixin").hide();	
+	})
+	$(function(){
+	  $(".indexShowBox").slideJ({
+                leftBtn: ".indexShowLeft",
+                rightBtn: ".indexShowRight",
+                speed: 800
+            });
+	})
+ </script>
+
+    </div>
+ </div>
+<!------------------------------------------------------------头部----结束----------------------------------------> 
+
+<!------------------------------------------------------------导航----开始----------------------------------------> 
+
+ <div class="Main">
+    <div class="logo"><img src="images/index_01.jpg" /></div>
+ 
+    
+  <div class="nav1"><ul>
+       <li><a href="/">首页</a><span>|</span></li>
+       <li><a href="/index.php/home/Project/index">科技成果 </a><span>|</span></li>
+       <li><a href="/index.php/home/Experts/index">技术专家</a><span>|</span></li>
+       <li><a href="/index.php/Uc/Demand/demand">技术需求</a><span>|</span></li>
+	   <li><a href="/index.php/home/Goods/index">产品展示</a></li>
+    </ul></div>
+    
+  </div>
+
+<!------------------------------------------------------------导航----结束----------------------------------------> 
+
+<!------------------------------------------------------------搜索----开始----------------------------------------> 
+  <div class="search">
+        <form action="/index.php/home/Search/index" method="get" name="mysearchform" id="mysearchform" target="_blank">
+         
+          <div class="ser_01">
+            <label><input type="radio" name="ckpsearch" checked="checked" value="project" id="ckproject" />技术</label>
+            <label><input type="radio" name="ckpsearch" value="experts" id="ckexperts" />专家</label>
+            <label><input type="radio" name="ckpsearch" value="goods" id="ckgoods" />产品</label>
+            <label><input type="radio" name="ckpsearch" value="all" id="ckall" />全部</label>
+
+          </div>          
+          <div class="ser_02" style="width:467px;">
+            <p><input name="key" id="keysearch" type="text"  value="输入关键词" class="resettext" autocomplete="off" style="background-color:white; width:400px;"/></p>
+            <p><a href="javascript:;" id="asearch"><img src="/images/index_05.jpg" /></a></p>
+          </div>
+         <!-- <div class="ser_03">
+            <input name="" type="button" value="精确搜索" />
+          </div> -->
+        </form>
+     <div class="ser_04"><a href="/index.php/home/Tiyi/index"><img src="images/index_02.jpg" /></a></div>
+  </div>
+
+<!------------------------------------------------------------搜索----结束----------------------------------------> 
+
+<!------------------------------------------------------------中间----开始---------------------------------------->
+  <div class="Main">
+    <div class="main3">
+      <div class="main3_left">
+	  <div class="zt">
+      <div class="zt1">
+        <p>热门专题</p>
+      </div>
+	  <div id="demo" style="overflow:hidden;width:680px; margin:0 auto;position:relative; margin-top:10px;">
+  <table align="center" cellpadding="0" cellspacing="0" border="0" id="margintable">
+    <tr>
+      <td id="demo1" ><table width="90%" border="0" cellpadding="0" cellspacing="2">
+          <tr>
+		  <td style="width:250px;">
+			<div style="position:relative">
+			<a href="/index.php/home/Special/detailes/spid/1395811915" target="_blank">
+			<div style=" ">
+			<div style=" position:absolute; margin-top:22px; background:url(/images/indexg7.png) center repeat; width:227px; height:30px;">
+			
+	        <span style=" position:absolute;padding-left:50px;  padding-top:2px; color:#FFFFFF; font-size:14px; ">光电子技术</span>
+			</div>
+		   <img src="/Uploads/Project/image/20140326/20140326133143_40841.jpg" width="227px" height="74px" alt=""  />
+		   </div>
+		   </a>
+		 
+		   		   </div>
+		 </td><td style="width:250px;">
+			<div style="position:relative">
+			<a href="/index.php/home/Special/detailes/spid/1398304488" target="_blank">
+			<div style=" ">
+			<div style=" position:absolute; margin-top:22px; background:url(/images/indexg7.png) center repeat; width:227px; height:30px;">
+			
+	        <span style=" position:absolute;padding-left:50px;  padding-top:2px; color:#FFFFFF; font-size:14px; ">建筑技术</span>
+			</div>
+		   <img src="/Uploads/Project/image/20140708/20140708181547_89258.jpg" width="227px" height="74px" alt=""  />
+		   </div>
+		   </a>
+		 
+		   		   </div>
+		 </td><td style="width:250px;">
+			<div style="position:relative">
+			<a href="/index.php/home/Special/detailes/spid/1404709758" target="_blank">
+			<div style=" ">
+			<div style=" position:absolute; margin-top:22px; background:url(/images/indexg7.png) center repeat; width:227px; height:30px;">
+			
+	        <span style=" position:absolute;padding-left:50px;  padding-top:2px; color:#FFFFFF; font-size:14px; ">新能源汽车技术</span>
+			</div>
+		   <img src="/Uploads/Project/image/20140708/20140708181533_90507.jpg" width="227px" height="74px" alt=""  />
+		   </div>
+		   </a>
+		 
+		   		   </div>
+		 </td><td style="width:250px;">
+			<div style="position:relative">
+			<a href="/index.php/home/Special/detailes/spid/1404709780" target="_blank">
+			<div style=" ">
+			<div style=" position:absolute; margin-top:22px; background:url(/images/indexg7.png) center repeat; width:227px; height:30px;">
+			
+	        <span style=" position:absolute;padding-left:50px;  padding-top:2px; color:#FFFFFF; font-size:14px; ">环境保护技术</span>
+			</div>
+		   <img src="/Uploads/Project/image/20140707/20140707141016_50534.jpg" width="227px" height="74px" alt=""  />
+		   </div>
+		   </a>
+		 
+		   		   </div>
+		 </td><td style="width:250px;">
+			<div style="position:relative">
+			<a href="/index.php/home/Special/detailes/spid/1404714622" target="_blank">
+			<div style=" ">
+			<div style=" position:absolute; margin-top:22px; background:url(/images/indexg7.png) center repeat; width:227px; height:30px;">
+			
+	        <span style=" position:absolute;padding-left:50px;  padding-top:2px; color:#FFFFFF; font-size:14px; ">信息技术</span>
+			</div>
+		   <img src="/Uploads/Project/image/20140708/20140708181429_68367.jpg" width="227px" height="74px" alt=""  />
+		   </div>
+		   </a>
+		 
+		   		   </div>
+		 </td><td style="width:250px;">
+			<div style="position:relative">
+			<a href="/index.php/home/Special/detailes/spid/1404714796" target="_blank">
+			<div style=" ">
+			<div style=" position:absolute; margin-top:22px; background:url(/images/indexg7.png) center repeat; width:227px; height:30px;">
+			
+	        <span style=" position:absolute;padding-left:50px;  padding-top:2px; color:#FFFFFF; font-size:14px; ">新能源与节能技术</span>
+			</div>
+		   <img src="/Uploads/Project/image/20140708/20140708181254_70172.jpg" width="227px" height="74px" alt=""  />
+		   </div>
+		   </a>
+		 
+		   		   </div>
+		 </td><td style="width:250px;">
+			<div style="position:relative">
+			<a href="/index.php/home/Special/detailes/spid/1411979170" target="_blank">
+			<div style=" ">
+			<div style=" position:absolute; margin-top:22px; background:url(/images/indexg7.png) center repeat; width:227px; height:30px;">
+			
+	        <span style=" position:absolute;padding-left:50px;  padding-top:2px; color:#FFFFFF; font-size:14px; ">中国航天科工集团技术项目之光电专题</span>
+			</div>
+		   <img src="/Uploads/Project/image/20140929/20140929181853_34680.jpg" width="227px" height="74px" alt=""  />
+		   </div>
+		   </a>
+		 
+		   		   </div>
+		 </td>            
+          </tr>
+        </table></td>
+      <td id="demo2"></td>
+    </tr>
+  </table>
+</div>
+<script language="JavaScript">
+    var speed = 20;
+    demo2.innerHTML = demo1.innerHTML;    //克隆demo1为demo2
+	var left=0;
+    function Marquee() {
+        if (demo2.offsetWidth <= demo.scrollLeft) {    //当滚动至demo1与demo2交界时
+            //demo.scrollLeft = demo.scrollLeft - demo1.offsetWidth;        //demo跳到最顶端
+        }
+        else {
+			
+            //demo.styl.scrollLeft++;
+        }
+		left=left-1;
+		$("#margintable").css("margin-left",left)
+    }
+	
+    var MyMar = setInterval(Marquee, speed);    //设置定时器
+    demo.onmouseover = function () { clearInterval(MyMar); } //鼠标移上时清除定时器达到滚动停止的目的
+    demo.onmouseout = function () { MyMar = setInterval(Marquee, speed); } //鼠标移开时重设定时器
+</script>
+  <!--<table width=700 border=0 cellpadding=0 cellspacing=0>                                               
+  <tr><td>          
+  <div id=www_qpsh_com style=overflow:hidden;height:120px;width:700px;color:#ff0000><table align=left cellpadding=0 cellspace=0 border=0><tr><td id=www_qpsh_com1   valign=top>
+  <table border=0 cellpadding=0 cellspacing=0>
+     <tr>
+      <td>
+        <div style=" float:left; margin-top:13px; margin-right:4px; width:227px; ">
+         <a href="/index.php/home/Special/detailes" target="_blank">
+	     <img src="/images/indexg7.png" width="227px"  height="30px"style=" position:relative; top:20px; " />
+	     <span style=" position:absolute; top:25px; padding-left:50px;  padding-top:5px; color:#FFFFFF; font-size:14px; "></span>
+	     </a>
+	     	  
+	   <a href="/index.php/home/Special/detailes" target="_blank"><img src="" width="227px" height="74px" /></a>       
+	  
+	 </div></center>
+  </td>
+  <td width=30></td><td>
+        <div style=" float:left; margin-top:13px; margin-right:4px; width:227px; ">
+         <a href="/index.php/home/Special/detailes" target="_blank">
+	     <img src="/images/indexg7.png" width="227px"  height="30px"style=" position:relative; top:20px; " />
+	     <span style=" position:absolute; top:25px; padding-left:50px;  padding-top:5px; color:#FFFFFF; font-size:14px; "></span>
+	     </a>
+	     	  
+	   <a href="/index.php/home/Special/detailes" target="_blank"><img src="" width="227px" height="74px" /></a>       
+	  
+	 </div></center>
+  </td>
+  <td width=30></td><td>
+        <div style=" float:left; margin-top:13px; margin-right:4px; width:227px; ">
+         <a href="/index.php/home/Special/detailes" target="_blank">
+	     <img src="/images/indexg7.png" width="227px"  height="30px"style=" position:relative; top:20px; " />
+	     <span style=" position:absolute; top:25px; padding-left:50px;  padding-top:5px; color:#FFFFFF; font-size:14px; "></span>
+	     </a>
+	     	  
+	   <a href="/index.php/home/Special/detailes" target="_blank"><img src="" width="227px" height="74px" /></a>       
+	  
+	 </div></center>
+  </td>
+  <td width=30></td><td>
+        <div style=" float:left; margin-top:13px; margin-right:4px; width:227px; ">
+         <a href="/index.php/home/Special/detailes" target="_blank">
+	     <img src="/images/indexg7.png" width="227px"  height="30px"style=" position:relative; top:20px; " />
+	     <span style=" position:absolute; top:25px; padding-left:50px;  padding-top:5px; color:#FFFFFF; font-size:14px; "></span>
+	     </a>
+	     	  
+	   <a href="/index.php/home/Special/detailes" target="_blank"><img src="" width="227px" height="74px" /></a>       
+	  
+	 </div></center>
+  </td>
+  <td width=30></td><td>
+        <div style=" float:left; margin-top:13px; margin-right:4px; width:227px; ">
+         <a href="/index.php/home/Special/detailes" target="_blank">
+	     <img src="/images/indexg7.png" width="227px"  height="30px"style=" position:relative; top:20px; " />
+	     <span style=" position:absolute; top:25px; padding-left:50px;  padding-top:5px; color:#FFFFFF; font-size:14px; "></span>
+	     </a>
+	     	  
+	   <a href="/index.php/home/Special/detailes" target="_blank"><img src="" width="227px" height="74px" /></a>       
+	  
+	 </div></center>
+  </td>
+  <td width=30></td><td>
+        <div style=" float:left; margin-top:13px; margin-right:4px; width:227px; ">
+         <a href="/index.php/home/Special/detailes" target="_blank">
+	     <img src="/images/indexg7.png" width="227px"  height="30px"style=" position:relative; top:20px; " />
+	     <span style=" position:absolute; top:25px; padding-left:50px;  padding-top:5px; color:#FFFFFF; font-size:14px; "></span>
+	     </a>
+	     	  
+	   <a href="/index.php/home/Special/detailes" target="_blank"><img src="" width="227px" height="74px" /></a>       
+	  
+	 </div></center>
+  </td>
+  <td width=30></td><td>
+        <div style=" float:left; margin-top:13px; margin-right:4px; width:227px; ">
+         <a href="/index.php/home/Special/detailes" target="_blank">
+	     <img src="/images/indexg7.png" width="227px"  height="30px"style=" position:relative; top:20px; " />
+	     <span style=" position:absolute; top:25px; padding-left:50px;  padding-top:5px; color:#FFFFFF; font-size:14px; "></span>
+	     </a>
+	     	  
+	   <a href="/index.php/home/Special/detailes" target="_blank"><img src="" width="227px" height="74px" /></a>       
+	  
+	 </div></center>
+  </td>
+  <td width=30></td>  </tr>
+  </table>
+ </td><td id=www_qpsh_com2 valign=top></td></tr></table></div>
+  <script type="text/javascript">
+  var speed=30//速度数值越大速度越慢
+  www_qpsh_com2.innerHTML=www_qpsh_com1.innerHTML
+  function Marquee(){
+  if(www_qpsh_com2.offsetWidth-www_qpsh_com.scrollLeft<=0)
+  www_qpsh_com.scrollLeft-=www_qpsh_com1.offsetWidth
+  else{
+  www_qpsh_com.scrollLeft++
+  }
+  }
+  var MyMar=setInterval(Marquee,speed)
+  www_qpsh_com.onmouseover=function() {clearInterval(MyMar)}
+  www_qpsh_com.onmouseout=function() {MyMar=setInterval(Marquee,speed)}
+  </script>
+ </td></tr>                                                                                                                                                                                                                            
+ </table>
+
+	  -->
+	 
+    </div>
+        <div class="m3left_a">
+          <ul  id="nTabs1">
+            <li onclick="tonav('nTabs1',this,'normal1','active1')" class="active1">技术</li>
+            <li onclick="tonav('nTabs1',this,'normal1','active1')" class="normal1">专家</li>
+            <li onclick="tonav('nTabs1',this,'normal1','active1')" class="normal1">产品</li>
+          </ul>
+        </div>
+        <div class="m3left_b" id="nTabs1_Content0">
+        	<div class="clear">
+              <ul id="nTabs4" style="overflow:hidden;">
+                 <li class="lb1_active" onclick="tonav('nTabs4',this,'lb1_normal','lb1_active')">按专业领域</li>
+                 <li class="lb1_normal" onclick="tonav('nTabs4',this,'lb1_normal','lb1_active')">按合作学校</li>
+                 <li class="lb1_normal" onclick="tonav('nTabs4',this,'lb1_normal','lb1_active')">按合作企业</li>
+              </ul>
+          </div>
+            <div class="clear" id="nTabs4_Content0">
+           <div class="leftb1">
+                
+                 <div class="lb1_b">                  <div style="position:absolute;font-size:12px; margin:78px 0 0 180px;"><a href="/index.php/home/Project/index/id/1422682904" target="_blank" style="color:gray">更多>></a></div>
+                    <span><a href="/index.php/home/Project/index/id/1422682904" target="_blank">光电技术(0)</a></span>
+                    <div class="box1">
+                    <p style="font-size:12px;"><a id="boxx"  href="/index.php/home/Project/index" target="_blank">高功率光纤激光技术</a></p><p style="font-size:12px;"><a id="boxx"  href="/index.php/home/Project/index" target="_blank">先进固体激光器</a></p><p style="font-size:12px;"><a id="boxx"  href="/index.php/home/Project/index" target="_blank">半导体激光器技术</a></p><p style="font-size:12px;"><a id="boxx"  href="/index.php/home/Project/index" target="_blank">光谱成像技术</a></p><p style="font-size:12px;"><a id="boxx"  href="/index.php/home/Project/index" target="_blank">大气光学技术</a></p>                  </div>
+                  
+                </div> 
+                 <div class="lb1_b">                  <div style="position:absolute;font-size:12px; margin:78px 0 0 180px;"><a href="/index.php/home/Project/index/id/220" target="_blank" style="color:gray">更多>></a></div>
+                    <span><a href="/index.php/home/Project/index/id/220" target="_blank">现代生物技术(585)</a></span>
+                    <div class="box1">
+                    <p style="font-size:12px;"><a id="boxx"  href="/index.php/home/Project/index" target="_blank">农业生物技术</a></p><p style="font-size:12px;"><a id="boxx"  href="/index.php/home/Project/index" target="_blank">环境生物技术</a></p><p style="font-size:12px;"><a id="boxx"  href="/index.php/home/Project/index" target="_blank">工业生物技术</a></p><p style="font-size:12px;"><a id="boxx"  href="/index.php/home/Project/index" target="_blank">医药生物技术</a></p><p style="font-size:12px;"><a id="boxx"  href="/index.php/home/Project/index" target="_blank">其他现代生物技术</a></p>                  </div>
+                  
+                </div> 
+                 <div class="lb1_b">                  <div style="position:absolute;font-size:12px; margin:78px 0 0 180px;"><a href="/index.php/home/Project/index/id/221" target="_blank" style="color:gray">更多>></a></div>
+                    <span><a href="/index.php/home/Project/index/id/221" target="_blank">航空航天技术(180)</a></span>
+                    <div class="box1">
+                    <p style="font-size:12px;"><a id="boxx"  href="/index.php/home/Project/index" target="_blank">卫星通信</a></p><p style="font-size:12px;"><a id="boxx"  href="/index.php/home/Project/index" target="_blank">卫星导航</a></p><p style="font-size:12px;"><a id="boxx"  href="/index.php/home/Project/index" target="_blank">航空发动机</a></p><p style="font-size:12px;"><a id="boxx"  href="/index.php/home/Project/index" target="_blank">其他航空航天技术</a></p><p style="font-size:12px;"><a id="boxx"  href="/index.php/home/Project/index" target="_blank">无人机</a></p>                  </div>
+                  
+                </div><div class="lb1_c">
+                                   <div style="position:absolute;font-size:12px; margin:78px 0 0 180px;"><a href="/index.php/home/Project/index/id/222" target="_blank" style="color:gray">更多>></a></div>
+                    <span><a href="/index.php/home/Project/index/id/222" target="_blank">新能源与节能技术(442)</a></span>
+                    <div class="box1">
+                    <p style="font-size:12px;"><a id="boxx"  href="/index.php/home/Project/index" target="_blank">太阳能</a></p><p style="font-size:12px;"><a id="boxx"  href="/index.php/home/Project/index" target="_blank">地热能</a></p><p style="font-size:12px;"><a id="boxx"  href="/index.php/home/Project/index" target="_blank">风能</a></p><p style="font-size:12px;"><a id="boxx"  href="/index.php/home/Project/index" target="_blank">生物质能</a></p><p style="font-size:12px;"><a id="boxx"  href="/index.php/home/Project/index" target="_blank">燃料电池</a></p>                  </div>
+                  
+                </div><div class="lb1_c">
+                                   <div style="position:absolute;font-size:12px; margin:78px 0 0 180px;"><a href="/index.php/home/Project/index/id/223" target="_blank" style="color:gray">更多>></a></div>
+                    <span><a href="/index.php/home/Project/index/id/223" target="_blank">装备制造技术(900)</a></span>
+                    <div class="box1">
+                    <p style="font-size:12px;"><a id="boxx"  href="/index.php/home/Project/index" target="_blank">现代工程机械技术</a></p><p style="font-size:12px;"><a id="boxx"  href="/index.php/home/Project/index" target="_blank">新能源汽车技术</a></p><p style="font-size:12px;"><a id="boxx"  href="/index.php/home/Project/index" target="_blank">输变电设备</a></p><p style="font-size:12px;"><a id="boxx"  href="/index.php/home/Project/index" target="_blank">智能控制技术</a></p><p style="font-size:12px;"><a id="boxx"  href="/index.php/home/Project/index" target="_blank">机器人技术</a></p>                  </div>
+                  
+                </div><div class="lb1_c">
+                                   <div style="position:absolute;font-size:12px; margin:78px 0 0 180px;"><a href="/index.php/home/Project/index/id/224" target="_blank" style="color:gray">更多>></a></div>
+                    <span><a href="/index.php/home/Project/index/id/224" target="_blank">机电技术(890)</a></span>
+                    <div class="box1">
+                    <p style="font-size:12px;"><a id="boxx"  href="/index.php/home/Project/index" target="_blank">机械技术</a></p><p style="font-size:12px;"><a id="boxx"  href="/index.php/home/Project/index" target="_blank">电工电子技术</a></p><p style="font-size:12px;"><a id="boxx"  href="/index.php/home/Project/index" target="_blank">微电子技术</a></p><p style="font-size:12px;"><a id="boxx"  href="/index.php/home/Project/index" target="_blank">信息技术</a></p><p style="font-size:12px;"><a id="boxx"  href="/index.php/home/Project/index" target="_blank">传感器技术</a></p>                  </div>
+                  
+                </div> 
+                 <div class="lb1_b">                  <div style="position:absolute;font-size:12px; margin:78px 0 0 180px;"><a href="/index.php/home/Project/index/id/225" target="_blank" style="color:gray">更多>></a></div>
+                    <span><a href="/index.php/home/Project/index/id/225" target="_blank">新材料(716)</a></span>
+                    <div class="box1">
+                    <p style="font-size:12px;"><a id="boxx"  href="/index.php/home/Project/index" target="_blank">金属材料</a></p><p style="font-size:12px;"><a id="boxx"  href="/index.php/home/Project/index" target="_blank">无机非金属材料</a></p><p style="font-size:12px;"><a id="boxx"  href="/index.php/home/Project/index" target="_blank">高分子材料</a></p><p style="font-size:12px;"><a id="boxx"  href="/index.php/home/Project/index" target="_blank">生物医用材料</a></p><p style="font-size:12px;"><a id="boxx"  href="/index.php/home/Project/index" target="_blank">纳米及超细材料</a></p>                  </div>
+                  
+                </div> 
+                 <div class="lb1_b">                  <div style="position:absolute;font-size:12px; margin:78px 0 0 180px;"><a href="/index.php/home/Project/index/id/226" target="_blank" style="color:gray">更多>></a></div>
+                    <span><a href="/index.php/home/Project/index/id/226" target="_blank">环境保护技术(375)</a></span>
+                    <div class="box1">
+                    <p style="font-size:12px;"><a id="boxx"  href="/index.php/home/Project/index" target="_blank">空气净化</a></p><p style="font-size:12px;"><a id="boxx"  href="/index.php/home/Project/index" target="_blank">环境保护工程</a></p><p style="font-size:12px;"><a id="boxx"  href="/index.php/home/Project/index" target="_blank">污水处理与利用</a></p><p style="font-size:12px;"><a id="boxx"  href="/index.php/home/Project/index" target="_blank">循环经济</a></p><p style="font-size:12px;"><a id="boxx"  href="/index.php/home/Project/index" target="_blank">其他环境保护技术</a></p>                  </div>
+                  
+                </div> 
+                 <div class="lb1_b">                  <div style="position:absolute;font-size:12px; margin:78px 0 0 180px;"><a href="/index.php/home/Project/index/id/1390011365" target="_blank" style="color:gray">更多>></a></div>
+                    <span><a href="/index.php/home/Project/index/id/1390011365" target="_blank">水质监测方法(2)</a></span>
+                    <div class="box1">
+                                      </div>
+                  
+                </div><div class="lb1_c">
+                                   <div style="position:absolute;font-size:12px; margin:78px 0 0 180px;"><a href="/index.php/home/Project/index/id/227" target="_blank" style="color:gray">更多>></a></div>
+                    <span><a href="/index.php/home/Project/index/id/227" target="_blank">化工技术(377)</a></span>
+                    <div class="box1">
+                    <p style="font-size:12px;"><a id="boxx"  href="/index.php/home/Project/index" target="_blank">表面处理技术</a></p><p style="font-size:12px;"><a id="boxx"  href="/index.php/home/Project/index" target="_blank">精馏技术</a></p><p style="font-size:12px;"><a id="boxx"  href="/index.php/home/Project/index" target="_blank">萃取技术</a></p><p style="font-size:12px;"><a id="boxx"  href="/index.php/home/Project/index" target="_blank">催化剂</a></p><p style="font-size:12px;"><a id="boxx"  href="/index.php/home/Project/index" target="_blank">其他化工技术</a></p>                  </div>
+                  
+                </div><div class="lb1_c">
+                                   <div style="position:absolute;font-size:12px; margin:78px 0 0 180px;"><a href="/index.php/home/Project/index/id/1390011393" target="_blank" style="color:gray">更多>></a></div>
+                    <span><a href="/index.php/home/Project/index/id/1390011393" target="_blank">空气污染监测(5)</a></span>
+                    <div class="box1">
+                                      </div>
+                  
+                </div><div class="lb1_c">
+                                   <div style="position:absolute;font-size:12px; margin:78px 0 0 180px;"><a href="/index.php/home/Project/index/id/228" target="_blank" style="color:gray">更多>></a></div>
+                    <span><a href="/index.php/home/Project/index/id/228" target="_blank">安防(26)</a></span>
+                    <div class="box1">
+                    <p style="font-size:12px;"><a id="boxx"  href="/index.php/home/Project/index" target="_blank">监控设备</a></p><p style="font-size:12px;"><a id="boxx"  href="/index.php/home/Project/index" target="_blank">其他安防</a></p><p style="font-size:12px;"><a id="boxx"  href="/index.php/home/Project/index" target="_blank">防侵入系统</a></p>                  </div>
+                  
+                </div>          </div>
+       	</div>
+       
+          
+           <div class="clear" id="nTabs4_Content1" style="display: none;">
+              
+              <div class="index_01">
+                  <!-- <input type="radio" checked="checked"> 全国&nbsp;&nbsp;&nbsp;&nbsp;
+                   <input type="radio"> 国外 -->
+              </div>
+             <div class="index_02">
+               <!-- <span>A</span><span>B</span><span>C</span> -->
+             </div>
+             
+             <div class="index_03" style=" height:315px; overflow-y:auto;">
+                
+             </div>
+             
+         	</div>
+         	<div class="clear" id="nTabs4_Content2" style="display:none;">
+            
+              <div class="index_01">
+                  <!-- <input type="radio" checked="checked"> 全国&nbsp;&nbsp;&nbsp;&nbsp;
+                   <input type="radio"> 国外 -->
+              </div>
+             <div class="index_02" style=" overflow-y:auto;">
+                <!--<span>A</span><span>B</span><span>C</span> -->
+             </div>
+             
+             <div class="index_03" style=" height:315px; overflow-y:auto;">
+                <!--学校信息-->
+            </div>
+           </div>  
+        </div>
+        <div class="m3left_b"  id="nTabs1_Content1" style="display:none">
+          <div class="clear">
+              <ul id="nTabs5" style="overflow:hidden;">
+                 <li class="lb1_active" style="width:345px;" onclick="tonav('nTabs5',this,'lb1_normal','lb1_active')">按研究领域</li>
+                 <li class="lb1_normal" style="width:346px;" onclick="tonav('nTabs5',this,'lb1_normal','lb1_active')">按区域</li>
+              </ul>
+          </div>
+               
+        <div class="clear" id="nTabs5_Content0">
+               <div class="leftb1">
+                    
+                     <div class="lb1_b">                       <div style="position:absolute;font-size:12px; margin:78px 0 0 180px;"><a href="/index.php/home/Experts/index/id/1422682904" target="_blank" style="color:gray">更多>></a></div>
+                
+                        <span><a href="/index.php/home/Experts/index/id/1422682904" target="_blank">光电技术(0)</a></span>
+                        <div class="box1">
+                        <p style="font-size:12px;"><a href="/index.php/home/Experts/index/id/1422683813" target="_blank">高功率光纤激光技术</a></p><p style="font-size:12px;"><a href="/index.php/home/Experts/index/id/1422683775" target="_blank">先进固体激光器</a></p><p style="font-size:12px;"><a href="/index.php/home/Experts/index/id/1422683765" target="_blank">半导体激光器技术</a></p><p style="font-size:12px;"><a href="/index.php/home/Experts/index/id/1422683755" target="_blank">光谱成像技术</a></p><p style="font-size:12px;"><a href="/index.php/home/Experts/index/id/1422683735" target="_blank">大气光学技术</a></p>                      </div>
+                      
+                    </div> 
+                     <div class="lb1_b">                       <div style="position:absolute;font-size:12px; margin:78px 0 0 180px;"><a href="/index.php/home/Experts/index/id/220" target="_blank" style="color:gray">更多>></a></div>
+                
+                        <span><a href="/index.php/home/Experts/index/id/220" target="_blank">现代生物技术(0)</a></span>
+                        <div class="box1">
+                        <p style="font-size:12px;"><a href="/index.php/home/Experts/index/id/1390013416" target="_blank">农业生物技术</a></p><p style="font-size:12px;"><a href="/index.php/home/Experts/index/id/1390013425" target="_blank">环境生物技术</a></p><p style="font-size:12px;"><a href="/index.php/home/Experts/index/id/1390013436" target="_blank">工业生物技术</a></p><p style="font-size:12px;"><a href="/index.php/home/Experts/index/id/1390013444" target="_blank">医药生物技术</a></p><p style="font-size:12px;"><a href="/index.php/home/Experts/index/id/1390013462" target="_blank">其他现代生物技术</a></p>                      </div>
+                      
+                    </div> 
+                     <div class="lb1_b">                       <div style="position:absolute;font-size:12px; margin:78px 0 0 180px;"><a href="/index.php/home/Experts/index/id/221" target="_blank" style="color:gray">更多>></a></div>
+                
+                        <span><a href="/index.php/home/Experts/index/id/221" target="_blank">航空航天技术(0)</a></span>
+                        <div class="box1">
+                        <p style="font-size:12px;"><a href="/index.php/home/Experts/index/id/1390013363" target="_blank">卫星通信</a></p><p style="font-size:12px;"><a href="/index.php/home/Experts/index/id/1390013373" target="_blank">卫星导航</a></p><p style="font-size:12px;"><a href="/index.php/home/Experts/index/id/1390013381" target="_blank">航空发动机</a></p><p style="font-size:12px;"><a href="/index.php/home/Experts/index/id/1390013398" target="_blank">其他航空航天技术</a></p><p style="font-size:12px;"><a href="/index.php/home/Experts/index/id/1390013389" target="_blank">无人机</a></p>                      </div>
+                      
+                    </div><div class="lb1_c">
+                                            <div style="position:absolute;font-size:12px; margin:78px 0 0 180px;"><a href="/index.php/home/Experts/index/id/222" target="_blank" style="color:gray">更多>></a></div>
+                
+                        <span><a href="/index.php/home/Experts/index/id/222" target="_blank">新能源与节能技术(0)</a></span>
+                        <div class="box1">
+                        <p style="font-size:12px;"><a href="/index.php/home/Experts/index/id/1390013273" target="_blank">太阳能</a></p><p style="font-size:12px;"><a href="/index.php/home/Experts/index/id/1390013285" target="_blank">地热能</a></p><p style="font-size:12px;"><a href="/index.php/home/Experts/index/id/1390013294" target="_blank">风能</a></p><p style="font-size:12px;"><a href="/index.php/home/Experts/index/id/1390013306" target="_blank">生物质能</a></p><p style="font-size:12px;"><a href="/index.php/home/Experts/index/id/1390013314" target="_blank">燃料电池</a></p>                      </div>
+                      
+                    </div><div class="lb1_c">
+                                            <div style="position:absolute;font-size:12px; margin:78px 0 0 180px;"><a href="/index.php/home/Experts/index/id/223" target="_blank" style="color:gray">更多>></a></div>
+                
+                        <span><a href="/index.php/home/Experts/index/id/223" target="_blank">装备制造技术(0)</a></span>
+                        <div class="box1">
+                        <p style="font-size:12px;"><a href="/index.php/home/Experts/index/id/1390012979" target="_blank">现代工程机械技术</a></p><p style="font-size:12px;"><a href="/index.php/home/Experts/index/id/1390012999" target="_blank">新能源汽车技术</a></p><p style="font-size:12px;"><a href="/index.php/home/Experts/index/id/1390013077" target="_blank">输变电设备</a></p><p style="font-size:12px;"><a href="/index.php/home/Experts/index/id/1390013094" target="_blank">智能控制技术</a></p><p style="font-size:12px;"><a href="/index.php/home/Experts/index/id/1390013102" target="_blank">机器人技术</a></p>                      </div>
+                      
+                    </div><div class="lb1_c">
+                                            <div style="position:absolute;font-size:12px; margin:78px 0 0 180px;"><a href="/index.php/home/Experts/index/id/224" target="_blank" style="color:gray">更多>></a></div>
+                
+                        <span><a href="/index.php/home/Experts/index/id/224" target="_blank">机电技术(299)</a></span>
+                        <div class="box1">
+                        <p style="font-size:12px;"><a href="/index.php/home/Experts/index/id/1390012717" target="_blank">机械技术</a></p><p style="font-size:12px;"><a href="/index.php/home/Experts/index/id/1390012845" target="_blank">电工电子技术</a></p><p style="font-size:12px;"><a href="/index.php/home/Experts/index/id/1390012856" target="_blank">微电子技术</a></p><p style="font-size:12px;"><a href="/index.php/home/Experts/index/id/1390012867" target="_blank">信息技术</a></p><p style="font-size:12px;"><a href="/index.php/home/Experts/index/id/1390012891" target="_blank">传感器技术</a></p>                      </div>
+                      
+                    </div> 
+                     <div class="lb1_b">                       <div style="position:absolute;font-size:12px; margin:78px 0 0 180px;"><a href="/index.php/home/Experts/index/id/225" target="_blank" style="color:gray">更多>></a></div>
+                
+                        <span><a href="/index.php/home/Experts/index/id/225" target="_blank">新材料(0)</a></span>
+                        <div class="box1">
+                        <p style="font-size:12px;"><a href="/index.php/home/Experts/index/id/1390011655" target="_blank">金属材料</a></p><p style="font-size:12px;"><a href="/index.php/home/Experts/index/id/1390011675" target="_blank">无机非金属材料</a></p><p style="font-size:12px;"><a href="/index.php/home/Experts/index/id/1390012149" target="_blank">高分子材料</a></p><p style="font-size:12px;"><a href="/index.php/home/Experts/index/id/1390012193" target="_blank">生物医用材料</a></p><p style="font-size:12px;"><a href="/index.php/home/Experts/index/id/1390012286" target="_blank">纳米及超细材料</a></p>                      </div>
+                      
+                    </div> 
+                     <div class="lb1_b">                       <div style="position:absolute;font-size:12px; margin:78px 0 0 180px;"><a href="/index.php/home/Experts/index/id/226" target="_blank" style="color:gray">更多>></a></div>
+                
+                        <span><a href="/index.php/home/Experts/index/id/226" target="_blank">环境保护技术(0)</a></span>
+                        <div class="box1">
+                        <p style="font-size:12px;"><a href="/index.php/home/Experts/index/id/1390011189" target="_blank">空气净化</a></p><p style="font-size:12px;"><a href="/index.php/home/Experts/index/id/1390011225" target="_blank">环境保护工程</a></p><p style="font-size:12px;"><a href="/index.php/home/Experts/index/id/1390011286" target="_blank">污水处理与利用</a></p><p style="font-size:12px;"><a href="/index.php/home/Experts/index/id/1390011417" target="_blank">循环经济</a></p><p style="font-size:12px;"><a href="/index.php/home/Experts/index/id/1390011468" target="_blank">其他环境保护技术</a></p>                      </div>
+                      
+                    </div> 
+                     <div class="lb1_b">                       <div style="position:absolute;font-size:12px; margin:78px 0 0 180px;"><a href="/index.php/home/Experts/index/id/1390011365" target="_blank" style="color:gray">更多>></a></div>
+                
+                        <span><a href="/index.php/home/Experts/index/id/1390011365" target="_blank">水质监测方法(0)</a></span>
+                        <div class="box1">
+                                              </div>
+                      
+                    </div><div class="lb1_c">
+                                            <div style="position:absolute;font-size:12px; margin:78px 0 0 180px;"><a href="/index.php/home/Experts/index/id/227" target="_blank" style="color:gray">更多>></a></div>
+                
+                        <span><a href="/index.php/home/Experts/index/id/227" target="_blank">化工技术(0)</a></span>
+                        <div class="box1">
+                        <p style="font-size:12px;"><a href="/index.php/home/Experts/index/id/1390010919" target="_blank">表面处理技术</a></p><p style="font-size:12px;"><a href="/index.php/home/Experts/index/id/1390010952" target="_blank">精馏技术</a></p><p style="font-size:12px;"><a href="/index.php/home/Experts/index/id/1390010973" target="_blank">萃取技术</a></p><p style="font-size:12px;"><a href="/index.php/home/Experts/index/id/1390010988" target="_blank">催化剂</a></p><p style="font-size:12px;"><a href="/index.php/home/Experts/index/id/1390638476" target="_blank">其他化工技术</a></p>                      </div>
+                      
+                    </div><div class="lb1_c">
+                                            <div style="position:absolute;font-size:12px; margin:78px 0 0 180px;"><a href="/index.php/home/Experts/index/id/1390011393" target="_blank" style="color:gray">更多>></a></div>
+                
+                        <span><a href="/index.php/home/Experts/index/id/1390011393" target="_blank">空气污染监测(0)</a></span>
+                        <div class="box1">
+                                              </div>
+                      
+                    </div><div class="lb1_c">
+                                            <div style="position:absolute;font-size:12px; margin:78px 0 0 180px;"><a href="/index.php/home/Experts/index/id/228" target="_blank" style="color:gray">更多>></a></div>
+                
+                        <span><a href="/index.php/home/Experts/index/id/228" target="_blank">安防(0)</a></span>
+                        <div class="box1">
+                        <p style="font-size:12px;"><a href="/index.php/home/Experts/index/id/312" target="_blank">监控设备</a></p><p style="font-size:12px;"><a href="/index.php/home/Experts/index/id/1389956478" target="_blank">其他安防</a></p><p style="font-size:12px;"><a href="/index.php/home/Experts/index/id/1389956462" target="_blank">防侵入系统</a></p>                      </div>
+                      
+                    </div>              </div>
+        </div>
+            <div class="clear" id="nTabs5_Content1" style="display: none;">
+              
+              <div class="index_01">
+                  <!-- <input type="radio" checked="checked"> 全国&nbsp;&nbsp;&nbsp;&nbsp;
+                   <input type="radio"> 国外 -->
+              </div>
+             <div class="index_02">
+               <!-- <span>A</span><span>B</span><span>C</span> -->
+             </div>
+             
+             <div class="index_03" style="overflow-y:auto; height:315px;">
+                
+             </div>
+             
+         	</div>
+               <div class="clear" id="nTabs5_Content2" style="display: none;">
+              
+              <div class="index_01">
+                  <!-- <input type="radio" checked="checked"> 全国&nbsp;&nbsp;&nbsp;&nbsp;
+                   <input type="radio"> 国外 -->
+              </div>
+             <div class="index_02" style=" overflow-y:auto;">
+               <!-- <span>A</span><span>B</span><span>C</span> -->
+             </div>
+             
+             <div class="index_03" style=" height:315px; overflow-y:auto;">
+                
+             </div>
+             
+         	</div>
+       
+           
+        </div>
+      
+		
+		<div class="m3left_b"  id="nTabs1_Content2" style="display:none">
+          <div class="clear">
+              <ul id="nTabs6" style="overflow:hidden;">
+                 <li class="lb1_active" style="width:345px;" onclick="tonav('nTabs6',this,'lb1_normal','lb1_active')">产品类别</li>
+                 <li class="lb1_normal" style="width:346px; "  onclick="tonav('nTabs6',this,'lb1_normal','lb1_active')">应用行业类别</li>
+              </ul>
+          </div>
+               
+			<div class="clear" id="nTabs6_Content0">
+             	 <div class="leftb1">
+                 	 
+                             <div class="lb1_b">                              <div style="position:absolute;font-size:12px; margin:78px 0 0 180px;"><a href="/index.php/home/Goods/index/gid/1422687504" target="_blank" style="color:gray">更多>></a></div>
+                                <span><a href="/index.php/home/Goods/index/gid/1422687504" target="_blank">光纤传感(3)</a></span>
+                                <div class="box1">
+                                <p style="font-size:12px;"><a href="/index.php/home/Goods/index/gid/1422687525" target="_blank">行业应用及解决方案</a></p><p style="font-size:12px;"><a href="/index.php/home/Goods/index/gid/1422687543" target="_blank">光学元件、集成光学芯片</a></p><p style="font-size:12px;"><a href="/index.php/home/Goods/index/gid/1422687559" target="_blank">光电子器件</a></p><p style="font-size:12px;"><a href="/index.php/home/Goods/index/gid/1422687575" target="_blank">光纤传感器</a></p>                              </div>
+                              
+                            </div> 
+                             <div class="lb1_b">                              <div style="position:absolute;font-size:12px; margin:78px 0 0 180px;"><a href="/index.php/home/Goods/index/gid/1422687603" target="_blank" style="color:gray">更多>></a></div>
+                                <span><a href="/index.php/home/Goods/index/gid/1422687603" target="_blank">机器视觉(3)</a></span>
+                                <div class="box1">
+                                <p style="font-size:12px;"><a href="/index.php/home/Goods/index/gid/1422687664" target="_blank">视觉系统及设备</a></p><p style="font-size:12px;"><a href="/index.php/home/Goods/index/gid/1422687676" target="_blank">机器视觉研究开发平台</a></p><p style="font-size:12px;"><a href="/index.php/home/Goods/index/gid/1422687694" target="_blank">视觉配套产品</a></p><p style="font-size:12px;"><a href="/index.php/home/Goods/index/gid/1422687707" target="_blank">软件包</a></p><p style="font-size:12px;"><a href="/index.php/home/Goods/index/gid/1422687722" target="_blank">光源</a></p>                              </div>
+                              
+                            </div> 
+                             <div class="lb1_b">                              <div style="position:absolute;font-size:12px; margin:78px 0 0 180px;"><a href="/index.php/home/Goods/index/gid/1422687871" target="_blank" style="color:gray">更多>></a></div>
+                                <span><a href="/index.php/home/Goods/index/gid/1422687871" target="_blank">LED(0)</a></span>
+                                <div class="box1">
+                                <p style="font-size:12px;"><a href="/index.php/home/Goods/index/gid/1422687919" target="_blank">LED背光与投影</a></p><p style="font-size:12px;"><a href="/index.php/home/Goods/index/gid/1422687931" target="_blank">LED显示屏</a></p><p style="font-size:12px;"><a href="/index.php/home/Goods/index/gid/1422687946" target="_blank">设备仪器</a></p><p style="font-size:12px;"><a href="/index.php/home/Goods/index/gid/1422687964" target="_blank">LED驱动器与电源</a></p><p style="font-size:12px;"><a href="/index.php/home/Goods/index/gid/1422687976" target="_blank">LED/OLED照明产品</a></p>                              </div>
+                              
+                            </div><div class="lb1_c">
+                                                           <div style="position:absolute;font-size:12px; margin:78px 0 0 180px;"><a href="/index.php/home/Goods/index/gid/1422688032" target="_blank" style="color:gray">更多>></a></div>
+                                <span><a href="/index.php/home/Goods/index/gid/1422688032" target="_blank">精密光学(0)</a></span>
+                                <div class="box1">
+                                <p style="font-size:12px;"><a href="/index.php/home/Goods/index/gid/1422688060" target="_blank">真空、镀膜、冷却、气体处理设备</a></p><p style="font-size:12px;"><a href="/index.php/home/Goods/index/gid/1422688073" target="_blank">光学软件</a></p><p style="font-size:12px;"><a href="/index.php/home/Goods/index/gid/1422688119" target="_blank">光学测试测量设备</a></p><p style="font-size:12px;"><a href="/index.php/home/Goods/index/gid/1422688132" target="_blank">光学镜头及模组</a></p><p style="font-size:12px;"><a href="/index.php/home/Goods/index/gid/1422688144" target="_blank">光学元件</a></p>                              </div>
+                              
+                            </div><div class="lb1_c">
+                                                           <div style="position:absolute;font-size:12px; margin:78px 0 0 180px;"><a href="/index.php/home/Goods/index/gid/1422688674" target="_blank" style="color:gray">更多>></a></div>
+                                <span><a href="/index.php/home/Goods/index/gid/1422688674" target="_blank">红外及微光(0)</a></span>
+                                <div class="box1">
+                                <p style="font-size:12px;"><a href="/index.php/home/Goods/index/gid/1422688704" target="_blank">其它</a></p><p style="font-size:12px;"><a href="/index.php/home/Goods/index/gid/1422688787" target="_blank">新技术、新产品</a></p><p style="font-size:12px;"><a href="/index.php/home/Goods/index/gid/1422688818" target="_blank">测试仪器设备</a></p><p style="font-size:12px;"><a href="/index.php/home/Goods/index/gid/1422688842" target="_blank">红外系统及应用</a></p><p style="font-size:12px;"><a href="/index.php/home/Goods/index/gid/1422688860" target="_blank">红外光电器件</a></p>                              </div>
+                              
+                            </div><div class="lb1_c">
+                                                           <div style="position:absolute;font-size:12px; margin:78px 0 0 180px;"><a href="/index.php/home/Goods/index/gid/1422688911" target="_blank" style="color:gray">更多>></a></div>
+                                <span><a href="/index.php/home/Goods/index/gid/1422688911" target="_blank">激光(0)</a></span>
+                                <div class="box1">
+                                <p style="font-size:12px;"><a href="/index.php/home/Goods/index/gid/1422688925" target="_blank">其他</a></p><p style="font-size:12px;"><a href="/index.php/home/Goods/index/gid/1422688941" target="_blank">红外器件与系统</a></p><p style="font-size:12px;"><a href="/index.php/home/Goods/index/gid/1422688959" target="_blank">激光配件</a></p><p style="font-size:12px;"><a href="/index.php/home/Goods/index/gid/1422688971" target="_blank">激光系统与设备</a></p><p style="font-size:12px;"><a href="/index.php/home/Goods/index/gid/1422688980" target="_blank">激光器</a></p>                              </div>
+                              
+                            </div> 
+                             <div class="lb1_b">                              <div style="position:absolute;font-size:12px; margin:78px 0 0 180px;"><a href="/index.php/home/Goods/index/gid/1422689117" target="_blank" style="color:gray">更多>></a></div>
+                                <span><a href="/index.php/home/Goods/index/gid/1422689117" target="_blank">光纤通信(0)</a></span>
+                                <div class="box1">
+                                <p style="font-size:12px;"><a href="/index.php/home/Goods/index/gid/1422689137" target="_blank">其他</a></p><p style="font-size:12px;"><a href="/index.php/home/Goods/index/gid/1422689148" target="_blank">运营服务</a></p><p style="font-size:12px;"><a href="/index.php/home/Goods/index/gid/1422689160" target="_blank">生产测试仪器</a></p><p style="font-size:12px;"><a href="/index.php/home/Goods/index/gid/1422689170" target="_blank">光系统和设备</a></p><p style="font-size:12px;"><a href="/index.php/home/Goods/index/gid/1422689186" target="_blank">光子系统</a></p>                              </div>
+                              
+                            </div>                      
+                      
+                  </div> 
+			</div>
+            <div class="clear" id="nTabs6_Content1" style="display: none;">
+              <div class="leftb1">
+                       <div class="index_03" style="overflow-y:auto; height:315px;"><div class="index_04_div" name="index_04" style="margin-left:0px;">
+                       
+                       <div class="index_04" name="index_04" style="width:200px; float:left;"><p class="index_04_item" style="width:189px;">
+						<img src='/images/no.png' />&nbsp;<a href="/index.php/home/Goods/index/id/1392776002" target="_blank" style="font-size:14px;font-family: '微软雅黑';font-weight: bold;line-height:38px;">工业自动化/机器人</a></p></div><div class="index_04" name="index_04" style="width:200px; float:left;"><p class="index_04_item" style="width:189px;">
+						<img src='/images/no.png' />&nbsp;<a href="/index.php/home/Goods/index/id/1392776582" target="_blank" style="font-size:14px;font-family: '微软雅黑';font-weight: bold;line-height:38px;">精密光学</a></p></div><div class="index_04" name="index_04" style="width:200px; float:left;"><p class="index_04_item" style="width:189px;">
+						<img src='/images/no.png' />&nbsp;<a href="/index.php/home/Goods/index/id/1392776586" target="_blank" style="font-size:14px;font-family: '微软雅黑';font-weight: bold;line-height:38px;">电气工程/电子/半导体</a></p></div><div class="index_04" name="index_04" style="width:200px; float:left;"><p class="index_04_item" style="width:189px;">
+						<img src='/images/no.png' />&nbsp;<a href="/index.php/home/Goods/index/id/1392776587" target="_blank" style="font-size:14px;font-family: '微软雅黑';font-weight: bold;line-height:38px;">消费电子</a></p></div><div class="index_04" name="index_04" style="width:200px; float:left;"><p class="index_04_item" style="width:189px;">
+						<img src='/images/no.png' />&nbsp;<a href="/index.php/home/Goods/index/id/1392776592" target="_blank" style="font-size:14px;font-family: '微软雅黑';font-weight: bold;line-height:38px;">汽车工程</a></p></div><div class="index_04" name="index_04" style="width:200px; float:left;"><p class="index_04_item" style="width:189px;">
+						<img src='/images/no.png' />&nbsp;<a href="/index.php/home/Goods/index/id/1392776593" target="_blank" style="font-size:14px;font-family: '微软雅黑';font-weight: bold;line-height:38px;">航天航空/军工</a></p></div><div class="index_04" name="index_04" style="width:200px; float:left;"><p class="index_04_item" style="width:189px;">
+						<img src='/images/no.png' />&nbsp;<a href="/index.php/home/Goods/index/id/1392776596" target="_blank" style="font-size:14px;font-family: '微软雅黑';font-weight: bold;line-height:38px;">半导体制造业</a></p></div><div class="index_04" name="index_04" style="width:200px; float:left;"><p class="index_04_item" style="width:189px;">
+						<img src='/images/no.png' />&nbsp;<a href="/index.php/home/Goods/index/id/1392776597" target="_blank" style="font-size:14px;font-family: '微软雅黑';font-weight: bold;line-height:38px;">化工/制药行业</a></p></div><div class="index_04" name="index_04" style="width:200px; float:left;"><p class="index_04_item" style="width:189px;">
+						<img src='/images/no.png' />&nbsp;<a href="/index.php/home/Goods/index/id/1392776598" target="_blank" style="font-size:14px;font-family: '微软雅黑';font-weight: bold;line-height:38px;">医疗/生物技术</a></p></div><div class="index_04" name="index_04" style="width:200px; float:left;"><p class="index_04_item" style="width:189px;">
+						<img src='/images/no.png' />&nbsp;<a href="/index.php/home/Goods/index/id/1392776599" target="_blank" style="font-size:14px;font-family: '微软雅黑';font-weight: bold;line-height:38px;">环境监测</a></p></div><div class="index_04" name="index_04" style="width:200px; float:left;"><p class="index_04_item" style="width:189px;">
+						<img src='/images/no.png' />&nbsp;<a href="/index.php/home/Goods/index/id/1392777610" target="_blank" style="font-size:14px;font-family: '微软雅黑';font-weight: bold;line-height:38px;">仪器仪表</a></p></div><div class="index_04" name="index_04" style="width:200px; float:left;"><p class="index_04_item" style="width:189px;">
+						<img src='/images/no.png' />&nbsp;<a href="/index.php/home/Goods/index/id/1392777630" target="_blank" style="font-size:14px;font-family: '微软雅黑';font-weight: bold;line-height:38px;">数据处理/电信</a></p></div><div class="index_04" name="index_04" style="width:200px; float:left;"><p class="index_04_item" style="width:189px;">
+						<img src='/images/no.png' />&nbsp;<a href="/index.php/home/Goods/index/id/1392777640" target="_blank" style="font-size:14px;font-family: '微软雅黑';font-weight: bold;line-height:38px;">能源</a></p></div><div class="index_04" name="index_04" style="width:200px; float:left;"><p class="index_04_item" style="width:189px;">
+						<img src='/images/no.png' />&nbsp;<a href="/index.php/home/Goods/index/id/1392777650" target="_blank" style="font-size:14px;font-family: '微软雅黑';font-weight: bold;line-height:38px;">安防防范工程</a></p></div><div class="index_04" name="index_04" style="width:200px; float:left;"><p class="index_04_item" style="width:189px;">
+						<img src='/images/no.png' />&nbsp;<a href="/index.php/home/Goods/index/id/1392777660" target="_blank" style="font-size:14px;font-family: '微软雅黑';font-weight: bold;line-height:38px;">交通运输</a></p></div><div class="index_04" name="index_04" style="width:200px; float:left;"><p class="index_04_item" style="width:189px;">
+						<img src='/images/no.png' />&nbsp;<a href="/index.php/home/Goods/index/id/1392777670" target="_blank" style="font-size:14px;font-family: '微软雅黑';font-weight: bold;line-height:38px;">商贸</a></p></div><div class="index_04" name="index_04" style="width:200px; float:left;"><p class="index_04_item" style="width:189px;">
+						<img src='/images/no.png' />&nbsp;<a href="/index.php/home/Goods/index/id/1392777680" target="_blank" style="font-size:14px;font-family: '微软雅黑';font-weight: bold;line-height:38px;">专业技术服务</a></p></div><div class="index_04" name="index_04" style="width:200px; float:left;"><p class="index_04_item" style="width:189px;">
+						<img src='/images/no.png' />&nbsp;<a href="/index.php/home/Goods/index/id/1392777690" target="_blank" style="font-size:14px;font-family: '微软雅黑';font-weight: bold;line-height:38px;">科研/教育</a></p></div><div class="index_04" name="index_04" style="width:200px; float:left;"><p class="index_04_item" style="width:189px;">
+						<img src='/images/no.png' />&nbsp;<a href="/index.php/home/Goods/index/id/1392777696" target="_blank" style="font-size:14px;font-family: '微软雅黑';font-weight: bold;line-height:38px;">航空航天/军工</a></p></div><div class="index_04" name="index_04" style="width:200px; float:left;"><p class="index_04_item" style="width:189px;">
+						<img src='/images/no.png' />&nbsp;<a href="/index.php/home/Goods/index/id/1392777698" target="_blank" style="font-size:14px;font-family: '微软雅黑';font-weight: bold;line-height:38px;">其他</a></p></div>                       
+					   </div></div>
+                      
+                  </div> 
+         	</div>
+            
+        </div>
+		
+	  
+	  </div>
+      <div class="main3_right">
+        <div class="m3right_a" style=" color: #676767">
+          
+		  <img src="/images/projectgl.png" />
+          <p><a href="/index.php/Uc/Project/projectadd" target="_blank">技术发布</a></p>
+		
+		  <img src="/images/expertgl.png" />
+		  <p><a href="/index.php/Uc/Experts/expertsadd" target="_blank">专家发布</a></p>
+		 <img src="/images/addpro.png" />
+		  <p><a href="/index.php/Uc/Pro/addindex" target="_blank">产品发布</a></p>
+		 
+        </div>
+     
+        
+        <div class="m3right_b">
+          <span>
+            <img src="images/g1.jpg" width="18px;" height="18px;">
+            <p>技术</p><p>1773</p>
+          </span>
+          <span>
+            <img src="images/g2.jpg" width="18px;" height="18px;">
+            <p>专家</p><p>302</p>
+          </span>
+		  <span>
+            <img src="/images/addpro.png" width="18px;" height="18px;">
+            <p>产品</p><p>400</p>
+          </span>
+        </div>
+        
+        <div class="m3right_c">
+           <div class="m3rc_01">
+             <ul id="na">
+               <li class="over" onclick="tonav('na',this,'now','over')">最新技术</li>
+               <li class="now" onclick="tonav('na',this,'now','over')">最新专家</li>
+			   <li class="now" onclick="tonav('na',this,'now','over')">最新产品</li>
+               <li class="now" onclick="tonav('na',this,'now','over')">通知公告</li>
+             </ul>
+           </div>
+		   
+           <div class="m3rc_02" id="na_Content0">
+             <ul>
+               <li><a href="/index.php/home/Project/detials/id/1423635866" target="_blank" title="fdsfgfd"> fdsfgfd  </a><p>2015.02.11</p></li><li><a href="/index.php/home/Project/detials/id/1423465412" target="_blank" title="222"> 222  </a><p>2015.02.09</p></li><li><a href="/index.php/home/Project/detials/id/1423289317" target="_blank" title="1"> 1  </a><p>2015.02.07</p></li><li><a href="/index.php/home/Project/detials/id/1423101668" target="_blank" title="测试和个梵蒂冈"> 测试和个梵蒂冈  </a><p>2015.02.05</p></li><li><a href="/index.php/home/Project/detials/id/1422931254" target="_blank" title="测试"> 测试  </a><p>2015.02.03</p></li><li><a href="/index.php/home/Project/detials/id/1422689128" target="_blank" title="项目"> 项目  </a><p>2015.01.31</p></li><li><a href="/index.php/home/Project/detials/id/1422688303" target="_blank" title="项目"> 项目  </a><p>2015.01.31</p></li><li><a href="/index.php/home/Project/detials/id/1411979068" target="_blank" title="一种增大物方景深的大物镜设计方法"> 一种增大物方景深的大物镜设计方法  </a><p>2014.09.29</p></li><li><a href="/index.php/home/Project/detials/id/1411979067" target="_blank" title="一种激光粒度仪光学系统设计方法"> 一种激光粒度仪光学系统设计方法  </a><p>2014.09.29</p></li><li><a href="/index.php/home/Project/detials/id/1411979066" target="_blank" title="获取多晶体光学硒化锌的方法"> 获取多晶体光学硒化锌的方法  </a><p>2014.09.29</p></li><li><a href="/index.php/home/Project/detials/id/1411979065" target="_blank" title="一种对包含ADC和DAC的电路的快速检测方法"> 一种对包含ADC和DAC的电路的  </a><p>2014.09.29</p></li><li><a href="/index.php/home/Project/detials/id/1411979064" target="_blank" title="一种回路带宽虚拟测试方法"> 一种回路带宽虚拟测试方法  </a><p>2014.09.29</p></li><li><a href="/index.php/home/Project/detials/id/1411979063" target="_blank" title="基于图像拼接的SDI全景摄像系统"> 基于图像拼接的SDI全景摄像系统  </a><p>2014.09.29</p></li><li><a href="/index.php/home/Project/detials/id/1411979062" target="_blank" title="一种基于装订参数的全景图像拼接方法"> 一种基于装订参数的全景图像拼接方  </a><p>2014.09.29</p></li><li><a href="/index.php/home/Project/detials/id/1411979061" target="_blank" title="一种自适应多传感器动态匹配滤波器调试方法？？？？？"> 一种自适应多传感器动态匹配滤波器  </a><p>2014.09.29</p></li>             </ul>
+           </div>
+           <div class="m3rc_02" id="na_Content1" style="display:none">
+           	<ul>
+               <li><a href="/index.php/home/Experts/details/id/1423548885" target="_blank" title="">  32 </a><p>2015.02.10</p></li><li><a href="/index.php/home/Experts/details/id/1423452697" target="_blank" title="">  b </a><p>2015.02.09</p></li><li><a href="/index.php/home/Experts/details/id/1423452417" target="_blank" title="">  a </a><p>2015.02.09</p></li><li><a href="/index.php/home/Experts/details/id/1422413461" target="_blank" title="">  测绘师 </a><p>2015.01.28</p></li><li><a href="/index.php/home/Experts/details/id/1390301730" target="_blank" title="">  李泽仁 </a><p>2014.01.21</p></li><li><a href="/index.php/home/Experts/details/id/1390301729" target="_blank" title="">  蔡然 </a><p>2014.01.21</p></li><li><a href="/index.php/home/Experts/details/id/1390301728" target="_blank" title="">  朱斌 </a><p>2014.01.21</p></li><li><a href="/index.php/home/Experts/details/id/1390301727" target="_blank" title="">  苏红雨 </a><p>2014.01.21</p></li><li><a href="/index.php/home/Experts/details/id/1390301726" target="_blank" title="">  周树平 </a><p>2014.01.21</p></li><li><a href="/index.php/home/Experts/details/id/1390301725" target="_blank" title="">  孟卫华 </a><p>2014.01.21</p></li><li><a href="/index.php/home/Experts/details/id/1390301724" target="_blank" title="">  龚威 </a><p>2014.01.21</p></li><li><a href="/index.php/home/Experts/details/id/1390301723" target="_blank" title="">  刘小英 </a><p>2014.01.21</p></li><li><a href="/index.php/home/Experts/details/id/1390301722" target="_blank" title="">  贾辉 </a><p>2014.01.21</p></li><li><a href="/index.php/home/Experts/details/id/1390301721" target="_blank" title="">  于滟文 </a><p>2014.01.21</p></li><li><a href="/index.php/home/Experts/details/id/1390301720" target="_blank" title="">  张思祥 </a><p>2014.01.21</p></li>             </ul>
+           </div>
+		   <div class="m3rc_02" id="na_Content1" style="display:none">
+           	<ul>
+               <li><a href="/index.php/home/Goods/details/id/1423645489" target="_blank" title="二是发挥">  二是发挥 </a><p>2015.02.11</p></li><li><a href="/index.php/home/Goods/details/id/1423645419" target="_blank" title="的非官方">  的非官方 </a><p>2015.02.11</p></li><li><a href="/index.php/home/Goods/details/id/1423644934" target="_blank" title="放得开首付款">  放得开首付款 </a><p>2015.02.11</p></li><li><a href="/index.php/home/Goods/details/id/1422423589" target="_blank" title="测试">  测试 </a><p>2015.01.28</p></li><li><a href="/index.php/home/Goods/details/id/1422423585" target="_blank" title="测试">  测试 </a><p>2015.01.28</p></li><li><a href="/index.php/home/Goods/details/id/1422423474" target="_blank" title="测试">  测试 </a><p>2015.01.28</p></li><li><a href="/index.php/home/Goods/details/id/1395199583" target="_blank" title="高纯锗">  高纯锗 </a><p>2014.03.19</p></li><li><a href="/index.php/home/Goods/details/id/1395199582" target="_blank" title="单晶锗">  单晶锗 </a><p>2014.03.19</p></li><li><a href="/index.php/home/Goods/details/id/1395199581" target="_blank" title="红外锗片">  红外锗片 </a><p>2014.03.19</p></li><li><a href="/index.php/home/Goods/details/id/1395199580" target="_blank" title="红外热像仪">  红外热像仪 </a><p>2014.03.19</p></li><li><a href="/index.php/home/Goods/details/id/1395199579" target="_blank" title="FLIR K系列">  FLIR K系列 </a><p>2014.03.19</p></li><li><a href="/index.php/home/Goods/details/id/1395199578" target="_blank" title="FLIR K系列">  FLIR K系列 </a><p>2014.03.19</p></li><li><a href="/index.php/home/Goods/details/id/1395199576" target="_blank" title="测角仪">  测角仪 </a><p>2014.03.19</p></li><li><a href="/index.php/home/Goods/details/id/1395199575" target="_blank" title="透过偏芯显微镜TCM-5">  透过偏芯显微镜TCM-5 </a><p>2014.03.19</p></li><li><a href="/index.php/home/Goods/details/id/1395199574" target="_blank" title="反射式偏心测定装置">  反射式偏心测定装置 </a><p>2014.03.19</p></li>             </ul>
+           </div>
+           <div class="m3rc_02" id="na_Content2" style="display:none">
+           	<ul>
+               <li><a href="/index.php/home/Article/detailes/id/90" target="_blank" title="International Seminar on Advanced Optical Manufacturing Technology and System Application">  International Seminar on Advance </a><p>2014.01.28</p></li><li><a href="/index.php/home/Article/detailes/id/89" target="_blank" title="International Symposium on Atmospheric Environment Monitoring Technology and Application">  International Symposium on Atmos </a><p>2014.01.28</p></li><li><a href="/index.php/home/Article/detailes/id/88" target="_blank" title="International Conference on Solar Cell Technology and Application">  International Conference on Sola </a><p>2014.01.28</p></li><li><a href="/index.php/home/Article/detailes/id/87" target="_blank" title="2014 Symposium on Defense Electronics and Information Technology and Application">  2014 Symposium on Defense Electr </a><p>2014.01.28</p></li><li><a href="/index.php/home/Article/detailes/id/86" target="_blank" title="2014International Symposium on Computer Vision and Application 13-15 May 2014 Beijing China national convention center">  2014International Symposium on C </a><p>2014.01.28</p></li><li><a href="/index.php/home/Article/detailes/id/85" target="_blank" title="International Forum on Next Generation Internet and Information Consumption Industry Technology Innovation">  International Forum on Next Gene </a><p>2014.01.28</p></li><li><a href="/index.php/home/Article/detailes/id/84" target="_blank" title="2014 International Symposium on Smart City and Security Networking Technology and Application  &2014 Internet of Things and Security Products Matchmaking Meeting">  2014 International Symposium on  </a><p>2014.01.28</p></li>             </ul>
+           </div>
+       
+           
+        
+        <img src="images/index_22.jpg" style=" float:left;"/>
+		
+	  </div>
+	   <div class="hyy">
+      
+		<div class="hy">
+		<p>会议长廊</p>
+		</div>
+		<div class="rollBox">
+  <div class="LeftBotton" onmousedown="ISL_GoUp()" onmouseup="ISL_StopUp()" onmouseout="ISL_StopUp()"></div>
+  <div class="Cont" id="ISL_Cont">
+    <div class="ScrCont">
+      <div id="List1" >
+        <!-- 图片列表 begin -->
+        <div class="pic" align="center" style=" margin-top:25px; height:270px; "><div style="width:200px; float:left;overflow:hidden;text-align:center;"><a href="http://www.jingqiahui.com.cn/" target="_blank" style="overflow:hidden; margin:auto;display:block;text-align:center;"><img src="/Uploads/Project/image/20140318/20140318081640_46210.jpg" width="188px" height="260px" /></a></div><div style="width:200px; float:left;overflow:hidden;text-align:center;"><a href="http://www.jingqiahui.com.cn/InternationalSymposium/471.htm" target="_blank" style="overflow:hidden; margin:auto;display:block;text-align:center;"><img src="/Uploads/Project/image/20140402/20140402192356_69746.jpg" width="188px" height="260px" /></a></div><div style="width:200px; float:left;overflow:hidden;text-align:center;"><a href="http://www.jingqiahui.com.cn/InternationalSymposium/468.htm" target="_blank" style="overflow:hidden; margin:auto;display:block;text-align:center;"><img src="/Uploads/Project/image/20140402/20140402192434_52357.jpg" width="188px" height="260px" /></a></div><div style="width:200px; float:left;overflow:hidden;text-align:center;"><a href="http://www.jingqiahui.com.cn/InternationalSymposium/475.htm" target="_blank" style="overflow:hidden; margin:auto;display:block;text-align:center;"><img src="/Uploads/Project/image/20140402/20140402192559_26820.jpg" width="188px" height="260px" /></a></div><div style="width:200px; float:left;overflow:hidden;text-align:center;"><a href="http://www.bhrf.org.cn/RenewableEnergy/index.htm" target="_blank" style="overflow:hidden; margin:auto;display:block;text-align:center;"><img src="/Uploads/Project/image/20140801/20140801150127_25924.jpg" width="188px" height="260px" /></a></div><div style="width:200px; float:left;overflow:hidden;text-align:center;"><a href="http://www.bhrf.org.cn/EnvironmentalMonitoring/index.htm" target="_blank" style="overflow:hidden; margin:auto;display:block;text-align:center;"><img src="/Uploads/Project/image/20140708/20140708132103_65879.jpg" width="188px" height="260px" /></a></div><div style="width:200px; float:left;overflow:hidden;text-align:center;"><a href="http://www.bhrf.org.cn/SmartCity/index.htm" target="_blank" style="overflow:hidden; margin:auto;display:block;text-align:center;"><img src="/Uploads/Project/image/20140708/20140708132252_95163.jpg" width="188px" height="260px" /></a></div><div style="width:200px; float:left;overflow:hidden;text-align:center;"><a href="http://www.bhrf.org.cn/Newenergyvehicles/index.htm" target="_blank" style="overflow:hidden; margin:auto;display:block;text-align:center;"><img src="/Uploads/Project/image/20140708/20140708132333_46859.jpg" width="188px" height="260px" /></a></div><div style="width:200px; float:left;overflow:hidden;text-align:center;"><a href="http://www.bhrf.org.cn/Optoelectronicsandmicroelect/index.htm" target="_blank" style="overflow:hidden; margin:auto;display:block;text-align:center;"><img src="/Uploads/Project/image/20140708/20140708130914_80144.jpg" width="188px" height="260px" /></a></div><div style="width:200px; float:left;overflow:hidden;text-align:center;"><a href="http://www.jingqiahui.com.cn/InternationalSymposium/476.htm" target="_blank" style="overflow:hidden; margin:auto;display:block;text-align:center;"><img src="/Uploads/Project/image/20140402/20140402192523_51217.jpg" width="188px" height="260px" /></a></div><div style="width:200px; float:left;overflow:hidden;text-align:center;"><a href="http://www.bhrf.org.cn/Greencarbon/index.htm" target="_blank" style="overflow:hidden; margin:auto;display:block;text-align:center;"><img src="/Uploads/Project/image/20140708/20140708132013_35633.jpg" width="188px" height="260px" /></a></div><div style="width:200px; float:left;overflow:hidden;text-align:center;"><a href="http://www.bhrf.org.cn/MarineTechnology/index.htm" target="_blank" style="overflow:hidden; margin:auto;display:block;text-align:center;"><img src="/Uploads/Project/image/20140708/20140708132203_80834.jpg" width="188px" height="260px" /></a></div></div>
+        <!-- 图片列表 end -->
+      </div>
+      <div id="List2"></div>
+    </div>
+  </div>
+  <div class="RightBotton" onmousedown="ISL_GoDown()" onmouseup="ISL_StopDown()" onmouseout="ISL_StopDown()"></div>
+</div>
+        <!--<div style=" float:left; margin-top:30px; width:45px; margin-left:20px;  padding-top:120px;"><img src="/images/indexg2.jpg" width="38px" /></div><div style=" float:left; margin-top:30px; width:188px;"><a href="" target="_blank"><img src="" width="188px" /></a></div><div style=" float:left; margin-left:2px; width:45px; padding-left:1px;  margin-top:30px;  padding-top:120px; "><img src="/images/indexg3.jpg" width="38px" /></div>
+      </div>-->
+        </div>
+		
+       <script language="javascript" type="text/javascript">
+
+	   $(function(){
+			$(".pic").width($("#List1 .pic div").size()*200);
+	   })
+<!--//--><![CDATA[//><!--
+//图片滚动列表 mengjia 070816
+var Speed =5; //速度(毫秒)
+var Space = 5; //每次移动(px)
+var PageWidth =200; //翻页宽度
+var fill = 0; //整体移位
+var MoveLock = false;
+var MoveTimeObj;
+var Comp = 0;
+var AutoPlayObj = null;
+GetObj("List2").innerHTML = GetObj("List1").innerHTML;
+GetObj('ISL_Cont').scrollLeft = fill;
+GetObj("ISL_Cont").onmouseover = function(){clearInterval(AutoPlayObj);}
+GetObj("ISL_Cont").onmouseout = function(){AutoPlay();}
+AutoPlay();
+function GetObj(objName){if(document.getElementById){return eval('document.getElementById("'+objName+'")')}else{return eval('document.all.'+objName)}}
+function AutoPlay(){ //自动滚动
+ clearInterval(AutoPlayObj);
+ AutoPlayObj = setInterval('ISL_GoDown();ISL_StopDown();',3000); //间隔时间
+}
+function ISL_GoUp(){ //上翻开始
+ if(MoveLock) return;
+ clearInterval(AutoPlayObj);
+ MoveLock = true;
+ MoveTimeObj = setInterval('ISL_ScrUp();',Speed);
+}
+function ISL_StopUp(){ //上翻停止
+ clearInterval(MoveTimeObj);
+ if(GetObj('ISL_Cont').scrollLeft % PageWidth - fill != 0){
+  Comp = fill - (GetObj('ISL_Cont').scrollLeft % PageWidth);
+  CompScr();
+ }else{
+  MoveLock = false;
+ }
+ AutoPlay();
+}
+function ISL_ScrUp(){ //上翻动作
+ if(GetObj('ISL_Cont').scrollLeft <= 0){GetObj('ISL_Cont').scrollLeft = GetObj('ISL_Cont').scrollLeft + GetObj('List1').offsetWidth}
+ GetObj('ISL_Cont').scrollLeft -= Space ;
+}
+function ISL_GoDown(){ //下翻
+ clearInterval(MoveTimeObj);
+ if(MoveLock) return;
+ clearInterval(AutoPlayObj);
+ MoveLock = true;
+ ISL_ScrDown();
+ MoveTimeObj = setInterval('ISL_ScrDown()',Speed);
+}
+function ISL_StopDown(){ //下翻停止
+ clearInterval(MoveTimeObj);
+ if(GetObj('ISL_Cont').scrollLeft % PageWidth - fill != 0 ){
+  Comp = PageWidth - GetObj('ISL_Cont').scrollLeft % PageWidth + fill;
+  CompScr();
+ }else{
+  MoveLock = false;
+ }
+ AutoPlay();
+}
+function ISL_ScrDown(){ //下翻动作
+ if(GetObj('ISL_Cont').scrollLeft >= GetObj('List1').scrollWidth){GetObj('ISL_Cont').scrollLeft = GetObj('ISL_Cont').scrollLeft - GetObj('List1').scrollWidth;}
+ GetObj('ISL_Cont').scrollLeft += Space ;
+}
+function CompScr(){
+ var num;
+ if(Comp == 0){MoveLock = false;return;}
+ if(Comp < 0){ //上翻
+  if(Comp < -Space){
+   Comp += Space;
+   num = Space;
+  }else{
+   num = -Comp;
+   Comp = 0;
+  }
+  GetObj('ISL_Cont').scrollLeft -= num;
+  setTimeout('CompScr()',Speed);
+ }else{ //下翻
+  if(Comp > Space){
+   Comp -= Space;
+   num = Space;
+  }else{
+   num = Comp;
+   Comp = 0;
+  }
+  GetObj('ISL_Cont').scrollLeft += num;
+  setTimeout('CompScr()',Speed);
+ }
+}
+//--><!]]>
+</script>
+    </div>
+    <div class="main4">
+      <div class="main4_a">
+        <p>热门标签</p>
+      </div>
+	  <div class="main4_b" style="margin-top:10px; float:left; overflow:hidden;  cursor:pointer;"  onclick="window.open('index.php/home/Search/index/key/太阳能')">
+	
+<div style="float:left; background:url(/images/mr1.jpg) left no-repeat  ; width:7px; height:33px; "></div>
+<div style="float:left; background:url(/images/mr2.jpg) center repeat-x ; height:33px; ">
+       <b><div style=" color:#FFFFFF; text-align:center; padding:6px 8px; font-size:12px; line-height:16px;" > 太阳能</div></b>
+		</div>
+<div style="float:left; background:url(/images/mr.jpg) right no-repeat ; margin-right:5px; width:5px; height:33px; "></div>
+
+      </div><div class="main4_b" style="margin-top:10px; float:left; overflow:hidden;  cursor:pointer;"  onclick="window.open('index.php/home/Search/index/key/华盛顿州立大学')">
+	
+<div style="float:left; background:url(/images/mr1.jpg) left no-repeat  ; width:7px; height:33px; "></div>
+<div style="float:left; background:url(/images/mr2.jpg) center repeat-x ; height:33px; ">
+       <b><div style=" color:#FFFFFF; text-align:center; padding:6px 8px; font-size:12px; line-height:16px;" > 华盛顿州立大学</div></b>
+		</div>
+<div style="float:left; background:url(/images/mr.jpg) right no-repeat ; margin-right:5px; width:5px; height:33px; "></div>
+
+      </div><div class="main4_b" style="margin-top:10px; float:left; overflow:hidden;  cursor:pointer;"  onclick="window.open('index.php/home/Search/index/key/信息技术')">
+	
+<div style="float:left; background:url(/images/mr1.jpg) left no-repeat  ; width:7px; height:33px; "></div>
+<div style="float:left; background:url(/images/mr2.jpg) center repeat-x ; height:33px; ">
+       <b><div style=" color:#FFFFFF; text-align:center; padding:6px 8px; font-size:12px; line-height:16px;" > 信息技术</div></b>
+		</div>
+<div style="float:left; background:url(/images/mr.jpg) right no-repeat ; margin-right:5px; width:5px; height:33px; "></div>
+
+      </div><div class="main4_b" style="margin-top:10px; float:left; overflow:hidden;  cursor:pointer;"  onclick="window.open('index.php/home/Search/index/key/新能源汽车技术')">
+	
+<div style="float:left; background:url(/images/mr1.jpg) left no-repeat  ; width:7px; height:33px; "></div>
+<div style="float:left; background:url(/images/mr2.jpg) center repeat-x ; height:33px; ">
+       <b><div style=" color:#FFFFFF; text-align:center; padding:6px 8px; font-size:12px; line-height:16px;" > 新能源汽车技术</div></b>
+		</div>
+<div style="float:left; background:url(/images/mr.jpg) right no-repeat ; margin-right:5px; width:5px; height:33px; "></div>
+
+      </div><div class="main4_b" style="margin-top:10px; float:left; overflow:hidden;  cursor:pointer;"  onclick="window.open('index.php/home/Search/index/key/生命诊断和工具')">
+	
+<div style="float:left; background:url(/images/mr1.jpg) left no-repeat  ; width:7px; height:33px; "></div>
+<div style="float:left; background:url(/images/mr2.jpg) center repeat-x ; height:33px; ">
+       <b><div style=" color:#FFFFFF; text-align:center; padding:6px 8px; font-size:12px; line-height:16px;" > 生命诊断和工具</div></b>
+		</div>
+<div style="float:left; background:url(/images/mr.jpg) right no-repeat ; margin-right:5px; width:5px; height:33px; "></div>
+
+      </div><div class="main4_b" style="margin-top:10px; float:left; overflow:hidden;  cursor:pointer;"  onclick="window.open('index.php/home/Search/index/key/技术,成果转让')">
+	
+<div style="float:left; background:url(/images/mr1.jpg) left no-repeat  ; width:7px; height:33px; "></div>
+<div style="float:left; background:url(/images/mr2.jpg) center repeat-x ; height:33px; ">
+       <b><div style=" color:#FFFFFF; text-align:center; padding:6px 8px; font-size:12px; line-height:16px;" > 技术,成果转让</div></b>
+		</div>
+<div style="float:left; background:url(/images/mr.jpg) right no-repeat ; margin-right:5px; width:5px; height:33px; "></div>
+
+      </div><div class="main4_b" style="margin-top:10px; float:left; overflow:hidden;  cursor:pointer;"  onclick="window.open('index.php/home/Search/index/key/光电子')">
+	
+<div style="float:left; background:url(/images/mr1.jpg) left no-repeat  ; width:7px; height:33px; "></div>
+<div style="float:left; background:url(/images/mr2.jpg) center repeat-x ; height:33px; ">
+       <b><div style=" color:#FFFFFF; text-align:center; padding:6px 8px; font-size:12px; line-height:16px;" > 光电子</div></b>
+		</div>
+<div style="float:left; background:url(/images/mr.jpg) right no-repeat ; margin-right:5px; width:5px; height:33px; "></div>
+
+      </div>    </div>
+    <div class="main5">
+      <div class="main5_a">
+        <div class="m5a_01">
+          <p>最新动态</p>
+          <a  href="/index.php/Home/Article/listt/ids/425 " class="mmore">more + </a>
+        </div>
+        <div class="m5a_02">
+          <!--<div class="box2">
+         <a href="#"><img src="images/index_46.jpg" /></a>
+		    <a href="#"><img src="" width="129px" height="87px" /></a>
+            <span>
+              <p><a href="/index.php/home/Article/detailes"></a></p>
+              <p><font color="#786061">13个门类</font></p>
+            </span>
+          </div> -->
+          <ul>
+		  <li><a href="/index.php/home/Article/detailes/id/103" title="2013年第四届中国（天津滨海）国际生态城市论坛 ——绿色科技与生态城市暨国际生态环保项目对接交流会圆满成功" target="_blank"> 2013年第四届中国（天津滨海）</a></li><li><a href="/index.php/home/Article/detailes/id/102" title="2013年高科技成果项目对接洽谈——北京重点实验室及工程技术中心发布会圆满结束" target="_blank"> 2013年高科技成果项目对接洽谈</a></li><li><a href="/index.php/home/Article/detailes/id/101" title="2013年高科技成果项目对接洽谈会" target="_blank"> 2013年高科技成果项目对接洽谈</a></li><li><a href="/index.php/home/Article/detailes/id/100" title="2013年高科技成果项目对接洽谈会—海外高新技术项目发布会" target="_blank"> 2013年高科技成果项目对接洽谈</a></li><li><a href="/index.php/home/Article/detailes/id/99" title="2014第六届中国（北京）国际光电展览会--展会通知.doc" target="_blank"> 2014第六届中国（北京）国际光</a></li><li><a href="/index.php/home/Article/detailes/id/98" title="2014年中国（北京）国际高新技术交流展洽会" target="_blank"> 2014年中国（北京）国际高新技</a></li><li><a href="/index.php/home/Article/detailes/id/97" title="2013第五届中国（北京）国际光电展览会 展后报告" target="_blank"> 2013第五届中国（北京）国际光</a></li><li><a href="/index.php/home/Article/detailes/id/96" title="天津滨海新区参观考察中国高科技产业化研究会" target="_blank"> 天津滨海新区参观考察中国高科技产</a></li><li><a href="/index.php/home/Article/detailes/id/95" title="中高会受邀参加Optics + Photonics2013会议" target="_blank"> 中高会受邀参加Optics + </a></li>       
+          </ul>
+        </div>
+      </div>
+      
+      <div class="main5_b">
+        <div class="m5b_01">
+          <p>常见问题</p>
+          <a href="index.php?a=question&m=Article&g=home&ids=462" class="mmore">more + </a>
+        </div>
+        <div class="m5b_02">
+          <!--<div class="box2">
+            <a href="#"><img src="images/index_47.jpg" /></a>
+			<a href="#"><img src="" width="129px" height="87px"/></a>
+            <span>
+              <p><a href="/index.php/home/Article/detailes"></a></p>
+            <p><font color="#786061">6种方法</font></p>
+            </span>
+          </div> -->
+          <ul>
+          <li><a href="/index.php/home/Article/detailes/id/71">会员注册</a></li><li><a href="/index.php/home/Article/detailes/id/70">泰科网主要做什么</a></li><li><a href="/index.php/home/Article/detailes/id/68">科技成果信息描述建议</a></li>          </ul>
+        </div>
+      </div>
+      
+      
+      <div class="main5_c">
+        <div class="m5c_01">
+          <p>友情链接</p>
+          <a href="#" class="mmore">more + </a>
+        </div>
+        <div class="m5c_02">
+       
+          <ul>
+            <li><a href="http://www.drc.gov.cn/" target="_blank" title="国务院发展研究中心">国务院发展研究中心</a></li><li><a href="http://www.cast.org.cn/n35081/" target="_blank" title="中国科学技术协会">中国科学技术协会</a></li><li><a href="http://www.cas.cn/" target="_blank" title="中国科学院">中国科学院</a></li><li><a href="http://www.cciip.org.cn/" target="_blank" title="中国国际投资促进会">中国国际投资促进会</a></li><li><a href="http://www.chia.org.cn/" target="_blank" title="中国高科技产业化研究会">中国高科技产业化研究会</a></li><li><a href="http://www.mofcom.gov.cn/" target="_blank" title="中华人民共和国商务部">中华人民共和国商务部</a></li><li><a href="http://www.sdpc.gov.cn/" target="_blank" title="中华人民共和国国家发展和改革委员会">中华人民共和国国家发展和改革委员会</a></li><li><a href="http://www.most.gov.cn/" target="_blank" title="中华人民共和国科学技术部">中华人民共和国科学技术部</a></li><li><a href="http://www.miit.gov.cn/n11293472/index.html" target="_blank" title="中华人民共和国工业和信息化部">中华人民共和国工业和信息化部</a></li>          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="foot">
+  <div class="foot_a"><img src="/images/dl_25.jpg" /></div>
+  <div class="foot_b">
+    <span style="margin-right:45px;margin-right:90px!important; ">
+      <p style=" padding-bottom:10px;"><font color="#EC3A38">关于我们</font></p>
+	  
+	  <p style="text-align:center;"><a style="font-size:12px;margin:auto;" href="/index.php/home/Article/listt/ids/428">关于泰科 </a></p><p style="text-align:center;"><a style="font-size:12px;margin:auto;" href="/index.php/home/Article/listt/ids/427">合作机构 </a></p><p style="text-align:center;"><a style="font-size:12px;margin:auto;" href="/index.php/home/Article/listt/ids/426">媒体关注 </a></p>      <!--
+      <p><a href="#">合作机构</a></p>
+      <p><a href="#">媒体关注</a></p>-->
+    </span>
+     <span style="margin-right:45px;margin-right:90px!important;">
+      <p style=" padding-bottom:10px;"><font color="#EC3A38">使用须知</font></p>
+	  <p style="text-align:center;"><a style="font-size:12px;margin:auto;" href="/index.php/home/Article/question/ids/462">常见问题 </a></p><p style="text-align:center;"><a style="font-size:12px;margin:auto;" href="/index.php/home/Article/question/ids/430">用户协议 </a></p><p style="text-align:center;"><a style="font-size:12px;margin:auto;" href="/index.php/home/Article/question/ids/429">侵权处理 </a></p>     <!-- <p><a href="#">帮助中心</a></p>
+      <p><a href="#">常见问题</a><img src="images/dl_26.jpg" /></p>
+      <p><a href="#">侵权处理</a></p>-->
+    </span>
+     <span style="">
+      <p style=" padding-bottom:10px;"><font color="#EC3A38">联系我们</font></p>
+	  <p style="text-align:center;"><a style="font-size:12px;margin:auto;" href="/index.php/home/Article/listt/ids/432">加入我们 </a></p><p style="text-align:center;"><a style="font-size:12px;margin:auto;" href="/index.php/home/Article/listt/ids/1390623941">联系我们 </a></p>      <!--<p><a href="#">加入我们</a></p>
+      <p><a href="#">友情链接</a></p>
+      <p><a href="#">联系我们</a></p>-->
+    </span>
+  </div>
+  <div class="foot_c">
+   <!-- <a href="#"><img src="images/dl_27.jpg" /></a>
+    <a href="#"><img src="images/dl_28.jpg" /></a>
+    <a href="#"><img src="images/dl_29.jpg" /></a> -->
+  
+  </div>
+
+</div>
+<!--[if lte IE 6]>
+<script src="__TMPL__Public/js/DD_belatedPNG_0.0.8a-min.js"></script>
+<![endif]-->
+
+</body>
+</html>

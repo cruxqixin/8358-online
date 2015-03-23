@@ -1,0 +1,123 @@
+@charset "utf-8";
+/* CSS Document */
+
+*{
+	padding:0px;
+	margin:0px;
+}
+body{
+	line-height:22px;
+	font-size:12px;
+}
+a{
+	text-decoration:none;
+}
+ul li{
+	list-style:none;
+}
+.clear{
+	clear:both;
+}
+.Main {
+width: 1000px;
+height: auto;
+margin: 0 auto;
+}
+.Expand_left{
+	width:740px;
+	float:left;
+	margin-left:5px;
+	margin-top:5px;
+	border:1px solid #999999;
+}
+.Expand_01{
+	background:url(../images/tk.jpg) center no-repeat;
+	width:171px;
+	height:34px;
+	color:#FFF;
+	font-size:14px;
+	font-family:"微软雅黑";
+	line-height:30px;
+	text-indent:15px;
+	margin-top:16px;
+	margin-left:-7px;
+}
+.Expand_02{
+	padding-top:16px;
+	border-bottom:1px  dashed #808080;
+	height:35px;
+	line-height:35px;
+	margin-left:40px;
+	margin-right:40px;
+}
+.Expand_02 span{
+	 float:left;
+	 color:#221815;
+	 font-size:24px;
+ }
+ .Expand_02 a{
+	 display:block;
+	 float:right;
+	 width:100px;
+	 height:28px;
+	 background-color:#ff342e;
+	 text-align:center;
+	 line-height:28px;
+	 color:#FFF;
+	 font-size:16px;
+ }
+.Expand_03{
+	clear:both;
+	  padding-top:30px;
+	  padding-left:40px;
+	  color:#221815;
+	  padding-bottom:214px;
+  }
+  .Expand_03 p{
+	  padding-bottom:20px;
+  }
+  .Expand_04{
+	padding-top:16px;
+	border-top:1px  dashed #808080;
+	 color:#221815;
+	 margin-left:40px;
+	 margin-bottom:20px;
+	 margin-right:40px;
+}
+.Expand_right{
+	width:234px;
+	float:right;
+	margin-top:5px;
+	border:1px solid #999999;
+}
+.Expand_05{
+	padding-left:5px;
+	padding-right:5px;
+}
+.Expand_05 ul li{
+	height:35px;
+	border-bottom:1px dashed #808080;
+	line-height:35px;
+	text-indent:10px;
+}
+.Expand_05 ul li a{
+	color:#808080;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,127 @@
+<include file="UCenter:header"/>
+<script type="text/javascript" src="__PUBLIC__/statics/js/WdatePicker.js"></script>
+<style type="text/css">
+.tablist table{
+	border:1px solid #939393;
+}
+
+.tablist th{
+	background:#939393;
+	color:white;
+	height:40px;
+	border-right:1px solid #797979;
+	border-left:1px solid #AAAAAA;
+}
+.tablist td{
+	border-right:1px solid #CFCFCF;
+	border-bottom:1px solid #CFCFCF;
+	height:40px;
+	text-align:center;
+}
+.tablist a{
+	color:blue;	
+}
+.normal1 {
+background: url(../images/after_04.jpg) center no-repeat;
+width: 129px;
+height: 35px;
+line-height: 35px;
+float: left;
+margin-right: 4px;
+cursor: pointer;
+text-align: center;
+}
+.active1 {
+background: url(../images/after_03.jpg) center no-repeat;
+width: 129px;
+height: 35px;
+line-height: 35px;
+float: left;
+margin-right: 4px;
+cursor: pointer;
+text-align: center;
+}
+</style>
+<!--内容-->
+    <!--left-->
+      <include file="UCenter:left"/>
+    <!--left-->
+    <!--right-->
+    <div class="right">
+           <div class="daohang">当前位置： <a href="#">首页</a> > <a href="#"><font>举报/咨询信息</font></a></div>
+           <div class="main">
+                <div class="pub_title_bg"><div class="pub_title">举报/咨询信息管理</div></div>
+                <!--<div class="after_01">
+                    <P>已发布：<span>{$count}</span>条举报/咨询信息</P>
+                </div> -->
+                <div class="after_02">
+				<form name="searchform" action="{:U('Experts/elist')}" method="post" >
+				<div style="height:50px; padding-top:8px;">
+				<table width="100%" cellspacing="0" class="search-form">
+        <tbody>
+            <tr>
+            <td>
+            <div class="explain-col">
+            	发布时间：
+            	<input type="text" name="time_start" id="time_start" class="pub_03" onfocus="WdatePicker()" size="12" value="{$time_start}">
+				<script language="javascript" type="text/javascript">
+                    Calendar.setup({
+                        inputField     :    "time_start",
+                        ifFormat       :    "%Y-%m-%d",
+                        showsTime      :    'true',
+                        timeFormat     :    "24"
+                    });
+                </script>
+                -
+                <input type="text" name="time_end" id="time_end" class="pub_03"  onfocus="WdatePicker()" size="12" value="{$time_end}">
+				<script language="javascript" type="text/javascript">
+                    Calendar.setup({
+                        inputField     :    "time_end",
+                        ifFormat       :    "%Y-%m-%d",
+                        showsTime      :    'true',
+                        timeFormat     :    "24"
+                    });
+                </script>
+            	
+              </select>
+                &nbsp;咨询名称 :
+                <input name="keyword" type="text" class="pub_03" size="25" value="{$keyword}" />
+                <input type="submit" name="search" class="button" value="搜索" />
+        	</div>
+            </td>
+            </tr>
+        </tbody>
+    </table>
+	</div>
+	 </form>
+                    <ul id="nTabs1" style="float:left;">
+                        <li class="<if condition="$_GET['type'] eq ''">normal1<else/>active1</if>" onclick="window.location.href='{:U('Uc/Report/index?type=0')}'">举报信息<span>({$count[0]})</span> </li>
+                      <li class="<if condition="$_GET['type'] eq '1'">active1<else/>normal1</if>" onclick="window.location.href='{:U('Uc/Report/indexx?type=1')}'">咨询信息<span>({$count1[0]})</span> </li>
+                     
+                    </ul>
+					<!--<div style="float:right; padding-right:20px;"><a style="color:#000000;" href="{:U('Uc/User/demand')}">添加</a></div>-->
+                </div>
+                 <div class="after_03 tablist" style="height:auto;" id="nTabs1_Content0">
+                    <table cellpadding="0" cellspacing="0" width="100%">
+                    	<tr><th>咨询名称</th><th>咨询内容</th><th>咨询IP</th><th>咨询用户</th></tr>
+                        <volist name="zx" id='val'>
+                        	<tr><td><if condition="$val['typeid'] eq '1'"><a href="{:U('home/Experts/details',array('id'=>$val['objid']))}" target="_blank"><else/><a href="{:U('home/Project/detials',array('id'=>$val['objid']))}" target="_blank"></if>
+            {$val.objname}</a></td><td>{$val.ccontent}</td><td>{$val.ip}</td><td>{$val.userid}</td></tr>
+                        </volist>
+                    </table>
+					<div class="page">
+                   {$page}
+                   </div>
+                </div>
+                
+				
+           </div>
+    </div>
+    <!--right-->
+    <!--clear-->
+    <div class="clear"></div>
+    <!--clear-->
+   <!--内容-->
+</div>
+</body>
+</html>

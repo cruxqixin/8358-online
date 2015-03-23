@@ -1,0 +1,321 @@
+@charset "utf-8";
+/* CSS Document */
+
+*{
+	padding:0px;
+	margin:0px;
+}
+ul li{
+	list-style:none;
+}
+body{
+	line-height:22px;
+	font-size:12px;
+	text-align:center;
+}
+a {
+	text-decoration:none;
+}
+a img{
+	border:0px;
+}
+.clear{
+	clear:both;
+}
+#Container{
+	width:100%;
+	margin:0 auto;
+	background-color:#f0f2f5;
+}
+.Wapper{
+	width:993px;
+	margin:0 auto;
+	text-align:left;
+}
+.nleft{
+	width:780px;
+	float:left;
+}
+.nright{
+	width:207px;
+	float:right;
+	border:1px solid #e6e6e6;
+	background-color:#FFF;
+}
+.export_01{
+	background:url(../images/exp_01.jpg) bottom center no-repeat;
+	width:204px;
+	margin-left:3px;
+	height:38px;
+	line-height:38px;
+	text-indent:5px;
+	font-family:"΢���ź�";
+	color:#000;
+	font-size:16.18px;
+}
+.export_02{
+	padding-bottom:100px;
+}
+.export_02 li{
+	padding-top:10px;
+	padding-left:5px;
+	width:202px;
+	clear:both;
+	font-size:12.49px;
+	color:#696868;
+}
+.export_02 li .pic{
+	float:left;
+	width:95px;
+	margin-bottom:18px;
+}
+.export_02 li .pic img{
+	width:89px;
+	height:84px;
+}
+.export_02 li .box{
+	width:105px;
+	float:left;
+	line-height:20px;
+}
+.export_02 li p{
+	clear:both;
+	line-height:23px;
+}
+.export_02 li p a{
+	color:#696868;
+}
+.export_03{
+	background:url(../images/exp_03.jpg) center no-repeat;
+	width:780px;
+	height:41px;
+}
+.export_04{
+	width:170px;
+	height:41px;
+	line-height:41px;
+	font-family:"΢���ź�";
+	font-size:14.81px;
+	text-align:center;
+	float:left;
+}
+.export_05{
+	padding-top:5px;
+	width:200px;
+	float:right;
+	margin-right:15px;
+	text-align:right;
+}
+.export_06{
+	border:1px solid #e5e5e5;
+	width:778px;
+	border-top:none;
+	clear:both;
+	background-color:#FFF;
+	color:#696868;
+}
+.export_07{
+	border-bottom:1px solid #e6e6e6;
+	padding-bottom:10px;
+	padding-top:10px;
+	padding-left:15px;
+}
+.export_07 b{
+	float:left;
+	display:block;
+}
+.export_07 span{
+	border:1px solid #e6e6e6;
+	padding:4px;
+	margin-right:5px;
+	margin-bottom:5px;
+}
+.export_07 span font{
+	font-weight:bold;
+	color:#ea4940;
+	font-size:12px;
+}
+
+.export_07 span font a{
+	font-weight:bold;
+	color:#ea4940;
+	background:url(../images/exp_06.jpg) right no-repeat;
+	padding-right:18px;
+}
+
+.export_08{
+	clear:both;
+}
+.export_08 ul li{
+	width:100%;
+	line-height:44px;
+	border-bottom:1px dotted #efefef;
+	clear:both;
+	overflow: hidden;
+}
+.export_08 ul li b{
+	display:block;
+	padding-left:15px;
+	width:80px;
+	float:left;
+}
+.export_08 ul li select{
+	border:1px solid #e6e6e6;
+	padding:1px;
+}
+.export_08 ul li .hover{
+	background:url(../images/exp_08.jpg) center no-repeat;
+	width:81px;
+	height:24px;
+	color:#FFF;
+	line-height:24px;
+	text-align:center;
+	float:left;
+	margin-left:15px;
+	margin-right:15px;
+	margin-top:10px;
+}
+ .export_08 ul li .link{
+	height:24px;
+	color:#696868;
+	line-height:24px;
+	text-align:center;
+	float:left;
+	margin-left:15px;
+	margin-right:15px;
+	margin-top:10px;
+}
+.export_09{
+	border:1px solid #e5e5e5;
+	width:778px;
+	clear:both;
+	background-color:#FFF;
+	color:#696868;
+	margin-top:7px;
+}
+.export_10 ul li{
+	height:198px;
+	
+}
+.export_11{
+	height:44px;
+	background:url(../images/exp_07.jpg) left no-repeat;
+	width:100%;
+	line-height:44px;
+}
+#title{
+	display:block;
+	padding-left:30px;
+	line-height:44px;
+	float:left;
+	color:#ea4940;
+	font-size:13.68px;
+	font-weight:bold;
+}
+.extime{
+	float:right;
+	margin-right:10px;
+	padding-top:10px;
+}
+.guanzhu{
+	float:right;
+	margin-right:10px;
+	padding-top:10px;
+}
+.export_12{
+	width:156px;
+	float:left;
+	text-align:center;
+	
+}
+.export_12 img{
+	border:3px solid #cccccc;
+}
+.export_13{
+	border-bottom:1px solid #e5e5e6;
+	padding-bottom:10px;
+	clear:both;
+	margin-left:10px;
+	margin-right:10px;
+	font-size:13.68px;
+	color:#696868;
+}
+.export_13 table{
+	padding-left:30px;
+}
+.export_13 table tr td{
+	line-height:27px;
+}
+.export_14{
+	width:600px;
+	float:left;
+	font-size:13.68px;
+	padding-bottom:8px;
+}
+.export_14 dd{
+	width:100%;
+	line-height:44px;
+	border-bottom:1px dotted #efefef;
+	clear:both;
+	display:block;
+}
+.export_15{
+	background-color:#f9fafc;
+}
+.export_16{
+	height:44px;
+	background:url(../images/exp_11.jpg) left no-repeat;
+	width:100%;
+	line-height:44px;
+}
+.page{
+	text-align:center;
+	margin:0 auto;
+	clear:both;
+	padding-top:20px;
+	padding-bottom:20px;
+}
+.page .link{
+	background-color:#d1d1d1;
+	height:26px;
+	width:25px;
+	display:block;
+	float:left;
+	margin-left:1px;
+	margin-right:1px;
+	color:#FFF;
+	line-height:26px;
+	text-align:center;
+}
+.page .hover{
+	background-color:#d1d1d1;
+	height:26px;
+	width:25px;
+	display:block;
+	float:left;
+	margin-left:1px;
+	margin-right:1px;
+	color:#ea4940;
+	line-height:26px;
+	text-align:center;
+}
+.page img{
+	display:block;
+	float:left;
+	margin-left:1px;
+	margin-right:1px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

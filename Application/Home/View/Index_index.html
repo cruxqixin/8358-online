@@ -1,0 +1,680 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{$seo.title}</title>
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<link href="css/index.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="/js/jqueryplus/jquery.autocomplete.css"/>
+<script src="__PUBLIC__/statics/js/jquery/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="index.php/home/Js/getschools"></script>
+<script type="text/javascript" src="index.php/home/Js/getcompany"></script>
+
+
+<script type="text/javascript" src="/js/common.js" charset="gbk"></script>
+<script type="text/javascript" src="/js/nativ.js" charset="gbk"></script>
+<script type="text/javascript" src="/js/indexscroll.js" charset="gbk"></script>
+<script type="text/javascript" src="/js/index.js"></script>
+<script type="text/javascript" src="__PUBLIC__/statics/js/area.js" charset="gbk"></script>
+<script type="text/javascript" src="/js/areaw.js" charset="gbk"></script>
+<script type="text/javascript" src="/js/jquery.slide-zool.js" charset="gbk"></script>
+<script type="text/javascript" src="/js/jq.Slide.js" charset="gbk"></script>
+
+<script type="text/javascript" src="/js/jqueryplus/jquery.autocomplete.pack.js"></script>
+</head>
+<body>
+
+ <!------------------------------------------------------------头部----开始-----------------------------------------> 
+ <div class="head">
+   <div class="Main">
+     <div class="login">
+     	<if condition="$currentuser neq ''">
+        	<div style="height:27px; float:left; width:auto; line-height:27px;"> <font color="#ea4940">{$currentuser.NICKNAME}</font> <a href="{:U('Uc/User/center')}" style="color:#7e7f7f;">个人中心</a>  ,</div>
+        	<div class="hbtn"><a href="{:U('Uc/User/loginout')}">退出</a></div>
+        <else/>
+            <div class="hbtn"><a href="{:U('Uc/User/reg')}">注册</a></div>
+            <div class="hbtn"><a href="{:U('Uc/User/login')}">登录</a></div>
+        </if>
+         <!--<input type="text" class="hbtn" value="注册">
+         <input type="text" class="hbtn" value="登录">
+         <font color="#ea4940">sdfa</font> 个人中心 ，
+         <input type="text" class="hbtn" value="退出"> -->
+     </div>
+      <p>
+     <table cellpadding="0" cellspacing="0" border="0" style="float:right;"><tr><td valign="middle">
+     <a href="http://en.un-techina.com/" target="_top"><span style="line-height:40px;font-size:12px; height:40px; margin-top:-20px;">English</span> &nbsp; </a></td><td>
+     <a href="javascript:;" id="aweixin"><img src="images/dl_01.jpg"><img src="/images/weixin.jpg" id="divweixin" style="width:150px; margin-left:-50px;position:absolute; margin-top:40px; text-align:left;display:none;" /></a>
+      <a href="#"><img src="images/dl_02.jpg"></a>
+      <a href="#"><img src="images/dl_03.jpg"></a></td></tr></table></p>
+       <script type="text/javascript">
+ 	$("#aweixin").hover(function(){
+		$("#divweixin").css("display","inline");	
+	},function(){
+		$("#divweixin").hide();	
+	})
+	$(function(){
+	  $(".indexShowBox").slideJ({
+                leftBtn: ".indexShowLeft",
+                rightBtn: ".indexShowRight",
+                speed: 800
+            });
+	})
+ </script>
+
+    </div>
+ </div>
+<!------------------------------------------------------------头部----结束----------------------------------------> 
+
+<!------------------------------------------------------------导航----开始----------------------------------------> 
+
+ <div class="Main">
+    <div class="logo"><img src="images/index_01.jpg" /></div>
+ 
+    
+  <div class="nav1"><ul>
+       <li><a href="/">首页</a><span>|</span></li>
+       <li><a href="{:U('home/Project/index')}">科技成果 </a><span>|</span></li>
+       <li><a href="{:U('home/Experts/index')}">技术专家</a><span>|</span></li>
+       <li><a href="{:U('Uc/Demand/demand')}">技术需求</a><span>|</span></li>
+	   <li><a href="{:U('home/Goods/index')}">产品展示</a></li>
+    </ul></div>
+    
+  </div>
+
+<!------------------------------------------------------------导航----结束----------------------------------------> 
+
+<!------------------------------------------------------------搜索----开始----------------------------------------> 
+  <div class="search">
+        <form action="{:U('home/Search/index')}" method="get" name="mysearchform" id="mysearchform" target="_blank">
+         
+          <div class="ser_01">
+            <label><input type="radio" name="ckpsearch" checked="checked" value="project" id="ckproject" />技术</label>
+            <label><input type="radio" name="ckpsearch" value="experts" id="ckexperts" />专家</label>
+            <label><input type="radio" name="ckpsearch" value="goods" id="ckgoods" />产品</label>
+            <label><input type="radio" name="ckpsearch" value="all" id="ckall" />全部</label>
+
+          </div>          
+          <div class="ser_02" style="width:467px;">
+            <p><input name="key" id="keysearch" type="text"  value="输入关键词" class="resettext" autocomplete="off" style="background-color:white; width:400px;"/></p>
+            <p><a href="javascript:;" id="asearch"><img src="/images/index_05.jpg" /></a></p>
+          </div>
+         <!-- <div class="ser_03">
+            <input name="" type="button" value="精确搜索" />
+          </div> -->
+        </form>
+     <div class="ser_04"><a href="{:U('home/Tiyi/index')}"><img src="images/index_02.jpg" /></a></div>
+  </div>
+
+<!------------------------------------------------------------搜索----结束----------------------------------------> 
+
+<!------------------------------------------------------------中间----开始---------------------------------------->
+  <div class="Main">
+    <div class="main3">
+      <div class="main3_left">
+	  <div class="zt">
+      <div class="zt1">
+        <p>热门专题</p>
+      </div>
+	  <div id="demo" style="overflow:hidden;width:680px; margin:0 auto;position:relative; margin-top:10px;">
+  <table align="center" cellpadding="0" cellspacing="0" border="0" id="margintable">
+    <tr>
+      <td id="demo1" ><table width="90%" border="0" cellpadding="0" cellspacing="2">
+          <tr>
+		  <volist name="spe" id="val">
+            <td style="width:250px;">
+			<div style="position:relative">
+			<if condition="$val['url'] eq ''">
+			
+			<a href="{:U('home/Special/detailes?spid='.$val['id'])}" target="_blank">
+			<div style=" ">
+			<div style=" position:absolute; margin-top:22px; background:url(/images/indexg7.png) center repeat; width:227px; height:30px;">
+			
+	        <span style=" position:absolute;padding-left:50px;  padding-top:2px; color:#FFFFFF; font-size:14px; ">{$val.sname}</span>
+			</div>
+		   <img src="{$val.slogo}" width="227px" height="74px" alt=""  />
+		   </div>
+		   </a>
+		 
+		   <else/>
+		   <a href="{$val.url}" target="_blank">
+			<div style=" ">
+			<div style=" position:absolute;  margin-top:22px; background:url(/images/indexg7.png) center repeat; width:227px; height:30px;">
+			
+	        <span style=" position:absolute;padding-left:50px;  padding-top:2px; color:#FFFFFF; font-size:14px; ">{$val.sname}</span>
+			</div>
+		   <img src="{$val.slogo}" width="227px" height="74px" alt=""  />
+		   </div>
+		   </a>
+		   </if>
+		   </div>
+		 </td>
+			</volist>
+            
+          </tr>
+        </table></td>
+      <td id="demo2"></td>
+    </tr>
+  </table>
+</div>
+<script language="JavaScript">
+    var speed = 20;
+    demo2.innerHTML = demo1.innerHTML;    //克隆demo1为demo2
+	var left=0;
+    function Marquee() {
+        if (demo2.offsetWidth <= demo.scrollLeft) {    //当滚动至demo1与demo2交界时
+            //demo.scrollLeft = demo.scrollLeft - demo1.offsetWidth;        //demo跳到最顶端
+        }
+        else {
+			
+            //demo.styl.scrollLeft++;
+        }
+		left=left-1;
+		$("#margintable").css("margin-left",left)
+    }
+	
+    var MyMar = setInterval(Marquee, speed);    //设置定时器
+    demo.onmouseover = function () { clearInterval(MyMar); } //鼠标移上时清除定时器达到滚动停止的目的
+    demo.onmouseout = function () { MyMar = setInterval(Marquee, speed); } //鼠标移开时重设定时器
+</script>
+  <!--<table width=700 border=0 cellpadding=0 cellspacing=0>                                               
+  <tr><td>          
+  <div id=www_qpsh_com style=overflow:hidden;height:120px;width:700px;color:#ff0000><table align=left cellpadding=0 cellspace=0 border=0><tr><td id=www_qpsh_com1   valign=top>
+  <table border=0 cellpadding=0 cellspacing=0>
+     <tr>
+      <volist name="spe" id="val">
+       <td>
+        <div style=" float:left; margin-top:13px; margin-right:4px; width:227px; ">
+         <if condition="$val['URL'] eq ''">
+		 <a href="{:U('home/Special/detailes?SPID='.$val['ID'])}" target="_blank">
+	     <img src="/images/indexg7.png" width="227px"  height="30px"style=" position:relative; top:20px; " />
+	     <span style=" position:absolute; top:25px; padding-left:50px;  padding-top:5px; color:#FFFFFF; font-size:14px; ">{$val.SNAME}</span>
+	     </a>
+	     <else/>
+	    <a href="{$val.URL}" target="_blank">
+	   <img src="/images/indexg7.png" width="227px"  height="30px"style=" position:absolute; top:20px; " />
+	   <span style=" position:absolute; top:25px; padding-left:50px;  padding-top:5px; color:#FFFFFF; font-size:14px; ">{$val.SNAME}</span>
+	   </a>
+	   </if>
+	  
+	   <if condition="$val['URL'] eq ''"><a href="{:U('home/Special/detailes?SPID='.$val['ID'])}" target="_blank"><img src="{$val.SLOGO}" width="227px" height="74px" /></a><else/><a href="{$val.URL}" target="_blank"><img src="{$val.SLOGO}" width="227px" height="74px" /></a></if>
+       
+	  
+	 </div></center>
+  </td>
+  <td width=30></td>
+  </volist>
+  </tr>
+  </table>
+ </td><td id=www_qpsh_com2 valign=top></td></tr></table></div>
+  <script type="text/javascript">
+  var speed=30//速度数值越大速度越慢
+  www_qpsh_com2.innerHTML=www_qpsh_com1.innerHTML
+  function Marquee(){
+  if(www_qpsh_com2.offsetWidth-www_qpsh_com.scrollLeft<=0)
+  www_qpsh_com.scrollLeft-=www_qpsh_com1.offsetWidth
+  else{
+  www_qpsh_com.scrollLeft++
+  }
+  }
+  var MyMar=setInterval(Marquee,speed)
+  www_qpsh_com.onmouseover=function() {clearInterval(MyMar)}
+  www_qpsh_com.onmouseout=function() {MyMar=setInterval(Marquee,speed)}
+  </script>
+ </td></tr>                                                                                                                                                                                                                            
+ </table>
+
+	  -->
+	 
+    </div>
+        <div class="m3left_a">
+          <ul  id="nTabs1">
+            <li onclick="tonav('nTabs1',this,'normal1','active1')" class="active1">技术</li>
+            <li onclick="tonav('nTabs1',this,'normal1','active1')" class="normal1">专家</li>
+            <li onclick="tonav('nTabs1',this,'normal1','active1')" class="normal1">产品</li>
+          </ul>
+        </div>
+        <div class="m3left_b" id="nTabs1_Content0">
+        	<div class="clear">
+              <ul id="nTabs4" style="overflow:hidden;">
+                 <li class="lb1_active" onclick="tonav('nTabs4',this,'lb1_normal','lb1_active')">按专业领域</li>
+                 <li class="lb1_normal" onclick="tonav('nTabs4',this,'lb1_normal','lb1_active')">按合作学校</li>
+                 <li class="lb1_normal" onclick="tonav('nTabs4',this,'lb1_normal','lb1_active')">按合作企业</li>
+              </ul>
+          </div>
+            <div class="clear" id="nTabs4_Content0">
+           <div class="leftb1">
+               <volist name="allkind" id="val">
+               <if condition="(($key lt 6) AND ($key gt 2))Or(($key lt 12) AND ($key gt 8)) "> 
+               	<div class="lb1_c">
+                 <else /> 
+                 <div class="lb1_b">
+                 </if>
+                  <div style="position:absolute;font-size:12px; margin:78px 0 0 180px;"><a href="{:U('home/Project/index?id='.$val['id'])}" target="_blank" style="color:gray">更多>></a></div>
+                    <span><a href="{:U('home/Project/index?id='.$val['id'])}" target="_blank">{$val.cnname}({$val.counts})</a></span>
+                    <div class="box1">
+                    <volist name="allkind[$key]['childs']" id="item">
+                    	<p style="font-size:12px;"><a id="boxx"  href="{:U('home/Project/index?id='.$item['ID'])}" target="_blank">{$item['cnname']}</a></p>
+                    </volist>
+                  </div>
+                  
+                </div>
+              </volist>
+          </div>
+       	</div>
+       
+          
+           <div class="clear" id="nTabs4_Content1" style="display: none;">
+              
+              <div class="index_01">
+                  <!-- <input type="radio" checked="checked"> 全国&nbsp;&nbsp;&nbsp;&nbsp;
+                   <input type="radio"> 国外 -->
+              </div>
+             <div class="index_02">
+               <!-- <span>A</span><span>B</span><span>C</span> -->
+             </div>
+             
+             <div class="index_03" style=" height:315px; overflow-y:auto;">
+                
+             </div>
+             
+         	</div>
+         	<div class="clear" id="nTabs4_Content2" style="display:none;">
+            
+              <div class="index_01">
+                  <!-- <input type="radio" checked="checked"> 全国&nbsp;&nbsp;&nbsp;&nbsp;
+                   <input type="radio"> 国外 -->
+              </div>
+             <div class="index_02" style=" overflow-y:auto;">
+                <!--<span>A</span><span>B</span><span>C</span> -->
+             </div>
+             
+             <div class="index_03" style=" height:315px; overflow-y:auto;">
+                <!--学校信息-->
+            </div>
+           </div>  
+        </div>
+        <div class="m3left_b"  id="nTabs1_Content1" style="display:none">
+          <div class="clear">
+              <ul id="nTabs5" style="overflow:hidden;">
+                 <li class="lb1_active" style="width:345px;" onclick="tonav('nTabs5',this,'lb1_normal','lb1_active')">按研究领域</li>
+                 <li class="lb1_normal" style="width:346px;" onclick="tonav('nTabs5',this,'lb1_normal','lb1_active')">按区域</li>
+              </ul>
+          </div>
+               
+        <div class="clear" id="nTabs5_Content0">
+               <div class="leftb1">
+                   <volist name="allkind" id="val">
+                   <if condition="(($key lt 6) AND ($key gt 2))Or(($key lt 12) AND ($key gt 8)) "> 
+                    <div class="lb1_c">
+                     <else /> 
+                     <div class="lb1_b">
+                     </if>
+                       <div style="position:absolute;font-size:12px; margin:78px 0 0 180px;"><a href="{:U('home/Experts/index?id='.$val['id'])}" target="_blank" style="color:gray">更多>></a></div>
+                
+                        <span><a href="{:U('home/Experts/index?id='.$val['id'])}" target="_blank">{$val.cnname}({$val.countsexp})</a></span>
+                        <div class="box1">
+                        <volist name="allkind[$key]['childs']" id="item">
+                            <p style="font-size:12px;"><a href="{:U('home/Experts/index?id='.$item['id'])}" target="_blank">{$item['cnname']}</a></p>
+                        </volist>
+                      </div>
+                      
+                    </div>
+                  </volist>
+              </div>
+        </div>
+            <div class="clear" id="nTabs5_Content1" style="display: none;">
+              
+              <div class="index_01">
+                  <!-- <input type="radio" checked="checked"> 全国&nbsp;&nbsp;&nbsp;&nbsp;
+                   <input type="radio"> 国外 -->
+              </div>
+             <div class="index_02">
+               <!-- <span>A</span><span>B</span><span>C</span> -->
+             </div>
+             
+             <div class="index_03" style="overflow-y:auto; height:315px;">
+                
+             </div>
+             
+         	</div>
+               <div class="clear" id="nTabs5_Content2" style="display: none;">
+              
+              <div class="index_01">
+                  <!-- <input type="radio" checked="checked"> 全国&nbsp;&nbsp;&nbsp;&nbsp;
+                   <input type="radio"> 国外 -->
+              </div>
+             <div class="index_02" style=" overflow-y:auto;">
+               <!-- <span>A</span><span>B</span><span>C</span> -->
+             </div>
+             
+             <div class="index_03" style=" height:315px; overflow-y:auto;">
+                
+             </div>
+             
+         	</div>
+       
+           
+        </div>
+      
+		
+		<div class="m3left_b"  id="nTabs1_Content2" style="display:none">
+          <div class="clear">
+              <ul id="nTabs6" style="overflow:hidden;">
+                 <li class="lb1_active" style="width:345px;" onclick="tonav('nTabs6',this,'lb1_normal','lb1_active')">产品类别</li>
+                 <li class="lb1_normal" style="width:346px; "  onclick="tonav('nTabs6',this,'lb1_normal','lb1_active')">应用行业类别</li>
+              </ul>
+          </div>
+               
+			<div class="clear" id="nTabs6_Content0">
+             	 <div class="leftb1">
+                 	<volist name="goodkindtype" id="val">
+                           <if condition="(($key lt 6) AND ($key gt 2))Or(($key lt 12) AND ($key gt 8)) "> 
+                            <div class="lb1_c">
+                             <else /> 
+                             <div class="lb1_b">
+                             </if>
+                              <div style="position:absolute;font-size:12px; margin:78px 0 0 180px;"><a href="{:U('home/Goods/index?gid='.$val['id'])}" target="_blank" style="color:gray">更多>></a></div>
+                                <span><a href="{:U('home/Goods/index?gid='.$val['id'])}" target="_blank">{$val.kname}({$val.procounts})</a></span>
+                                <div class="box1">
+                                <volist name="goodkindtype[$key]['childs']" id="item">
+                                    <p style="font-size:12px;"><a href="{:U('home/Goods/index?gid='.$item['id'])}" target="_blank">{$item['kname']}</a></p>
+                                </volist>
+                              </div>
+                              
+                            </div>
+                      </volist>
+                      
+                      
+                  </div> 
+			</div>
+            <div class="clear" id="nTabs6_Content1" style="display: none;">
+              <div class="leftb1">
+                       <div class="index_03" style="overflow-y:auto; height:315px;"><div class="index_04_div" name="index_04" style="margin-left:0px;">
+                       
+                       <volist name="goodkind" id="item">
+                        <div class="index_04" name="index_04" style="width:200px; float:left;"><p class="index_04_item" style="width:189px;">
+						<img src='/images/no.png' />&nbsp;<a href="{:U('home/Goods/index?id='.$item['id'])}" target="_blank" style="font-size:14px;font-family: '微软雅黑';font-weight: bold;line-height:38px;">{$item['kname']}</a></p></div>
+			 			</volist>
+                       
+					   </div></div>
+                      
+                  </div> 
+         	</div>
+            
+        </div>
+		
+	  
+	  </div>
+      <div class="main3_right">
+        <div class="m3right_a" style=" color: #676767">
+          
+		  <img src="/images/projectgl.png" />
+          <p><a href="{:U('Uc/Project/projectadd')}" target="_blank">技术发布</a></p>
+		
+		  <img src="/images/expertgl.png" />
+		  <p><a href="{:U('Uc/Experts/expertsadd')}" target="_blank">专家发布</a></p>
+		 <img src="/images/addpro.png" />
+		  <p><a href="{:U('Uc/Pro/addindex')}" target="_blank">产品发布</a></p>
+		 
+        </div>
+     
+        
+        <div class="m3right_b">
+          <span>
+            <img src="images/g1.jpg" width="18px;" height="18px;">
+            <p>技术</p><p>{$count[0]}</p>
+          </span>
+          <span>
+            <img src="images/g2.jpg" width="18px;" height="18px;">
+            <p>专家</p><p>{$count[1]}</p>
+          </span>
+		  <span>
+            <img src="/images/addpro.png" width="18px;" height="18px;">
+            <p>产品</p><p>{$count[2]}</p>
+          </span>
+        </div>
+        
+        <div class="m3right_c">
+           <div class="m3rc_01">
+             <ul id="na">
+               <li class="over" onclick="tonav('na',this,'now','over')">最新技术</li>
+               <li class="now" onclick="tonav('na',this,'now','over')">最新专家</li>
+			   <li class="now" onclick="tonav('na',this,'now','over')">最新产品</li>
+               <li class="now" onclick="tonav('na',this,'now','over')">通知公告</li>
+             </ul>
+           </div>
+		   
+           <div class="m3rc_02" id="na_Content0">
+             <ul>
+               <volist name="newproject" id="val">
+               	<li><a href="{:U('home/Project/detials?id='.$val['id'])}" target="_blank" title="{$val.pro_name}"> {$val.pro_name|msubstr=0,16,'utf-8',false}  </a><p>{$val.addtime|date="Y.m.d",###}</p></li> 
+               </volist>
+             </ul>
+           </div>
+           <div class="m3rc_02" id="na_Content1" style="display:none">
+           	<ul>
+               <volist name="newexperts" id="val">
+               	<li><a href="{:U('home/Experts/details?id='.$val['id'])}" target="_blank" title="{$val.pro_name}">  {$val.ename|msubstr=0,16,'utf-8',false} </a><p>{$val.id|date="Y.m.d",###}</p></li> 
+               </volist>
+             </ul>
+           </div>
+		   <div class="m3rc_02" id="na_Content1" style="display:none">
+           	<ul>
+               <volist name="newproducts" id="val">
+               	<li><a href="{:U('home/Goods/details?id='.$val['id'])}" target="_blank" title="{$val.gname}">  {$val.gname|msubstr=0,16,'utf-8',false} </a><p>{$val.id|date="Y.m.d",###}</p></li> 
+               </volist>
+             </ul>
+           </div>
+           <div class="m3rc_02" id="na_Content2" style="display:none">
+           	<ul>
+               <volist name="news" id="val">
+               	<li><a href="{:U('home/Article/detailes?id='.$val['id'])}" target="_blank" title="{$val.title}">  {$val.title|msubstr=0,32,'utf-8',false} </a><p>{$val.add_time|date="Y.m.d",###}</p></li> 
+               </volist>
+             </ul>
+           </div>
+       
+           
+        
+        <img src="images/index_22.jpg" style=" float:left;"/>
+		
+	  </div>
+	   <div class="hyy">
+      
+		<div class="hy">
+		<p>会议长廊</p>
+		</div>
+		<div class="rollBox">
+  <div class="LeftBotton" onmousedown="ISL_GoUp()" onmouseup="ISL_StopUp()" onmouseout="ISL_StopUp()"></div>
+  <div class="Cont" id="ISL_Cont">
+    <div class="ScrCont">
+      <div id="List1" >
+        <!-- 图片列表 begin -->
+        <div class="pic" align="center" style=" margin-top:25px; height:270px; "><volist name="hyzt" id="val">
+		<div style="width:200px; float:left;overflow:hidden;text-align:center;"><a href="{$val.adurl}" target="_blank" style="overflow:hidden; margin:auto;display:block;text-align:center;"><img src="{$val.adimg}" width="188px" height="260px" /></a></div></volist></div>
+        <!-- 图片列表 end -->
+      </div>
+      <div id="List2"></div>
+    </div>
+  </div>
+  <div class="RightBotton" onmousedown="ISL_GoDown()" onmouseup="ISL_StopDown()" onmouseout="ISL_StopDown()"></div>
+</div>
+        <!--<div style=" float:left; margin-top:30px; width:45px; margin-left:20px;  padding-top:120px;"><img src="/images/indexg2.jpg" width="38px" /></div><div style=" float:left; margin-top:30px; width:188px;"><a href="{$hyzt.ADURL}" target="_blank"><img src="{$hyzt.ADIMG}" width="188px" /></a></div><div style=" float:left; margin-left:2px; width:45px; padding-left:1px;  margin-top:30px;  padding-top:120px; "><img src="/images/indexg3.jpg" width="38px" /></div>
+      </div>-->
+        </div>
+		
+       <script language="javascript" type="text/javascript">
+
+	   $(function(){
+			$(".pic").width($("#List1 .pic div").size()*200);
+	   })
+<!--//--><![CDATA[//><!--
+//图片滚动列表 mengjia 070816
+var Speed =5; //速度(毫秒)
+var Space = 5; //每次移动(px)
+var PageWidth =200; //翻页宽度
+var fill = 0; //整体移位
+var MoveLock = false;
+var MoveTimeObj;
+var Comp = 0;
+var AutoPlayObj = null;
+GetObj("List2").innerHTML = GetObj("List1").innerHTML;
+GetObj('ISL_Cont').scrollLeft = fill;
+GetObj("ISL_Cont").onmouseover = function(){clearInterval(AutoPlayObj);}
+GetObj("ISL_Cont").onmouseout = function(){AutoPlay();}
+AutoPlay();
+function GetObj(objName){if(document.getElementById){return eval('document.getElementById("'+objName+'")')}else{return eval('document.all.'+objName)}}
+function AutoPlay(){ //自动滚动
+ clearInterval(AutoPlayObj);
+ AutoPlayObj = setInterval('ISL_GoDown();ISL_StopDown();',3000); //间隔时间
+}
+function ISL_GoUp(){ //上翻开始
+ if(MoveLock) return;
+ clearInterval(AutoPlayObj);
+ MoveLock = true;
+ MoveTimeObj = setInterval('ISL_ScrUp();',Speed);
+}
+function ISL_StopUp(){ //上翻停止
+ clearInterval(MoveTimeObj);
+ if(GetObj('ISL_Cont').scrollLeft % PageWidth - fill != 0){
+  Comp = fill - (GetObj('ISL_Cont').scrollLeft % PageWidth);
+  CompScr();
+ }else{
+  MoveLock = false;
+ }
+ AutoPlay();
+}
+function ISL_ScrUp(){ //上翻动作
+ if(GetObj('ISL_Cont').scrollLeft <= 0){GetObj('ISL_Cont').scrollLeft = GetObj('ISL_Cont').scrollLeft + GetObj('List1').offsetWidth}
+ GetObj('ISL_Cont').scrollLeft -= Space ;
+}
+function ISL_GoDown(){ //下翻
+ clearInterval(MoveTimeObj);
+ if(MoveLock) return;
+ clearInterval(AutoPlayObj);
+ MoveLock = true;
+ ISL_ScrDown();
+ MoveTimeObj = setInterval('ISL_ScrDown()',Speed);
+}
+function ISL_StopDown(){ //下翻停止
+ clearInterval(MoveTimeObj);
+ if(GetObj('ISL_Cont').scrollLeft % PageWidth - fill != 0 ){
+  Comp = PageWidth - GetObj('ISL_Cont').scrollLeft % PageWidth + fill;
+  CompScr();
+ }else{
+  MoveLock = false;
+ }
+ AutoPlay();
+}
+function ISL_ScrDown(){ //下翻动作
+ if(GetObj('ISL_Cont').scrollLeft >= GetObj('List1').scrollWidth){GetObj('ISL_Cont').scrollLeft = GetObj('ISL_Cont').scrollLeft - GetObj('List1').scrollWidth;}
+ GetObj('ISL_Cont').scrollLeft += Space ;
+}
+function CompScr(){
+ var num;
+ if(Comp == 0){MoveLock = false;return;}
+ if(Comp < 0){ //上翻
+  if(Comp < -Space){
+   Comp += Space;
+   num = Space;
+  }else{
+   num = -Comp;
+   Comp = 0;
+  }
+  GetObj('ISL_Cont').scrollLeft -= num;
+  setTimeout('CompScr()',Speed);
+ }else{ //下翻
+  if(Comp > Space){
+   Comp -= Space;
+   num = Space;
+  }else{
+   num = Comp;
+   Comp = 0;
+  }
+  GetObj('ISL_Cont').scrollLeft += num;
+  setTimeout('CompScr()',Speed);
+ }
+}
+//--><!]]>
+</script>
+    </div>
+    <div class="main4">
+      <div class="main4_a">
+        <p>热门标签</p>
+      </div>
+	  <volist name="tag" id='val'>
+      <div class="main4_b" style="margin-top:10px; float:left; overflow:hidden;  cursor:pointer;"  onclick="window.open('index.php/home/Search/index/key/{$val.tag_name}')">
+	
+<div style="float:left; background:url(/images/mr1.jpg) left no-repeat  ; width:7px; height:33px; "></div>
+<div style="float:left; background:url(/images/mr2.jpg) center repeat-x ; height:33px; ">
+       <b><div style=" color:#FFFFFF; text-align:center; padding:6px 8px; font-size:12px; line-height:16px;" > {$val.tag_name}</div></b>
+		</div>
+<div style="float:left; background:url(/images/mr.jpg) right no-repeat ; margin-right:5px; width:5px; height:33px; "></div>
+
+      </div>
+	  </volist>
+    </div>
+    <div class="main5">
+      <div class="main5_a">
+        <div class="m5a_01">
+          <p>最新动态</p>
+          <a  href="{:U('Home/Article/listt/ids/425')} " class="mmore">more + </a>
+        </div>
+        <div class="m5a_02">
+          <!--<div class="box2">
+         <a href="#"><img src="images/index_46.jpg" /></a>
+		    <a href="#"><img src="{$pic.PICS}" width="129px" height="87px" /></a>
+            <span>
+              <p><a href="{:U('home/Article/detailes?id='.$Arta['ID'])}">{$Arta.TITLE}</a></p>
+              <p><font color="#786061">13个门类</font></p>
+            </span>
+          </div> -->
+          <ul>
+		  <volist name="Art1" id='va1'>
+            <li><a href="{:U('home/Article/detailes?id='.$va1['id'])}" title="{$va1.title}" target="_blank"> {$va1.title|msubstr=0,16,'utf-8',false}</a></li>
+			 </volist>
+       
+          </ul>
+        </div>
+      </div>
+      
+      <div class="main5_b">
+        <div class="m5b_01">
+          <p>常见问题</p>
+          <a href="index.php?a=question&m=Article&g=home&ids=462" class="mmore">more + </a>
+        </div>
+        <div class="m5b_02">
+          <!--<div class="box2">
+            <a href="#"><img src="images/index_47.jpg" /></a>
+			<a href="#"><img src="{$picc.PICS}" width="129px" height="87px"/></a>
+            <span>
+              <p><a href="{:U('home/Article/detailes?id='.$Artc['ID'])}">{$Artc.TITLE}</a></p>
+            <p><font color="#786061">6种方法</font></p>
+            </span>
+          </div> -->
+          <ul>
+          <volist name="Art3" id='va3'>
+            <li><a href="{:U('home/Article/detailes?id='.$va3['id'])}">{$va3.title}</a></li>
+			 </volist>
+          </ul>
+        </div>
+      </div>
+      
+      
+      <div class="main5_c">
+        <div class="m5c_01">
+          <p>友情链接</p>
+          <a href="#" class="mmore">more + </a>
+        </div>
+        <div class="m5c_02">
+       
+          <ul>
+            <volist name="Artw" id='va3'>
+            <li><a href="{$va3.link_url}" target="_blank" title="{$va3.link_name}">{$va3.link_name}</a></li>
+			 </volist>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<include file="Public:footer"/>

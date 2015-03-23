@@ -1,0 +1,263 @@
+<include file="Public:header"/>
+<link rel="stylesheet" type="text/css" href="/css/content.css">
+<style type="text/css">
+.hover{
+	background:url(../images/exp_08.jpg) center no-repeat;
+	width:81px;
+	height:24px;
+	color:#FFF;
+	line-height:24px;
+	text-align:center;
+	float:left;
+	margin-left:15px;
+	margin-right:15px;
+	margin-top:10px;
+}
+.link{
+	height:24px;
+	color:#696868;
+	line-height:24px;
+	text-align:center;
+	float:left;
+	margin-left:15px;
+	margin-right:15px;
+	margin-top:10px;
+}
+
+
+   .up {  
+                /*右边有颜色，其他透明*/  
+                border-color: transparent transparent gray transparent ;  
+                border-style: solid;  
+                border-width: 0px 4px 4px 4px;  
+                padding: 0;  
+                width: 0;  
+                height: 0;  
+                /* ie6 height fix */  
+                font-size: 0;  
+                line-height: 0;  
+                /* ie6 transparent fix */  
+                _border-left-color: #dddddd;  
+                _border-right-color: #dddddd;  
+                _filter: chroma( color = #dddddd); 
+				display: inline-block;
+				margin:auto 4px auto auto;
+            }    
+	
+   .down {  
+                /*右边有颜色，其他透明*/  
+                border-color:gray transparent transparent transparent ;  
+                border-style: solid;  
+                border-width: 4px 4px 0px 4px;  
+                padding: 0;  
+                width: 0;  
+                height: 0;  
+                /* ie6 height fix */  
+                font-size: 0;  
+                line-height: 0;  
+                /* ie6 transparent fix */  
+                _border-left-color: #dddddd;  
+                _border-right-color: #dddddd;  
+                _filter: chroma( color = #dddddd); 
+				display: inline-block;
+				margin:auto 4px auto auto;
+            }
+	.itemshow{ 
+		width:120px;
+		overflow:hidden;
+		float:left;
+		height:32px;
+		cursor:pointer;
+	}  
+	.itemshow table{
+		border:1px solid #D9D9D9;
+		line-height:20px;
+		width:120px;
+		border-right:none;
+		margin-top:10px;
+		background:white;
+	}  
+	.itemsnextshow{
+		border:1px solid #d9d9d9;
+		width:622px;
+		position:absolute;	
+		overflow:hidden;
+		line-height:20px;
+		background:white;
+		padding:10px;
+		margin-top:-1px;
+		display:none;
+		
+	}
+	
+	.itemsnextshow .itemsdiv{
+		width:120px;
+		float:left;
+	}
+	
+	.itemsnextshow .checkbox{
+		float:left;
+		width: 10px;
+		height: 10px;
+		background: transparent url(/images/tbbg.png) no-repeat scroll 0 -195px;
+		margin-top: 4px;
+		margin-right:4px;
+		font-size: 0;
+		overflow: hidden;
+	}
+	
+	.itemsnextshow .checkboxchose{
+		background-image: url(/images/tbbgchose.png);
+		background-position: 0 -210px;
+	}
+	
+	.showtable{
+		position: relative;
+		z-index:1000; 
+		
+	}
+</style>
+<script type="text/javascript">
+	$(function(){
+		$(".itemshow").hover(function(){
+			$(this).find(".itemsnextshow").show().css("margin-left","-"+($(".itemshow").index($(this))%5)*120+"px");
+			$(this).find("table").addClass("showtable");
+			$(this).find("table").css("border-bottom","none");
+			$(this).find(".down").attr("class","up");
+		},
+		function(){
+			$(this).find(".itemsnextshow").hide();
+			$(this).find("table").removeClass("showtable");
+			$(this).find("table").css("border-bottom","1px solid #D9D9D9");
+			$(this).find(".up").attr("class","down");
+		});	
+		$(".itemshow table").each(function(){
+			if($(".itemshow table").index($(this))%5==4){
+				$(this).css("border-right","1px solid #D9D9D9");
+			}	
+		})
+		$(".itemshow:last table").css("border-right","1px solid #D9D9D9");
+	
+		$("#showi").height(Math.ceil($(".itemshow").size()/5)*32);
+	})
+</script>
+<div class="main6" style="text-align:left;">
+          <p>当前位置：<a href="/">首页</a> &gt; <strong>专家信息</strong></p>
+        </div>
+<div id="Container">
+   <!--头部-->
+   <!--头部-->
+   <!--内容-->
+       <div class="Wapper">
+           <!-------------------------------------left------------------------------------------>
+              <div class="nleft">
+			  <div class="export_07">
+                       <font color="#FF0000" size="+2"><php> echo $whereshow;</php></font>
+                        </div>
+                   <div class="export_03">
+                         <div  class="export_04">技术专家</div>
+                         <div class="export_05"><include file="Public:share"/> </div>
+                         <input type="hidden" value="{$whereshow}" />
+                   </div>
+                   
+                   <div class="export_09" style="margin-top:auto;">
+				   
+                        <div class="export_10">
+                            <ul>
+							<volist name="experts" id='val'>                                
+                                <li style="height:auto;" <php> if($key%2==1){ echo 'class="export_15"';}</php>>
+                                    <div <php> if($key%2==1){ echo 'class="export_16"';}else{echo 'class="export_11"';}</php>><a href="{:U('home/Experts/details?id='.$val['ID'])}" id="title" target="_blank">【{$val.ENAME}】{$val.ENAME}  </a> <p class="extime">发布时间：{$val.ID|date="Y-m-d",###}</p></div>
+
+                                    <div class="export_13">
+                                         <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                                             <!--<tr>
+                                                 <td><b>联系人：</b>{$val.} </td>
+                                                 <td colspan="2"><b>所在地：</b>浙江</td>
+                                             </tr> -->
+                                             <tr>
+                                                 <td><b>姓名：</b>{$val.ENAME} </td>
+                                                  </tr>
+                                             <tr>
+                                                 <td><b>所在地：</b>{$val.CPROV} </td>
+                                                  </tr>
+                                             <tr>
+                                                 <td><b>研究领域：</b>{$val.EKINDS} </td>
+                                                  </tr>
+                                              
+                                               <tr>
+                                                 <td><b> 简介：</b> {$val['EINTRO']|strip_tags|msubstr=0,140,'utf-8',false}</td>
+                                                 
+                                             </tr>
+                                          </table>
+                                    </div>
+                                </li>
+								</volist>
+                             
+                            </ul>
+                        </div>
+                   </div>
+                   
+                   <div class="page">
+                   {$page}
+                     <!-- <a href="#"><img src="/images/page1.jpg" /></a>
+                      <a href="#" class="link">1</a>
+                      <a href="#" class="link">2</a>
+                      <a href="#" class="hover">3</a>
+                      <a href="#" class="link">4</a>
+                      <span class="link">...</span>
+                      <a href="#"><img src="/images/page2.jpg" /></a> -->
+                   </div>
+                   
+              </div>
+           <!-------------------------------------left------------------------------------------>
+           <!-------------------------------------right------------------------------------------>
+           <div class="nright">
+                 <div class="export_01">热门专家</div>
+                 <ul class="export_02">
+                     <volist name="hotexperts" id="exp">
+                     	<li style="border-bottom:1px dashed gray; margin-left:5px; width:190px;">
+                             <div class="pic"><a href="{:U('home/Experts/details?id='.$exp['ID'])}"><img src="<if condition="$exp['EFACE'] eq ''">/images/noface.jpg<else/>{$exp.EFACE}</if>" style="height:84px" /></a></div>
+                             <div class="box" style="width:90px; padding-top:30px; color:#EA4941;">{$exp.ENAME|msubstr=0,10,'utf-8',false}</div>
+                             <div class="clear"></div>
+                             <p><a href="{:U('home/Experts/details?id='.$exp['ID'])}" title="{$exp.ENITNAME}">·{$exp.ENITNAME|msubstr=0,13,'utf-8',false}</a></p>
+                             <p><a href="{:U('home/Experts/details?id='.$exp['ID'])}">·{$exp.EPOST}</a></p>
+                         </li>
+                     </volist>
+                 </ul>
+                <!-- 
+                     <li>
+                         <div class="pic"><a href="#"><img src="/images/exp_02.jpg" /></a></div>
+                         <div class="box">标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题</div>
+                         <div class="clear"></div>
+                         <p><a href="#">·标题标题标题标题题标题标题</a></p>
+                         <p><a href="#">·标题标题标题标题题标题标题</a></p>
+                         <p><a href="#">·标题标题标题标题题标题标题</a></p>
+                     </li>
+                     <li>
+                         <div class="pic"><a href="#"><img src="/images/exp_02.jpg" /></a></div>
+                         <div class="box">标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题</div>
+                         <div class="clear"></div>
+                         <p><a href="#">·标题标题标题标题题标题标题</a></p>
+                         <p><a href="#">·标题标题标题标题题标题标题</a></p>
+                         <p><a href="#">·标题标题标题标题题标题标题</a></p>
+                     </li>
+                     <li>
+                         <div class="pic"><a href="#"><img src="/images/exp_02.jpg" /></a></div>
+                         <div class="box">标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题</div>
+                         <div class="clear"></div>
+                         <p><a href="#">·标题标题标题标题题标题标题</a></p>
+                         <p><a href="#">·标题标题标题标题题标题标题</a></p>
+                         <p><a href="#">·标题标题标题标题题标题标题</a></p>
+                     </li>
+                 </ul> -->
+           </div>
+           <!-------------------------------------right------------------------------------------>
+           <!-------------------------------------clear------------------------------------------>
+           <div class="clear"></div>
+           <!-------------------------------------clear------------------------------------------>
+       </div>
+   <!--内容-->
+   <!--头部-->
+   <!--头部-->
+</div>
+<include file="Public:footer"/>

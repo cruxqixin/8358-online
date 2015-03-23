@@ -1,0 +1,124 @@
+
+<include file="Public:header"/>
+<link rel="stylesheet" type="text/css" href="/css/conn.css">
+<script type="text/javascript" language="javascript">
+    $(function(){
+		$(".export_10 ul li:odd").find(".export_11").attr("class","export_16");
+		$(".export_10 ul li:odd").attr("class","export_15");
+     })
+</script>
+ 
+ <script type="text/javascript">
+$(function(){
+    $("[type=content]").hide();
+    $("[type=title]").click(function(){
+			$(".news_active").attr("class","news_normal");
+			$("[type=lock]").attr("class","cs");
+			var chi= $(this).parent().parent().find("[type=content]");
+			 
+			if(chi.is(":hidden")){
+				$("[type=content]").hide();
+				chi.show();
+				$(this).find("[type=lock]").attr("class","op");
+				$(this).find("#demo").attr("class","QA_current");
+			}else{
+				chi.hide();
+				$(this).find("[type=lock]").attr("class","cs");
+				$(this).find("#demo").attr("class","QA_link");
+			}
+	}).eq(0).click();
+	
+})
+
+
+</script>
+   <div class="Main">
+     
+        <div class="main6">
+          <p style="text-align:left;">当前位置 <a href="/">首页</a> > <strong>常见问题</strong></p>
+        </div>
+       <div class="Wapper">
+	   <div class="QAleft" style=" float:left; min-height:300px; margin-bottom:10px;">
+                <div class="QA_01">
+                    <ul>
+					<volist name="Art2" id='va2'>
+                        <li><a href="<if condition="$va2['id'] eq 462">{:U('home/Article/question?ids=462')}<else/>{:U('home/Article/listt?ids='.$va2['id'])}</if>" class="<if condition="$ART['cate_id'] eq $va2['id']">current<else/>link</if>">{$va2.name}</a></li>
+						</volist>
+                     
+                    </ul>
+                </div>
+           </div>
+		   
+		    <div class="QAright">
+                   <div class="export_03">
+                         <div  class="export_04">{$hh.name}</div>
+                         <div class="export_05"><a href="#"><img src="/images/exp_04.jpg" /></a><a href="#"><img src="/images/exp_05.jpg" /></a></div>
+                   </div>
+                   
+				    <volist name="AAT" id='vaL'>
+                   <div class="export_06">
+                      
+                       <div class="QA_02">
+                               <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                <tr type="title">
+                                <td><div class="QA_link" id="demo">
+                                   <table cellpadding="0" cellspacing="0" border="0">
+                                      <tr>
+                                      <!--{:U('home/Article/detailes?id='.$vaL['ID'])}-->
+                                       <td><a href="javascrit:;"><span style=" color:#FF0000"></span></a></td>
+                                       <td width="680px style=" color:#FF0000" ><a href="javascript:;"><span style=" color:#FF0000">{$vaL.title}</span></a></td>
+                                       <td type="lock" class="cs" align="center"></td>
+                                      </tr>
+                                   </table>
+                                </div></td>
+                              </tr>
+                              <tr type="content">
+                                 <td>
+                                   <div class="QA_03">
+                                        <P>{$vaL.info}</P>
+                                   </div>
+                                 </td>  
+                              </tr> 
+                            </table>
+                  		</div>
+                   </div>
+		    </volist>
+		
+        </div>
+		   
+		   
+		   
+         
+		
+
+
+
+<include file="Public:footer"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

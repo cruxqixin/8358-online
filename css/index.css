@@ -1,0 +1,78 @@
+.m3rc_01 ul li {
+float: left;
+height: 48px;
+line-height: 50px;
+width: 73px;
+text-align: center;
+font-size: 14px;
+font-family: "微软雅黑";
+cursor: pointer;
+}
+.m3right_a img {
+float: left;
+margin-left: 28px;
+display: inline;
+}
+.index_04_div {
+overflow: hidden;
+margin-bottom: 5px;
+margin-left: 30px;
+}
+
+.lb1_b span a:hover{
+
+display: block;
+
+color: #EA4940;
+
+}
+.lb1_c span a:hover{
+
+display: block;
+
+color: #EA4940;
+
+}
+.m3right_a img {
+float: left;
+margin-left: 2px;
+display: inline;
+}
+.m3right_a p {
+float: left;
+height: 30px;
+line-height: 30px;
+font-size: 14px;
+font-family: "微软雅黑";
+margin-left: 2px;
+display: inline;
+}
+.main3_right {
+width: 295px;
+height: 630px;
+float: left;
+margin-right: 7px;
+}
+
+<!--
+body{
+margin:0px auto;
+  }
+a img{ border:0px;}
+.rollBox{width:310px;overflow:hidden; }
+.rollBox .LeftBotton{height:200px ;width:35px;background:url(/images/indexg2.jpg) center top no-repeat; overflow:hidden; float:left; display:inline; cursor:pointer; margin-left:28px; margin-top:130px; }
+.rollBox .RightBotton{height:200px; width:35px;background:url(/images/indexg3.jpg) center top no-repeat;overflow:hidden; margin-top:130px; float:left; display:inline; cursor:pointer;
+margin-left:3px; }
+.rollBox .Cont{width:200px;overflow:hidden;float:left; color:#656565;}
+.rollBox .ScrCont{width:10000000px;}
+.rollBox .Cont .pic{width:200px;float:left;}
+.rollBox .Cont .pic img{display:block;margin:0 auto;}
+.rollBox .Cont .pic img a:hover {display:block;margin:0 auto;}
+.rollBox .Cont a:link,.rollBox .Cont a:visited{color:#656565;text-decoration:none;}
+.rollBox .Cont a:hover{color:#656565;text-decoration:underline;}
+.rollBox #List1,.rollBox #List2{float:left;  display:inline;}
+/*.bg{
+    position:absolute; z-index:-100; left:521px; top:1px; width:155px; height:115px; border:7px solid #1e69a7;
+	}*/
+
+-->

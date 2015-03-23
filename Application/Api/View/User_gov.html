@@ -1,0 +1,430 @@
+<include file="UCenter:header"/>
+<include file="UCenter:left"/>
+
+<script type="text/javascript" src="__PUBLIC__/statics/js/WdatePicker.js"></script>
+<script type="text/javascript" src="__PUBLIC__/statics/js/area.js" charset="gbk"></script>
+
+<script type="text/javascript" src="__PUBLIC__/statics/js/WdatePicker.js"></script>
+<script type="text/javascript" src="__PUBLIC__/statics/js/area.js" charset="gbk"></script>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/statics/js/kindeditor4/themes/default/default.css"/>
+<script type="text/javascript" src="__PUBLIC__/statics/js/kindeditor4/kindeditor-min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/statics/js/WdatePicker.js"></script>
+<!--<script type="text/javascript" src="__PUBLIC__/statics/js/jquery/plugins/jQuery.Hz2Py-min.js"></script> -->
+<script type="text/javascript" src="__PUBLIC__/statics/js/pinyin.js"></script>
+<script type="text/javascript" src="__PUBLIC__/statics/js/area.js" charset="gbk"></script>
+<script type="text/javascript" src="/js/areaw.js" charset="gbk"></script>
+<script type="text/javascript">
+$(function(){
+	
+	var items='{"items":["wordpaste","selectall","justifyleft","justifycenter","image","justifyright","justifyfull","insertorderedlist","insertunorderedlist","formatblock","fontname","fontsize","forecolor","hilitecolor","bold","italic","fullscreen"]}';
+	items=eval("("+items+")");
+	KindEditor.create('[name=PRO_SUPERIORITY]',items);
+	KindEditor.create('[name=PRO_BENEFIT]',items);
+	KindEditor.create('[name=PRO_PRODUCTION]',items);
+	KindEditor.create('[name=PRO_INTRO]',items);
+	KindEditor.create('[name=PRO_SPHERE]',items);
+	
+	$("#PRO_NAME").keyup(function(){
+		$("#PRO_CODE").val(HanZi_PinYin.get($.trim($(this).val())));	
+	})
+	
+	if($("#PRO_CATS").val()){
+		var pros=($("#PRO_CATS").val()+"0").split(",");
+		for(var pro in pros){
+			$("[name='PRO_CATSES[]'][value="+pros[pro]+"]").attr("checked","checked");
+		}
+	}
+	$("[name=chosefile]").each(function(){
+		changetoup($(this));	
+	})
+	
+	//添加附件操作
+	$("#addfile").click(function(){
+		var bastStr="";
+		bastStr+="<tr>";
+		bastStr+="<td><input type=\"text\" class=\"pub_03\" name=\"filename[]\" /><input type=\"hidden\" name=\"fileurl[]\" /></td>";
+		bastStr+="<td>";
+		bastStr+="<input type=\"button\" name=\"chosefile\" value=\"选择文件\" />";
+		bastStr+="</td>";
+		bastStr+="<td><a href=\"javascript:;\" style=\"color:gray\" name=\"filedel\">删除</a></td>";
+		bastStr+="</tr>";
+		$("#tablefile").append(bastStr);
+		changetoup($("[name=chosefile]:last"));
+	})
+	
+	//删除附件操作
+	$("[name=filedel]").live("click",function(){
+		$(this).parent().parent().remove();
+	})
+	
+	//添加出版物
+	$("#addpublish").click(function(){
+		var bastStr="";
+		bastStr+="<tr>";
+		bastStr+="<td>名称：<input type=\"text\" class=\"pub_03\" name=\"publish[]\" /></td>";
+		bastStr+="<td>";
+		bastStr+="网址：<input type=\"text\" class=\"pub_03\" name=\"publishurl[]\" />";
+		bastStr+="</td>";
+		bastStr+="<td><a href=\"javascript:;\" style=\"color:gray\" name=\"filedel\">删除</a></td>";
+		bastStr+="</tr>";
+		$("#tablepublish").append(bastStr);
+	})
+	//添加相关案例
+	$("#addcasets").click(function(){
+		var bastStr="";
+		bastStr+="<tr>";
+		bastStr+="<td>名称：<input type=\"text\" class=\"pub_03\" name=\"procasets[]\" /></td>";
+		bastStr+="<td>";
+		bastStr+="网址：<input type=\"text\" class=\"pub_03\" name=\"procasetsurl[]\" />";
+		bastStr+="</td>";
+		bastStr+="<td><a href=\"javascript:;\" style=\"color:gray\" name=\"filedel\">删除</a></td>";
+		bastStr+="</tr>";
+		$("#tablecasets").append(bastStr);
+	})
+	
+	$("#PRO_PATENTTYPE").change(function(){
+		if($(this).val()=="16"){
+			$("[name=PATENT]").show();	
+		}else{
+			$("[name=PATENT]").hide();	
+		}
+	}).change();
+	
+	
+	$("[name='PRO_COOPTYPE_IDS[]']").click(function(){
+		var names="";
+		$("[name='PRO_COOPTYPE_IDS[]']").each(function(){
+			if($(this).is(":checked")){
+				names+=$(this).attr("nvalue")+",";	
+			}
+		})	
+		
+		$("#PRO_COOPTYPE_NAME").val(names);
+		
+		
+	})
+	if($("#PRO_COOPTYPE_IDS").val()){
+		var ids=$("#PRO_COOPTYPE_IDS").val().split(",");
+		for(var i=0;i<ids.length;i++){
+			$("[name='PRO_COOPTYPE_IDS[]'][value="+ids[i]+"]").attr("checked","checked");	
+		}
+	}
+	
+	$("[name='PRO_CATSES[]']").change(function(){
+		if($("[name='PRO_CATSES[]']:checked").size()>3){
+			$(this).removeAttr("checked");
+		}
+		
+		if($("[name='PRO_CATSES[]'][value=1390731506]").is(":checked")){
+			$("#PRO_CATS_OTHER").show();	
+		}else{
+			$("#PRO_CATS_OTHER").hide();	
+		}
+	})
+	
+	if($("[name='PRO_CATSES[]'][value=1390731506]").is(":checked")){
+		$("#PRO_CATS_OTHER").show();	
+	}else{
+		$("#PRO_CATS_OTHER").hide();	
+	}
+	
+	//国内外判断
+	$("[name=COUNTRY]").click(function(){
+		showguoneiwai();
+	})
+	showguoneiwai();
+	
+	$("#s_county").blur(function(){
+	  var valu=$("#s_province").val()+$("#s_city").val()+$("#s_county").val();
+	$("#addressdetailes").val(valu);
+	})
+	
+	
+	$("#city_state").blur(function(){
+	  var value=$("#region").val()+$("#country").val()+$("#city_state").val();
+	$("#addressdetailes").val(value);
+	})
+})
+
+function showguoneiwai(){
+	switch($("[name=COUNTRY]:checked").val()){
+		case "0":
+			$("#divguonei").show();
+			$("#divguowai").hide();
+		break;
+		case "1":
+			$("#divguonei").hide();
+			$("#divguowai").show();
+		break;
+	}
+}
+
+function show()
+{
+   $("#show").show();
+   $("#showdata").hide();
+   $("#showdata2").show();
+}
+function showhide()
+{
+   $("#show").hide();
+   $("#showdata").show();
+   $("#showdata2").hide();
+}
+function changetoup(control){
+	var uploadbutton = KindEditor.uploadbutton({
+		button : control[0],
+		fieldName : 'imgFile',
+		url : '__PUBLIC__/statics/js/kindeditor4/php/upload_json.php?dir=file',
+		afterUpload : function(data) {
+			if (data.error === 0) {
+				var url = KindEditor.formatUrl(data.url, 'absolute');
+				var index=$("[name=chosefile]").index(control);
+				$("[name='filename']").eq(index).val(data.filename);
+				$("[name='fileurl']").eq(index).val(url);
+				//$('#EFACE').val(url);
+				//$("#imgeface").attr("src",url);
+			} else {
+				alert(data.message);
+			}
+		},
+		afterError : function(str) {
+			alert('网速不给力！');
+		}
+	});
+	uploadbutton.fileBox.change(function(e) {
+		uploadbutton.submit();
+	});
+	$(".ke-form").width("auto");	
+}
+</script>
+<script type="text/javascript">
+$(function(){
+
+	var uploadbutton = KindEditor.uploadbutton({
+		button : $('#uploadButton')[0],
+		fieldName : 'imgFile',
+		url : '__PUBLIC__/statics/js/kindeditor4/php/upload_json.php?dir=file',
+		afterUpload : function(data) {
+			if (data.error === 0) {
+				var url = KindEditor.formatUrl(data.url, 'absolute');
+				$('#AUTHORIZATION').val(url);
+				$("#filename").val(data.filename);
+				
+			} else {
+				alert(data.message);
+			}
+		},
+		afterError : function(str) {
+			alert('网速不给力！');
+		}
+	});
+	uploadbutton.fileBox.change(function(e) {
+		uploadbutton.submit();
+	});
+	$(".ke-form").width("auto");
+	$("#taklook").click(function(){
+		window.open($("#LINK").val());	
+	})
+	
+	
+})
+</script>
+<style type="text/css">
+select{margin-left:8px;};
+</style>
+    <!--right-->
+    <div class="right">
+           <div class="daohang">当前位置： <a href="<hr />
+#">首页</a> > <a href="#"><font>政府机关基本信息</font></a></div>
+           <div class="main">
+                <div class="pub_title_bg"><div class="pub_title">政府机关基本信息</div></div>
+               
+                <div class="pub_02">
+                <form action="{:U('Uc/User/gov')}" method="post">
+                	
+                   <table cellpadding="0" cellspacing="0" border="0">
+                       <tr>
+                          <td align="right"><span>*</span> 企业名称</td>
+                          <td colspan="2"><input type="text" name="CNAME" value="{$data.cname}" class="pub_03 validate[required]" style="width:540px" /></td>
+                       </tr>
+                          <tr>
+						 <td align="right"><span>*</span>国内外 :</td>
+        <td colspan="2" width="120px"> <input type="radio" width="60px" value="0"  name="COUNTRY"  <if condition="$data.country eq 0">checked="checked" </if> />国内 &nbsp; &nbsp; &nbsp; 
+        <input type="radio"  value="1"  width="60px"  name="COUNTRY"  <if condition="$data.country eq 1">checked="checked" </if> />国外
+                     <!-- <div>省/市</div> -->
+						  <div id="divguonei" style="display:none; ">
+                              <select name="CPROV" id="s_province" va="1"></select>
+                              <select name="CCITY" id="s_city" va="1"></select>
+                              <select name="COUNTY" id="s_county" va="1"></select>
+							  </div>
+			<div id="divguowai" style="display:none; width:900px;">
+				Region<select id="region" name="PROV" onchange="set_country(this,country,city_state)">
+						<option value="" selected="selected">Select Region</option>
+						<script type="text/javascript"> setRegions(this); </script>
+						</select>
+				Country<select id="country" name="CITY" disabled="disabled" onchange="set_city_state(this,city_state)"></select>
+				State<select id="city_state" name="COUNTY" disabled="disabled"></select>
+
+			</div>
+                          </td>
+						  
+                       </tr>
+                       <tr>
+                          <td align="right">详细地址</td>
+                          <td colspan="2"><input type="text" id="addressdetailes" name="CADDRESS" value="{$data.caddress}" class="pub_03"  style="width:170px"  />
+                       
+                          </td>
+                       </tr>
+                       <tr>
+                          <td align="right"><span>*</span>联系人</td>
+                          <td colspan="2"><input type="text" name="CONTACTS" value="{$data.contacts}" class="pub_03 validate[required]" style="width:540px" /></td>
+                       </tr>
+                         <tr>
+                          <td align="right">联系人电话</td>
+                          <td colspan="2"><input type="text" name="CMOBILEPHONE" value="{$data.cmobilephone}" class="pub_03" style="width:540px" /></td>
+                       </tr>
+                         <tr>
+                          <td align="right"><span>*</span> 联系人手机</td>
+                          <td colspan="2"><input type="text" name="CPHONE" value="{$data.cphone}" class="pub_03 validate[required]" style="width:540px" /></td>
+                       </tr>
+                       
+                        <tr>
+                          <td align="right"> 联系人生日</td>
+                          <td colspan="2"><input name="CBIRTH" value="{$data.cbirth}" type="text" class="pub_06" style="width:540px" onclick="WdatePicker()" /></td>
+                       </tr>
+   
+                        
+                         <tr>
+                          <td align="right"><span>*</span>联系人性别</td>
+                          <td colspan="2">&nbsp;&nbsp;&nbsp;<input type="radio" name="CENDER"  checked="checked"  value="0"/>&nbsp;男&nbsp;&nbsp; <input name="CENDER" type="radio" value="1"/>&nbsp;女</td>
+                       </tr>
+                         <tr>
+                          <td align="right"><span>*</span>职务</td>
+                          <td colspan="2"><input name="CPOST" type="text"  value="{$data.cpost}" class="pub_03 validate[required]" style="width:540px" /></td>
+                       </tr>
+                         <tr>
+                          <td align="right">邮编</td>
+                          <td colspan="2"><input type="text" name="CPOSTNO" value="{$data.cpostno}" class="pub_03" style="width:540px" /></td>
+                       </tr>
+                      
+                         <tr>
+                          <td align="right">传真</td>
+                          <td colspan="2"><input type="text" name="CFAX"  value="{$data.cfax}" class="pub_03" style="width:540px" /></td>
+                       </tr>
+                         <tr>
+                          <td align="right"><span>*</span>邮箱</td>
+                          <td colspan="2"><input type="text" name="CEMAIL" value="{$data.cemail}"  class="pub_03 validate[required]" style="width:540px" /></td>
+                       </tr>
+					   <tr>
+                          <td align="right"><span>*</span>官网</td>
+                          <td colspan="2"><input type="text" name="CDOMAIN" value="{$data.cdomain}"  class="pub_03 validate[required]" style="width:540px" /></td>
+                       </tr>
+					   <tr>
+                          <td align="right"><span>*</span>添加时间</td>
+                          <td colspan="2"><input type="text" name="ADDTIME" value="{$data.addtime}"  class="pub_06 validate[required]" style="width:540px" onclick="WdatePicker()" /></td>
+                       </tr>
+					   <tr>
+                          <td align="right"><span>*</span>联系人部门</td>
+                          <td colspan="2"><input type="text" name="CDEPARTMENT" value="{$data.cdepartment}"  class="pub_03 validate[required]" style="width:540px" /></td>
+                       </tr>
+					   
+					 <tr><td></td><td align="left" colspan="2">提供相关证件您需要提供以下两种证件中的至少一种：</td></tr>
+  <!--<tr><td></td><td align="left">营业执照<input type="radio" value="1" name="gropname" checked="checked" onclick="showhide()" />授权书<input type="radio" name="gropname" value="2" onclick="show()"  /><a id="show" href="/Uploads/Project/file/泰科授权书.doc" name="show" style="color:#0000FF; display:none;">下载</a></td></tr>
+	     <tr>-->
+      
+        <div class="files">
+       
+        <if condition="$files eq ''">
+       
+        <tr>
+		<td>营业执照：</td>
+		<input type="hidden" name="gropname" id="gropname" value="1" />
+       <td width="168px"><input type="text" class="pub_03" name="filename" /><input type="hidden" name="fileurl" /></td>
+       <td>
+       		<input type="button" name="chosefile" value="选择文件" />
+       </td>
+      
+       </tr>
+       <else/>
+       		<volist name="files" id="file">
+               <tr>
+               <td><input type="text" class="pub_03" name="filename" value="{$file.license}" /><input type="hidden" name="fileurl" value="{$file.license}"/></td>
+			  <!-- <td><input type="hidden" name="fileurl[]" value="{$file.AUTHORIZATION}"/></td>-->
+               <td>
+                    <input type="button" name="chosefile" value="选择文件" />
+               </td>
+               <td>
+                     
+               </tr>
+            </volist>
+       </if>
+      
+        </div>
+        </td>
+      </tr>  
+	  <tr>
+	  <td>授权书：</td>
+	  <td colspan="3">
+					
+                            <input type="text" style="border: 1px solid #DFDFDF;width:150px;" name="filename" id="filename" class="pub_03 validate[required]"  />
+                            <input type="hidden" name="AUTHORIZATION" id="AUTHORIZATION" class="pub_03 validate[required]"   />
+                            <input type="button" id="uploadButton" value="选择文件" /><a id="show" href="/Uploads/Project/file/泰科授权书.doc" name="show" style="color:#0000FF; ">下载</a>
+                        </td>
+						
+                      </tr>
+                         <tr>
+                          <td align="right"></td>
+                          <td colspan="2" align="center">
+                          <input type="submit" style="background:url(__PUBLIC__/statics/images/btn_team.jpg) ;width:331px; height:35px; border:none;"  value=""/>
+                          </td>
+                       </tr>
+                   </table>
+                   <input type="hidden"  name="submit" value="1" />
+                   <input type="hidden"  name="have" value="{$data.have}" />
+                   
+                   </form>
+                </div>
+                
+                
+                
+           </div>
+    </div>
+    <!--right-->
+    <!--clear-->
+    <div class="clear"></div>
+    <!--clear-->
+   <!--内容-->
+<script type="text/javascript">
+//初始化信息
+var s=["s_province","s_city","s_county"];//三个select的id
+var opt0 = ["省份","地级市","市、县级市"];//初始值
+function _init_area(){  //初始化函数
+	for(i=0;i<s.length-1;i++){
+	  	document.getElementById(s[i]).onchange=new Function("change("+(i+1)+")");	
+	}
+	change(0);
+}
+$(function(){
+	//绑定地址信息
+	_init_area();
+	if('{$data.COUNTRY}'=='0'){
+		$("#s_province").val("{$data.CPROV}");
+		$("#s_province").change();
+		$("#s_city").val("{$data.CCITY}");
+		$("#s_city").change();
+		$("#s_county").val("{$data.COUNTY}");
+	}else{
+		$("#region").val("{$data.CPROV}");
+		$("#region").change();
+		$("#country").val("{$data.CCITY}");
+		$("#country").change();
+		$("#city_state").val("{$data.COUNTY}");
+		
+	} 
+	
+})
+</script>
+</div>
+</body>
+</html>

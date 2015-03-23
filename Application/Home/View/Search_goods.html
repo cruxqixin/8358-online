@@ -1,0 +1,84 @@
+<include file="Public:header"/>
+<link rel="stylesheet" type="text/css" href="/css/content.css">
+<div class="main6" style="text-align:left;">
+          <p>当前位置：<a href="#">首页</a> &gt; <strong>搜索结果</strong></p>
+        </div>
+<div id="Container">
+   <!--头部-->
+   <!--头部-->
+   <!--内容-->
+       <div class="Wapper">
+           <!-------------------------------------left------------------------------------------>
+              <div class="nleft">
+			  <div class="export_07">
+                       <font color="#FF0000" size="+2"><php> echo $whereshow;</php></font>
+                        </div>
+                   <div class="export_09" style="margin-top:0px;">
+				  
+                        <div class="export_10">
+                            <ul>
+                            
+                                <volist name="proxx" id='val'>
+                                    <li style="height:auto;" <php> if($key%2==1){ echo 'class="export_15"';}</php>>
+                                        <div <php> if($key%2==1){ echo 'class="export_16"';}else{echo 'class="export_11"';}</php> ><a href="{:U('home/Goods/details?id='.$val['ID'])}" id="title">【{$val.GCODE}】{$val.GNAME}  </a> </div>
+                                         <div style="float:right"></div>
+                                    <div class="export_13" style="position:relative;">
+                                         <div style="position:absolute; left:588px; top:-38px; right:20px; bottom:50px;">
+										 <p class="extime"><a href="{:U('home/Goods/details?id='.$val['ID'].'&userid='.$val['USERID'])}"><img src="<if condition="$val['GPIC'] eq ''">/images/nopic.jpg<else/><php>$temp=split(',',$val['GPIC']); echo $temp[0];</php></if>" width="160px" height="103px" style="border:4px solid #999999;"/></a></p></div>
+                                        
+                                         <table cellpadding="0" cellspacing="0" border="0" width="100%">
+										     <tr>
+                                                 <td width="230px"><b>联系人：</b>{$val.GUSER} </td>
+                                                 <td width="230px"><b>联系电话：</b>{$val.GPHONE} </td>
+												<!-- <td><p class="extime"><img src="{$val.GPIC}" width="80px" height="80px" /></p></td>-->
+												 </tr>
+												 
+												 <tr>
+                                                 <td><b>产品类别：</b><if condition="$val['PRO_STAGE'] neq '0'">{$val['ID']|getkindname}<else/></if></td>
+                                             </tr>
+                                               <tr>
+                                                 <td><b>应用行业类别：</b> <if condition="$val['PRO_FUNDS'] neq '0'">{$val['ID']|getkindsname}<else/></if></td>
+                                                
+                                             </tr>
+                                               <tr>
+                                                 <td colspan="3"><b> 产品描述：</b> {$val['GDESC']|strip_tags|msubstr=0,120,'utf-8',false}
+                                                 <div style="width:80px; float:right;"><a href="{:U('home/Goods/details?id='.$val['ID'])}" style="color:#ea4940;">详细信息>></a></div>
+                                                 </td>
+                                             </tr>
+                                          </table>
+                                    </div>
+                                </li>
+								</volist> 
+                            </ul>
+                        </div>
+                   </div>
+                   
+                   <div class="page">
+                   {$page}
+                   </div>
+                   
+              </div>
+           <!-------------------------------------left------------------------------------------>
+           <!-------------------------------------right------------------------------------------>
+           <div class="nright">
+                 <div class="export_01">热门产品</div>
+                 <ul class="export_02">
+                     <volist name="hotproject" id="pro">
+                        <li>
+                           <!--  <div class="pic"><img src="/images/exp_02.jpg" /></a></div>
+                            -->  <div class="" style="border-bottom:1px dashed gray; margin:auto 10px auto 5px;"><a href="{:U('home/Project/detials?id='.$pro['ID'])}" style="color:gray;" title="{$pro.GNAME}" target="_blank">{$pro.GNAME|msubstr=0,13,'utf-8',false}</a></div>
+                             <div class="clear"></div>
+                         </li>
+                     </volist>
+                 </ul>
+           </div>
+           <!-------------------------------------right------------------------------------------>
+           <!-------------------------------------clear------------------------------------------>
+           <div class="clear"></div>
+           <!-------------------------------------clear------------------------------------------>
+       </div>
+   <!--内容-->
+   <!--头部-->
+   <!--头部-->
+</div>
+<include file="Public:footer"/>

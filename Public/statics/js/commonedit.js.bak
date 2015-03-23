@@ -1,0 +1,8 @@
+//var edititems='{"items":["wordpaste","selectall","justifyleft","justifycenter","image","justifyright","justifyfull","insertorderedlist","insertunorderedlist","formatblock","fontname","fontsize","forecolor","hilitecolor","bold","italic","fullscreen"]}';
+var edititems='{"items":["image","fullscreen"]}';
+	
+$(function(){alert();
+	edititems=eval("("+edititems+")");
+	KindEditor.create('.editshow',edititems);
+	
+})

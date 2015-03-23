@@ -1,0 +1,101 @@
+<include file="Public:header"/>
+<link rel="stylesheet" type="text/css" href="/css/content.css" />
+<link rel="stylesheet" type="text/css" href="/css/project.css" />
+<script type="text/javascript" src="/js/project.js"></script>
+<script type="text/javascript" src="index.php?a=getschools&m=Js&g=home"></script>
+<script type="text/javascript" src="index.php?a=getcompany&m=Js&g=home"></script>
+<style type="text/css">
+.nleft {
+width: 100%;
+float: left;
+}
+.export_09 {
+border: 1px solid #E5E5E5;
+width: 100%;
+clear: both;
+background-color: white;
+color: #696868;
+margin-top: 7px;
+}
+.page {
+text-align: center;
+padding-left: 320px;
+margin: 0 auto;
+clear: both;
+padding-top: 20px;
+padding-bottom: 20px;
+}
+</style>
+<div class="main6" style="text-align:left;">
+     <p>当前位置：<a href="/">首页</a> &gt; <strong>搜索结果</strong></p>
+</div>
+<div id="Container">
+<form id="dosearchform" action="index.php">
+<input type="hidden" name="a" value="index" />
+<input type="hidden" name="m" value="Project" />
+<input type="hidden" name="g" value="home" />
+	<php>
+    	foreach($_GET as $key=>$value){
+         echo '<input type="hidden" name="'.$key.'" id="seaf'.$key.'" value="'.$value.'" />';
+       	}
+    </php>
+    
+</form>
+
+   <!--头部-->
+   <!--头部-->
+   <!--内容-->
+       <div class="Wapper">
+           <!-------------------------------------left------------------------------------------>
+              <div class="nleft">
+                   
+                   
+                   <div class="export_09">
+                        <div class="export_10">
+                            <ul>
+                                <volist name="search" id='val'>
+                                    <li style="height:auto;" <php> if($key%2==1){ echo 'class="export_15"';}</php>>
+                                        <div <php> if($key%2==1){ echo 'class="export_16"';}else{echo 'class="export_11"';}</php>><a href='<if condition="$val['TYPEID'] eq '0'">{:U('home/Project/detials?id='.$val['ITEMID'])}<else/><if condition="$val['TYPEID'] eq '1'">{:U('home/Experts/details?id='.$val['ITEMID'])}<else/>{:U('home/Goods/details?id='.$val['ITEMID'])}</if></if>' target="_blank" id="title">【{$val.ID}】{$val.STITLE}  </a><p class="extime">类别：<if condition="$val['TYPEID'] eq '0'"><font color="#FF0000">项目</font><else/><if condition="$val['TYPEID'] eq '1'"><font color="#FF0000">专家</font><else/><font color="#FF0000">产品</font></if></if></p> <p class="extime">发布时间：{$val.ID|date="Y-m-d",###}</p></div>
+
+                                    <div class="export_13">
+                                         <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                                             <tr>
+                                                 <td width="230px"><b>简介：</b>{$val.SEARCHDESP} </td>
+                                             </tr>
+                                          </table>
+                                    </div>
+                                </li>
+								</volist>
+                             
+                            </ul>
+                        </div>
+                   </div>
+                   
+                   <div class="page">
+                   {$page}
+                   </div>
+                   
+              </div>
+           <!-------------------------------------left------------------------------------------>
+           <!-------------------------------------right------------------------------------------>
+           <!--<div class="nright">
+                 <div class="export_01">热门项目</div>
+                 <ul class="export_02">
+                     <volist name="hotproject" id="pro">
+                        <li>
+                             <div class="" style="border-bottom:1px dashed gray; margin:auto 10px auto 5px;"><a href="{:U('home/Project/detials?id='.$pro['ID'])}" style="color:gray;" title="{$pro.PRO_NAME}">{$pro.PRO_NAME|msubstr=0,13,'utf-8',false}</a></div>
+                             <div class="clear"></div>
+                         </li>
+                     </volist>
+                 </ul>
+           </div>-->
+           <!-------------------------------------right------------------------------------------>
+           <!-------------------------------------clear------------------------------------------>
+           <div class="clear"></div>
+           <!-------------------------------------clear------------------------------------------>
+       </div>
+   <!--内容-->
+   <!--头部-->
+   <!--头部-->
+</div>
+<include file="Public:footer"/>

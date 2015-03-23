@@ -1,0 +1,137 @@
+<include file="UCenter:header"/>
+<include file="UCenter:left"/>
+
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/statics/js/kindeditor4/themes/default/default.css"/>
+<script type="text/javascript" src="__PUBLIC__/statics/js/kindeditor4/kindeditor-min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/statics/js/WdatePicker.js"></script>
+<!--<script type="text/javascript" src="__PUBLIC__/statics/js/jquery/plugins/jQuery.Hz2Py-min.js"></script> -->
+<script type="text/javascript" src="__PUBLIC__/statics/js/pinyin.js"></script>
+<script type="text/javascript" src="__PUBLIC__/statics/js/area.js" charset="gbk"></script>
+
+<script type="text/javascript">
+$(function(){
+	var items='{"items":["wordpaste","selectall","justifyleft","justifycenter","image","justifyright","justifyfull","insertorderedlist","insertunorderedlist","formatblock","fontname","fontsize","forecolor","hilitecolor","bold","italic","fullscreen"]}';
+	items=eval("("+items+")");
+	KindEditor.create('[name=EINTRO]',items);
+	$("#ENAME").keyup(function(){
+		$("#ECODE").val(HanZi_PinYin.get($.trim($(this).val())));	
+	})
+	
+	var uploadbutton = KindEditor.uploadbutton({
+		button : $('#uploadButton')[0],
+		fieldName : 'imgFile',
+		url : '__PUBLIC__/statics/js/kindeditor4/php/upload_json.php?dir=image',
+		afterUpload : function(data) {
+			if (data.error === 0) {
+				var url = KindEditor.formatUrl(data.url, 'absolute');
+				$('#EFACE').val(url);
+				$("#imgeface").attr("src",url);
+			} else {
+				alert(data.message);
+			}
+		},
+		afterError : function(str) {
+			alert('网速不给力！');
+		}
+	});
+	uploadbutton.fileBox.change(function(e) {
+		uploadbutton.submit();
+	});
+})
+</script>
+<style type="text/css">
+.pub_03{width:200px;}
+.tdright{ text-align:right; min-width:140px;}
+</style>
+    <!--right-->
+    <div class="right">
+           <div class="daohang">当前位置： <a href="<hr />
+#">首页</a> > <a href="#"><font>专家信息</font></a></div>
+           <div class="main">
+                <div class="pub_title_bg"><div class="pub_title">专家信息(中文)维护</div></div>
+               
+                <div class="pub_02">
+                <input type="hidden" id="PRO_CATS" value="{$experts.pro_cats}" />
+                <form action="{:U('Uc/User/AccountManager')}" method="post">                	
+                   <table width="100%" cellpadding="0" cellspacing="0" class="table_form">
+               
+               <!-- <tr>
+        <td class="tdright"><span>*</span>头像 :  </td>
+        <td colspan="3">
+        	<img id="imgeface"  style="width:130px; height:160px;" src="<if condition="$experts['EFACE'] eq ''">/images/noface.jpg<else/>{$experts.EFACE}</if>" />
+            <br />
+        	<input type="hidden" name="EFACE" id="EFACE" class="pub_03 validate[required]" size="60" value="{$experts.EFACE}" />
+            <input type="button" id="uploadButton" value="选择" />
+        </td>
+        </tr>-->
+               
+      <tr>
+        <td class="tdright"><span>*</span>昵称 :  </td>
+        <td><input type="text" name="NICKNAME" id="NICKNAME" class="pub_03 validate[required]" size="60" value="{$experts.nickname}"></td>
+		</tr>
+		<tr>
+        <td class="tdright">邮箱 :</td>
+        <td><input type="text" name="EMAIL" id="EMAIL" class="pub_03" value="{$experts.email}"></td>
+       </tr>
+	   <tr>
+        <td class="tdright">手机 :</td>
+        <td><input type="text" name="PHONE" id="PHONE" class="pub_03" value="{$experts.phone}"></td>
+       </tr>
+	    <tr>
+        <td class="tdright">用户类型 :</td>
+        <td><input type="text" name="UTYPE" id="UTYPE" class="pub_03" value="{$experts.utype}"></td>
+       </tr>
+	   <tr>
+        <td class="tdright">用户高级类型 :</td>
+        <td><input type="text" name="UTYPESENIOR" id="UTYPESENIOR" class="pub_03" value="{$experts.utypeesenior}"></td>
+       </tr>
+	   
+	  
+	
+      <tr><td><input type="hidden" name="ID" value="{$experts.id}" id="ID"/></td> <td colspan="3"></td>
+       </tr>
+          <tr>
+                          <td align="right"></td>
+                          <td colspan="4" align="left">
+                          <input type="submit" style="background:url(__PUBLIC__/statics/images/btn_team.jpg) ;width:331px; height:35px; border:none;"  value=""/>
+                          </td>
+                       </tr>
+    </table>
+    
+              
+                   <input type="hidden" name="submit" value="1" />
+                   </form>
+                </div>
+                
+                
+                
+           </div>
+    </div>
+    <!--right-->
+    <!--clear-->
+    <div class="clear"></div>
+    <!--clear-->
+   <!--内容-->
+</div>
+<script type="text/javascript">
+//初始化信息
+var s=["s_province","s_city","s_county"];//三个select的id
+var opt0 = ["省份","地级市","市、县级市"];//初始值
+function _init_area(){  //初始化函数
+	for(i=0;i<s.length-1;i++){
+	  	document.getElementById(s[i]).onchange=new Function("change("+(i+1)+")");	
+	}
+	change(0);
+}
+$(function(){
+	//绑定地址信息
+	_init_area();
+	$("#s_province").val("{$experts.CPROV}");
+	$("#s_province").change();
+	$("#s_city").val("{$experts.CCITY}");
+	$("#s_city").change();
+	$("#s_county").val("{$experts.COUNTY}");
+})
+</script>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<include file="UCenter:header"/>
+<script type="text/javascript" src="__PUBLIC__/statics/js/WdatePicker.js"></script>
+<style type="text/css">
+.tablist table{
+	border:1px solid #939393;
+}
+
+.tablist th{
+	background:#939393;
+	color:white;
+	height:40px;
+	border-right:1px solid #797979;
+	border-left:1px solid #AAAAAA;
+}
+.tablist td{
+	border-right:1px solid #CFCFCF;
+	border-bottom:1px solid #CFCFCF;
+	height:40px;
+	text-align:center;
+}
+.tablist a{
+	color:blue;	
+}
+</style>
+<!--内容-->
+    <!--left-->
+      <include file="UCenter:left"/>
+    <!--left-->
+    <!--right-->
+    <div class="right">
+           <div class="daohang">当前位置： <a href="#">首页</a> > <a href="#"><font>需求信息列表</font></a></div>
+           <div class="main">
+                <div class="pub_title_bg"><div class="pub_title">专家信息管理</div></div>
+                <div class="after_01">
+                    <P>已发布：<span>{$count[0]}</span>条专家信息</P>
+                </div> 
+                <div class="after_02">
+				<form name="searchform" action="{:U('Experts/elist')}" method="post" >
+				<div style="height:50px; padding-top:8px;">
+				<table width="100%" cellspacing="0" class="search-form">
+        <tbody>
+            <tr>
+            <td>
+            <div class="explain-col">
+            	发布时间：
+            	<input type="text" name="time_start" id="time_start" class="pub_03" onfocus="WdatePicker()" size="12" value="{$time_start}">
+				<script language="javascript" type="text/javascript">
+                    Calendar.setup({
+                        inputField     :    "time_start",
+                        ifFormat       :    "%Y-%m-%d",
+                        showsTime      :    'true',
+                        timeFormat     :    "24"
+                    });
+                </script>
+                -
+                <input type="text" name="time_end" id="time_end" class="pub_03"  onfocus="WdatePicker()" size="12" value="{$time_end}">
+				<script language="javascript" type="text/javascript">
+                    Calendar.setup({
+                        inputField     :    "time_end",
+                        ifFormat       :    "%Y-%m-%d",
+                        showsTime      :    'true',
+                        timeFormat     :    "24"
+                    });
+                </script>
+            	
+              </select>
+                &nbsp;专家名称 :
+                <input name="keyword" type="text" class="pub_03" size="25" value="{$keyword}" />
+                <input type="submit" name="search" class="button" value="搜索" />
+        	</div>
+            </td>
+            </tr>
+        </tbody>
+    </table>
+	</div>
+	 </form>
+                    <ul id="nTabs1">
+                        <li class="<if condition="$_GET['type'] eq ''">active1<else/>normal1</if>" onclick="window.location.href='{:U('Uc/Experts/elist')}'">已发布<span>({$count[0]})</span> </li>
+                        <li class="<if condition="$_GET['type'] eq '1'">active1<else/>normal1</if>" onclick="window.location.href='{:U('Uc/Experts/elist?type=1')}'">待审核<span>({$count[1]})</span> </li>
+                        <li class="<if condition="$_GET['type'] eq '2'">active1<else/>normal1</if>" onclick="window.location.href='{:U('Uc/Experts/elist?type=2')}'">未通过审核<span>({$count[2]})</span> </li>
+                        <li class="<if condition="$_GET['type'] eq '10'">active1<else/>normal1</if>" onclick="window.location.href='{:U('Uc/Experts/elist?type=10')}'">草稿箱<span>({$count[3]})</span> </li>
+                    </ul>
+                </div>
+                <div class="after_03 tablist" style="height:auto;" id="nTabs1_Content0">
+                    <table cellpadding="0" cellspacing="0" width="100%">
+                    	<tr><th>专家名称</th><th>职务</th><th>单位名称</th><th>添加时间</th><th>操作</th></tr>
+                        <volist name="exs" id='val'>
+                        	<tr><td>{$val.ename}</td><td>{$val.epost}</td><td>{$val.enitname}</td><td>{$val.id|date="Y-m-d H:i:s",###}</td><td> <a href="{:U('Uc/Experts/expertsadd?id='.$val['id'])}">修改</a> </td></tr>
+                        </volist>
+                    </table>
+                </div>
+                
+                <div class="page">
+                   {$page}
+                   </div>
+                
+           </div>
+    </div>
+    <!--right-->
+    <!--clear-->
+    <div class="clear"></div>
+    <!--clear-->
+   <!--内容-->
+</div>
+</body>
+</html>

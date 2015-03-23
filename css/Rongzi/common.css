@@ -1,0 +1,192 @@
+@charset "utf-8";
+/* CSS Document */
+* {
+	padding: 0px;
+	margin: 0px;
+}
+body {
+	text-align: center;
+	line-height: 22px;
+	font-size: 13px;
+	font-family: "微软雅黑";
+	color: #444444;
+}
+a {
+	text-decoration: none;
+	color: #444444;
+}
+a:hover {
+	text-decoration: underline;
+}
+ul li {
+	list-style: none;
+}
+img {
+	border: 0px;
+	padding:0px;
+	margin:0px;
+}
+.clear {
+	clear: both;
+}
+.container {
+	width: 1003px;
+	text-align: left;
+	margin: 0 auto;
+}
+/*********************************************************************top*******************************************************************/
+.topbg {
+	background: url(/images/Rongzi/top_01.jpg) top repeat-x;
+	width: 100%;
+	display:none;
+}
+.topbg .logo {
+	width: 152px;
+	float: left;
+}
+.topbg .navbar {
+	line-height: 36px;
+	color: #FFF;
+	width: 850px;
+}
+.topbg .navbar a {
+	color: #FFF;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+.left {
+	float: left;
+}
+.right {
+	float: right;
+}
+.top_right {
+	width: 850px;
+	float: right;
+}
+.top_list {
+	padding-top: 10px;
+}
+.top_list table {
+	width: 100%;
+}
+.top_list table tr td {
+	line-height: 29px;
+	padding-left: 5px;
+}
+.top_list table tr .tdbg {
+	background: url(/images/Rongzi/top_02.jpg) right no-repeat;
+}
+.top_list table tr .Hr {
+	line-height: 10px;
+	height: 10px;
+}
+.top_list .link {
+	color: #333333;
+	font-weight: bold;
+}
+.top_list a {
+	padding: 0px 5px;
+}
+.top_list .btn {
+	background: url(/images/Rongzi/top_03.jpg) center no-repeat;
+	width: 181px;
+	height: 29px;
+	line-height: 29px;
+	border: 0px;
+	outline: 0px;
+	color: #FFF;
+	font-family: "微软雅黑";
+	text-align: center;
+}
+
+.Navbg {
+	margin-top: 12px;
+	border-top:3px solid #c60000;
+	height:116px;
+	background-color: #f5f5f5;
+	clear: both;
+}
+.Navbg  ul li{
+	width:166px;
+	float:left;
+	border-right:1px solid #ffffff;
+	text-align:center;
+	height:116px;
+}
+.Navbg  ul li a{
+	display:block;
+	color:#666;
+	font-size:16px;
+}
+.Navbg  ul li img{
+	width:48px;
+	height:48px;
+}
+.Navbg  ul .cur{
+	background-color:#FFF;
+}
+.Navbg  ul li .default{
+	padding-top:22px;
+	text-align:center;
+}
+.Navbg  ul  span{
+	display:block;
+	padding-top:5px;
+}
+.Navbg  ul li .active{
+	padding-top:22px;
+	text-align:center;
+	display:none;
+}
+.Navbg  ul .active span{
+	color:#c60000;
+}
+.Navbg  ul .cur .default{
+	display:none;
+}
+.Navbg  ul .cur .active{
+	display:block;
+}
+.Navbg  ul li a:hover{
+	text-decoration:none;
+}
+/*********************************************************************footer*******************************************************************/
+.footerbg {
+	clear: both;
+	margin-top: 40px;
+	background: url(/images/Rongzi/footer_bg.jpg) top repeat-x;
+	width: 100%;
+}
+.footer {
+	padding-top: 10px;
+	padding-bottom: 40px;
+	color: #666666;
+	line-height: 28px;
+	text-align: center;
+}
+.footer a {
+	color: #666666;
+	margin-left: 3px;
+	margin-right: 3px;
+}
+.foot {
+	color: #000;
+	padding-bottom: 5px;
+}
+.foot a {
+	margin-left: 10px;
+	margin-right: 10px;
+	color: #000;
+}
+.navgation {
+	color: #808080;
+	padding-top:15px;
+	padding-bottom:15px;
+}
+.navgation a {
+	color: #808080;
+}
+.navgation span {
+	color: #e84a3f;
+}

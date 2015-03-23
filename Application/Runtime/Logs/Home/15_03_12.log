@@ -1,0 +1,116 @@
+[ 2015-03-12T21:16:48+08:00 ] 127.0.0.1 /index.php/home/Base/verify/noarc/1
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000017s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000535s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000616s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000683s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001573s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001768s ]
+
+[ 2015-03-12T21:18:02+08:00 ] 127.0.0.1 /index.php/home/Base/verify/noarc/1undefined
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000013s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000385s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000587s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000635s ]
+SQL: SELECT * FROM `tk_article_cate` WHERE ( PARENTID=421 and ID<>425 ) ORDER BY ord desc,id desc LIMIT 4   [ RunTime:0.0045s ]
+SQL: SELECT * FROM `tk_article_cate` WHERE ( PARENTID=422 ) ORDER BY ord desc,id desc LIMIT 4   [ RunTime:0.0004s ]
+SQL: SELECT * FROM `tk_article_cate` WHERE ( PARENTID=431 ) ORDER BY ord desc,id desc LIMIT 4   [ RunTime:0.0004s ]
+NOTIC: [8] Undefined index: currentuser E:\xampp\htdocs\Application\Common\Common\function.php 第 698 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000562s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000626s ]
+
+[ 2015-03-12T21:18:19+08:00 ] 127.0.0.1 /index.php/home/Base/verify_test?fieldId=form-validation-field-6&fieldValue=dlaa&_=1426166299544
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000014s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000364s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000408s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000451s ]
+NOTIC: [8] Undefined index: noarc E:\xampp\htdocs\Application\Home\Controller\BaseController.class.php 第 26 行.
+SQL: SELECT * FROM `tk_article_cate` WHERE ( PARENTID=421 and ID<>425 ) ORDER BY ord desc,id desc LIMIT 4   [ RunTime:0.0005s ]
+SQL: SELECT * FROM `tk_article_cate` WHERE ( PARENTID=422 ) ORDER BY ord desc,id desc LIMIT 4   [ RunTime:0.0004s ]
+SQL: SELECT * FROM `tk_article_cate` WHERE ( PARENTID=431 ) ORDER BY ord desc,id desc LIMIT 4   [ RunTime:0.0004s ]
+NOTIC: [8] Undefined index: currentuser E:\xampp\htdocs\Application\Common\Common\function.php 第 698 行.
+NOTIC: [8] A session had already been started - ignoring session_start() E:\xampp\htdocs\Application\Home\Controller\BaseController.class.php 第 87 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000570s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000617s ]
+
+[ 2015-03-12T21:18:19+08:00 ] 127.0.0.1 /index.php/home/Base/verify_test?fieldId=form-validation-field-6&fieldValue=dlaa&_=1426166299628
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000012s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000299s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000394s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000435s ]
+NOTIC: [8] Undefined index: noarc E:\xampp\htdocs\Application\Home\Controller\BaseController.class.php 第 26 行.
+SQL: SELECT * FROM `tk_article_cate` WHERE ( PARENTID=421 and ID<>425 ) ORDER BY ord desc,id desc LIMIT 4   [ RunTime:0.0005s ]
+SQL: SELECT * FROM `tk_article_cate` WHERE ( PARENTID=422 ) ORDER BY ord desc,id desc LIMIT 4   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `tk_article_cate` WHERE ( PARENTID=431 ) ORDER BY ord desc,id desc LIMIT 4   [ RunTime:0.0015s ]
+NOTIC: [8] Undefined index: currentuser E:\xampp\htdocs\Application\Common\Common\function.php 第 698 行.
+NOTIC: [8] A session had already been started - ignoring session_start() E:\xampp\htdocs\Application\Home\Controller\BaseController.class.php 第 87 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000569s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000629s ]
+
+[ 2015-03-12T21:18:21+08:00 ] 127.0.0.1 /index.php/home/Base/verify_test?fieldId=form-validation-field-6&fieldValue=dlaa&_=1426166301473
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000016s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000378s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000532s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000584s ]
+NOTIC: [8] Undefined index: noarc E:\xampp\htdocs\Application\Home\Controller\BaseController.class.php 第 26 行.
+SQL: SELECT * FROM `tk_article_cate` WHERE ( PARENTID=421 and ID<>425 ) ORDER BY ord desc,id desc LIMIT 4   [ RunTime:0.0005s ]
+SQL: SELECT * FROM `tk_article_cate` WHERE ( PARENTID=422 ) ORDER BY ord desc,id desc LIMIT 4   [ RunTime:0.0004s ]
+SQL: SELECT * FROM `tk_article_cate` WHERE ( PARENTID=431 ) ORDER BY ord desc,id desc LIMIT 4   [ RunTime:0.0004s ]
+NOTIC: [8] Undefined index: currentuser E:\xampp\htdocs\Application\Common\Common\function.php 第 698 行.
+NOTIC: [8] A session had already been started - ignoring session_start() E:\xampp\htdocs\Application\Home\Controller\BaseController.class.php 第 87 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000564s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000604s ]
+
+[ 2015-03-12T21:18:25+08:00 ] 127.0.0.1 /index.php/home/Base/verify/noarc/1
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000015s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000520s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000446s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000499s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000534s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000611s ]
+
+[ 2015-03-12T21:18:35+08:00 ] 127.0.0.1 /index.php/home/Base/verify_test?fieldId=form-validation-field-1&fieldValue=ryhm&_=1426166315767
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000014s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000370s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000444s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000491s ]
+NOTIC: [8] Undefined index: noarc E:\xampp\htdocs\Application\Home\Controller\BaseController.class.php 第 26 行.
+SQL: SELECT * FROM `tk_article_cate` WHERE ( PARENTID=421 and ID<>425 ) ORDER BY ord desc,id desc LIMIT 4   [ RunTime:0.0005s ]
+SQL: SELECT * FROM `tk_article_cate` WHERE ( PARENTID=422 ) ORDER BY ord desc,id desc LIMIT 4   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `tk_article_cate` WHERE ( PARENTID=431 ) ORDER BY ord desc,id desc LIMIT 4   [ RunTime:0.0003s ]
+NOTIC: [8] Undefined index: currentuser E:\xampp\htdocs\Application\Common\Common\function.php 第 698 行.
+NOTIC: [8] A session had already been started - ignoring session_start() E:\xampp\htdocs\Application\Home\Controller\BaseController.class.php 第 87 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000573s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000620s ]
+
+[ 2015-03-12T21:18:39+08:00 ] 127.0.0.1 /index.php/home/Base/verify/noarc/1
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000012s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000353s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000399s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000442s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000474s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000540s ]
+

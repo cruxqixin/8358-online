@@ -1,0 +1,20 @@
+<if condition="$user['utype'] eq 0">
+
+	<include file="Public:left5" />
+	
+<else/>
+
+	<if condition="$user['unitnature'] eq 1">
+		<include file="Public:left1"/>
+	</if>
+	<if condition="$user['unitnature'] eq 2">
+		<include file="Public:left2"/>
+	</if>
+	<if condition="$user['unitnature'] eq 3">
+		<include file="Public:left3"/>
+	</if>
+	<if condition="$user['unitnature'] eq 4">
+		<include file="Public:left4"/>
+	</if>
+	
+</if>

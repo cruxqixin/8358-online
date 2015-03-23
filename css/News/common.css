@@ -1,0 +1,238 @@
+@charset "utf-8";
+/* CSS Document */
+* {
+	padding: 0px;
+	margin: 0px;
+}
+body {
+	text-align: center;
+	line-height: 22px;
+	font-size: 13px;
+	font-family: "微软雅黑";
+	color: #444444;
+}
+a {
+	text-decoration: none;
+	color: #444444;
+}
+a:hover {
+	text-decoration: underline;
+}
+ul li {
+	list-style: none;
+}
+img {
+	border: 0px;
+}
+.clear {
+	clear: both;
+}
+.container {
+	width: 1003px;
+	text-align: left;
+	margin: 0 auto;
+}
+/*********************************************************************top*******************************************************************/
+.topbg {
+	background: url(/images/News/top_01.jpg) top repeat-x;
+	width: 100%;
+}
+.topbg .logo {
+	width: 152px;
+	float: left;
+}
+.topbg .navbar {
+	line-height: 36px;
+	color: #FFF;
+	width: 850px;
+}
+.topbg .navbar a {
+	color: #FFF;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+.left {
+	float: left;
+}
+.right {
+	float: right;
+}
+.top_right {
+	width: 850px;
+	float: right;
+}
+.top_list {
+	padding-top: 10px;
+	padding-left:20px;
+}
+.top_list table {
+	width: 100%;
+}
+.top_list table tr td {
+	line-height: 29px;
+	padding-left: 5px;
+}
+.top_list table tr .tdbg {
+	background: url(/images/News/top_02.jpg)  no-repeat;
+	background-position:94% 0px;
+}
+.top_list table tr .Hr {
+	line-height: 10px;
+	height: 10px;
+}
+.top_list .link {
+	color: #333333;
+	font-weight: bold;
+}
+.top_list a {
+	padding: 0px 5px;
+}
+.top_list .btn {
+	background: url(/images/News/top_03.jpg) center no-repeat;
+	width: 119px;
+	height: 29px;
+	line-height: 29px;
+	border: 0px;
+	outline: 0px;
+	color: #FFF;
+	font-family: "微软雅黑";
+	text-align: center;
+}
+.headbg {
+	border-top: 3px solid #c60000;
+	clear: both;
+	margin-top: 10px;
+}
+.headbg .logo {
+	padding-top:35px;
+	width: 270px;
+	text-align: right;
+	float: left;
+}
+.headbg .box {
+	padding-top: 22px;
+	padding-left: 32px;
+	float: left;
+	width:590px;
+}
+.toplex {
+	clear: both;
+	height:24px;
+}
+.toplex ul li {
+	line-height: 24px;
+	width: 56px;
+	color: #333333;
+	text-align: center;
+	float: left;
+}
+.toplex ul .cur {
+	background: url(/images/News/top_04.jpg) bottom center no-repeat;
+	color: #e84a3f;
+}
+.headbg .box .txt {
+	background: url(/images/News/top_05.jpg) center no-repeat;
+	width: 446px;
+	height: 32px;
+	text-indent: 30px;
+	line-height: 32px;
+	float: left;
+	outline: 0px;
+	color: #a9a9a9;
+	font-family: "微软雅黑";
+	border: 0px;
+}
+.headbg .box .btn {
+	background: url(/images/News/top_06.jpg) center no-repeat;
+	width: 89px;
+	height: 32px;
+	line-height: 32px;
+	float: left;
+	outline: 0px;
+	color: #FFF;
+	font-family: "微软雅黑";
+	border: 0px;
+	text-align: center;
+	font-size: 16px;
+}
+.Navbg {
+	margin-top: 25px;
+	background-color: #d10504;
+	clear: both;
+	height: 40px;
+	line-height: 40px;
+}
+.Navbg .menu{
+	width:230px;
+	float:left;
+	border-top:1px solid #e5d6d6;
+	border-bottom:1px solid #e5d6d6;
+	height:38px;
+	line-height:38px;
+	background:#e6e6e6 url(/images/News/company_01.jpg) no-repeat;
+	background-position:34px 8px;
+	color:#333;
+	font-size:18px;
+}
+.Navbg .menu a{
+	color:#333;
+	display:block;
+	padding-left:70px;
+}
+.Navbg ul{
+	float:left;
+}
+.Navbg ul li {
+	float: left;
+	padding-left: 15px;
+	padding-right: 15px;
+	margin-right: 15px;
+	height: 40px;
+	line-height: 40px;
+}
+.Navbg ul li:hover {
+	background-color: #920303;
+}
+.Navbg ul li a {
+	font-size: 18px;
+	color: #FFF;
+}
+/*********************************************************************footer*******************************************************************/
+.footerbg {
+	clear: both;
+	margin-top: 40px;
+	background: url(/images/News/footer_bg.jpg) top repeat-x;
+	width: 100%;
+}
+.footer {
+	padding-top: 10px;
+	padding-bottom: 40px;
+	color: #666666;
+	line-height: 28px;
+	text-align: center;
+}
+.footer a {
+	color: #666666;
+	margin-left: 3px;
+	margin-right: 3px;
+}
+.foot {
+	color: #000;
+	padding-bottom: 5px;
+}
+.foot a {
+	margin-left: 10px;
+	margin-right: 10px;
+	color: #000;
+}
+.navgation {
+	color: #808080;
+	padding-top:15px;
+	padding-bottom:15px;
+}
+.navgation a {
+	color: #808080;
+}
+.navgation span {
+	color: #e84a3f;
+}

@@ -1,0 +1,105 @@
+<include file="Public:header"/>
+<link rel="stylesheet" type="text/css" href="../../../../css/cont.css"> 
+<!--<link rel="stylesheet" type="text/css" href="../../../../css/st.css">
+<link rel="stylesheet" type="text/css" href="../../../../css/co.css">-->
+<style type="text/css">
+.btnn
+{
+background-image:url(/images/ylbtn.jpg);
+width:340px;
+height:52px;
+border:none;
+
+}
+.colorsty
+{
+  color:#999999;
+}
+</style>
+<script type="text/javascript" >
+$(function(){
+
+   if($("#SNAME").val()=="名字在1-10之间")
+   {  
+      $("#SNAME").addClass("colorsty");
+   }
+  if($("#SUGGES").val()=="请您再此输入本次建议的描述内容")
+   {  
+      $("#SUGGES").addClass("colorsty");
+   }
+   if($("#SCONTACT").val()=="例：8758**@qq.com/022-88668608")
+   {  
+      $("#SCONTACT").addClass("colorsty");
+   }
+   $("#SNAME").blur(function(){
+      if($("#SNAME").val().length>10)
+   {  
+   $("#error").val("名字在1-10之间");
+     return false;
+   }
+   
+   })
+   
+    $("#SUGGES").blur(function(){
+      if($("#SUGGES").val().length<15)
+   { 
+     $("#error2").val("描述内容不少于15个字！");
+     return false;
+   }
+   })
+})
+function pdcd()
+{
+   
+}
+</script>
+      <div class="main6" style="text-align:left;">
+          <p>当前位置：<a href="/">首页</a> > <strong>提议有礼</strong></p>
+        </div> 
+<div id="Container">
+   <!--头部-->
+   <!--内容-->
+   <form action="{:U('Tiyi/submit')}" method="post">
+       <div class="Wapper">
+           <div class="gift_bg">
+                 <div class="gift_box">
+                    <table cellpadding="0" cellspacing="0" border="0">
+                        <tr>
+                            <td align="right">* 姓名：</td>
+                            <td><input id="SNAME"  type="text" name="SNAME" class="inputt validate[required]" value="名字在1-10之间" onblur="if (value ==''){value='名字在1-10之间'}" onclick="if(this.value=='名字在1-10之间')this.value=''"  />&nbsp;<input id="error" value="" style=" background-color:#6C1316; border:none; color:#FFE8BE" /></td>
+                        </tr>
+						
+                         <tr>
+                            <td align="right">* 联系方式（邮箱或电话）：</td>
+                            <td><input  id="SCONTACT" type="text" name="SCONTACT" class="inputt validate[required,custom[email]]" value="例：8758**@qq.com/022-88668608" onblur="if (value ==''){value='例：8758**@qq.com/022-88668608'}" onclick="if(this.value=='例：8758**@qq.com/022-88668608')this.value=''" />&nbsp;<input id="error1" value="" style=" background-color:#6C1316; border:none; color:#FFE8BE" /></td>
+                        </tr>
+						
+                         <tr>
+                            <td align="right">* 建议描述：</td>
+                            <td><textarea id="SUGGES" name="SUGGES" class="validate[required]" value="请您再此输入本次建议的描述内容" onblur="if (value ==''){value='请您再此输入本次建议的描述内容'}" onclick="if(this.value=='请您再此输入本次建议的描述内容')this.value=''" >请您再此输入本次建议的描述内容</textarea>&nbsp;<input id="error2" value="" style=" background-color:#6C1316; border:none; color:#FFE8BE" /></td>
+                        </tr>
+                        <tr>
+                           <td></td>
+                           <td style=" margin-left:20px;">
+						   <input type="submit" name="submit"  class="btnn"  width="340px" height="52px"  value=""/>
+						   <input type="hidden" name="submitt"  class="btnn"  width="340px" height="52px"  value="1"/>
+						   <!--<input type="hidden"  onclick="{:U('Home/Tiyi/submit')}"/>
+						   <a href="#"><img src="../../../../images/ylbtn.jpg" /></a>-->
+						   </td>
+                        </tr>
+                    </table>
+                 </div>
+           </div> 
+           <!-------------------------------------clear------------------------------------------>
+           <div class="clear"></div>
+           <!-------------------------------------clear------------------------------------------>
+       </div>
+	   </form>
+   <!--内容-->
+   <!--头部-->
+   <!--头部-->
+   
+  
+
+
+<include file="Public:footer"/>

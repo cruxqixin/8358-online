@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{$seo.title}</title>
+<link rel="stylesheet" type="text/css" href="/css/content.css">
+<link href="/css/style.css" rel="stylesheet" type="text/css" />
+<script src="__PUBLIC__/statics/js/jquery/jquery-1.7.2.min.js"></script>
+</head>
+<body>
+
+ <!------------------------------------------------------------头部----开始-----------------------------------------> 
+ <div class="head">
+   <div class="Main">
+     <div class="login">
+     	<if condition="$currentuser neq ''">
+        	<div style="height:27px; float:left; width:auto; line-height:27px;"> <font color="#ea4940">{$currentuser.NICKNAME}</font> <a href="{:U('Uc/User/center')}" style="color:#7e7f7f;">个人中心</a>  ,</div>
+        	<div class="hbtn"><a href="{:U('Uc/User/loginout')}">退出</a></div>
+        <else/>
+            <div class="hbtn"><a href="{:U('Uc/User/reg')}">注册</a></div>
+            <div class="hbtn"><a href="{:U('Uc/User/login')}">登录</a></div>
+        </if>
+         <!--<input type="text" class="hbtn" value="注册">
+         <input type="text" class="hbtn" value="登录">
+         <font color="#ea4940">sdfa</font> 个人中心 ，
+         <input type="text" class="hbtn" value="退出"> -->
+     </div>
+      <p>
+     <table cellpadding="0" cellspacing="0" border="0" style="float:right;"><tr><td valign="middle">
+     <a href="http://en.un-techina.com/" target="_top"><span style="line-height:40px;font-size:12px; height:40px; margin-top:-20px;">English</span> &nbsp; </a></td><td>
+     <a href="javascript:;" id="aweixin"><img src="/images/dl_01.jpg"><img src="/images/weixin.jpg" id="divweixin" style="width:150px; margin-left:-50px;position:absolute; margin-top:40px; text-align:left;display:none;" /></a>
+      <a href="#"><img src="/images/dl_02.jpg"></a>
+      <a href="#"><img src="/images/dl_03.jpg"></a></td></tr></table></p>
+       <script type="text/javascript">
+ 	$("#aweixin").hover(function(){
+		$("#divweixin").css("display","inline");	
+	},function(){
+		$("#divweixin").hide();	
+	})
+	
+ </script>
+
+    </div>
+ </div>
+<!------------------------------------------------------------头部----结束----------------------------------------> 
+
+<!------------------------------------------------------------导航----开始----------------------------------------> 
+
+ <div class="Main">
+    <div class="logo"><img src="/images/index_01.jpg" /></div>
+ 
+    
+  <div class="nav1"><ul>
+       <li><a href="/">首页</a><span>|</span></li>
+       <li><a href="{:U('home/Project/index')}">科技成果 </a><span>|</span></li>
+       <li><a href="{:U('home/Experts/index')}">技术专家</a><span>|</span></li>
+       <li><a href="{:U('Uc/Demand/demand')}">技术需求</a><span>|</span></li>
+	   <li><a href="{:U('home/Goods/index')}">产品展示</a></li>
+    </ul></div>
+    
+  </div>
+
+<!------------------------------------------------------------导航----结束----------------------------------------> 
+
+<!------------------------------------------------------------搜索----开始----------------------------------------> 
+  <div class="search">
+        <form action="index.php" method="get" name="mysearchform" id="mysearchform" target="_blank">
+          <input type="hidden" name="a" value="index"  id="mysearchform_m" />
+          <input type="hidden" name="m" value="Search"/>
+          <input type="hidden" name="g" value="home" />
+          <div class="ser_01">
+            <label><input type="radio" name="ckpsearch" checked="checked" value="project" id="ckproject" />技术</label>
+            <label><input type="radio" name="ckpsearch" value="experts" id="ckexperts" />专家</label>
+            <label><input type="radio" name="ckpsearch" value="goods" id="ckgoods" />产品</label>
+            <label><input type="radio" name="ckpsearch" value="all" id="ckall" />全部</label>
+
+          </div>          
+          <div class="ser_02" style="width:467px;">
+            <p><input name="key" id="keysearch" type="text"  value="输入关键词" class="resettext" style="background-color:white; width:400px;"/></p>
+            <p><a href="javascript:;" id="asearch"><img src="/images/index_05.jpg" /></a></p>
+          </div>
+         <!-- <div class="ser_03">
+            <input name="" type="button" value="精确搜索" />
+          </div> -->
+        </form>
+     <div class="ser_04"><a href="{:U('home/Tiyi/index')}"><img src="/images/index_02.jpg" /></a></div>
+  </div>
+
+<!------------------------------------------------------------搜索----结束----------------------------------------> 

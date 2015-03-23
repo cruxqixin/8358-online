@@ -1,0 +1,371 @@
+@charset "utf-8";
+/* CSS Document */
+/*********************************************************************index*******************************************************************/
+.index_01 {
+	background: ur/images/Rongzi/Rongzi/index_07.jpg) bottom center no-repeat;
+	width: 100%;
+	height: 410px;
+}
+.index_01 .box {
+	width: 100%;
+	height: 432px;
+	background-color: #9b231c;
+}
+.index_01 .box .pic {
+	padding-top: 30px;
+	text-align: center;
+}
+.index_02 {
+	padding-top: 30px;
+	text-align: center;
+}
+.index_03 {
+	width: 100%;
+	background-color: #fddaad;
+	height: 292px;
+}
+.index_03 .pic {
+	padding-top: 50px;
+	float: left;
+}
+.index_03 .box {
+	padding-top: 50px;
+	width: 546px;
+	float: right;
+}
+.index_04 {
+	color: #9b231c;
+	font-size: 32px;
+	font-weight: bold;
+	height: 32px;
+	line-height: 32px;
+}
+.index_05 {
+	padding-top: 30px;
+	color: #000;
+	line-height: 32px;
+	font-size: 15px;
+}
+.index_06 {
+	clear: both;
+}
+.index_06 .pic {
+	float: right;
+	height: 293px;
+}
+.index_06 .box {
+	padding-top: 20px;
+	width: 570px;
+	float: left;
+}
+.index_07 {
+	clear: both;
+	width: 100%;
+	height: 584px;
+	background-color: #f5f5f5;
+}
+.index_08 {
+	padding-top: 30px;
+}
+.index_09 {
+	font-size: 27px;
+	color: #000;
+	font-weight: bold;
+}
+.index_10 {
+	font-size: 24px;
+	color: #333;
+	padding-top: 15px;
+	line-height: 24px;
+}
+.index_11 {
+	width: 322px;
+	height: 335px;
+	background-color: #70bdcc;
+	margin-top: 20px;
+}
+.index_12 {
+	padding: 12px 15px 0px 15px;
+}
+.index_12 ul li {
+	background: ur/images/Rongzi/Rongzi/index_23.jpg) left no-repeat;
+	text-indent: 10px;
+	height: 33px;
+	line-height: 33px;
+	border-bottom: 1px dashed #595959;
+}
+.index_12 ul li a {
+	color: #000000;
+	font-size: 15px;
+	text-decoration:none;
+}
+.index_13 {
+	padding-top: 15px;
+}
+.index_14 {
+	padding-top: 15px;
+}
+.index_14 img {
+	margin: 8px;
+}
+.index_15 {
+	width:151px;
+	height:44px;
+	text-align: center;
+	position: absolute;
+	z-index: 1000;
+	right:100px;
+	top: 400px;
+}
+.index_15 .btn {
+	background:url(/images/Rongzi/btn.jpg) center no-repeat;
+	width:151px;
+	height:44px;
+	display:block;
+}
+.server_01 {
+	background: url(/images/Rongzi/2_01.jpg) top repeat-x;
+	width: 100%;
+	padding-top: 25px;
+	text-align: center;
+}
+.server_02 {
+	height: 418px;
+	text-align: center;
+	background-color: #f5f5f5;
+}
+.server_03 {
+	padding-top: 25px;
+	text-align: center;
+}
+.server_04 {
+	padding-top: 25px;
+	text-align: center;
+	padding-bottom: 20px;
+}
+.server_05 {
+	text-align: center;
+	background-color: #f5f5f5;
+}
+.server_06 {
+	background: url(/images/Rongzi/2_10.jpg) center no-repeat;
+}
+.server_06 ul {
+	background: url(/images/Rongzi/2_08.jpg) bottom center repeat-x;
+	width: 100%;
+}
+.server_06 ul li {
+	float: left;
+	cursor: pointer;
+	color: #808080;
+	font-size: 24px;
+	font-weight: bold;
+	width: 257px;
+	height: 75px;
+	line-height: 75px;
+}
+.server_06 ul li .norpic {
+	float: left;
+	padding: 10px 10px 0px 20px;
+}
+.server_06 ul li .acpic {
+	float: left;
+	display: none;
+	padding: 10px 10px 0px 20px;
+}
+.server_06 ul li .title {
+	float: left;
+}
+.server_06 ul li span {
+	margin-left: 10px;
+}
+.server_06 ul .cur {
+	background: url(/images/Rongzi/2_07.jpg) bottom left no-repeat;
+}
+.server_06 ul .cur .title {
+	float: left;
+	color: #333333;
+}
+.server_06 ul .cur span {
+	margin-left: 10px;
+	color: #e84a3f;
+}
+.server_07 {
+	clear: both;
+}
+.server_07 .con {
+	display: none;
+	padding-bottom: 20px;
+}
+.server_08 {
+	padding-top: 10px;
+	text-align: center;
+}
+/*********************************************************************Project Financing*******************************************************************/
+.finance_01 {
+	padding: 18px 15px;
+	background-color: #f8f8f8;
+	color: #4c4c4c;
+	font-size: 16px;
+}
+.finance_01 .title {
+	color: #595959;
+	font-size: 24px;
+	text-align: center;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+.finance_01 table {
+	width: 100%;
+	border-collapse: collapse;
+}
+.finance_01 table tr td {
+	border: 1px solid #808080;
+	text-align: center;
+	line-height: 37px;
+}
+.finance_01 table .dtd td {
+	border-top: 3px solid #808080;
+}
+.finance_01 table tr td .txt {
+	border: 0px;
+	border-top: 1px solid #3d3d3d;
+	border-left: 1px solid #3d3d3d;
+	height: 32px;
+	line-height: 32px;
+	outline: 0px;
+	margin: 2px;
+	width: 132px;
+}
+.finance_01 table tr td .wid {
+	width: 98%;
+}
+.finance_01 table tr td .wia {
+	width: 103px;
+}
+.finance_01 table tr td .wiz {
+	width: 314px;
+}
+.finance_01 table tr td .wix {
+	width: 99.5%;
+	height: 90px;
+}
+.finance_01 table tr td p {
+	float: left;
+	padding-left: 8px;
+	padding-right: 10px;
+	vertical-align: top;
+}
+.finance_01 table tr td p span {
+	display: block;
+	float: left;
+}
+.finance_01 table tr td .chk {
+	background: url(/images/Rongzi/finance_01.jpg) center no-repeat;
+	width: 17px;
+	height: 17px;
+	display: block;
+	float: left;
+	margin-top: 10px;
+	margin-right: 3px;
+}
+.finance_02 {
+	padding-top: 25px;
+	padding-left: 335px;
+}
+.finance_02 .btn {
+	width: 133px;
+	height: 40px;
+	border: 0px;
+	display: block;
+	color: #FFF;
+	line-height: 40px;
+	text-align: center;
+	font-size: 18px;
+	float: left;
+	background-color: #e84a3f;
+}
+.finance_02 .R {
+	margin-left: 76px;
+	background-color: #808080;
+}
+.financeH {
+	height: 10px;
+}
+.tab_bg {
+	background: url(/images/Rongzi/tab_bg.jpg) top center repeat-x;
+	width: 100%;
+}
+.tab {
+	clear: both;
+	padding-bottom: 10px;
+	padding-top: 20px;
+}
+.tab ul li {
+	width: 497px;
+	float: left;
+	background-color: #e6e6e6;
+	height: 104px;
+	margin-right: 9px;
+	cursor: pointer;
+	color: #595959;
+	font-size: 14px;
+}
+.tab ul .cur {
+	background: #f8f8f8 url(/images/Rongzi/tab.jpg) bottom center no-repeat;
+	color: #595959;
+}
+.tab ul li .box {
+	padding: 15px 20px;
+}
+.tab ul li .box .title {
+	color: #5c5c5c;
+	font-size: 18px;
+	font-weight: bold;
+	padding-bottom: 5px;
+}
+.tab ul .cur .box .title {
+	color: #c60000;
+}
+.panner {
+	clear: both;
+}
+.panner .con {
+	clear: both;
+	display: none;
+}
+.asking {
+	padding: 20px 0px 20px 0px;
+	background-color: #f8f8f8;
+	color: #4c4c4c;
+	font-size: 16px;
+}
+.asking .title {
+	color: #595959;
+	font-size: 24px;
+	text-align: center;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+.asking .box {
+	padding-top: 20px;
+	padding-left: 184px;
+}
+.asking .box table tr td{
+	padding:5px 0px;
+}
+.asking .box table tr td .txt {
+	border: 0px;
+	border-top: 1px solid #3d3d3d;
+	border-left: 1px solid #3d3d3d;
+	height: 24px;
+	line-height: 24px;
+	outline: 0px;
+	margin: 2px;
+	width: 180px;
+}
+.asking .box table tr td .tn{
+	width:430px;
+	height:103px;
+	overflow:hidden;
+}

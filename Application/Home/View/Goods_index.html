@@ -1,0 +1,172 @@
+<include file="Public:header"/>
+<link rel="stylesheet" type="text/css" href="/css/content.css" />
+<link rel="stylesheet" type="text/css" href="/css/project.css" />
+<script type="text/javascript" src="/js/goods.js"></script>
+<!--<script type="text/javascript" src="index.php?a=getschools&m=Js&g=home"></script>
+<script type="text/javascript" src="index.php?a=getcompany&m=Js&g=home"></script> -->
+<style type="text/css">
+.export_08 ul li .hover {
+background: url(/images/exp_08.jpg) center no-repeat;
+
+width: 81px;
+height: 24px;
+color: white;
+line-height: 24px;
+text-align: center;
+float: left;
+margin-left: 15px;
+margin-right: 15px;
+margin-top: 10px;
+}
+
+</style>
+<div class="main6" style="text-align:left;">
+     <p>当前位置：<a href="/">首页</a> &gt; <strong>产品展示</strong></p>
+</div>
+<div id="Container">
+<form id="dosearchform" action="index.php">
+<input type="hidden" name="a" value="index" />
+<input type="hidden" name="m" value="Project" />
+<input type="hidden" name="g" value="home" />
+	<php>
+    	foreach($_GET as $key=>$value){
+         echo '<input type="hidden" name="'.$key.'" id="seaf'.$key.'" value="'.$value.'" />';
+       	}
+    </php>
+    
+</form>
+
+   <!--头部-->
+   <!--头部-->
+   <!--内容-->
+       <div class="Wapper">
+           <!-------------------------------------left------------------------------------------>
+              <div class="nleft">
+                   <div class="export_03">
+                         <div  class="export_04">产品展示</div>
+                         <div class="export_05"><include file="Public:share"/></div>
+                   </div>
+                   <div class="export_06">
+                       <div class="export_07">
+                       <php> echo $whereshow;</php>
+                        </div>
+                       <div class="export_08">
+					   
+                           <ul>
+
+						  
+                                <li>
+
+						       <li>
+
+                                     <b >产品类别  </b> 
+                                    <div id="showi1" style="overflow:hidden; margin-bottom:10px;">                                    
+                                        <volist name="goodkind" id="var">
+                                            <if condition="$var['parentid'] eq '0' and $var['ktype'] eq '1'">
+                                                <span class="itemshow"><table cellpadding="0" cellspacing="0" ><tr><td>
+                                                
+                                                
+                                                 <a href="{:U('home/Goods/index',$var['url'])}" style="color:#696868">
+                                                 <i class="checkbox <if condition="in_array($var['id'],$gids)">checkboxchose</if>"  style="margin-left:5px;"></i>
+                                                
+                                                {$var.kname|msubstr=0,7,'utf-8',false}</a>
+                                                
+                                                
+                                                </td><td style="text-align:right;"><div class="down"></div></td></tr></table>
+                                                    <div class="itemsnextshow">
+                                                        <volist name="goodkind" id="var1">
+                                                             <if condition="$var1['parentid'] eq $var['id'] and $var1['ktype'] eq '1'">
+                                                                 <div class="itemsdiv" onclick="window.location.href='{:U('home/Goods/index',$var1['url'])}'"><a href="{:U('home/Goods/index',$var1['url'])}"><i class="checkbox <if condition="in_array($var1['id'],$gids)">checkboxchose</if>"></i><span>{$var1.kname}</span></a></div>
+                                                             </if>
+                                                         </volist>
+                                                    </div>
+                                                </span>
+                                            </if>
+                                        </volist>
+                                    </div>
+                                 
+                                       
+                                </li>
+						   <li id="mrxz" >
+                                      <b style="height:150px;">应用行业类别  </b>
+                                      <div style="overflow:hidden;">
+                                       <volist name="goodkinds" id="val">
+                                                <a href="{:U('home/Goods/index',$val['url'])}" style="white-space:nowrap;" class="<if condition="in_array($val['id'],$ids)">hover<else/>link</if>">{$val.kname} </a>
+                                       </volist></div>
+                                </li>
+                            
+                                 
+                                
+                                 
+                           </ul>
+                       </div>
+                   </div>
+                   
+                   <div class="export_09">
+                        <div class="export_10">
+                            <ul>
+                                <volist name="progood" id='val'>
+                                    <li style="height:auto;" <php> if($key%2==1){ echo 'class="export_15"';}</php>>
+                                        <div <php> if($key%2==1){ echo 'class="export_16"';}else{echo 'class="export_11"';}</php> ><a href="{:U('home/Goods/details?id='.$val['id'])}" id="title">【{$val.gcode}】{$val.gname}  </a> </div>
+                                         <div style="float:right"></div>
+                                    <div class="export_13" style="position:relative;">
+                                         <div style="position:absolute; left:588px; top:-38px; right:20px; bottom:50px;">
+										 <p class="extime"><a href="{:U('home/Goods/details?id='.$val['id'].'&userid='.$val['userid'])}"><img src="<if condition="$val['gpic'] eq ''">/images/nopic.jpg<else/><php>$temp=split(',',$val['gpic']); echo $temp[0];</php></if>" width="160px" height="103px" style="border:4px solid #999999;"/></a></p></div>
+                                        
+                                         <table cellpadding="0" cellspacing="0" border="0" width="100%">
+										     <tr>
+                                                 <td width="230px"><b>联系人：</b>{$val.guser} </td>
+                                                 <td width="230px"> </td>
+												<!-- <td><p class="extime"><img src="{$val.GPIC}" width="80px" height="80px" /></p></td>-->
+												 </tr>
+												 
+												 <tr>
+                                                 <td><b>产品类别：</b><if condition="$val['pro_stage'] neq '0'">{$val['id']|getkindname}<else/></if></td>
+                                             </tr>
+                                               <tr>
+                                                 <td><b>应用行业类别：</b> <if condition="$val['pro_funds'] neq '0'">{$val['id']|getkindsname}<else/></if></td>
+                                                
+                                             </tr>
+                                               <tr>
+                                                 <td colspan="3"><b> 产品描述：</b> {$val['gdesc']|strip_tags|msubstr=0,120,'utf-8',false}
+                                                 <div style="width:80px; float:right;"><a href="{:U('home/Goods/details?id='.$val['id'])}" style="color:#ea4940;">详细信息>></a></div>
+                                                 </td>
+                                             </tr>
+                                          </table>
+                                    </div>
+                                </li>
+								</volist>
+                             
+                            </ul>
+                        </div>
+                   </div>
+                   
+                   <div class="page" >
+                   {$page}
+                   </div>
+                   
+              </div>
+           <!-------------------------------------left------------------------------------------>
+           <!-------------------------------------right------------------------------------------>
+           <div class="nright">
+                 <div class="export_01">热门产品</div>
+                 <ul class="export_02">
+                     <volist name="hotproject" id="pro">
+                        <li>
+                           <!--  <div class="pic"><img src="/images/exp_02.jpg" /></a></div>
+                            -->  <div class="" style="border-bottom:1px dashed gray; margin:auto 10px auto 5px;"><a href="{:U('home/Goods/details?id='.$pro['id'].'&userid='.$val['userid'])}" style="color:gray;" title="{$pro.GNAME}">{$pro.gname|msubstr=0,13,'utf-8',false}</a></div>
+                             <div class="clear"></div>
+                         </li>
+                     </volist>
+                 </ul>
+           </div>
+           <!-------------------------------------right------------------------------------------>
+           <!-------------------------------------clear------------------------------------------>
+           <div class="clear"></div>
+           <!-------------------------------------clear------------------------------------------>
+       </div>
+   <!--内容-->
+   <!--头部-->
+   <!--头部-->
+</div>
+<include file="Public:fot"/>

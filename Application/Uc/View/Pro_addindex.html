@@ -1,0 +1,230 @@
+<include file="UCenter:header"/>
+<include file="UCenter:left"/>
+
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/statics/js/kindeditor4/themes/default/default.css"/>
+<script type="text/javascript" src="__PUBLIC__/statics/js/kindeditor4/kindeditor-min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/statics/js/WdatePicker.js"></script>
+<script type="text/javascript" src="__PUBLIC__/statics/js/pinyin.js"></script>
+<script type="text/javascript" src="__PUBLIC__/statics/js/area.js" charset="gbk"></script>
+
+<script type="text/javascript">
+$(function(){
+	var items='{"items":["wordpaste","selectall","justifyleft","justifycenter","image","justifyright","justifyfull","insertorderedlist","insertunorderedlist","formatblock","fontname","fontsize","forecolor","hilitecolor","bold","italic","fullscreen"]}';
+	items=eval("("+items+")");
+	KindEditor.create('[name=GDESC]',items);
+	
+	$("[name=uploadButton]").each(function(){
+		changetoup($(this));
+	})
+	
+	$("#form1_add").submit(function(){
+		var gpics="";
+		var pics=$("[name=GPICS]");
+		if($("#imgeface").attr("src").length==0)
+		{
+		  gpics="";
+		 
+		}
+		else
+		{ 
+		  $("[name=imgeface]").each(function(){
+			gpics+=$(this).attr("src")+",";
+		  })
+		}
+		$("#GPIC").val(gpics);
+	})
+	
+	var pics=$("#GPIC").val().split(",");
+	var imgeface=$("[name=imgeface]");
+	var gpics=$("[name=GPICS]");
+	for(var i=0;i<pics.length;i++){
+		imgeface.eq(i).attr("src",pics[i]);
+		gpics.eq(i).val(pics[i]);
+		
+	
+	}
+	$(".exit").click(function(){
+		$(this).parent().find("#GPICS").val("");
+		$(this).parent().find("img").attr("src","/images/chosefile.jpg")
+	})
+	imgeface.each(function(){
+		if($(this).attr("src")==""){
+			$(this).attr("src","/images/chosefile.jpg")
+		}	
+	})
+	
+	if($("#goodkinds").val()){
+		var res=$("#goodkinds").val().split(",");
+		for(var i=0;i<res.length;i++){
+			$("[name='PRO_KNAMES[]'][value="+res[i]+"]").attr("checked","checked");	
+		}
+	}
+})
+function changetoup(control){
+	var uploadbutton = KindEditor.uploadbutton({
+		button : control[0],
+		fieldName : 'imgFile',
+		url : '__PUBLIC__/statics/js/kindeditor4/php/upload_json.php?dir=file',
+		afterUpload : function(data) {
+			if (data.error === 0) {
+				var url = KindEditor.formatUrl(data.url, 'absolute');
+				var index=$("[name=uploadButton]").index(control);
+				$("[name=imgeface]").eq(index).attr("src",url);//.eq(index).val(data.filename);
+				$("[name=GPICS]").eq(index).attr("src",url);
+				
+			} else {
+				alert(data.message);
+			}
+		},
+		afterError : function(str) {
+			alert('网速不给力！');
+		}
+	});
+	uploadbutton.fileBox.change(function(e) {
+		uploadbutton.submit();
+	});
+	$(".ke-form").width("auto");	
+}
+
+</script>
+<style type="text/css">
+.pub_03{width:200px;}
+.tdright{ text-align:right; min-width:140px;}
+</style>
+<input type="hidden" value="{$goodkinds}" id="goodkinds"/>
+    <!--right-->
+    <div class="right">
+           <div class="daohang">当前位置： <a href="<hr />
+#">首页</a> > <a href="#"><font>发布产品</font></a></div>
+           <div class="main">
+                <div class="pub_title_bg"><div class="pub_title">产品信息维护</div></div>
+               
+                <div class="pub_02">
+                <input type="hidden" id="PRO_CATS" value="{$Project.pao_cats}" />
+                <form action="{:U('Uc/Pro/addindex')}" id="form1_add" method="post">          
+				
+              <input type="hidden" id="ID" value="{$experts.id}" />      	
+                   <table width="100%" cellpadding="0" cellspacing="0" class="table_form">
+               
+      <tr>
+        <td class="tdright"><span>*</span>产品名称 :  </td>
+        <td><input type="text" name="GNAME" id="GNAME" class="pub_03 validate[required]" size="60" value="{$Project.gname}"></td>
+		</tr>
+		<tr>
+        <td class="tdright"><span>*</span>联系人:</td>
+        <td><input type="text" name="GUSER" id="GUSER" class="pub_03 validate[required]" value="{$Project.guser}"></td>
+       </tr>
+	  <tr>
+       <td class="tdright"><span>*</span>联系人电话 :</td>
+        <td>
+       <input type="text" name="GPHONE" id="GPHONE" class="pub_03 validate[required]" value="{$Project.gphone}">
+        </td>
+		</tr>
+		
+	  <tr>
+        <td class="tdright">产品图片:</td>
+       <td colspan="3">
+       		<input type="hidden" name="GPIC" id="GPIC" value="{$Project.gpic}" />
+        	<table id="proimg" cellpadding="0" cellspacing="0" border="0">
+            <tr>
+            	<td >
+                    <img name="imgeface" id="imgeface"  style="width:130px; height:160px;" src="" />
+                    <br />
+                    <input type="hidden" name="GPICS" id="GPICS" class="pub_03" size="60" value="" />
+                    <input type="button" name="uploadButton" value="选择" />
+                    <span class="ke-button-common exit"><input type="button" id="" class="ke-button-common ke-button" value="删除"></span>
+                </td>
+                <td style="width:50px;"></td>
+            	<td>
+                    <img name="imgeface" id="imgeface"  style="width:130px; height:160px;" src="" />
+                    <br />
+                    <input type="hidden" name="GPICS" id="GPICS" class="pub_03" size="60" value="" />
+                    <input type="button" name="uploadButton" value="选择" />
+                    <span class="ke-button-common exit"><input type="button" id="" class="ke-button-common ke-button" value="删除"></span>
+                </td>
+                <td style="width:50px;"></td>
+            	<td>
+                    <img name="imgeface"  id="imgeface" style="width:130px; height:160px;" src="" />
+                    <br />
+                    <input type="hidden" name="GPICS" id="GPICS" class="pub_03" size="60" value="-" />
+                    <input type="button" name="uploadButton" value="选择" />
+                    <span class="ke-button-common exit"><input type="button" id="" class="ke-button-common ke-button" value="删除"></span>
+                </td>
+            </tr>
+            </table>
+            
+            
+        </td>
+      </tr>
+	  <tr>
+        <td class="tdright"><span>*</span>产品描述 :</td>
+     
+		<td colspan="3"><textarea  name="GDESC" style=" width:720px; height:100px; ">{$Project.gdesc}</textarea></td>
+       </tr>
+	  <tr>
+        <th width="180">产品类别:</th>
+        <td colspan="3"> 
+            <volist name="Prokind1" id="var">
+        
+         	<if condition="$var['parentid'] eq '0'">
+            	<div style=" font-size:13px;">{$var.kname} <br />
+                    <div style="margin-left:25px;">
+                        <volist name="Prokind1" id="var1">
+                            <if condition="$var1['parentid'] eq $var['id']">
+                                <input type="checkbox" name="PRO_KNAMES[]"  value="{$var1.id}" />{$var1.kname}
+							</if>
+                        </volist>
+                    </div>
+                </div>
+            </if>
+         </volist>
+        </td>
+      </tr>
+	  <tr>
+        <th width="190">应用行业类别:</th>
+        <td colspan="3"> 
+           <volist name="Prokind" id="var">
+        
+         	<if condition="$var['parentid'] eq '0'">
+            	<div style=" font-size:13px;"><input type="checkbox" name="PRO_KNAMES[]" value="{$var.id}" />{$var.kname} <br />
+                   
+                </div>
+            </if>
+         </volist>
+        </td>
+      </tr>
+       
+        <tr>
+        <td class="tdright">发布状态 :</td>
+        <td colspan="3">  <input type="radio" value="0"  name="ISSHOW" <if condition="$Project.dstatus neq 10"> checked="checked"</if>  />发布（需审核） &nbsp; &nbsp; &nbsp; 
+        <input type="radio"  value="1"   name="ISSHOW" <if condition="$Project.dstatus eq 10"> checked="checked"</if>   />草稿</td>
+      </tr>
+	
+      <tr><td><input type="hidden" name="ID" value="{$Project.id}" id="ID"/></td> <td colspan="3"></td>
+       </tr>
+          <tr>
+                          <td align="right"></td>
+                          <td colspan="4" align="left">
+                          <input type="submit" style="background:url(__PUBLIC__/statics/images/btn_team.jpg) ;width:331px; height:35px; border:none;"  value=""/>
+                          </td>
+                       </tr>
+    </table>
+    
+              
+                   <input type="hidden" name="submit" value="1" />
+                   </form>
+                </div>
+                
+                
+                
+           </div>
+    </div>
+    <!--right-->
+    <!--clear-->
+    <div class="clear"></div>
+    <!--clear-->
+   <!--内容-->
+</div>
+
+</body>
+</html>

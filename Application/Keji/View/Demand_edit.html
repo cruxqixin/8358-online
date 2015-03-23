@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>科技天下网-需求发布</title>
+<link href="/css/Keji/type.css" rel="stylesheet" type="text/css" />
+<script src="__PUBLIC__/statics/js/jquery/jquery-1.7.2.min.js"></script>
+
+<link href="/css/validationEngine.jquery.css" rel="stylesheet" type="text/css" />
+<script src="/js/Keji/jquery.validationEngine.js" type="text/javascript"></script>
+<script src="/js/Keji/jquery.validationEngine-zh_CN.js" type="text/javascript" charset="UTF-8"></script>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/statics/js/kindeditor4/themes/default/default.css"/>
+<script type="text/javascript" src="__PUBLIC__/statics/js/kindeditor4/kindeditor-min.js"></script>
+<!--[if lte IE 6]>
+<script type="text/javascript" src="js/PNG.js"></script>
+<script type="text/javascript" src="js/PNGClass.js"></script>
+<![endif]-->
+<script type="text/javascript">
+$(function(){
+	$("form").validationEngine();
+	$("form").submit(function(){
+		if(allitems.isEmpty()){
+			alert("需求内容不能为空");
+			return false;
+		}
+	})
+	
+	$("#chongzhi").click(function(){
+		$(".text1").val("");
+		allitems.html("");
+	})
+	
+})
+</script>
+</head>
+
+<body>
+<include file="Public:header1"/>
+<div class="mainBox">
+	<div class="main">
+    	<h1>当前位置： 首页 > <span>会员中心</span></h1>
+        <div class="main-text">
+        	<include file="Public:left"/>
+            <div class="shopBox">
+            	<ul>
+                	<li>会员中心  > <span>需求发布</span></li>
+                    <li class="liri">{$user['nickname']}&nbsp;  |  &nbsp;<a href="{:U('User/loginout')}">退出</a></li>
+                </ul>
+			<form action="{:U('Demand/edit')}" method="POST">
+                <table width="200" border="0" cellspacing="0" class="texttb">
+					<if condition="$article['dstatus'] eq '2'">
+					<tr>
+						 <td width="136" class="text-nav">未通过审核原因 :</td>
+						<td><input type="text" name="SUGGESTION" id="SUGGESTION" class="text1" size="60" value="{$article.dsuggestion}"></td>
+				    </tr>
+				  </if>
+				  <tr>
+                    <td width="116" class="text-nav">需求标题：</td>
+                    <td><input class="text1 validate[required]" name="DTITLE" id="DTITLE" value="{$article['dtitle']}"/></td>
+                  </tr>
+                  <tr>
+                    <td width="116" class="text-nav">需求描述：</td>
+                    <td><textarea class="text1 validate[required] editshow" name="DESCRIBE" style="height:252px;" id="DESCRIBE" value=""/>{$article['describe']}</textarea></td>
+                  </tr>
+				  <tr>
+                    <td width="116" class="text-nav">联系人方式：</td>
+                    <td><input class="text1 txt1 validate[required,custom[shouji]]" name="DPHONE" id="DPHONE" value="<if condition="$article['dphone'] eq ''">{$user['lxrtelphone']}<else/>{$article['dphone']}</if>"></td>
+                  </tr>
+				   <tr>
+                    <td width="116" class="text-nav">联系人：</td>
+                    <td><input class="text1 txt1 validate[required]" name="DNAME" id="DNAME" value="<if condition="$article['dname'] eq ''">{$user['lxrname']}<else/>{$article['dname']}</if>"></td>
+                  </tr>
+				  <tr>
+                    <td width="116" class="text-nav">联系人单位：</td>
+                    <td><input class="text1 txt2 validate[required]" name="DCOMPANY" id="DCOMPANY" value="<if condition="$article['dcompany'] eq ''">{$user['companyname']}<else/>{$article['dcompany']}</if>"></td>
+                  </tr>
+				  <tr>
+                    <td width="116" class="text-nav">邮箱：</td>
+                    <td><input class="text1 txt1 validate[required,custom[email]]" name="DEMAIL" id="DEMAIL" value="<if condition="$article['demail'] eq ''">{$user['email']}<else/>{$article['demail']}</if>"/></td>
+                  </tr>
+				 
+				   <tr>
+                    <td width="116" class="text-nav">是否显示：</td>
+                    <td>
+						 <input type="radio" name="ISSHOW" id="ISSHOW" class="radio_style" value="1" <if condition="$article['isshow'] eq '1'  OR $article['ISSHOW'] eq ''">checked="checked"</if> > &nbsp;是&nbsp;&nbsp;&nbsp;
+        	             <input type="radio" name="ISSHOW" id="ISSHOW" class="radio_style" value="0" <if condition="$article['isshow'] eq '0'">checked="checked"</if>> &nbsp;否
+        
+					</td>
+					</tr>
+                  <tr>
+                    <td class="text-nav"><input type="hidden" name="ID" value="{$article['id']}"/></td>
+					
+                    <td>
+                    	<div class="butBox">
+                    		<input name="" type="submit" class="but redBut" value="确认发布" />
+                            <input name="" type="button" id="chongzhi" class="but" value="重置发布" />
+                         </div>
+                    </td>
+                  </tr>
+                </table>
+			</form>
+            </div>
+        </div>
+    </div>
+</div>
+<include file="Public:bottom"/>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

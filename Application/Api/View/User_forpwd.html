@@ -1,0 +1,27 @@
+<include file="Public:header"/>
+<!------------------------------------------------------------中间----开始----------------------------------------> 
+   <div class="Main">
+         <div class="main2">
+           <div class="main2_a">
+             <form action="{:U('Uc/User/pwd')}" method="post">
+             <span>
+               <input name="username" type="button" onclick="window.location.href='{:U('Uc/User/forpwd')}'" style="width:193px; cursor:pointer; height:42px; color:#FFF; background:url(images/dl_17.jpg) no-repeat;" value="通过邮箱" />
+               <input name="password" type="button" onclick="window.location.href='{:U('Uc/User/forphone')}'" style="width:199px; cursor:pointer; height:42px; color:#FE3737;background:url(images/dl_21.jpg) no-repeat;" value="通过手机" />
+             </span>
+              <div>{$error}</div>
+			  <div style=" color:#FF0000; margin-bottom:8px; margin-top:-6px;">请输入您的邮箱号</div>
+              <p class="p1">
+			  <input name="EMAIL" type="text" value="{$data.EMAIL}" class="validate[required,custom[email]]" style="background:url(images/user.jpg) left center no-repeat; background-position: 10px; text-indent:38px; width:390px; line-height:43px; border:1px solid #DCDCDC;" /></p>
+          
+              <div class="m2b"><input name="submit" type="submit" value="提交" /></div>
+              <div class="m2c"><a href="{:U('Uc/User/reg')}">没有账号立即注册</a></div>
+              
+              <input type="hidden" name="login" value="user_login" />
+              <input type="hidden" name="returnurl" value="{$data.returnurl}{$_GET['returnurl']}" />
+             </form>
+           </div>
+      </div>
+    </div>
+<!------------------------------------------------------------中间----结束----------------------------------------> 
+
+<include file="Public:footer"/>
