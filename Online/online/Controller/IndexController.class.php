@@ -312,7 +312,7 @@ class IndexController extends Controller {
     public function setSchedule(){
         $uid = $this->kjtxLoginCheck();
         $onlineUser = $this->onlineLoginCheck($uid);
-        if($onlineUser['stauts'] != 1){
+        if($onlineUser['status'] != 1){
             $this->error('您的用户信息尚未通过审核，请耐心等待');
         }
         $userModel = M('user');
@@ -354,6 +354,8 @@ class IndexController extends Controller {
             $add = $scheduleModel->add($data);
             if($add){
                 $this->redirect('http://'.$_SERVER['HTTP_HOST'].'.php/index/info/'.$_POST["accept_uid"]);
+                $url = 'http://'.$_SERVER['HTTP_HOST'].'.php/index/schedule_accept';
+                SendMail($onlineAcceptUser["email"],"您有新的在线对接会预约申请","请点击链接 {$url} 继续操作");
             }else{
                 $this->error("提交失败");
             }
@@ -378,11 +380,19 @@ class IndexController extends Controller {
             if(!$scheduleInfo){
                 echo '该预约不存在或该预约不是待处理状态';die();
             }
+            //申请人信息
+            $applyUser = $userModel->where('uid='.$scheduleInfo['uid'])->find();
             //保存数据
             $data['status'] = intval($_POST['action_type']);
             $data['update_time'] = time();
             $update = $scheduleModel->where("id=".intval($_POST['schedule_id']))->save($data);
             if($update){
+                if($_POST['action_type'] == 2){
+                    $url = 'http://'.$_SERVER['HTTP_HOST'].'.php/index/schedule_apply';
+                }else{
+                    $url = 'http://'.$_SERVER['HTTP_HOST'].'.php/index/schedule_reject';
+                }
+                SendMail($applyUser["email"],"您提交的在线对接会预约已被对方处理","请点击链接 {$url} 查看");
                 echo json_encode($data);die();
             }else{
                 echo '操作失败';die();

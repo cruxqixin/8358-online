@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>无标题文档</title>
+<title>科济天下网_在线对接会_用户详情_<?php echo ($onlineUser['company_name']); ?></title>
 <link href="/css/Online/index.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="/js/Online/jquery-1.7.2.min.js"></script>
 
