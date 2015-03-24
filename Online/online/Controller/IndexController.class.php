@@ -95,6 +95,7 @@ class IndexController extends Controller {
                 $data['type'] = 1;//个人类型
                 $data['uid'] = $uid;
                 $data['update_time'] = time();
+                $data['status'] = 0;//修改后需要重新审核资料
                 $update = $userModel->where("id=".$_POST['id'])->save($data);
                 $save = $this->saveCategory($uid,$data['category']);
                 if($update || $save){
@@ -185,6 +186,7 @@ class IndexController extends Controller {
                 $data['type'] = 2;//公司类型
                 $data['uid'] = $uid;
                 $data['update_time'] = time();
+                $data['status'] = 0;
                 $update = $userModel->where("id=".$_POST['id'])->save($data);
                 $save = $this->saveCategory($uid,$data['category']);
                 if($update || $save){
@@ -310,6 +312,9 @@ class IndexController extends Controller {
     public function setSchedule(){
         $uid = $this->kjtxLoginCheck();
         $onlineUser = $this->onlineLoginCheck($uid);
+        if($onlineUser['stauts'] != 1){
+            $this->error('您的用户信息尚未通过审核，请耐心等待');
+        }
         $userModel = M('user');
         if($_POST){
             if(!$_POST['accept_uid']){
@@ -638,7 +643,6 @@ class IndexController extends Controller {
         'industry' => '所属行业',
         'category' => '技术服务类别',
         'cooperation_need' => '需要何种合作或帮助',
-//         'fund_demand' => '是否有投融资需求',
     );
     private $bInputArray = array(
         'company_name' => '公司名称',
@@ -660,7 +664,6 @@ class IndexController extends Controller {
         'cooperation_offer' => '能提供的核心产品及技术合作',
         'implemented_application' => '已实现的应用',
         'cooperation_need' => '需要何种合作或帮助',
-//         'fund_demand' => '是否有投融资需求',
     );
     private function kjtxLoginCheck(){
         //判断kjtx是否登录，否则返回登录页面
