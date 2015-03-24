@@ -64,10 +64,11 @@ $(function(){
 	                        <tr>
 	                        	<td width="262">单位网站：<a >{$onlineUser['company_website']} </a></td>
 	                            <td width="242">Email：<a >{$onlineUser['email']} </a></td>
-	                            <td>单位地址：<a >{$onlineUser['company_address']}  </a></td>
+	                            <td>所属行业：<a >{$onlineUser['industry']} </a></td>
 	                        </tr>
 	                        <tr>
-	                        	<td colspan="3">所属行业：<a >{$onlineUser['industry']} </a></td>
+	                        	<td colspan="2">单位地址：<a >{$onlineUser['company_address']}  </a></td>
+	                        	<td>审核状态：<a >{$onlineUser['status']==0?'未审核':'已审核'} </a></td>
 	                        </tr>
                             </tbody>
                         </table>
