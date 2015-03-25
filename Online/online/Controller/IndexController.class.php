@@ -31,7 +31,80 @@ class IndexController extends Controller {
                 $where[] = 'uid = 0';
             }
         }
+//         if($_GET['uType']>0){
+//             $userType = intval($_GET['uType']);
+//             $this->assign('uType',$_GET['uType']);
+//             $where['type'] = $userType;
+//         }else{
+//             $where['type'] = 2;
+//         }
         $where['type'] = 2;
+        $where['status'] = 1;
+        $count = $userModel->where($where)->count();
+        $page = new FallPage($count,10);
+        $show = $page->show();
+        $userList = $userModel->where($where)->order('id desc')->limit($page->firstRow.','.$page->listRows)->select();
+        $this->assign('page',$show);
+        $this->assign('userList',$userList);
+        $this->assign('count',$count);
+        $this->assign('fatherList',$fatherList);
+        $this->assign('childList',$childList);
+        
+        //是否是已登录企业用户，可以进入专家列表页面
+        if($_SESSION["currentuser"]){
+            $uid = $_SESSION["currentuser"]['id'];
+            $onlineUser = $this->onlineLoginCheck($uid);
+            if($onlineUser['type'] == 2){
+                $this->assign('isCompany',1);
+            }
+        }
+        $this->display();
+    }
+    public function index_c(){
+        $userModel = M('user');
+        $categoryModel = M('category');
+        $userCategoryModel = M('user_category');
+        if(!$_SESSION["currentuser"]){
+            $this->error("只有已登录的申请企业对接的用户才能查看本页面");
+        }else{
+            $uid = $_SESSION["currentuser"]['id'];
+            $onlineUser = $this->onlineLoginCheck($uid);
+            if($onlineUser['type'] != 2){
+                $this->error("只有申请企业对接的用户才能查看本页面");
+            }
+        }
+        //行业分类
+        $categoryList = $categoryModel->where('status=1')->select();
+        foreach($categoryList as $k => $v){
+            if($v['level'] == 1){
+                $fatherList[] = $v;
+            }
+            if($v['level'] == 2){
+                $childList[$v['father']][] = $v;
+            }
+        }
+        if($_GET['fid']>0 && $_GET['cid']>0){
+            $cid = intval($_GET['cid']);
+            $userCategoryList = $userCategoryModel->where('cid='.$cid)->select();
+            foreach($userCategoryList as $k => $v){
+                $uidList[] = $v['uid'];
+            }
+            $this->assign('chosenCid',$_GET['cid']);
+            $this->assign('chosenfid',$_GET['fid']);
+            if($uidList){
+                $where[] = 'uid in ('.implode(',',$uidList).') ';
+            }else{
+                $where[] = 'uid = 0';
+            }
+        }
+//         if($_GET['uType']>0){
+//             $userType = intval($_GET['uType']);
+//             $this->assign('uType',$_GET['uType']);
+//             $where['type'] = $userType;
+//         }else{
+//             $where['type'] = 2;
+//         }
+        $where['type'] = 1;
         $where['status'] = 1;
         $count = $userModel->where($where)->count();
         $page = new FallPage($count,10);
@@ -686,7 +759,7 @@ class IndexController extends Controller {
             header("Location:http://".$_SERVER['HTTP_HOST'].'/index.php/Keji/User/Login/?returnurl='.$_SERVER['PHP_SELF']); 
 			return;
         }
-        return $_SESSION["currentuser"]['id'];;
+        return $_SESSION["currentuser"]['id'];
     }
     private function onlineLoginCheck($uid){
         //获取当前登录uid，判断online_user是否已经有数据

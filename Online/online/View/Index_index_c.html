@@ -37,7 +37,7 @@ $(function(){
 <div class="mainBox">
     <div class="main-left">
     	<div class="main-left-01">
-        	<h1>在线对接-企业列表</h1>
+        	<h1>在线对接-专家列表</h1>
             <div class="techlist_04">
           <table cellpadding="0" cellspacing="0" border="0">
               <tr valign="top">
@@ -69,16 +69,14 @@ $(function(){
                      </div>
                  </td>
              </tr>
-             <?php if($isCompany == 1){?>
              <tr>
                  <td width="60" valign="top" style="padding-top:6px;"><span>对接类型</span></td>
                  <td style="padding-top:6px;">
-		    		<a class="sub-all" href="{:U('index/index')}">企业</a>
-                    <a class="sub-link" href="{:U('index/index_c')}">专家</a>
+		    		<a class="sub-link" href="{:U('index/index')}">企业</a>
+                    <a class="sub-all" href="{:U('index/index_c')}">专家</a>
                     <div class="clear"></div>                        
                 </td>
              </tr>
-             <?php } ?>
           </table>
        </div>
         </div>
@@ -86,12 +84,10 @@ $(function(){
         	<?php foreach($userList as $k => $v){ ?>
         	<dl>
             	<dd>
-                	<h1><a href="{:U('index/info/'.$v['uid'])}">【{$v['exhibition_number']}】{$v['company_name']}</a></h1>
+                	<h1><a href="{:U('index/info/'.$v['uid'])}">【{$v['company_cname']}】{$v['name']}</a></h1>
                     <span>发布时间：<?php echo date('Y-m-d',$v['add_time']);?></span>
                 </dd>
-                <dt><span>能提供的核心产品及技术合作：</span>{$v['cooperation_offer']}
-                </dt>
-                <dt><span>已实现的应用：</span>{$v['implemented_application']}
+                <dt><span>所属行业：</span>{$v['industry']}
                 </dt>
                 <dt><span>需要何种合作或帮助：</span>{$v['cooperation_need']}
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="{:U('index/info/'.$v['uid'])}">详细信息>></a>

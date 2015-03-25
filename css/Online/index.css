@@ -262,7 +262,6 @@ img{
 	float:left;}	
 .main-left-01{
 	width:744px;
-	height:174px;
 	border:1px solid #ebebeb;}	
 .main-left-01 h1{
 	font-size:18.67px;
@@ -379,7 +378,40 @@ img{
 	font-size:14px;
 	display:block;
 	padding-left:18px;
-}	
+}
+.techlist_04 table tr td .sub-all{
+	display:block;
+	background-color:#990034;
+	width:auto;
+	float:left;
+	height:20px;
+	line-height:20px;
+	text-align:center;
+	color:#FFF;
+	padding:2px 4px;
+}
+.techlist_04 table tr td .sub-all2{
+	display:block;
+	width:46px;
+	height:20px;
+	line-height:20px;
+	text-align:center;
+	color:#666666;
+}
+.techlist_04 table tr td .sub-link{
+	line-height:24px;
+	display:block;
+	margin:0px 10px;
+	color:#666666;
+	float:left;
+	padding:2px 4px;
+	white-space:nowrap;
+}
+.techlist_04 table tr  .lb{
+	margin:0px 5px 4px 5px;
+	line-height:20px;
+	padding:0px 5px;
+}
 .sbox{
 	position:absolute;
 	top:27px;
