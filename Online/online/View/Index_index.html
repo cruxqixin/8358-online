@@ -30,8 +30,8 @@ $(function(){
 <div class="navBox">
 	<ul>
     	<li><a href="{:U('index/index')}" class="currentA">首页</a></li>
-        <!-- <li><a href="#">会议申请</a></li>
-        <li><a href="#">在线会议室</a></li> -->
+        <!-- <li><a href="{:U('index/index_c')}">会议申请</a></li>
+        <li><a href="{:U('index/index_c')}">在线会议室</a></li> -->
     </ul>
 </div>
 <div class="mainBox">
@@ -69,11 +69,11 @@ $(function(){
                      </div>
                  </td>
              </tr>
-             <?php if($isCompany == 1){?>
+             <?php if($isCompany == 1){ ?>
              <tr>
-                 <td width="60" valign="top" style="padding-top:6px;"><span>对接类型</span></td>
+                 <td {$isCompany} width="60" valign="top" style="padding-top:6px;"><span>对接类型</span></td>
                  <td style="padding-top:6px;">
-		    		<a class="sub-all" href="{:U('index/index')}">企业</a>
+		    		<a class="sub-all" href="">企业</a>
                     <a class="sub-link" href="{:U('index/index_c')}">专家</a>
                     <div class="clear"></div>                        
                 </td>
