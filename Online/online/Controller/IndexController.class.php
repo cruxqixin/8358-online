@@ -87,7 +87,8 @@ class IndexController extends Controller {
                 if($add){
                     $this->saveCategory($uid,$data['category']);
                     $this->createCalendar($uid);
-                    $this->redirect('http://'.$_SERVER['HTTP_HOST'].'.php/index/calendar');
+                    header("Location:http://".$_SERVER['HTTP_HOST'].'/online.php/index/calendar');
+//                     $this->redirect('http://'.$_SERVER['HTTP_HOST'].'.php/index/calendar');
                 }else{
                     $this->error("提交失败");
                 }
@@ -99,8 +100,8 @@ class IndexController extends Controller {
                 $update = $userModel->where("id=".$_POST['id'])->save($data);
                 $save = $this->saveCategory($uid,$data['category']);
                 if($update || $save){
-
-                    $this->redirect('http://'.$_SERVER['HTTP_HOST'].'.php/index/calendar');
+                    header("Location:http://".$_SERVER['HTTP_HOST'].'/online.php/index/calendar');
+//                     $this->redirect('http://'.$_SERVER['HTTP_HOST'].'.php/index/calendar');
                 }else{
                     $this->error("修改失败");
                 }
@@ -178,7 +179,8 @@ class IndexController extends Controller {
                 if($add){
                     $this->saveCategory($uid,$data['category']);
                     $this->createCalendar($uid);
-                    $this->redirect('http://'.$_SERVER['HTTP_HOST'].'.php/index/calendar');
+                    header("Location:http://".$_SERVER['HTTP_HOST'].'/online.php/index/calendar');
+//                     $this->redirect('http://'.$_SERVER['HTTP_HOST'].'.php/index/calendar');
                 }else{
                     $this->error("提交失败");
                 }
@@ -190,7 +192,8 @@ class IndexController extends Controller {
                 $update = $userModel->where("id=".$_POST['id'])->save($data);
                 $save = $this->saveCategory($uid,$data['category']);
                 if($update || $save){
-                    $this->redirect('http://'.$_SERVER['HTTP_HOST'].'.php/index/calendar');
+                    header("Location:http://".$_SERVER['HTTP_HOST'].'/online.php/index/calendar');
+//                     $this->redirect('http://'.$_SERVER['HTTP_HOST'].'.php/index/calendar');
                 }else{
                     $this->error("修改失败");
                 }
@@ -342,7 +345,7 @@ class IndexController extends Controller {
             }
             //保存数据
             $data['uid'] = $uid;
-            $data['uname'] = $_SESSION["currentuser"]['nickname'];
+            $data['uname'] = $onlineUser['type'] == 1 ? $onlineUser['name'] : $onlineUser['company_name'];
             $data['umobile'] = $onlineUser['mobile'];
             $data['calendar_id'] = intval($_POST['calendar_id']);
             $data['accept_uid'] = intval($_POST["accept_uid"]);
@@ -353,8 +356,9 @@ class IndexController extends Controller {
             $data['add_time'] = time();
             $add = $scheduleModel->add($data);
             if($add){
-                $this->redirect('http://'.$_SERVER['HTTP_HOST'].'.php/index/info/'.$_POST["accept_uid"]);
-                $url = 'http://'.$_SERVER['HTTP_HOST'].'.php/index/schedule_accept';
+                header("Location:http://".$_SERVER['HTTP_HOST'].'/online.php/index/info/'.$_POST["accept_uid"]);
+//                 $this->redirect('http://'.$_SERVER['HTTP_HOST'].'.php/index/info/'.$_POST["accept_uid"]);
+                $url = 'http://'.$_SERVER['HTTP_HOST'].'/online.php/index/schedule_accept';
                 SendMail($onlineAcceptUser["email"],"您有新的在线对接会预约申请","请点击链接 {$url} 继续操作");
             }else{
                 $this->error("提交失败");
@@ -388,9 +392,9 @@ class IndexController extends Controller {
             $update = $scheduleModel->where("id=".intval($_POST['schedule_id']))->save($data);
             if($update){
                 if($_POST['action_type'] == 2){
-                    $url = 'http://'.$_SERVER['HTTP_HOST'].'.php/index/schedule_apply';
+                    $url = 'http://'.$_SERVER['HTTP_HOST'].'/online.php/index/schedule_apply';
                 }else{
-                    $url = 'http://'.$_SERVER['HTTP_HOST'].'.php/index/schedule_reject';
+                    $url = 'http://'.$_SERVER['HTTP_HOST'].'/online.php/index/schedule_reject';
                 }
                 SendMail($applyUser["email"],"您提交的在线对接会预约已被对方处理","请点击链接 {$url} 查看");
                 echo json_encode($data);die();
