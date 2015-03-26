@@ -53,7 +53,7 @@ class IndexController extends Controller {
         //是否是已登录企业用户，可以进入专家列表页面
         if($_SESSION["currentuser"]){
             $uid = $_SESSION["currentuser"]['id'];
-            $onlineUser = $this->onlineLoginCheck($uid);
+            $onlineUser = $userModel->where(array('uid'=>$uid ))->find();
             if($onlineUser['type'] == 2){
                 $this->assign('isCompany',1);
             }
