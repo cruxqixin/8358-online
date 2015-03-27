@@ -31,13 +31,6 @@ class IndexController extends Controller {
                 $where[] = 'uid = 0';
             }
         }
-//         if($_GET['uType']>0){
-//             $userType = intval($_GET['uType']);
-//             $this->assign('uType',$_GET['uType']);
-//             $where['type'] = $userType;
-//         }else{
-//             $where['type'] = 2;
-//         }
         $where['type'] = 2;
         $where['status'] = 1;
         $count = $userModel->where($where)->count();
@@ -97,13 +90,7 @@ class IndexController extends Controller {
                 $where[] = 'uid = 0';
             }
         }
-//         if($_GET['uType']>0){
-//             $userType = intval($_GET['uType']);
-//             $this->assign('uType',$_GET['uType']);
-//             $where['type'] = $userType;
-//         }else{
-//             $where['type'] = 2;
-//         }
+
         $where['type'] = 1;
         $where['status'] = 1;
         $count = $userModel->where($where)->count();
@@ -161,7 +148,6 @@ class IndexController extends Controller {
                     $this->saveCategory($uid,$data['category']);
                     $this->createCalendar($uid);
                     header("Location:http://".$_SERVER['HTTP_HOST'].'/online.php/index/calendar');
-//                     $this->redirect('http://'.$_SERVER['HTTP_HOST'].'.php/index/calendar');
                 }else{
                     $this->error("提交失败");
                 }
@@ -174,7 +160,6 @@ class IndexController extends Controller {
                 $save = $this->saveCategory($uid,$data['category']);
                 if($update || $save){
                     header("Location:http://".$_SERVER['HTTP_HOST'].'/online.php/index/calendar');
-//                     $this->redirect('http://'.$_SERVER['HTTP_HOST'].'.php/index/calendar');
                 }else{
                     $this->error("修改失败");
                 }
@@ -253,7 +238,6 @@ class IndexController extends Controller {
                     $this->saveCategory($uid,$data['category']);
                     $this->createCalendar($uid);
                     header("Location:http://".$_SERVER['HTTP_HOST'].'/online.php/index/calendar');
-//                     $this->redirect('http://'.$_SERVER['HTTP_HOST'].'.php/index/calendar');
                 }else{
                     $this->error("提交失败");
                 }
@@ -266,7 +250,6 @@ class IndexController extends Controller {
                 $save = $this->saveCategory($uid,$data['category']);
                 if($update || $save){
                     header("Location:http://".$_SERVER['HTTP_HOST'].'/online.php/index/calendar');
-//                     $this->redirect('http://'.$_SERVER['HTTP_HOST'].'.php/index/calendar');
                 }else{
                     $this->error("修改失败");
                 }
@@ -430,7 +413,6 @@ class IndexController extends Controller {
             $add = $scheduleModel->add($data);
             if($add){
                 header("Location:http://".$_SERVER['HTTP_HOST'].'/online.php/index/info/'.$_POST["accept_uid"]);
-//                 $this->redirect('http://'.$_SERVER['HTTP_HOST'].'.php/index/info/'.$_POST["accept_uid"]);
                 $url = 'http://'.$_SERVER['HTTP_HOST'].'/online.php/index/schedule_accept';
                 SendMail($onlineAcceptUser["email"],"您有新的在线对接会预约申请","请点击链接 {$url} 继续操作");
             }else{
