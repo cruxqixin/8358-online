@@ -2,6 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8" />
 <title>科济天下网_在线对接会_首页</title>
 <link href="/css/Online/index.css" rel="stylesheet" type="text/css" />
 <link href="/css/News/common.css" rel="stylesheet" type="text/css" />
@@ -69,21 +70,13 @@ $(function(){
                      </div>
                  </td>
              </tr>
-             <?php if($isCompany == 1){ ?>
-             <tr>
-                 <td {$isCompany} width="60" valign="top" style="padding-top:6px;"><span>对接类型</span></td>
-                 <td style="padding-top:6px;">
-		    		<a class="sub-all" href="">企业</a>
-                    <a class="sub-link" href="{:U('index/index_c')}">专家</a>
-                    <div class="clear"></div>                        
-                </td>
-             </tr>
-             <?php } ?>
           </table>
        </div>
         </div>
         <div class="main-left-02">
-        	<?php foreach($userList as $k => $v){ ?>
+        	<?php foreach($userList as $k => $v){ 
+				if($v['type'] == 2){
+        	?>
         	<dl>
             	<dd>
                 	<h1><a href="{:U('index/info/'.$v['uid'])}">【{$v['exhibition_number']}】{$v['company_name']}</a></h1>
@@ -97,7 +90,22 @@ $(function(){
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="{:U('index/info/'.$v['uid'])}">详细信息>></a>
                 </dt>
             </dl>
-            <?php } ?>
+            <?php }else{ ?>
+            <dl>
+            	<dd>
+                	<h1><a href="{:U('index/info/'.$v['uid'])}"> {$v['name']} </a></h1>
+                    <span>发布时间：<?php echo date('Y-m-d',$v['add_time']);?></span>
+                </dd>
+                <dt><span>所属行业：</span>{$v['industry']}
+                </dt>
+                <dt><span>需要何种合作或帮助：</span>{$v['cooperation_need']}
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="{:U('index/info/'.$v['uid'])}">详细信息>></a>
+                </dt>
+            </dl>
+            <?php }
+			}
+			?>
+            
             <div class="numBox">
             	{$page}
             </div>
