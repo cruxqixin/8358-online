@@ -31,6 +31,14 @@ class IndexController extends Controller {
                 $where[] = 'uid = 0';
             }
         }
+        if($_GET['keyword'] != ''){
+            $keyword = trim($_GET['keyword']);
+            $keyword = inject_check($keyword);
+            if($keyword != ''){
+                $where[] = "name like '%".$keyword."%' or company_name like '%".$keyword."%' or cooperation_offer like '%".$keyword."%' or implemented_application like '%".$keyword."%' or cooperation_need like '%".$keyword."%'";
+            }
+            
+        }
         //是否是已登录企业用户，可以查看看全部列表，专家身份只能看企业列表type=2
         if($_SESSION["currentuser"]){
             $uid = $_SESSION["currentuser"]['id'];
@@ -51,7 +59,59 @@ class IndexController extends Controller {
         $this->assign('count',$count);
         $this->assign('fatherList',$fatherList);
         $this->assign('childList',$childList);
-
+        $this->assign('keyword',$keyword);
+        $this->display();
+    }
+    
+    public function search(){
+        $userModel = M('user');
+        $categoryModel = M('category');
+        $userCategoryModel = M('user_category');
+        //行业分类
+        $categoryList = $categoryModel->where('status=1')->select();
+        foreach($categoryList as $k => $v){
+            if($v['level'] == 1){
+                $fatherList[] = $v;
+            }
+            if($v['level'] == 2){
+                $childList[$v['father']][] = $v;
+            }
+        }
+        if($_GET['fid']>0 && $_GET['cid']>0){
+            $cid = intval($_GET['cid']);
+            $userCategoryList = $userCategoryModel->where('cid='.$cid)->select();
+            foreach($userCategoryList as $k => $v){
+                $uidList[] = $v['uid'];
+            }
+            $this->assign('chosenCid',$_GET['cid']);
+            $this->assign('chosenfid',$_GET['fid']);
+            if($uidList){
+                $where[] = 'uid in ('.implode(',',$uidList).') ';
+            }else{
+                $where[] = 'uid = 0';
+            }
+        }
+        //是否是已登录企业用户，可以查看看全部列表，专家身份只能看企业列表type=2
+        if($_SESSION["currentuser"]){
+            $uid = $_SESSION["currentuser"]['id'];
+            $onlineUser = $userModel->where(array('uid'=>$uid ))->find();
+            if($onlineUser['type'] == 1){
+                $where['type'] = 2;
+            }
+        }else{
+            $where['type'] = 2;
+        }
+        $where['status'] = 1;
+        $count = $userModel->where($where)->count();
+        $page = new FallPage($count,10);
+        $show = $page->show();
+        $userList = $userModel->where($where)->order('id desc')->limit($page->firstRow.','.$page->listRows)->select();
+        $this->assign('page',$show);
+        $this->assign('userList',$userList);
+        $this->assign('count',$count);
+        $this->assign('fatherList',$fatherList);
+        $this->assign('childList',$childList);
+    
         $this->display();
     }
 

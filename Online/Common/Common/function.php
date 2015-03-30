@@ -1052,4 +1052,15 @@ function download($filepath,$filename)
 			echo "文件不存在";
 		}
 }
+
+/**
+ * 检测提交的值是不是含有SQL注射的字符
+ *
+ * @param string $sql_str
+ * @return boolean
+ */
+function inject_check($sql_str)
+{
+    return preg_replace('/select|insert|and|or|update|delete|\'|\"|\/\*|\*|\.\.\/|\.\/|union|into|load_file|outfile/is', '', $sql_str);
+}
 	

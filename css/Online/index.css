@@ -1389,3 +1389,73 @@ img{
 .page .hover{
 	color:#fff;
 	background-color:#990033;}
+	
+.HH {
+    clear: both;
+    height: 10px;
+}
+.searchBox {
+    background-color: #fff;
+    border-top: 3px solid #c60000;
+    overflow: hidden;
+    width: 100%;
+}
+.search2 {
+    height: 82px;
+    margin: 0 auto;
+    width: 1003px;
+}
+.search2 .logo {
+    margin: 0 auto;
+    overflow: hidden;
+    padding-top: 20px;
+    width: 692px;
+}
+.logoImg {
+    float: left;
+    margin-right: 20px;
+    margin-top: 5px;
+}
+.logoMain {
+    float: left;
+    padding-top: 5px;
+}
+.logoMain h1 {
+    font-size: 13.33px;
+    font-weight: normal;
+    overflow: hidden;
+}
+.logoMain h1 a {
+    color: #333333;
+    float: left;
+    margin-right: 14px;
+    padding: 6px 10px;
+}
+.logoMain h1 .currentA {
+    background: url("/images/Data/logo_30.jpg") no-repeat scroll center bottom rgba(0, 0, 0, 0);
+    color: #19a7a9;
+}
+.logoMain p {
+    height: 32px;
+    width: 538px;
+}
+.logoMain p .text {
+    background: url("/images/Data/search_26.jpg") no-repeat scroll left center rgba(0, 0, 0, 0);
+    border: 2px solid #990032;
+    color: #a9a9a9;
+    float: left;
+    font-size: 13.33px;
+    height: 28px;
+    line-height: 28px;
+    text-indent: 26px;
+    width: 444px;
+}
+.logoMain p .but {
+    background-color: #990032;
+    border: medium none;
+    color: #fff;
+    float: left;
+    font-size: 16px;
+    height: 32px;
+    width: 88px;
+}
