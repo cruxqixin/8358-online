@@ -100,6 +100,10 @@ class IndexController extends Controller {
                 }
             
             }
+            $existUser = $userModel->where(array('uid'=>$uid ))->find();
+            if($existUser){
+                $this->error("您已经提交过信息了，请进入‘我的对接’查看");
+            }
             if($_POST['id']==''){
                 $data['type'] = 1;//个人类型
                 $data['uid'] = $uid;
@@ -189,6 +193,10 @@ class IndexController extends Controller {
                     $data[$k] = $v;
                 }
             
+            }
+            $existUser = $userModel->where(array('uid'=>$uid ))->find();
+            if($existUser){
+                $this->error("您已经提交过信息了，请进入‘我的对接’查看");
             }
             if($_POST['id']==''){
                 $data['type'] = 2;//公司类型
