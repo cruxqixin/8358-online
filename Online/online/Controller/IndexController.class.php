@@ -634,17 +634,6 @@ class IndexController extends Controller {
         
         $this->display();
     }
-//     public function audit(){
-//         $userModel = M('user');
-//         $onlineUser = $userModel->where(array('status'=>0))->select();
-//         print_R($onlineUser);
-        
-//         $data['status'] = 1;
-//         $data['update_time'] = time();
-//         $update = $userModel->where("id=1")->save($data);
-//         $onlineUser = $userModel->where(array('status'=>1))->select();
-//         print_R($onlineUser);exit();
-//     }
 
     private $dayConfig = array(
         '1' => '2015-05-05',
