@@ -65,7 +65,7 @@ $(function(){
                          	<?php 
 							foreach($fatherList as $father_k => $father_v){ 
 								$i++;
-								if($i < 11){
+								if($i != 11){
                          	?>
                             <li>
                                <div class="normal"><span <?php if($father_v['id'] == $_GET['fid']){?>class="curr"<?php }?>></span><a class="sub-link">&nbsp;&nbsp;<php>echo mb_substr($father_v['cname'],0,24);</php></a></div>
