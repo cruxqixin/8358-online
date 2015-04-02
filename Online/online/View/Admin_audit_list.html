@@ -48,11 +48,16 @@
     </ul>
 </div>
 <div class="mainBox">
-    <h5>当前位置： <a href="{:U('index/index')}">首页</a> ><span> 线上对接会用户列表</span></h5>
+    <h5>当前位置： <a href="{:U('index/index')}">首页</a> ><span> 线上对接会用户审核列表</span></h5>
     <div class="joint">
         <ul  id="nTabs2">
-            <li ><a href="{:U('index/audited_list')}">已审核用户</a></li>
+        <?php if($status != 1){ ?>
+            <li ><a href="{:U('admin/index/1')}">已审核用户</a></li>
             <li class="currentLi"><a >待审核用户</a></li>
+		<?php }else{ ?>
+			<li class="currentLi"><a >已审核用户</a></li>
+            <li ><a href="{:U('admin/index')}">待审核用户</a></li>
+		<?php } ?>
         </ul>
         <div class="list">
             <div id="nTabs2_Content0">
@@ -63,6 +68,7 @@
                             <td width="">姓名</td>
                             <td width="">公司名</td>
                             <td width="">申请时间</td>
+                            <td width="">审核操作</td>
                         </tr>
                         <?php
                         $i = 0;
@@ -71,9 +77,16 @@
 						?>
                         <tr class="top-tab{$i%2+1}">
                             <td ><?php echo $v['type'] == 1 ? '专家' : '企业';?></td>
-                            <td ><a href="{:U('admin/info/'.$v['id'])}"><?php echo $v['name'];?></a></td>
+                            <td ><a href="{:U('admin/audit_info/'.$v['uid'])}"><?php echo $v['name'];?></a></td>
                             <td><?php echo $v['type'] == 1 ? $v['name'] : $v['company_name'];?></td>
 							<td><?php echo date('Y-m-d H:i:s',$v['add_time']);?></td>
+							<td>
+							<?php if($status != 1){ ?>
+					            <input type="button" value="通过审核" class="but2 green-but" onclick="confirm_submit({$v['uid']},1);">&nbsp;&nbsp;&nbsp;&nbsp;
+							<?php }else{ ?>
+								<input type="button" value="不通过" class="but2" onclick="confirm_submit({$v['uid']},0);">
+							<?php } ?>
+                            </td>
                         </tr>
                         <?php } ?>
                     </tbody>
@@ -88,8 +101,8 @@
 <include file="Application/News/View/Public_footer.html"/>
 <script type="text/javascript">
 //删除
-function confirm_submit(schedule_id,action_type){
-	$.post("{:U('index/handleSchedule')}", {schedule_id : schedule_id, action_type : action_type} , function(msg){
+function confirm_submit(uid,status){
+	$.post("{:U('admin/audit_pass')}", {uid : uid, status : status} , function(msg){
    		alert('操作成功');
 	   	location.reload();
 	});
