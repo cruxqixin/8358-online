@@ -317,13 +317,14 @@ $(function(){
                     </ul>
                 </div>
                 <div class="application-03">贵公司可以为客户提供的具体产品技术及服务/ PRODICTS AND SERVICES OFFERED<span>*最多可选10项</span></div>
-                <!-- <div class="application-05">
+                <div class="application-05" style="height:auto">
                     <dl>
                         <dd>已选择：</dd>
+                        <dt>
                         <?php
                         foreach($choosenFatherList as $father){
 						?>
-                        <dt>
+                        
                             <div class="text-list-01">▪ <php>echo $father['cname'];</php><php>if($father['ename'] != ''){ echo '/'.$father['ename'];}</php></div>
                             <?php 
                             foreach($choosenList[$father['id']] as $k=>$v){
@@ -332,14 +333,14 @@ $(function(){
                             <?php
                             }
 							?>
-                        </dt>
+                        
                         <?php
                         }
 						?>
-
+						</dt>
                     </dl>
                 </div>
-                 -->
+
                <div id="testdiv"> 
                <?php
                $i = 0;
@@ -385,13 +386,6 @@ $(function(){
                             <input class="text6" style="float:none" name="fund_amount" type="text" value="{$onlineUser['fund_amount']}"/>万元（RMB）
                         </dd>
                     </dl>
-                </div>
-            </div>
-            <div class="application-09">
-                <div class="but-01">
-                	<input type='hidden' name='id' value="{$onlineUser['id']}"/>
-                    <input type="submit" class="but-02 rad-but" value="下一步" />
-                    <input type="button" class="but-02" id="chongzhi" value="重置内容" />
                 </div>
             </div>
         </form>

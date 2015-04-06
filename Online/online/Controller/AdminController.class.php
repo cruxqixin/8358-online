@@ -126,7 +126,8 @@ class AdminController extends Controller {
             return;
         }
         $uid = $_SESSION["currentuser"]['id'];
-        if(!in_array($uid ,array(1419066834,1427168251,1427167469))){
+
+        if(!in_array($uid ,array(1419066834,1427168251,1427167469,1427676216))){
             $this->error("此账号没有权限");
         }else{
             return true;

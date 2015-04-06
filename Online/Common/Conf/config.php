@@ -1,5 +1,13 @@
 <?php
 return array(
+    //'配置项'=>'配置值'
+//     'db_host' => '60.28.240.121',
+//     'db_type' => 'mysql',
+//     'db_port' => '3306',
+//     'db_user' => 'root',
+//     'db_pwd' => 'zhang999',
+//     'db_name' => 'mysqltk',
+//     'db_prefix' => 'online_',
 	//'配置项'=>'配置值'
     'db_host' => '127.0.0.1',
     'db_type' => 'mysql',
@@ -8,30 +16,13 @@ return array(
     'db_pwd' => '',
     'db_name' => 'online',
     'db_prefix' => 'online_',
-    'sina_appkey' => '662835029',
-    'sina_appsecret' => 'e3b92626b30b1a58795daf312e21df31',
-    'taobao_appkey' => '21108506',
-    'taobao_appsecret' => '5f29c86c15cf8e79c095c01416574a89',
-    'taobaoke_nick' => '',
-    'taobaoke_pid' => '33618674',
-    'qq_appkey' => '100321020',
-    'qq_appsecret' => 'efc7939403fdda2dca7a7b5d5b198bcc',
-    'paipaike_pid' => '',
-    'follow_us' => '',
-    'follow_us2' => '',
-    'follow_us3' => '',
-    'follow_us4' => '',
-    'follow_us5' => '',
-    'follow_us6' => '',
-    'new_visit' => 0,
-    'push_request' => '{"cate":"\\u8863\\u670d-1-1 \\u978b\\u5b50-2-1 \\u5305\\u5305-3-1 \\u914d\\u9970-4-1 \\u7f8e\\u5986-5-1 \\u5bb6\\u5c45-6-1","cps":"0","price":"0","nums":"100","auto_push":"1"}',
-    'spread_status' => '0',
-    'spread_position' => '1',
-    'filter' => '走私,混蛋',
+
     'login_key' => '74180f440b834b9732347a5fc58fcfce',
     'MAIL_ADDRESS' => 'clientservice@kjtxw.com',
     'MAIL_SMTP' => 'mail.kjtxw.com',
     'MAIL_LOGINNAME' => 'clientservice@kjtxw.com',
     'MAIL_PASSWORD' => '1236987qwe',
+    'URL_MODEL'             =>  1,
+    'URL_HTML_SUFFIX'       =>  '',
 );
 
