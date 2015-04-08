@@ -41,15 +41,15 @@ class IndexController extends Controller {
             
         }
         //是否是已登录企业用户，可以查看看全部列表，专家身份只能看企业列表type=2
-        if($_SESSION["currentuser"]){
-            $uid = $_SESSION["currentuser"]['id'];
-            $onlineUser = $userModel->where(array('uid'=>$uid ))->find();
-            if($onlineUser['type'] == 1){
-                $where['type'] = 2;
-            }
-        }else{
-            $where['type'] = 2;
-        }
+//         if($_SESSION["currentuser"]){
+//             $uid = $_SESSION["currentuser"]['id'];
+//             $onlineUser = $userModel->where(array('uid'=>$uid ))->find();
+//             if($onlineUser['type'] == 1){
+//                 $where['type'] = 2;
+//             }
+//         }else{
+//             $where['type'] = 2;
+//         }
         $where['status'] = 1;
         $count = $userModel->where($where)->count();
         $page = new FallPage($count,10);
