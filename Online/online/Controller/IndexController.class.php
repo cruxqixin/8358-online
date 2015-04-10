@@ -70,6 +70,9 @@ class IndexController extends Controller {
      */
     public function apply_c(){
         $uid = $this->kjtxLoginCheck();
+        if(!$uid){
+            $this->error("请先登录科济天下网");
+        }
         $userModel = M('user');
         $categoryModel = M('category');
         $userCategoryModel = M('user_category');
@@ -161,6 +164,9 @@ class IndexController extends Controller {
      */
     public function apply_b(){
         $uid = $this->kjtxLoginCheck();
+        if(!$uid){
+            $this->error("请先登录科济天下网");
+        }
         $userModel = M('user');
         $categoryModel = M('category');
         $userCategoryModel = M('user_category');
@@ -708,8 +714,9 @@ class IndexController extends Controller {
             //跳转到登录
             header("Location:http://".$_SERVER['HTTP_HOST'].'/index.php/Keji/User/Login/?returnurl='.$_SERVER['PHP_SELF']); 
 			return;
+        }else{
+            return $_SESSION["currentuser"]['id'];
         }
-        return $_SESSION["currentuser"]['id'];
     }
     private function onlineLoginCheck($uid){
         //获取当前登录uid，判断online_user是否已经有数据
