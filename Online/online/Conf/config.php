@@ -10,5 +10,6 @@ return array(
         'Index/info_b/:uid' => 'Index/info_b',
         'Admin/index/:id' => 'Admin/index',
         'Admin/audit_info/:uid' => 'Admin/audit_info',
+        'Register/index/:source' => 'Register/index',
     ),
 );

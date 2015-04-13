@@ -1063,4 +1063,11 @@ function inject_check($sql_str)
 {
     return preg_replace('/select|insert|and|or|update|delete|\'|\"|\/\*|\*|\.\.\/|\.\/|union|into|load_file|outfile/is', '', $sql_str);
 }
+
+function isEmail($string) {
+    return preg_match("/^(\w)+(\.\w+)*@(\w)+((\.\w+)+)$/", $string);
+}
+function isMobile($string) {
+    return preg_match("/^1[3|4|5|7|8]{1}[0-9]{9}$/", $string);
+}
 	
