@@ -38,6 +38,7 @@ $(function(){
 </script>
 </head>
 <body>
+	<h1 style="text-align:center;">在线注册</h1>
 	<form action="{:U('register/register')}" id="form1" method="post" >
 	<table width="80%" cellspacing="0" cellpadding="5" border="0" align="right" style="margin-top:30px;">
 	  <tbody>
@@ -53,6 +54,10 @@ $(function(){
 	  <tr>
 	    <td><strong>Email*</strong></td>
 	    <td><input name="email" class="validate[required]" id="email"></td>
+	   </tr>
+	  <tr>
+	    <td><strong>单位名称*</strong></td>
+	    <td><input name="company" class="validate[required]" id="company"></td>
 	   </tr>
 	  <tr>
 	    <td>&nbsp;</td>
@@ -71,6 +76,7 @@ function confirm_submit(){
 				name : $('#name').val(), 
 				mobile : $('#mobile').val(), 
 				email : $('#email').val(),
+				company : $('#company').val(),
 				source : {$source}
 			} , 
 			function(data){

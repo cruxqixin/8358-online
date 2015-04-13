@@ -19,6 +19,7 @@ class RegisterController extends Controller {
             $name = strip_tags(trim(I('post.name')));
             $mobile = strip_tags(trim(I('post.mobile')));
             $email = strip_tags(trim(I('post.email')));
+            $company = strip_tags(trim(I('post.company')));
             $source = intval(I('post.source'));
             if(!$name || !$mobile || !$email){
                 echo json_encode(array('msg' => '信息不能为空','status' => false));die();
@@ -37,6 +38,7 @@ class RegisterController extends Controller {
                 $data['name'] = $name;
                 $data['mobile'] = $mobile;
                 $data['email'] = $email;
+                $data['company'] = $company;
                 $data['source'] = $source;
                 $data['add_time'] = time();
                 $add = $regUserModel->add($data);
