@@ -118,6 +118,19 @@ class AdminController extends Controller {
             echo '操作失败';die();
         }
     }
+    public function reg_list(){
+        $this->adminCheck();
+        $regUserModel = M('reg_user');
+        $count = $regUserModel->where()->count();
+        $page = new FallPage($count,10);
+        $show = $page->show();
+        $userList = $regUserModel->where()->order('id desc')->limit($page->firstRow.','.$page->listRows)->select();
+        
+        $this->assign('page',$show);
+        $this->assign('userList',$userList);
+        $this->assign('count',$count);
+        $this->display('Admin_reg_list');
+    }
     private function adminCheck(){
         //判断kjtx是否登录，否则返回登录页面
         if(!$_SESSION["currentuser"]){
