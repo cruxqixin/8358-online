@@ -19,22 +19,6 @@ class AdminController extends Controller {
         $this->assign('status',$status);
         $this->display('Admin_audit_list');
     }
-//     public function audit_list(){
-//         $this->adminCheck();
-//         $status = intval(I('param.id')) == 1 ? 1 : 0;
-//         //待审核列表
-//         $userModel = M('user');
-//         $count = $userModel->where(array('status'=>$status))->count();
-//         $page = new FallPage($count,10);
-//         $show = $page->show();
-//         $userList = $userModel->where(array('status'=>$status))->order('id desc')->limit($page->firstRow.','.$page->listRows)->select();
-
-//         $this->assign('page',$show);
-//         $this->assign('userList',$userList);
-//         $this->assign('count',$count);
-//         $this->assign('status',$status);
-//         $this->display();
-//     }
     
     public function audit_info(){
         $this->adminCheck();
