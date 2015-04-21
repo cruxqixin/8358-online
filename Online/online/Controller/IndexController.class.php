@@ -2,7 +2,7 @@
 namespace online\Controller;
 use Think\Controller;
 use Think\FallPage;
-class IndexController extends Controller {
+class IndexController extends BaseController {
     public function index(){
         $userModel = M('user');
         $categoryModel = M('category');
@@ -103,11 +103,12 @@ class IndexController extends Controller {
                 }
             
             }
-            $existUser = $userModel->where(array('uid'=>$uid ))->find();
-            if($existUser){
-                $this->error("您已经提交过信息了，请进入‘我的对接’查看");
-            }
+            
             if($_POST['id']==''){
+                $existUser = $userModel->where(array('uid'=>$uid ))->find();
+                if($existUser){
+                    $this->error("您已经提交过信息了，请进入‘我的对接’查看");
+                }
                 $data['type'] = 1;//个人类型
                 $data['uid'] = $uid;
                 $data['add_time'] = time();
@@ -200,11 +201,12 @@ class IndexController extends Controller {
                 }
             
             }
-            $existUser = $userModel->where(array('uid'=>$uid ))->find();
-            if($existUser){
-                $this->error("您已经提交过信息了，请进入‘我的对接’查看");
-            }
+            
             if($_POST['id']==''){
+                $existUser = $userModel->where(array('uid'=>$uid ))->find();
+                if($existUser){
+                    $this->error("您已经提交过信息了，请进入‘我的对接’查看");
+                }
                 $data['type'] = 2;//公司类型
                 $data['uid'] = $uid;
                 $data['add_time'] = time();

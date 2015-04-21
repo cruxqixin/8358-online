@@ -22,7 +22,7 @@ $(function(){
 })
 $(function(){
 	$("#testdiv input[type=checkbox]").click(function(){
-		if($("#testdiv input[type=checkbox]:checked").size()>10)
+		if($("#testdiv input[type=checkbox]:checked").size()>30)
 		{
 			$(this).removeAttr("checked");
 			return;
@@ -256,7 +256,7 @@ $(function(){
                     <div class="textBox-01">
                         <input class="text1 validate[required]" type='text' name='company_name' value="<?php echo $onlineUser['company_name'];?>"/>
                     </div>
-                    <h2>展位号</h2>
+                    <h2 style="width:155px;" >展位号/项目发布会</h2>
                     <div class="textBox-06">
                         <input class="text8 validate[required]" type='text' name='exhibition_number' value="{$onlineUser['exhibition_number']}"/>
                     </div>
@@ -323,7 +323,7 @@ $(function(){
                         <input class="validate[required]" type='text' name='email' value="{$onlineUser['email']}"/>
                     </div>
                 </div>
-                <div class="application-03">贵公司可以为客户提供的具体产品技术及服务/ PRODICTS AND SERVICES OFFERED<span>*最多可选10项</span></div>
+                <div class="application-03">贵公司可以为客户提供的具体产品技术及服务/ PRODICTS AND SERVICES OFFERED<span>*最多可选30项</span></div>
                 <!-- <div class="application-05">
                     <dl>
                         <dd>已选择：</dd>
