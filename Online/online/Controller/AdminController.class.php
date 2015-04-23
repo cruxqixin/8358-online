@@ -78,7 +78,6 @@ class AdminController extends Controller {
             if($status !== 0 && $status !== 1){
                 echo '缺少审核标示';die();
             }
-
             //检查预约数据
             $userModel = M('user');
             $onlineUser = $userModel->where(array('uid'=>$uid ))->find();
@@ -109,11 +108,33 @@ class AdminController extends Controller {
         $page = new FallPage($count,10);
         $show = $page->show();
         $userList = $regUserModel->where()->order('id desc')->limit($page->firstRow.','.$page->listRows)->select();
-        
         $this->assign('page',$show);
         $this->assign('userList',$userList);
         $this->assign('count',$count);
         $this->display('Admin_reg_list');
+    }
+    public function schedule_list(){
+        $this->adminCheck();
+        $scheduleModel = M('schedule');
+        $count = $scheduleModel->where('status>0')->count();
+        $page = new FallPage($count,10);
+        $show = $page->show();
+        $scheduleList = $scheduleModel->where('status>0')->order('id desc')->limit($page->firstRow.','.$page->listRows)->select();
+        foreach($scheduleList as $k => $v){
+            $cidList[] = $v['calendar_id'];
+        }
+        $calendarModel = M('calendar');
+        $calendarList = $calendarModel->where('id in ('.implode(',',$cidList).')')->select();
+        foreach($calendarList as $k => $v){
+            $calendarListKV[$v['id']]= $v;
+        }
+        $this->assign('calendarListKV',$calendarListKV);
+        $this->assign('dayConfig',$this->dayConfig);
+        $this->assign('timeConfig',$this->timeConfig);
+        $this->assign('page',$show);
+        $this->assign('scheduleList',$scheduleList);
+        $this->assign('count',$count);
+        $this->display('Admin_schedule_list');
     }
     private function adminCheck(){
         //判断kjtx是否登录，否则返回登录页面
@@ -129,6 +150,28 @@ class AdminController extends Controller {
         }else{
             return true;
         }
-        
     }
+    private $dayConfig = array(
+        '1' => '2015-05-05',
+        '2' => '2015-05-06',
+        '3' => '2015-05-07'
+    );
+    private $timeConfig = array(
+        '1'=>'09:00-09:30',
+        '2'=>'09:30-10:00',
+        '3'=>'10:00-10:30',
+        '4'=>'10:30-11:00',
+        '5'=>'11:00-11:30',
+        '6'=>'11:30-12:00',
+        '7'=>'12:00-12:30',
+        '8'=>'12:30-13:00',
+        '9'=>'13:00-13:30',
+        '10'=>'13:30-14:00',
+        '11'=>'14:00-14:30',
+        '12'=>'14:30-15:00',
+        '13'=>'15:00-15:30',
+        '14'=>'15:30-16:00',
+        '15'=>'16:00-16:30',
+        '16'=>'16:30-17:00'
+    );
 }

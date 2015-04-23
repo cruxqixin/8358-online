@@ -12,4 +12,5 @@ return array(
         'Admin/audit_info/:uid' => 'Admin/audit_info',
         'Register/index/:source' => 'Register/index',
     ),
+    'site_status' => 1
 );
