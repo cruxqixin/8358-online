@@ -17,6 +17,12 @@ class AdminController extends Controller {
         $this->assign('userList',$userList);
         $this->assign('count',$count);
         $this->assign('status',$status);
+        if($status == 1){
+            $nav_status = 'audited';
+        }else{
+            $nav_status = 'audit';
+        }
+        $this->assign('nav_status',$nav_status);
         $this->display('Admin_audit_list');
     }
     
@@ -111,6 +117,7 @@ class AdminController extends Controller {
         $this->assign('page',$show);
         $this->assign('userList',$userList);
         $this->assign('count',$count);
+        $this->assign('nav_status','reg_list');
         $this->display('Admin_reg_list');
     }
     public function schedule_list(){
@@ -134,6 +141,7 @@ class AdminController extends Controller {
         $this->assign('page',$show);
         $this->assign('scheduleList',$scheduleList);
         $this->assign('count',$count);
+        $this->assign('nav_status','schedule_list');
         $this->display('Admin_schedule_list');
     }
     private function adminCheck(){

@@ -1,0 +1,6 @@
+		<ul  id="nTabs2">
+            <li {$nav_status == 'audited' ? 'class="currentLi"' : ''}><a href="{:U('admin/index/1')}">已审核用户</a></li>
+            <li {$nav_status == 'audit' ? 'class="currentLi"' : ''}><a href="{:U('admin/index')}">待审核用户</a></li>
+			<li {$nav_status == 'reg_list' ? 'class="currentLi"' : ''}><a href="{:U('admin/reg_list')}">参会注册列表</a></li>
+			<li {$nav_status == 'schedule_list' ? 'class="currentLi"' : ''}><a href="{:U('admin/schedule_list')}">用户预约列表</a></li>
+        </ul>
