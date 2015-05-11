@@ -40,7 +40,7 @@ class IndexController extends BaseController {
             }
             
         }
-        //是否是已登录企业用户，可以查看看全部列表，专家身份只能看企业列表type=2
+        //是否是已登录企业用户，可以查看看全部列表，专家身份只能看企业列表type=2 功能暂停
 //         if($_SESSION["currentuser"]){
 //             $uid = $_SESSION["currentuser"]['id'];
 //             $onlineUser = $userModel->where(array('uid'=>$uid ))->find();
@@ -56,6 +56,12 @@ class IndexController extends BaseController {
         $show = $page->show();
         $userList = $userModel->where($where)->order('id desc')->limit($page->firstRow.','.$page->listRows)->select();
 
+        //隐藏列表
+        $count = 0;
+        $page = new FallPage($count,10);
+        $show = $page->show();
+        $userList = array();
+        
         $this->assign('page',$show);
         $this->assign('userList',$userList);
         $this->assign('count',$count);
@@ -89,6 +95,9 @@ class IndexController extends BaseController {
         }
         //表单处理
         if($_POST){
+            //暂停提交
+            $this->error("欢迎明年再次使用，期待明年再相聚!");
+            
             $inputArray = $this->cInputArray;
             foreach($inputArray as $k => $v){
                 if(empty($_POST[$k])){
@@ -186,6 +195,9 @@ class IndexController extends BaseController {
 
         //表单处理
         if($_POST){
+            //暂停提交
+            $this->error("欢迎明年再次使用，期待明年再相聚!");
+            
             $inputArray = $this->bInputArray;
             foreach($inputArray as $k => $v){
                 if(empty($_POST[$k])){
@@ -353,6 +365,9 @@ class IndexController extends BaseController {
         }
         $userModel = M('user');
         if($_POST){
+            //暂停提交
+            $this->error("欢迎明年再次使用，期待明年再相聚!");
+            
             if(!$_POST['accept_uid']){
                 $this->error('目标用户未找到');
             }
@@ -410,6 +425,9 @@ class IndexController extends BaseController {
         $userModel = M('user');
         
         if($_POST){
+            //暂停提交
+            $this->error("欢迎明年再次使用，期待明年再相聚!");
+            
             //检查预约数据
             $scheduleModel = M('schedule');
             $scheduleInfo = $scheduleModel->where('id='.intval($_POST["schedule_id"]).' and accept_uid='.$uid.' and status=1')->find();
@@ -523,6 +541,9 @@ class IndexController extends BaseController {
         }
         //表单处理
         if($_POST){
+            //暂停提交
+            $this->error("欢迎明年再次使用，期待明年再相聚!");
+            
             foreach($_POST as $k => $v){
                 $id = str_replace('calendar_','',$k);
                 $calendarListAfter[] = $id.'_'.$v ;
